@@ -1,23 +1,25 @@
-function loadMyBookings() {
-    const bookings = JSON.parse(localStorage.getItem('myBookings')) || [];
-    const container = document.getElementById('bookings-list');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My Bookings</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="event.html">Events</a>
+            <a href="my-bookings.html">My Bookings</a>
+        </nav>
+    </header>
 
-    if (!container) return;
+    <main style="padding: 20px;">
+        <h2>Your Booked Tickets</h2>
+        <div id="bookings-container"></div>
+    </main>
 
-    if (bookings.length === 0) {
-        container.innerHTML = "<p>No tickets booked yet.</p>";
-        return;
-    }
-
-    container.innerHTML = bookings.map(item => `
-        <div class="booking-card" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 8px;">
-            <h3>${item.eventName}</h3>
-            <p><strong>Booking ID:</strong> ${item.bookingId}</p>
-            <p><strong>Event Date:</strong> ${item.date}</p>
-            <p><strong>Booked On:</strong> ${item.bookingDate}</p>
-            <p><strong>Price Paid:</strong> ₹${item.price}</p>
-        </div>
-    `).join('');
-}
-
-document.addEventListener('DOMContentLoaded', loadMyBookings);
+    <script src="my-bookings.js"></script>
+</body>
+</html>
