@@ -1,125 +1,38 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-    // ================= CURRENT YEAR =================
-
-    const yearElements =
-        document.querySelectorAll(".current-year");
-
-    yearElements.forEach(function (element) {
-
-        element.textContent =
-            new Date().getFullYear();
-
-    });
-
-
-    // ================= NAVBAR ACTIVE LINK =================
-
-    const currentPage =
-        window.location.pathname
-            .split("/")
-            .pop();
-
-    const navLinks =
-        document.querySelectorAll(".navbar .nav-link");
-
-    navLinks.forEach(function (link) {
-
-        const linkPage =
-            link.getAttribute("href");
-
-        if (
-            linkPage &&
-            linkPage === currentPage
-        ) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-
-    // ================= LOGIN STATUS =================
-
-    const isLoggedIn =
-        localStorage.getItem("isLoggedIn") === "true";
-
-    const userEmail =
-        localStorage.getItem("userEmail");
-
-    const userRole =
-        localStorage.getItem("userRole");
-
-
-    // Show logged-in user's name/email
-    const userDisplay =
-        document.getElementById("userDisplay");
-
-    if (userDisplay && isLoggedIn) {
-
-        userDisplay.textContent =
-            userEmail || "User";
-
+// Default Events Data (Aapki photos ke path yahan dalein)
+const defaultEvents = [
+    {
+        id: 1,
+        title: "Tech Innovation Summit 2026",
+        category: "Technology",
+        date: "15 September 2026",
+        image: "images/tech.jpg", // Aapki photo ka path
+        description: "Join top industry leaders for the biggest tech conference.",
+        ticketsAvailable: 50,
+        price: 499
+    },
+    {
+        id: 2,
+        title: "Music & Cultural Festival",
+        category: "Music",
+        date: "20 September 2026",
+        image: "images/music.jpg", // Aapki photo ka path
+        description: "Experience live music performances and cultural exhibitions.",
+        ticketsAvailable: 30,
+        price: 299
+    },
+    {
+        id: 3,
+        title: "Business Networking Meet",
+        category: "Business",
+        date: "25 September 2026",
+        image: "images/business.jpg", // Aapki photo ka path
+        description: "Connect with entrepreneurs and expand your business network.",
+        ticketsAvailable: 20,
+        price: 199
     }
+];
 
-
-    // ================= LOGOUT LINKS =================
-
-    const logoutLinks =
-        document.querySelectorAll(".logout-link");
-
-    logoutLinks.forEach(function (link) {
-
-        link.addEventListener("click", function (event) {
-
-            event.preventDefault();
-
-            localStorage.removeItem("isLoggedIn");
-            localStorage.removeItem("userEmail");
-            localStorage.removeItem("userRole");
-
-            alert("You have been logged out.");
-
-            window.location.href =
-                "login.html";
-
-        });
-
-    });
-
-
-    // ================= ADMIN LINK =================
-
-    const adminLinks =
-        document.querySelectorAll(".admin-link");
-
-    adminLinks.forEach(function (link) {
-
-        if (
-            !isLoggedIn ||
-            userRole !== "admin"
-        ) {
-
-            link.style.display = "none";
-
-        }
-
-    });
-
-
-    // ================= ERROR HANDLING =================
-
-    window.addEventListener(
-        "error",
-        function (event) {
-
-            console.error(
-                "Website error:",
-                event.message
-            );
-
-        }
-    );
-
-});
+// LocalStorage initialize karein agar data pehle se na ho
+if (!localStorage.getItem('events')) {
+    localStorage.setItem('events', JSON.stringify(defaultEvents));
+}
