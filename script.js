@@ -1,1114 +1,752 @@
 /* =========================================================
-   SMART EVENT MANAGEMENT & TICKET BOOKING SYSTEM
-   Main JavaScript
-   ========================================================= */
+SMART EVENT MANAGEMENT & TICKET BOOKING SYSTEM
+MAIN JAVASCRIPT
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-    initializeEvents();
-    initializeRegister();
-    initializeLogin();
-    initializeEventDetails();
-    initializeBooking();
-    initializeMyBookings();
-    updateNavbar();
-});
-
-
-/* =========================================================
-   EVENT DATA
-   ========================================================= */
+/* ================= EVENT DATA ================= */
 
 const events = [
-    {
-        id: 1,
-        name: "Tech Innovation Summit 2026",
-        category: "Technology",
-        date: "2026-09-15",
-        time: "10:00 AM",
-        location: "Rajkot Convention Centre",
-        price: 499,
-        image: "event1.jpg",
-        status: "Coming Soon",
-        description:
-            "Join an exciting technology summit featuring innovation, artificial intelligence, web development and future technologies."
-    },
 
-    {
-        id: 2,
-        name: "Music & Cultural Night",
-        category: "Music",
-        date: "2026-09-25",
-        time: "07:00 PM",
-        location: "Rajkot Auditorium",
-        price: 299,
-        image: "event2.jpg",
-        status: "Coming Soon",
-        description:
-            "Enjoy a memorable evening filled with music, culture, entertainment and amazing performances."
-    },
+```
+{
+    id: 1,
+    name: "Tech Innovation Summit 2026",
+    category: "Technology",
+    date: "25 September 2026",
+    time: "10:00 AM",
+    location: "Rajkot Convention Centre",
+    price: 499,
+    image: "images/event1.jpg",
+    status: "Coming Soon",
+    description:
+        "Join technology enthusiasts, students and professionals to explore artificial intelligence, cloud computing, cybersecurity and the future of technology."
+},
 
-    {
-        id: 3,
-        name: "Business Leadership Conference",
-        category: "Business",
-        date: "2026-10-05",
-        time: "09:30 AM",
-        location: "Grand Palace Hall",
-        price: 799,
-        image: "event3.jpg",
-        status: "Coming Soon",
-        description:
-            "A professional conference focused on leadership, entrepreneurship, business growth and future opportunities."
-    },
+{
+    id: 2,
+    name: "Grand Music Festival 2026",
+    category: "Music",
+    date: "10 October 2026",
+    time: "6:00 PM",
+    location: "Open Air Arena, Rajkot",
+    price: 799,
+    image: "images/event2.jpg",
+    status: "Coming Soon",
+    description:
+        "Enjoy an exciting evening filled with live music, talented performers, entertainment and an unforgettable festival experience."
+},
 
-    {
-        id: 4,
-        name: "College Fest 2026",
-        category: "College",
-        date: "2026-10-15",
-        time: "11:00 AM",
-        location: "University Campus",
-        price: 199,
-        image: "event4.jpg",
-        status: "Coming Soon",
-        description:
-            "A complete college festival featuring competitions, cultural activities, music, food and entertainment."
-    },
+{
+    id: 3,
+    name: "Business Leadership Conference",
+    category: "Business",
+    date: "18 October 2026",
+    time: "9:30 AM",
+    location: "Business Convention Hall",
+    price: 599,
+    image: "images/event3.jpg",
+    status: "Coming Soon",
+    description:
+        "A professional conference featuring leadership discussions, entrepreneurship ideas, networking opportunities and business strategies."
+},
 
-    {
-        id: 5,
-        name: "Startup & Entrepreneurship Meet",
-        category: "Startup",
-        date: "2026-11-01",
-        time: "10:00 AM",
-        location: "Innovation Hub",
-        price: 399,
-        image: "event5.jpg",
-        status: "Coming Soon",
-        description:
-            "Meet entrepreneurs, startup founders and innovators while learning about business ideas and opportunities."
-    },
+{
+    id: 4,
+    name: "College Youth Fest 2026",
+    category: "College",
+    date: "2 November 2026",
+    time: "11:00 AM",
+    location: "University Campus",
+    price: 299,
+    image: "images/event4.jpg",
+    status: "Coming Soon",
+    description:
+        "A fun-filled college festival featuring competitions, cultural performances, music, games and exciting student activities."
+},
 
-    {
-        id: 6,
-        name: "Sports & Fitness Carnival",
-        category: "Sports",
-        date: "2026-11-15",
-        time: "08:00 AM",
-        location: "City Sports Ground",
-        price: 249,
-        image: "event6.jpg",
-        status: "Coming Soon",
-        description:
-            "A fun-filled sports carnival with games, activities, fitness sessions and exciting competitions."
-    }
+{
+    id: 5,
+    name: "Startup & Entrepreneur Meetup",
+    category: "Startup",
+    date: "15 November 2026",
+    time: "4:00 PM",
+    location: "Innovation Hub, Rajkot",
+    price: 399,
+    image: "images/event5.jpg",
+    status: "Coming Soon",
+    description:
+        "Meet startup founders, entrepreneurs and innovators while learning about startup ideas, business growth and networking."
+},
+
+{
+    id: 6,
+    name: "Sports Championship 2026",
+    category: "Sports",
+    date: "5 December 2026",
+    time: "8:00 AM",
+    location: "City Sports Ground",
+    price: 199,
+    image: "images/event6.jpg",
+    status: "Coming Soon",
+    description:
+        "Experience an exciting sports championship featuring competitive matches, energetic performances and a memorable sporting atmosphere."
+}
+```
+
 ];
 
-
 /* =========================================================
-   LOCAL STORAGE HELPERS
-   ========================================================= */
+LOCAL STORAGE HELPERS
+========================================================= */
 
 function getUsers() {
-    return JSON.parse(localStorage.getItem("smartEventUsers")) || [];
+
+```
+try {
+
+    return JSON.parse(
+        localStorage.getItem("smartEventUsers")
+    ) || [];
+
+} catch (error) {
+
+    return [];
+
+}
+```
+
 }
 
 function saveUsers(users) {
-    localStorage.setItem("smartEventUsers", JSON.stringify(users));
+
+```
+localStorage.setItem(
+    "smartEventUsers",
+    JSON.stringify(users)
+);
+```
+
 }
 
 function getCurrentUser() {
-    return JSON.parse(localStorage.getItem("smartEventCurrentUser"));
+
+```
+try {
+
+    return JSON.parse(
+        localStorage.getItem("smartEventCurrentUser")
+    );
+
+} catch (error) {
+
+    return null;
+
+}
+```
+
 }
 
 function setCurrentUser(user) {
-    localStorage.setItem(
-        "smartEventCurrentUser",
-        JSON.stringify(user)
-    );
+
+```
+localStorage.setItem(
+    "smartEventCurrentUser",
+    JSON.stringify(user)
+);
+```
+
 }
 
 function logoutUser() {
-    localStorage.removeItem("smartEventCurrentUser");
-    window.location.href = "index.html";
+
+```
+localStorage.removeItem(
+    "smartEventCurrentUser"
+);
+
+window.location.href = "index.html";
+```
+
 }
 
 function getBookings() {
-    return JSON.parse(localStorage.getItem("smartEventBookings")) || [];
+
+```
+try {
+
+    return JSON.parse(
+        localStorage.getItem("smartEventBookings")
+    ) || [];
+
+} catch (error) {
+
+    return [];
+
+}
+```
+
 }
 
 function saveBookings(bookings) {
-    localStorage.setItem(
-        "smartEventBookings",
-        JSON.stringify(bookings)
-    );
+
+```
+localStorage.setItem(
+    "smartEventBookings",
+    JSON.stringify(bookings)
+);
+```
+
 }
 
+/* =========================================================
+IMAGE FALLBACK
+========================================================= */
+
+function imageFallback(imageElement, eventName) {
+
+```
+imageElement.onerror = function () {
+
+    this.onerror = null;
+
+    this.src =
+        "https://placehold.co/900x600/005aa9/ffffff?text=" +
+        encodeURIComponent(eventName);
+
+};
+```
+
+}
 
 /* =========================================================
-   NAVBAR
-   ========================================================= */
+NAVBAR
+========================================================= */
 
 function updateNavbar() {
 
-    const user = getCurrentUser();
+```
+const currentUser = getCurrentUser();
 
-    const loginLinks =
-        document.querySelectorAll(".login-link");
+const loginLinks =
+    document.querySelectorAll(".login-link");
 
-    const registerLinks =
-        document.querySelectorAll(".register-link");
+const registerLinks =
+    document.querySelectorAll(".register-link");
 
-    const logoutLinks =
-        document.querySelectorAll(".logout-link");
+const bookingLinks =
+    document.querySelectorAll(".my-bookings-link");
 
-    const myBookingLinks =
-        document.querySelectorAll(".my-bookings-link");
+const logoutLinks =
+    document.querySelectorAll(".logout-link");
 
-    if (user) {
 
-        loginLinks.forEach(link => {
-            link.style.display = "none";
-        });
+if (currentUser) {
 
-        registerLinks.forEach(link => {
-            link.style.display = "none";
-        });
+    loginLinks.forEach(function (link) {
 
-        myBookingLinks.forEach(link => {
-            link.style.display = "inline-block";
-        });
+        link.style.display = "none";
 
-        logoutLinks.forEach(link => {
-            link.style.display = "inline-block";
+    });
 
-            link.onclick = function (e) {
-                e.preventDefault();
-                logoutUser();
-            };
-        });
 
-    } else {
+    registerLinks.forEach(function (link) {
 
-        myBookingLinks.forEach(link => {
-            link.style.display = "none";
-        });
+        link.style.display = "none";
 
-        logoutLinks.forEach(link => {
-            link.style.display = "none";
-        });
+    });
 
-        loginLinks.forEach(link => {
-            link.style.display = "inline-block";
-        });
 
-        registerLinks.forEach(link => {
-            link.style.display = "inline-block";
-        });
-    }
+    bookingLinks.forEach(function (link) {
+
+        link.style.display = "";
+
+    });
+
+
+    logoutLinks.forEach(function (link) {
+
+        link.style.display = "";
+
+        link.onclick = function (event) {
+
+            event.preventDefault();
+
+            logoutUser();
+
+        };
+
+    });
+
+} else {
+
+    loginLinks.forEach(function (link) {
+
+        link.style.display = "";
+
+    });
+
+
+    registerLinks.forEach(function (link) {
+
+        link.style.display = "";
+
+    });
+
+
+    bookingLinks.forEach(function (link) {
+
+        link.style.display = "none";
+
+    });
+
+
+    logoutLinks.forEach(function (link) {
+
+        link.style.display = "none";
+
+    });
+
 }
+```
 
+}
 
 /* =========================================================
-   EVENTS PAGE
-   ========================================================= */
+EVENT CARD
+========================================================= */
 
-function initializeEvents() {
+function createEventCard(event) {
 
-    const eventContainer =
-        document.getElementById("eventsContainer");
+```
+return `
 
-    if (!eventContainer) {
-        return;
-    }
+    <div class="col-lg-4 col-md-6 mb-4">
 
-    displayEvents(events);
+        <div class="card event-card shadow-sm h-100">
 
-    const searchInput =
-        document.getElementById("eventSearch");
+            <div class="event-image-wrapper">
 
-    const categoryFilter =
-        document.getElementById("categoryFilter");
+                <img
+                    src="${event.image}"
+                    class="event-image"
+                    alt="${event.name}"
+                    onerror="this.onerror=null;this.src='https://placehold.co/900x600/005aa9/ffffff?text=Event+Image';">
 
-    if (searchInput) {
-        searchInput.addEventListener("input", filterEvents);
-    }
+                <span class="event-status">
+                    ${event.status}
+                </span>
 
-    if (categoryFilter) {
-        categoryFilter.addEventListener("change", filterEvents);
-    }
-}
-
-
-function displayEvents(eventList) {
-
-    const container =
-        document.getElementById("eventsContainer");
-
-    if (!container) {
-        return;
-    }
-
-    if (eventList.length === 0) {
-
-        container.innerHTML = `
-            <div class="col-12">
-                <div class="alert alert-warning text-center">
-                    No events found.
-                </div>
             </div>
-        `;
 
-        return;
-    }
 
-    container.innerHTML = eventList.map(event => {
+            <div class="card-body d-flex flex-column">
 
-        return `
-            <div class="col-lg-4 col-md-6 mb-4">
+                <span class="badge bg-light text-primary align-self-start mb-2">
 
-                <div class="card event-card h-100 shadow-sm">
+                    ${event.category}
 
-                    <div class="event-image-wrapper">
+                </span>
 
-                        <img
-                            src="${event.image}"
-                            class="card-img-top event-image"
-                            alt="${event.name}"
-                            onerror="this.src='https://via.placeholder.com/800x500?text=Event+Image'"
-                        >
 
-                        <span class="event-status">
-                            ${event.status}
-                        </span>
+                <h5 class="card-title">
 
-                    </div>
+                    ${event.name}
 
-                    <div class="card-body d-flex flex-column">
+                </h5>
 
-                        <span class="badge bg-primary mb-2 align-self-start">
-                            ${event.category}
-                        </span>
 
-                        <h5 class="card-title">
-                            ${event.name}
-                        </h5>
+                <p class="text-muted mb-2">
 
-                        <p class="text-muted mb-1">
-                            📅 ${formatDate(event.date)}
-                        </p>
+                    <i class="bi bi-calendar3 text-primary"></i>
 
-                        <p class="text-muted mb-1">
-                            ⏰ ${event.time}
-                        </p>
+                    ${event.date}
 
-                        <p class="text-muted">
-                            📍 ${event.location}
-                        </p>
+                </p>
 
-                        <div class="mt-auto">
 
-                            <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="text-muted mb-2">
 
-                                <strong class="text-primary">
-                                    ₹${event.price}
-                                </strong>
+                    <i class="bi bi-clock text-primary"></i>
 
-                                <span class="small text-muted">
-                                    per ticket
-                                </span>
+                    ${event.time}
 
-                            </div>
+                </p>
 
-                            <a
-                                href="event-details.html?id=${event.id}"
-                                class="btn btn-primary w-100"
-                            >
-                                View Details
-                            </a>
 
-                        </div>
+                <p class="text-muted mb-3">
 
-                    </div>
+                    <i class="bi bi-geo-alt text-primary"></i>
+
+                    ${event.location}
+
+                </p>
+
+
+                <div
+                    class="mt-auto d-flex justify-content-between align-items-center">
+
+                    <strong class="text-primary fs-5">
+
+                        ₹${event.price}
+
+                    </strong>
+
+
+                    <a
+                        href="event-details.html?id=${event.id}"
+                        class="btn btn-primary">
+
+                        View Details
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
 
                 </div>
 
             </div>
-        `;
 
-    }).join("");
+        </div>
+
+    </div>
+
+`;
+```
+
 }
+
+/* =========================================================
+HOME EVENTS
+========================================================= */
+
+function loadHomeEvents() {
+
+```
+const container =
+    document.getElementById(
+        "homeEventsContainer"
+    );
+
+if (!container) {
+
+    return;
+
+}
+
+
+container.innerHTML = "";
+
+
+events.forEach(function (event) {
+
+    container.innerHTML +=
+        createEventCard(event);
+
+});
+```
+
+}
+
+/* =========================================================
+EVENTS PAGE
+========================================================= */
+
+function loadEventsPage() {
+
+```
+const container =
+    document.getElementById(
+        "eventsContainer"
+    );
+
+if (!container) {
+
+    return;
+
+}
+
+
+renderEvents(events);
+
+
+const searchInput =
+    document.getElementById(
+        "eventSearch"
+    );
+
+const categoryFilter =
+    document.getElementById(
+        "categoryFilter"
+    );
 
 
 function filterEvents() {
 
     const search =
-        document.getElementById("eventSearch")
-            ?.value
-            .toLowerCase()
-            .trim() || "";
+        searchInput
+            ? searchInput.value
+                .toLowerCase()
+                .trim()
+            : "";
+
 
     const category =
-        document.getElementById("categoryFilter")
-            ?.value || "";
-
-    const filteredEvents = events.filter(event => {
-
-        const matchesSearch =
-            event.name.toLowerCase().includes(search) ||
-            event.category.toLowerCase().includes(search);
-
-        const matchesCategory =
-            category === "" ||
-            event.category === category;
-
-        return matchesSearch && matchesCategory;
-
-    });
-
-    displayEvents(filteredEvents);
-}
+        categoryFilter
+            ? categoryFilter.value
+            : "";
 
 
-/* =========================================================
-   REGISTER
-   ========================================================= */
+    const filteredEvents =
+        events.filter(function (event) {
 
-function initializeRegister() {
+            const matchesSearch =
+                event.name
+                    .toLowerCase()
+                    .includes(search) ||
 
-    const registerForm =
-        document.getElementById("registerForm");
-
-    if (!registerForm) {
-        return;
-    }
-
-    registerForm.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
-        const name =
-            document.getElementById("registerName").value.trim();
-
-        const email =
-            document.getElementById("registerEmail").value.trim().toLowerCase();
-
-        const password =
-            document.getElementById("registerPassword").value;
-
-        const confirmPassword =
-            document.getElementById("confirmPassword").value;
-
-        const message =
-            document.getElementById("registerMessage");
+                event.category
+                    .toLowerCase()
+                    .includes(search);
 
 
-        if (!name || !email || !password || !confirmPassword) {
+            const matchesCategory =
+                category === "" ||
+                event.category === category;
 
-            showMessage(
-                message,
-                "Please fill all fields.",
-                "danger"
+
+            return (
+                matchesSearch &&
+                matchesCategory
             );
 
-            return;
-        }
-
-
-        if (password.length < 6) {
-
-            showMessage(
-                message,
-                "Password must contain at least 6 characters.",
-                "danger"
-            );
-
-            return;
-        }
-
-
-        if (password !== confirmPassword) {
-
-            showMessage(
-                message,
-                "Passwords do not match.",
-                "danger"
-            );
-
-            return;
-        }
-
-
-        const users = getUsers();
-
-        const existingUser =
-            users.find(user => user.email === email);
-
-        if (existingUser) {
-
-            showMessage(
-                message,
-                "An account with this email already exists.",
-                "danger"
-            );
-
-            return;
-        }
-
-
-        const newUser = {
-            id: Date.now(),
-            name: name,
-            email: email,
-            password: password
-        };
-
-
-        users.push(newUser);
-
-        saveUsers(users);
-
-
-        showMessage(
-            message,
-            "Registration completed successfully! Redirecting to login...",
-            "success"
-        );
-
-
-        registerForm.reset();
-
-
-        setTimeout(() => {
-
-            window.location.href =
-                "login.html";
-
-        }, 1500);
-
-    });
-}
-
-
-/* =========================================================
-   LOGIN
-   ========================================================= */
-
-function initializeLogin() {
-
-    const loginForm =
-        document.getElementById("loginForm");
-
-    if (!loginForm) {
-        return;
-    }
-
-    loginForm.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
-        const email =
-            document.getElementById("loginEmail")
-                .value
-                .trim()
-                .toLowerCase();
-
-        const password =
-            document.getElementById("loginPassword")
-                .value;
-
-        const message =
-            document.getElementById("loginMessage");
-
-
-        const users = getUsers();
-
-        const user =
-            users.find(
-                u =>
-                    u.email === email &&
-                    u.password === password
-            );
-
-
-        if (!user) {
-
-            showMessage(
-                message,
-                "Invalid email or password.",
-                "danger"
-            );
-
-            return;
-        }
-
-
-        setCurrentUser({
-            id: user.id,
-            name: user.name,
-            email: user.email
         });
 
 
-        showMessage(
-            message,
-            "Login successful! Redirecting...",
-            "success"
-        );
+    renderEvents(filteredEvents);
+
+}
 
 
-        setTimeout(() => {
+if (searchInput) {
 
-            window.location.href =
-                "index.html";
+    searchInput.addEventListener(
+        "input",
+        filterEvents
+    );
 
-        }, 1000);
+}
+
+
+if (categoryFilter) {
+
+    categoryFilter.addEventListener(
+        "change",
+        filterEvents
+    );
+
+}
+```
+
+}
+
+function renderEvents(eventList) {
+
+```
+const container =
+    document.getElementById(
+        "eventsContainer"
+    );
+
+if (!container) {
+
+    return;
+
+}
+
+
+if (eventList.length === 0) {
+
+    container.innerHTML = `
+
+        <div class="col-12 text-center py-5">
+
+            <i
+                class="bi bi-calendar-x text-muted"
+                style="font-size:60px;">
+            </i>
+
+            <h4 class="mt-3">
+                No Events Found
+            </h4>
+
+            <p class="text-muted">
+                Try another search or category.
+            </p>
+
+        </div>
+
+    `;
+
+    return;
+
+}
+
+
+container.innerHTML = "";
+
+eventList.forEach(function (event) {
+
+    container.innerHTML +=
+        createEventCard(event);
+
+});
+```
+
+}
+
+/* =========================================================
+EVENT DETAILS PAGE
+========================================================= */
+
+function loadEventDetails() {
+
+```
+const container =
+    document.getElementById(
+        "eventDetails"
+    );
+
+if (!container) {
+
+    return;
+
+}
+
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const eventId =
+    Number(
+        params.get("id")
+    );
+
+
+const event =
+    events.find(function (item) {
+
+        return item.id === eventId;
 
     });
-}
 
 
-/* =========================================================
-   EVENT DETAILS
-   ========================================================= */
+if (!event) {
 
-function initializeEventDetails() {
+    container.innerHTML = `
 
-    const detailsContainer =
-        document.getElementById("eventDetails");
+        <div class="text-center py-5">
 
-    if (!detailsContainer) {
-        return;
-    }
+            <i
+                class="bi bi-exclamation-circle text-danger"
+                style="font-size:60px;">
+            </i>
 
+            <h2 class="mt-3">
+                Event Not Found
+            </h2>
 
-    const params =
-        new URLSearchParams(window.location.search);
+            <p class="text-muted">
+                The selected event does not exist.
+            </p>
 
-    const eventId =
-        parseInt(params.get("id"));
+            <a
+                href="events.html"
+                class="btn btn-primary">
 
+                Back to Events
 
-    const event =
-        events.find(e => e.id === eventId);
-
-
-    if (!event) {
-
-        detailsContainer.innerHTML = `
-            <div class="alert alert-danger text-center">
-                Event not found.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    detailsContainer.innerHTML = `
-
-        <div class="row align-items-center">
-
-            <div class="col-lg-6 mb-4">
-
-                <img
-                    src="${event.image}"
-                    class="img-fluid rounded shadow event-detail-image"
-                    alt="${event.name}"
-                    onerror="this.src='https://via.placeholder.com/900x600?text=Event+Image'"
-                >
-
-            </div>
-
-
-            <div class="col-lg-6">
-
-                <span class="badge bg-primary mb-3">
-                    ${event.category}
-                </span>
-
-                <h1 class="fw-bold mb-3">
-                    ${event.name}
-                </h1>
-
-                <p class="lead text-muted">
-                    ${event.description}
-                </p>
-
-                <hr>
-
-                <p>
-                    <strong>📅 Date:</strong>
-                    ${formatDate(event.date)}
-                </p>
-
-                <p>
-                    <strong>⏰ Time:</strong>
-                    ${event.time}
-                </p>
-
-                <p>
-                    <strong>📍 Location:</strong>
-                    ${event.location}
-                </p>
-
-                <p>
-                    <strong>🎫 Ticket Price:</strong>
-                    ₹${event.price}
-                </p>
-
-                <div class="alert alert-info">
-                    ${event.status}
-                </div>
-
-                <button
-                    class="btn btn-primary btn-lg w-100"
-                    onclick="startBooking(${event.id})"
-                >
-                    Book Now
-                </button>
-
-            </div>
+            </a>
 
         </div>
+
     `;
+
+    return;
+
 }
 
 
-/* =========================================================
-   BOOKING START
-   ========================================================= */
+container.innerHTML = `
 
-function startBooking(eventId) {
-
-    const user = getCurrentUser();
-
-    if (!user) {
-
-        alert(
-            "Please login or register before booking an event."
-        );
-
-        window.location.href =
-            "login.html?redirect=event-details.html?id=" +
-            eventId;
-
-        return;
-    }
+    <div class="row g-5 align-items-start">
 
 
-    window.location.href =
-        "booking.html?id=" + eventId;
-}
+        <div class="col-lg-6">
 
-
-/* =========================================================
-   BOOKING PAGE
-   ========================================================= */
-
-function initializeBooking() {
-
-    const bookingForm =
-        document.getElementById("bookingForm");
-
-    if (!bookingForm) {
-        return;
-    }
-
-
-    const user = getCurrentUser();
-
-    if (!user) {
-
-        window.location.href =
-            "login.html";
-
-        return;
-    }
-
-
-    const params =
-        new URLSearchParams(window.location.search);
-
-    const eventId =
-        parseInt(params.get("id"));
-
-
-    const event =
-        events.find(e => e.id === eventId);
-
-
-    if (!event) {
-
-        document.getElementById("bookingDetails").innerHTML = `
-            <div class="alert alert-danger">
-                Event not found.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    const bookingDetails =
-        document.getElementById("bookingDetails");
-
-
-    bookingDetails.innerHTML = `
-
-        <div class="row">
-
-            <div class="col-md-5">
-
-                <img
-                    src="${event.image}"
-                    class="img-fluid rounded"
-                    alt="${event.name}"
-                >
-
-            </div>
-
-            <div class="col-md-7">
-
-                <h3>${event.name}</h3>
-
-                <p>
-                    <strong>Date:</strong>
-                    ${formatDate(event.date)}
-                </p>
-
-                <p>
-                    <strong>Time:</strong>
-                    ${event.time}
-                </p>
-
-                <p>
-                    <strong>Location:</strong>
-                    ${event.location}
-                </p>
-
-                <p>
-                    <strong>Price per ticket:</strong>
-                    ₹${event.price}
-                </p>
-
-            </div>
+            <img
+                src="${event.image}"
+                class="event-detail-image shadow-sm"
+                alt="${event.name}"
+                onerror="this.onerror=null;this.src='https://placehold.co/900x600/005aa9/ffffff?text=Event+Image';">
 
         </div>
-    `;
 
 
-    const quantityInput =
-        document.getElementById("ticketQuantity");
+        <div class="col-lg-6">
 
-    const totalPrice =
-        document.getElementById("totalPrice");
+            <span class="badge bg-primary mb-3">
 
+                ${event.status}
 
-    function calculateTotal() {
+            </span>
 
-        let quantity =
-            parseInt(quantityInput.value) || 1;
 
-        if (quantity < 1) {
-            quantity = 1;
-            quantityInput.value = 1;
-        }
+            <span class="badge bg-light text-primary mb-3 ms-2">
 
-        if (quantity > 10) {
-            quantity = 10;
-            quantityInput.value = 10;
-        }
+                ${event.category}
 
-        totalPrice.textContent =
-            "₹" + (event.price * quantity);
+            </span>
 
-    }
 
+            <h1 class="mb-3">
 
-    quantityInput.addEventListener(
-        "input",
-        calculateTotal
-    );
+                ${event.name}
 
+            </h1>
 
-    calculateTotal();
 
+            <p class="lead text-muted">
 
-    bookingForm.addEventListener(
-        "submit",
-        function (e) {
+                ${event.description}
 
-            e.preventDefault();
+            </p>
 
 
-            const quantity =
-                parseInt(quantityInput.value);
+            <hr>
 
 
-            if (
-                isNaN(quantity) ||
-                quantity < 1 ||
-                quantity > 10
-            ) {
+            <div class="row g-3 mb-4">
 
-                alert(
-                    "Please select between 1 and 10 tickets."
-                );
 
-                return;
-            }
+                <div class="col-sm-6">
 
+                    <div class="d-flex">
 
-            const bookings =
-                getBookings();
+                        <i
+                            class="bi bi-calendar3 text-primary fs-4 me-3">
+                        </i>
 
+                        <div>
 
-            const alreadyBooked =
-                bookings.some(
-                    booking =>
-                        booking.eventId === event.id &&
-                        booking.userId === user.id
-                );
+                            <small class="text-muted">
+                                Date
+                            </small>
 
-
-            if (alreadyBooked) {
-
-                alert(
-                    "You have already booked this event."
-                );
-
-                window.location.href =
-                    "my-bookings.html";
-
-                return;
-            }
-
-
-            const booking = {
-
-                id: "BK" + Date.now(),
-
-                userId: user.id,
-
-                userName: user.name,
-
-                userEmail: user.email,
-
-                eventId: event.id,
-
-                eventName: event.name,
-
-                eventDate: event.date,
-
-                eventTime: event.time,
-
-                eventLocation: event.location,
-
-                eventImage: event.image,
-
-                quantity: quantity,
-
-                pricePerTicket: event.price,
-
-                totalPrice: event.price * quantity,
-
-                bookingDate:
-                    new Date().toLocaleString(),
-
-                status: "Confirmed"
-
-            };
-
-
-            bookings.push(booking);
-
-            saveBookings(bookings);
-
-
-            window.location.href =
-                "my-bookings.html?success=1";
-
-        }
-    );
-}
-
-
-/* =========================================================
-   MY BOOKINGS
-   ========================================================= */
-
-function initializeMyBookings() {
-
-    const container =
-        document.getElementById("myBookingsContainer");
-
-    if (!container) {
-        return;
-    }
-
-
-    const user = getCurrentUser();
-
-
-    if (!user) {
-
-        container.innerHTML = `
-            <div class="alert alert-warning text-center">
-
-                Please login to view your bookings.
-
-                <br><br>
-
-                <a href="login.html"
-                   class="btn btn-primary">
-                    Login
-                </a>
-
-            </div>
-        `;
-
-        return;
-    }
-
-
-    const bookings =
-        getBookings().filter(
-            booking =>
-                booking.userId === user.id
-        );
-
-
-    if (bookings.length === 0) {
-
-        container.innerHTML = `
-
-            <div class="text-center py-5">
-
-                <h3>No bookings yet</h3>
-
-                <p class="text-muted">
-                    You have not booked any event yet.
-                </p>
-
-                <a
-                    href="events.html"
-                    class="btn btn-primary"
-                >
-                    Explore Events
-                </a>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        bookings.map(booking => `
-
-            <div class="card booking-card mb-4 shadow-sm">
-
-                <div class="row g-0">
-
-                    <div class="col-md-4">
-
-                        <img
-                            src="${booking.eventImage}"
-                            class="img-fluid h-100 booking-image"
-                            alt="${booking.eventName}"
-                        >
-
-                    </div>
-
-
-                    <div class="col-md-8">
-
-                        <div class="card-body">
-
-                            <div class="d-flex justify-content-between">
-
-                                <h4>
-                                    ${booking.eventName}
-                                </h4>
-
-                                <span class="badge bg-success">
-                                    ${booking.status}
-                                </span>
-
-                            </div>
-
-
-                            <p class="mb-1">
-                                📅 ${formatDate(booking.eventDate)}
-                            </p>
-
-                            <p class="mb-1">
-                                ⏰ ${booking.eventTime}
-                            </p>
-
-                            <p class="mb-1">
-                                📍 ${booking.eventLocation}
-                            </p>
-
-                            <hr>
-
-
-                            <div class="row">
-
-                                <div class="col-md-6">
-
-                                    <strong>
-                                        Booking ID
-                                    </strong>
-
-                                    <p>
-                                        ${booking.id}
-                                    </p>
-
-                                </div>
-
-
-                                <div class="col-md-6">
-
-                                    <strong>
-                                        Tickets
-                                    </strong>
-
-                                    <p>
-                                        ${booking.quantity}
-                                    </p>
-
-                                </div>
-
-
-                                <div class="col-md-6">
-
-                                    <strong>
-                                        Total Amount
-                                    </strong>
-
-                                    <p class="text-primary fw-bold">
-                                        ₹${booking.totalPrice}
-                                    </p>
-
-                                </div>
-
-
-                                <div class="col-md-6">
-
-                                    <strong>
-                                        Booked On
-                                    </strong>
-
-                                    <p>
-                                        ${booking.bookingDate}
-                                    </p>
-
-                                </div>
-
+                            <div class="fw-semibold">
+                                ${event.date}
                             </div>
 
                         </div>
@@ -1117,51 +755,1172 @@ function initializeMyBookings() {
 
                 </div>
 
+
+                <div class="col-sm-6">
+
+                    <div class="d-flex">
+
+                        <i
+                            class="bi bi-clock text-primary fs-4 me-3">
+                        </i>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Time
+                            </small>
+
+                            <div class="fw-semibold">
+                                ${event.time}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-sm-6">
+
+                    <div class="d-flex">
+
+                        <i
+                            class="bi bi-geo-alt text-primary fs-4 me-3">
+                        </i>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Location
+                            </small>
+
+                            <div class="fw-semibold">
+                                ${event.location}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-sm-6">
+
+                    <div class="d-flex">
+
+                        <i
+                            class="bi bi-ticket-perforated text-primary fs-4 me-3">
+                        </i>
+
+                        <div>
+
+                            <small class="text-muted">
+                                Ticket Price
+                            </small>
+
+                            <div class="fw-bold text-primary">
+                                ₹${event.price}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
             </div>
 
-        `).join("");
-}
 
+            <div class="d-flex flex-wrap gap-3">
+
+
+                <button
+                    type="button"
+                    class="btn btn-primary btn-lg"
+                    onclick="startBooking(${event.id})">
+
+                    <i class="bi bi-ticket-perforated"></i>
+
+                    Book Now
+
+                </button>
+
+
+                <a
+                    href="events.html"
+                    class="btn btn-outline-primary btn-lg">
+
+                    <i class="bi bi-arrow-left"></i>
+
+                    Back to Events
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+`;
+```
+
+}
 
 /* =========================================================
-   UTILITY FUNCTIONS
-   ========================================================= */
+START BOOKING
+========================================================= */
 
-function formatDate(dateString) {
+function startBooking(eventId) {
 
-    const date =
-        new Date(dateString + "T00:00:00");
+```
+const currentUser =
+    getCurrentUser();
 
-    return date.toLocaleDateString(
-        "en-IN",
-        {
-            day: "2-digit",
-            month: "short",
-            year: "numeric"
-        }
+
+if (!currentUser) {
+
+    alert(
+        "Please login first to book a ticket."
     );
+
+    window.location.href =
+        "login.html?redirect=booking&event=" +
+        eventId;
+
+    return;
+
 }
 
 
-function showMessage(element, text, type) {
+window.location.href =
+    "booking.html?id=" +
+    eventId;
+```
 
-    if (!element) {
-        return;
+}
+
+/* =========================================================
+BOOKING PAGE
+========================================================= */
+
+function loadBookingPage() {
+
+```
+const detailsContainer =
+    document.getElementById(
+        "bookingDetails"
+    );
+
+const bookingForm =
+    document.getElementById(
+        "bookingForm"
+    );
+
+const quantityInput =
+    document.getElementById(
+        "ticketQuantity"
+    );
+
+const totalPrice =
+    document.getElementById(
+        "totalPrice"
+    );
+
+
+if (
+    !detailsContainer ||
+    !bookingForm
+) {
+
+    return;
+
+}
+
+
+const currentUser =
+    getCurrentUser();
+
+
+if (!currentUser) {
+
+    alert(
+        "Please login first."
+    );
+
+    window.location.href =
+        "login.html";
+
+    return;
+
+}
+
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const eventId =
+    Number(
+        params.get("id")
+    );
+
+
+const event =
+    events.find(function (item) {
+
+        return item.id === eventId;
+
+    });
+
+
+if (!event) {
+
+    detailsContainer.innerHTML = `
+
+        <div class="alert alert-danger">
+
+            Event not found.
+
+        </div>
+
+    `;
+
+    bookingForm.style.display = "none";
+
+    return;
+
+}
+
+
+detailsContainer.innerHTML = `
+
+    <div class="booking-card">
+
+        <img
+            src="${event.image}"
+            class="booking-image rounded mb-4"
+            alt="${event.name}"
+            onerror="this.onerror=null;this.src='https://placehold.co/900x600/005aa9/ffffff?text=Event+Image';">
+
+
+        <span class="badge bg-primary mb-2">
+
+            ${event.category}
+
+        </span>
+
+
+        <h4 class="mb-3">
+
+            ${event.name}
+
+        </h4>
+
+
+        <p class="mb-2">
+
+            <i class="bi bi-calendar3 text-primary me-2"></i>
+
+            ${event.date}
+
+        </p>
+
+
+        <p class="mb-2">
+
+            <i class="bi bi-clock text-primary me-2"></i>
+
+            ${event.time}
+
+        </p>
+
+
+        <p class="mb-2">
+
+            <i class="bi bi-geo-alt text-primary me-2"></i>
+
+            ${event.location}
+
+        </p>
+
+
+        <p class="mb-0">
+
+            <i class="bi bi-ticket-perforated text-primary me-2"></i>
+
+            ₹${event.price} per ticket
+
+        </p>
+
+    </div>
+
+`;
+
+
+function updateTotal() {
+
+    let quantity =
+        Number(
+            quantityInput.value
+        );
+
+
+    if (
+        !quantity ||
+        quantity < 1
+    ) {
+
+        quantity = 1;
+
+        quantityInput.value = 1;
+
     }
 
-    element.className =
-        "alert alert-" + type;
 
-    element.textContent = text;
+    if (quantity > 10) {
 
-    element.style.display = "block";
+        quantity = 10;
+
+        quantityInput.value = 10;
+
+    }
+
+
+    const total =
+        quantity * event.price;
+
+
+    totalPrice.textContent =
+        "₹" + total;
+
 }
 
 
-/* =========================================================
-   GLOBAL FUNCTIONS
-   ========================================================= */
+quantityInput.addEventListener(
+    "input",
+    updateTotal
+);
 
-window.startBooking = startBooking;
-window.logoutUser = logoutUser;
-window.filterEvents = filterEvents;
+
+updateTotal();
+
+
+bookingForm.addEventListener(
+    "submit",
+    function (submitEvent) {
+
+        submitEvent.preventDefault();
+
+
+        const quantity =
+            Number(
+                quantityInput.value
+            );
+
+
+        const terms =
+            document.getElementById(
+                "bookingTerms"
+            );
+
+
+        if (
+            quantity < 1 ||
+            quantity > 10
+        ) {
+
+            alert(
+                "Please select between 1 and 10 tickets."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            terms &&
+            !terms.checked
+        ) {
+
+            alert(
+                "Please confirm the booking information."
+            );
+
+            return;
+
+        }
+
+
+        const bookings =
+            getBookings();
+
+
+        const bookingId =
+            "SE" +
+            Date.now()
+                .toString()
+                .slice(-8);
+
+
+        const booking = {
+
+            id: bookingId,
+
+            userEmail:
+                currentUser.email,
+
+            userName:
+                currentUser.name,
+
+            eventId:
+                event.id,
+
+            eventName:
+                event.name,
+
+            category:
+                event.category,
+
+            date:
+                event.date,
+
+            time:
+                event.time,
+
+            location:
+                event.location,
+
+            image:
+                event.image,
+
+            ticketPrice:
+                event.price,
+
+            quantity:
+                quantity,
+
+            total:
+                quantity * event.price,
+
+            bookingDate:
+                new Date()
+                    .toLocaleDateString(
+                        "en-IN"
+                    ),
+
+            status:
+                "Confirmed"
+
+        };
+
+
+        bookings.push(booking);
+
+        saveBookings(bookings);
+
+
+        window.location.href =
+            "my-bookings.html?success=1";
+
+    }
+);
+```
+
+}
+
+/* =========================================================
+MY BOOKINGS PAGE
+========================================================= */
+
+function loadMyBookings() {
+
+```
+const container =
+    document.getElementById(
+        "myBookingsContainer"
+    );
+
+
+if (!container) {
+
+    return;
+
+}
+
+
+const currentUser =
+    getCurrentUser();
+
+
+if (!currentUser) {
+
+    container.innerHTML = `
+
+        <div class="text-center py-5">
+
+            <i
+                class="bi bi-person-lock text-primary"
+                style="font-size:60px;">
+            </i>
+
+            <h3 class="mt-3">
+                Login Required
+            </h3>
+
+            <p class="text-muted">
+                Please login to view your bookings.
+            </p>
+
+            <a
+                href="login.html"
+                class="btn btn-primary">
+
+                Login
+
+            </a>
+
+        </div>
+
+    `;
+
+    return;
+
+}
+
+
+const bookings =
+    getBookings().filter(
+        function (booking) {
+
+            return (
+                booking.userEmail ===
+                currentUser.email
+            );
+
+        }
+    );
+
+
+if (bookings.length === 0) {
+
+    container.innerHTML = `
+
+        <div class="text-center py-5">
+
+            <i
+                class="bi bi-ticket-perforated text-muted"
+                style="font-size:70px;">
+            </i>
+
+            <h3 class="mt-3">
+                No Bookings Yet
+            </h3>
+
+            <p class="text-muted">
+                You haven't booked any events yet.
+            </p>
+
+            <a
+                href="events.html"
+                class="btn btn-primary">
+
+                Explore Events
+
+            </a>
+
+        </div>
+
+    `;
+
+    return;
+
+}
+
+
+container.innerHTML = `
+
+    <div class="row g-4">
+
+        ${bookings.map(
+            createBookingCard
+        ).join("")}
+
+    </div>
+
+`;
+```
+
+}
+
+function createBookingCard(booking) {
+
+```
+return `
+
+    <div class="col-lg-6">
+
+        <div class="card border-0 shadow-sm booking-card h-100">
+
+            <div class="row g-0">
+
+
+                <div class="col-md-5">
+
+                    <img
+                        src="${booking.image}"
+                        class="booking-image h-100"
+                        alt="${booking.eventName}"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x500/005aa9/ffffff?text=Event+Image';">
+
+                </div>
+
+
+                <div class="col-md-7">
+
+                    <div class="card-body">
+
+                        <span class="badge bg-success mb-2">
+
+                            <i class="bi bi-check-circle"></i>
+
+                            ${booking.status}
+
+                        </span>
+
+
+                        <h5 class="fw-bold">
+
+                            ${booking.eventName}
+
+                        </h5>
+
+
+                        <p class="small text-muted mb-2">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            ${booking.date}
+
+                        </p>
+
+
+                        <p class="small text-muted mb-2">
+
+                            <i class="bi bi-clock"></i>
+
+                            ${booking.time}
+
+                        </p>
+
+
+                        <p class="small text-muted mb-2">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            ${booking.location}
+
+                        </p>
+
+
+                        <hr>
+
+
+                        <p class="mb-1">
+
+                            <strong>
+                                Booking ID:
+                            </strong>
+
+                            ${booking.id}
+
+                        </p>
+
+
+                        <p class="mb-1">
+
+                            <strong>
+                                Tickets:
+                            </strong>
+
+                            ${booking.quantity}
+
+                        </p>
+
+
+                        <p class="mb-1">
+
+                            <strong>
+                                Total:
+                            </strong>
+
+                            <span class="text-primary fw-bold">
+
+                                ₹${booking.total}
+
+                            </span>
+
+                        </p>
+
+
+                        <p class="small text-muted mb-0">
+
+                            Booked on:
+                            ${booking.bookingDate}
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+`;
+```
+
+}
+
+/* =========================================================
+REGISTER
+========================================================= */
+
+function setupRegisterForm() {
+
+```
+const form =
+    document.getElementById(
+        "registerForm"
+    );
+
+
+if (!form) {
+
+    return;
+
+}
+
+
+form.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "registerName"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "registerEmail"
+            ).value.trim()
+                .toLowerCase();
+
+
+        const password =
+            document.getElementById(
+                "registerPassword"
+            ).value;
+
+
+        const confirmPasswordElement =
+            document.getElementById(
+                "confirmPassword"
+            );
+
+
+        const confirmPassword =
+            confirmPasswordElement
+                ? confirmPasswordElement.value
+                : password;
+
+
+        const message =
+            document.getElementById(
+                "registerMessage"
+            );
+
+
+        function showRegisterMessage(
+            text,
+            type
+        ) {
+
+            if (!message) {
+
+                alert(text);
+
+                return;
+
+            }
+
+
+            message.className =
+                "alert alert-" + type;
+
+
+            message.textContent =
+                text;
+
+
+            message.style.display =
+                "block";
+
+        }
+
+
+        if (
+            name.length < 2
+        ) {
+
+            showRegisterMessage(
+                "Please enter your full name.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !email
+        ) {
+
+            showRegisterMessage(
+                "Please enter your email.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            password.length < 6
+        ) {
+
+            showRegisterMessage(
+                "Password must contain at least 6 characters.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            password !==
+            confirmPassword
+        ) {
+
+            showRegisterMessage(
+                "Passwords do not match.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        const users =
+            getUsers();
+
+
+        const existingUser =
+            users.find(
+                function (user) {
+
+                    return (
+                        user.email ===
+                        email
+                    );
+
+                }
+            );
+
+
+        if (existingUser) {
+
+            showRegisterMessage(
+                "This email is already registered. Please login.",
+                "warning"
+            );
+
+            return;
+
+        }
+
+
+        const newUser = {
+
+            id:
+                Date.now(),
+
+            name:
+                name,
+
+            email:
+                email,
+
+            password:
+                password
+
+        };
+
+
+        users.push(
+            newUser
+        );
+
+
+        saveUsers(
+            users
+        );
+
+
+        showRegisterMessage(
+            "Registration completed successfully! Redirecting to login...",
+            "success"
+        );
+
+
+        form.reset();
+
+
+        setTimeout(
+            function () {
+
+                window.location.href =
+                    "login.html";
+
+            },
+            1200
+        );
+
+    }
+);
+```
+
+}
+
+/* =========================================================
+LOGIN
+========================================================= */
+
+function setupLoginForm() {
+
+```
+const form =
+    document.getElementById(
+        "loginForm"
+    );
+
+
+if (!form) {
+
+    return;
+
+}
+
+
+form.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const email =
+            document.getElementById(
+                "loginEmail"
+            ).value.trim()
+                .toLowerCase();
+
+
+        const password =
+            document.getElementById(
+                "loginPassword"
+            ).value;
+
+
+        const message =
+            document.getElementById(
+                "loginMessage"
+            );
+
+
+        function showLoginMessage(
+            text,
+            type
+        ) {
+
+            if (!message) {
+
+                alert(text);
+
+                return;
+
+            }
+
+
+            message.className =
+                "alert alert-" + type;
+
+
+            message.textContent =
+                text;
+
+
+            message.style.display =
+                "block";
+
+        }
+
+
+        const users =
+            getUsers();
+
+
+        const user =
+            users.find(
+                function (item) {
+
+                    return (
+                        item.email ===
+                        email &&
+                        item.password ===
+                        password
+                    );
+
+                }
+            );
+
+
+        if (!user) {
+
+            showLoginMessage(
+                "Invalid email or password.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+
+        setCurrentUser({
+
+            id:
+                user.id,
+
+            name:
+                user.name,
+
+            email:
+                user.email
+
+        });
+
+
+        showLoginMessage(
+            "Login successful! Redirecting...",
+            "success"
+        );
+
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const redirect =
+            params.get(
+                "redirect"
+            );
+
+
+        const eventId =
+            params.get(
+                "event"
+            );
+
+
+        setTimeout(
+            function () {
+
+                if (
+                    redirect ===
+                    "booking" &&
+                    eventId
+                ) {
+
+                    window.location.href =
+                        "booking.html?id=" +
+                        eventId;
+
+                } else {
+
+                    window.location.href =
+                        "index.html";
+
+                }
+
+            },
+            800
+        );
+
+    }
+);
+```
+
+}
+
+/* =========================================================
+PAGE INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function () {
+
+```
+    updateNavbar();
+
+    loadHomeEvents();
+
+    loadEventsPage();
+
+    loadEventDetails();
+
+    loadBookingPage();
+
+    loadMyBookings();
+
+    setupRegisterForm();
+
+    setupLoginForm();
+
+}
+```
+
+);
