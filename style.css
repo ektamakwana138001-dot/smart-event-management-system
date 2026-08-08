@@ -1,0 +1,509 @@
+/* =====================================================
+   SMART EVENT MANAGEMENT SYSTEM
+   MAIN STYLE SHEET
+   ===================================================== */
+
+
+/* ================= GLOBAL ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #212529;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    padding: 14px 0;
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 0.3px;
+}
+
+.navbar .nav-link {
+    margin-left: 8px;
+    transition: 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    opacity: 0.8;
+}
+
+
+/* ================= HERO ================= */
+
+.hero-section {
+    padding: 90px 0;
+    background: linear-gradient(
+        135deg,
+        #f4f8ff,
+        #ffffff
+    );
+}
+
+.hero-section h1 {
+    color: #0d3b66;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    color: #5f6368;
+    max-width: 550px;
+}
+
+.hero-image {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+}
+
+
+/* ================= SECTION ================= */
+
+section {
+    position: relative;
+}
+
+section h2 {
+    color: #0d3b66;
+}
+
+
+/* ================= CARDS ================= */
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-title {
+    color: #212529;
+}
+
+.card-text {
+    line-height: 1.5;
+}
+
+
+/* ================= EVENT CARDS ================= */
+
+.event-card {
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+.event-card img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.event-card .card-body {
+    padding: 20px;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.btn {
+    border-radius: 7px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    font-weight: 600;
+}
+
+
+/* ================= PAGE HEADER ================= */
+
+.bg-light {
+    background-color: #f7f9fc !important;
+}
+
+
+/* ================= EVENT DETAILS ================= */
+
+.event-details-container {
+    min-height: 300px;
+}
+
+.event-details-card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.event-details-card img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+}
+
+.event-details-info {
+    padding: 30px;
+}
+
+.event-details-info h2 {
+    color: #0d3b66;
+    margin-bottom: 15px;
+}
+
+.event-meta {
+    margin: 15px 0;
+}
+
+.event-meta p {
+    margin-bottom: 8px;
+}
+
+
+/* ================= FORMS ================= */
+
+.form-control,
+.form-select {
+    min-height: 45px;
+    border-radius: 7px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(
+        13,
+        110,
+        253,
+        0.15
+    );
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+
+/* ================= LOGIN / REGISTER ================= */
+
+.login-card,
+.register-card {
+    border-radius: 15px;
+}
+
+.login-card .card-body,
+.register-card .card-body {
+    padding: 40px;
+}
+
+
+/* ================= BOOKING ================= */
+
+.booking-summary {
+    border-left: 4px solid #0d6efd;
+}
+
+#totalAmount {
+    font-weight: 700;
+}
+
+
+/* ================= MY BOOKINGS ================= */
+
+.booking-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 18px rgba(
+        0,
+        0,
+        0,
+        0.06
+    );
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 12px;
+}
+
+.booking-header h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #0d3b66;
+}
+
+.booking-status {
+    display: inline-block;
+    background: #d1e7dd;
+    color: #0f5132;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.booking-details p {
+    margin-bottom: 8px;
+}
+
+.booking-actions {
+    margin-top: 18px;
+}
+
+
+/* ================= NO BOOKINGS ================= */
+
+.no-bookings {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.no-bookings h2 {
+    margin-bottom: 10px;
+}
+
+
+/* ================= DASHBOARD ================= */
+
+.dashboard-stat-card {
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.dashboard-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(
+        0,
+        0,
+        0,
+        0.1
+    ) !important;
+}
+
+.dashboard-stat-card h2 {
+    color: #0d3b66;
+}
+
+.dashboard-bookings {
+    width: 100%;
+}
+
+.dashboard-booking-row {
+    display: grid;
+    grid-template-columns:
+        1.2fr
+        2fr
+        1fr
+        1fr;
+
+    gap: 20px;
+
+    align-items: center;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.dashboard-booking-row:last-child {
+    border-bottom: none;
+}
+
+.dashboard-booking-row p {
+    margin: 4px 0 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+
+/* ================= CONTACT ================= */
+
+.contact-info-box {
+    padding: 25px;
+    border-radius: 12px;
+    background: #f8f9fa;
+}
+
+.contact-info-box h5 {
+    margin-bottom: 5px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    margin-top: 40px;
+}
+
+footer a {
+    transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+    opacity: 0.75;
+}
+
+footer hr {
+    opacity: 0.2;
+}
+
+
+/* ================= ALERT ================= */
+
+.alert {
+    border-radius: 8px;
+}
+
+
+/* ================= SEARCH ================= */
+
+#eventSearch {
+    height: 48px;
+}
+
+#categoryFilter {
+    height: 48px;
+}
+
+
+/* ================= LOADING ================= */
+
+.spinner-border {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+
+/* ================= PLACEHOLDER ================= */
+
+.event-placeholder {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 991px) {
+
+    .navbar .nav-link {
+        margin-left: 0;
+        padding: 10px 0;
+    }
+
+    .hero-section {
+        padding: 65px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2.6rem;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .hero-section {
+        text-align: center;
+        padding: 55px 0;
+    }
+
+    .hero-section p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image {
+        margin-top: 25px;
+        max-height: 300px;
+    }
+
+    .event-card img {
+        height: 200px;
+    }
+
+    .booking-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-booking-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .hero-section h1 {
+        font-size: 2.1rem;
+    }
+
+    .hero-section .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .event-details-card img {
+        height: 250px;
+    }
+
+    .event-details-info {
+        padding: 20px;
+    }
+
+    .booking-card {
+        padding: 16px;
+    }
+
+}

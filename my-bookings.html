@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="View your event bookings - SmartEvents"
+    >
+
+    <title>My Bookings - SmartEvents</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <div class="container">
+
+        <a
+            class="navbar-brand fw-bold"
+            href="index.html"
+        >
+            SmartEvents
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+        >
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavbar"
+        >
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="index.html"
+                    >
+                        Home
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="events.html"
+                    >
+                        Events
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link active"
+                        href="my-bookings.html"
+                    >
+                        My Bookings
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="contact.html"
+                    >
+                        Contact
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="login.html"
+                    >
+                        Login
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="register.html"
+                    >
+                        Register
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= PAGE HEADER ================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container text-center">
+
+        <h1 class="fw-bold">
+            My Bookings
+        </h1>
+
+        <p class="text-muted">
+            View and manage your event bookings.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= BOOKINGS ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div
+            id="bookingsContainer"
+            class="row g-4"
+        >
+
+            <!-- Bookings will be loaded by my-bookings.js -->
+
+            <div class="col-12 text-center">
+
+                <div
+                    class="spinner-border text-primary"
+                    role="status"
+                >
+
+                    <span class="visually-hidden">
+                        Loading...
+                    </span>
+
+                </div>
+
+                <p class="text-muted mt-3">
+                    Loading your bookings...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-dark text-white py-4">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <h5>
+                    SmartEvents
+                </h5>
+
+                <p class="text-light">
+                    Smart Event Management &
+                    Ticket Booking System.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-6 text-md-end">
+
+                <p class="mb-1">
+                    Quick Links
+                </p>
+
+                <a
+                    href="index.html"
+                    class="text-white me-3"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="events.html"
+                    class="text-white"
+                >
+                    Events
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <hr>
+
+
+        <p class="text-center mb-0">
+
+            ©
+            <span class="current-year"></span>
+            SmartEvents.
+            All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- Main JavaScript -->
+
+<script src="js/script.js"></script>
+
+
+<!-- My Bookings JavaScript -->
+
+<script src="js/my-bookings.js"></script>
+
+
+</body>
+
+</html>

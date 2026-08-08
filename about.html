@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | SmartEvent</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../CSS/style.css">
+
+    <style>
+
+        .about-page {
+            padding-top: 80px;
+        }
+
+        .about-header {
+            background: linear-gradient(135deg, #071832, #1d4ed8);
+            color: white;
+            padding: 75px 0;
+            text-align: center;
+        }
+
+        .about-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .about-header p {
+            color: #dbeafe;
+            max-width: 650px;
+            margin: 15px auto 0;
+            line-height: 1.7;
+        }
+
+        .about-section {
+            padding: 90px 0;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        .about-content {
+            padding-left: 30px;
+        }
+
+        .about-content span {
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .about-content h2 {
+            color: #071832;
+            font-size: 40px;
+            font-weight: 700;
+            margin: 12px 0 20px;
+        }
+
+        .about-content p {
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        .feature-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 28px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            color: #2563eb;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+
+        .feature-box h4 {
+            color: #071832;
+            font-weight: 600;
+        }
+
+        .feature-box p {
+            color: #64748b;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .stats-section {
+            background: #eff6ff;
+            padding: 70px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-box h2 {
+            color: #2563eb;
+            font-size: 42px;
+            font-weight: 700;
+        }
+
+        .stat-box p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        @media (max-width: 991px) {
+
+            .about-content {
+                padding-left: 0;
+                margin-top: 35px;
+            }
+
+        }
+
+        @media (max-width: 767px) {
+
+            .about-header h1 {
+                font-size: 36px;
+            }
+
+            .about-section {
+                padding: 60px 0;
+            }
+
+            .about-content h2 {
+                font-size: 31px;
+            }
+
+            .about-image {
+                height: 320px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+
+                <i class="bi bi-calendar-event-fill"></i>
+
+                Smart<span>Event</span>
+
+            </a>
+
+
+            <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">
+                            Events
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+
+                <div class="nav-buttons">
+
+                    <a href="login.html"
+                        class="btn btn-outline-light">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+
+                        Sign In
+
+                    </a>
+
+
+                    <a href="register.html"
+                        class="btn btn-primary">
+
+                        <i class="bi bi-person-plus-fill"></i>
+
+                        Sign Up
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="about-header">
+
+        <div class="container">
+
+            <span>
+                SMART EVENT MANAGEMENT
+            </span>
+
+            <h1 class="mt-2">
+                About SmartEvent
+            </h1>
+
+            <p>
+                Making event discovery and ticket booking
+                simple, smart and convenient.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about-section">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <!-- IMAGE -->
+
+                    <img src="../about-event.jpg"
+                        alt="SmartEvent Event"
+                        class="about-image">
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="about-content">
+
+                        <span>
+                            WHO WE ARE
+                        </span>
+
+                        <h2>
+                            Your Smart Way To Discover Events
+                        </h2>
+
+                        <p>
+                            SmartEvent is a modern event management
+                            and ticket booking platform designed to
+                            help users discover interesting events
+                            from different categories.
+                        </p>
+
+                        <p>
+                            Our platform provides an easy way to
+                            explore events, view event details,
+                            create an account and manage ticket
+                            bookings from one place.
+                        </p>
+
+                        <p>
+                            The goal of SmartEvent is to make the
+                            complete event discovery experience
+                            simple, organized and user-friendly.
+                        </p>
+
+                        <a href="events.html"
+                            class="btn btn-primary mt-3">
+
+                            Explore Events
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="section-padding">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>
+                    WHY SMART EVENT
+                </span>
+
+                <h2>
+                    Everything You Need
+                </h2>
+
+                <p>
+                    Designed to provide a smooth and convenient
+                    event management experience.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- FEATURE 1 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="feature-box">
+
+                        <div class="feature-icon">
+
+                            <i class="bi bi-search"></i>
+
+                        </div>
+
+                        <h4>
+                            Easy Event Discovery
+                        </h4>
+
+                        <p>
+                            Quickly search and discover events
+                            according to your interests and
+                            preferred categories.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURE 2 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="feature-box">
+
+                        <div class="feature-icon">
+
+                            <i class="bi bi-ticket-perforated"></i>
+
+                        </div>
+
+                        <h4>
+                            Simple Ticket Booking
+                        </h4>
+
+                        <p>
+                            Select your preferred event and
+                            book tickets through a simple
+                            and user-friendly process.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURE 3 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="feature-box">
+
+                        <div class="feature-icon">
+
+                            <i class="bi bi-shield-check"></i>
+
+                        </div>
+
+                        <h4>
+                            Secure Experience
+                        </h4>
+
+                        <p>
+                            User accounts and booking information
+                            are organized to provide a reliable
+                            platform experience.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURE 4 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="feature-box">
+
+                        <div class="feature-icon">
+
+                            <i class="bi bi-phone"></i>
+
+                        </div>
+
+                        <h4>
+                            Responsive Design
+                        </h4>
+
+                        <p>
+                            The website works smoothly across
+                            desktops, tablets and mobile devices.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURE 5 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="feature-box">
+
+                        <div class="feature-icon">
+
+                            <i class="bi bi-calendar-check"></i>
+
+                        </div>
+
+                        <h4>
+                            Event Management
+                        </h4>
+
+                        <p>
+                            Organize event information including
+                            dates, locations, categories and ticket
+                            details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURE 6 -->
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="feature-box">
+
+                        <div class="feature-icon">
+
+                            <i class="bi bi-lightning-charge"></i>
+
+                        </div>
+
+                        <h4>
+                            Fast & Simple
+                        </h4>
+
+                        <p>
+                            A clean interface helps users find
+                            information and complete actions quickly.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats-section">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+
+                <div class="col-md-3 col-6">
+
+                    <div class="stat-box">
+
+                        <h2>500+</h2>
+
+                        <p>
+                            Events
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3 col-6">
+
+                    <div class="stat-box">
+
+                        <h2>10K+</h2>
+
+                        <p>
+                            Registered Users
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3 col-6">
+
+                    <div class="stat-box">
+
+                        <h2>25K+</h2>
+
+                        <p>
+                            Tickets Booked
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3 col-6">
+
+                    <div class="stat-box">
+
+                        <h2>50+</h2>
+
+                        <p>
+                            Event Partners
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta-section">
+
+        <div class="container">
+
+            <div class="cta-content">
+
+                <i class="bi bi-calendar2-heart-fill"></i>
+
+                <h2>
+                    Find Your Next Experience
+                </h2>
+
+                <p>
+                    Explore exciting events and start
+                    your journey with SmartEvent.
+                </p>
+
+                <a href="events.html"
+                    class="btn btn-light btn-lg">
+
+                    Explore Events
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+
+                <div class="col-lg-4">
+
+                    <h4>
+
+                        <i class="bi bi-calendar-event-fill"></i>
+
+                        SmartEvent
+
+                    </h4>
+
+                    <p>
+                        Your smart platform for discovering,
+                        managing and booking amazing events.
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-2">
+
+                    <h5>
+                        Quick Links
+                    </h5>
+
+                    <a href="index.html">
+                        Home
+                    </a>
+
+                    <a href="events.html">
+                        Events
+                    </a>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <h5>
+                        Account
+                    </h5>
+
+                    <a href="login.html">
+                        Sign In
+                    </a>
+
+                    <a href="register.html">
+                        Create Account
+                    </a>
+
+                    <a href="my-bookings.html">
+                        My Bookings
+                    </a>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <h5>
+                        Contact
+                    </h5>
+
+                    <p>
+                        <i class="bi bi-envelope"></i>
+                        support@smartevent.com
+                    </p>
+
+                    <p>
+                        <i class="bi bi-telephone"></i>
+                        +91 98765 43210
+                    </p>
+
+                    <p>
+                        <i class="bi bi-geo-alt"></i>
+                        Gujarat, India
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 SmartEvent Management System.
+                </p>
+
+                <p>
+                    College Web Technology Project
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
