@@ -1,28 +1,87 @@
-// event.js
+// 1. Initial Events Data
+const defaultEvents = [
+    {
+        id: 1,
+        title: "Tech Innovation Summit 2026",
+        category: "Technology",
+        date: "15 September 2026",
+        image: "tech-event.jpg.png",
+        description: "Join top industry leaders for the biggest tech conference.",
+        ticketsAvailable: 50,
+        price: 499
+    },
+    {
+        id: 2,
+        title: "Music & Cultural Festival",
+        category: "Music",
+        date: "20 September 2026",
+        image: "music-event.jpg.png",
+        description: "Experience live music performances and cultural exhibitions.",
+        ticketsAvailable: 30,
+        price: 299
+    },
+    {
+        id: 3,
+        title: "Business Networking Meet",
+        category: "Business",
+        date: "25 September 2026",
+        image: "business-event.jpg.png",
+        description: "Connect with entrepreneurs and expand your business network.",
+        ticketsAvailable: 20,
+        price: 199
+    },
+    {
+        id: 4,
+        title: "Global Leadership Conference",
+        category: "Conference",
+        date: "30 September 2026",
+        image: "conference-event.jpg.png",
+        description: "Insights and discussions from global leaders.",
+        ticketsAvailable: 40,
+        price: 599
+    },
+    {
+        id: 5,
+        title: "Annual Sports Tournament",
+        category: "Sports",
+        date: "05 October 2026",
+        image: "sports-event.jpg.png",
+        description: "Compete and watch thrilling sports matches.",
+        ticketsAvailable: 15,
+        price: 150
+    }
+];
 
+// LocalStorage setup
+if (!localStorage.getItem('events')) {
+    localStorage.setItem('events', JSON.stringify(defaultEvents));
+}
+
+// 2. Load Events Function
 function loadEvents() {
-    const events = JSON.parse(localStorage.getItem('events')) || [];
+    const events = JSON.parse(localStorage.getItem('events')) || defaultEvents;
     const container = document.getElementById('event-container');
     
     if(!container) return;
     
     container.innerHTML = events.map(event => `
-        <div class="event-card">
-            <img src="${event.image}" alt="${event.title}" style="width: 100%; height: 200px; object-fit: cover;">
-            <span class="badge">${event.category}</span>
-            <h3>${event.title}</h3>
-            <p><strong>Date:</strong> ${event.date}</p>
-            <p><strong>Available Tickets:</strong> <span id="tickets-${event.id}">${event.ticketsAvailable}</span></p>
-            <p><strong>Price:</strong> ₹${event.price}</p>
-            <button onclick="bookTicket(${event.id})" class="btn-primary" ${event.ticketsAvailable === 0 ? 'disabled' : ''}>
+        <div class="event-card" style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; width: 280px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <img src="${event.image}" alt="${event.title}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 6px;">
+            <span style="background: #007bff; color: white; padding: 3px 8px; border-radius: 4px; font-size: 12px; margin-top: 10px; display: inline-block;">${event.category}</span>
+            <h3 style="margin: 10px 0 5px 0;">${event.title}</h3>
+            <p style="margin: 5px 0;"><strong>Date:</strong> ${event.date}</p>
+            <p style="margin: 5px 0;"><strong>Available Tickets:</strong> ${event.ticketsAvailable}</p>
+            <p style="margin: 5px 0;"><strong>Price:</strong> ₹${event.price}</p>
+            <button onclick="bookTicket(${event.id})" style="margin-top: 10px; padding: 8px 15px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;" ${event.ticketsAvailable === 0 ? 'disabled' : ''}>
                 ${event.ticketsAvailable === 0 ? 'Sold Out' : 'Book Ticket'}
             </button>
         </div>
     `).join('');
 }
 
+// 3. Ticket Booking Function
 function bookTicket(eventId) {
-    let events = JSON.parse(localStorage.getItem('events')) || [];
+    let events = JSON.parse(localStorage.getItem('events')) || defaultEvents;
     let bookings = JSON.parse(localStorage.getItem('myBookings')) || [];
 
     let event = events.find(e => e.id === eventId);
