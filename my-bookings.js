@@ -1,6 +1,5 @@
-// my-bookings.js
 
-function loadMyBookings() {
+    function loadMyBookings() {
     const bookings = JSON.parse(localStorage.getItem('myBookings')) || [];
     const container = document.getElementById('bookings-container') || document.getElementById('my-bookings');
 
