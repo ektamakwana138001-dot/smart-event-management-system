@@ -7,12 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>Register | Smart Event Management</title>
+<title>Register | Smart Events</title>
+
+<meta
+    name="description"
+    content="Create your Smart Events account and book event tickets.">
 
 <!-- Bootstrap CSS -->
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <!-- Custom CSS -->
 <link rel="stylesheet" href="style.css">
@@ -29,74 +38,83 @@
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="index.html">
+        <a
+            class="navbar-brand fw-bold fs-4"
+            href="index.html">
+
+            <i class="bi bi-calendar-event"></i>
+
             Smart Events
+
         </a>
+
 
         <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarMenu">
+            data-bs-target="#mainNavbar">
 
             <span class="navbar-toggler-icon"></span>
 
         </button>
 
+
         <div
             class="collapse navbar-collapse"
-            id="navbarMenu">
+            id="mainNavbar">
 
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
+
                     <a
                         class="nav-link"
                         href="index.html">
+
                         Home
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
+
                     <a
                         class="nav-link"
                         href="events.html">
+
                         Events
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
+
                     <a
-                        class="nav-link login-link"
+                        class="nav-link"
                         href="login.html">
+
                         Login
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
+
                     <a
-                        class="nav-link register-link active"
+                        class="nav-link active"
                         href="register.html">
+
                         Register
-                    </a>
-                </li>
 
-                <li class="nav-item">
-                    <a
-                        class="nav-link my-bookings-link"
-                        href="my-bookings.html"
-                        style="display:none;">
-                        My Bookings
                     </a>
-                </li>
 
-                <li class="nav-item">
-                    <a
-                        class="nav-link logout-link"
-                        href="#"
-                        style="display:none;">
-                        Logout
-                    </a>
                 </li>
 
             </ul>
@@ -108,9 +126,11 @@
 </nav>
 
 
+
 <!-- ================= REGISTER SECTION ================= -->
 
-<section class="py-5">
+<section
+    class="auth-section d-flex align-items-center py-5">
 
     <div class="container">
 
@@ -118,37 +138,61 @@
 
             <div class="col-lg-5 col-md-7">
 
-                <div class="card border-0 shadow-lg">
+
+                <div
+                    class="card border-0 shadow-lg">
+
 
                     <div class="card-body p-4 p-md-5">
 
+
+                        <!-- ICON -->
+
                         <div class="text-center mb-4">
 
+                            <div
+                                class="auth-icon mx-auto mb-3">
+
+                                <i class="bi bi-person-plus"></i>
+
+                            </div>
+
+
                             <h2 class="fw-bold">
+
                                 Create Account
+
                             </h2>
 
-                            <p class="text-muted">
-                                Register to book exciting events
+
+                            <p class="text-muted mb-0">
+
+                                Register to book your favorite events.
+
                             </p>
 
                         </div>
 
 
-                        <!-- REGISTER MESSAGE -->
+
+                        <!-- MESSAGE -->
 
                         <div
                             id="registerMessage"
                             class="alert"
-                            style="display:none;">
+                            style="display:none;"
+                            role="alert">
+
                         </div>
+
 
 
                         <!-- REGISTER FORM -->
 
                         <form id="registerForm">
 
-                            <!-- NAME -->
+
+                            <!-- FULL NAME -->
 
                             <div class="mb-3">
 
@@ -160,14 +204,29 @@
 
                                 </label>
 
-                                <input
-                                    type="text"
-                                    id="registerName"
-                                    class="form-control"
-                                    placeholder="Enter your full name"
-                                    required>
+
+                                <div class="input-group">
+
+                                    <span
+                                        class="input-group-text">
+
+                                        <i class="bi bi-person"></i>
+
+                                    </span>
+
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="registerName"
+                                        placeholder="Enter your full name"
+                                        autocomplete="name"
+                                        required>
+
+                                </div>
 
                             </div>
+
 
 
                             <!-- EMAIL -->
@@ -182,14 +241,29 @@
 
                                 </label>
 
-                                <input
-                                    type="email"
-                                    id="registerEmail"
-                                    class="form-control"
-                                    placeholder="Enter your email"
-                                    required>
+
+                                <div class="input-group">
+
+                                    <span
+                                        class="input-group-text">
+
+                                        <i class="bi bi-envelope"></i>
+
+                                    </span>
+
+
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="registerEmail"
+                                        placeholder="Enter your email"
+                                        autocomplete="email"
+                                        required>
+
+                                </div>
 
                             </div>
+
 
 
                             <!-- PASSWORD -->
@@ -204,15 +278,43 @@
 
                                 </label>
 
-                                <input
-                                    type="password"
-                                    id="registerPassword"
-                                    class="form-control"
-                                    placeholder="Minimum 6 characters"
-                                    minlength="6"
-                                    required>
+
+                                <div class="input-group">
+
+                                    <span
+                                        class="input-group-text">
+
+                                        <i class="bi bi-lock"></i>
+
+                                    </span>
+
+
+                                    <input
+                                        type="password"
+                                        class="form-control"
+                                        id="registerPassword"
+                                        placeholder="Minimum 6 characters"
+                                        autocomplete="new-password"
+                                        minlength="6"
+                                        required>
+
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-outline-secondary"
+                                        id="toggleRegisterPassword">
+
+                                        <i
+                                            class="bi bi-eye"
+                                            id="registerPasswordIcon">
+                                        </i>
+
+                                    </button>
+
+                                </div>
 
                             </div>
+
 
 
                             <!-- CONFIRM PASSWORD -->
@@ -227,35 +329,90 @@
 
                                 </label>
 
-                                <input
-                                    type="password"
-                                    id="confirmPassword"
-                                    class="form-control"
-                                    placeholder="Confirm your password"
-                                    minlength="6"
-                                    required>
+
+                                <div class="input-group">
+
+                                    <span
+                                        class="input-group-text">
+
+                                        <i class="bi bi-lock-fill"></i>
+
+                                    </span>
+
+
+                                    <input
+                                        type="password"
+                                        class="form-control"
+                                        id="confirmPassword"
+                                        placeholder="Re-enter your password"
+                                        autocomplete="new-password"
+                                        minlength="6"
+                                        required>
+
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-outline-secondary"
+                                        id="toggleConfirmPassword">
+
+                                        <i
+                                            class="bi bi-eye"
+                                            id="confirmPasswordIcon">
+                                        </i>
+
+                                    </button>
+
+                                </div>
 
                             </div>
+
+
+
+                            <!-- TERMS -->
+
+                            <div class="form-check mb-4">
+
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="registerTerms"
+                                    required>
+
+
+                                <label
+                                    class="form-check-label"
+                                    for="registerTerms">
+
+                                    I agree to the terms and conditions.
+
+                                </label>
+
+                            </div>
+
 
 
                             <!-- REGISTER BUTTON -->
 
                             <button
                                 type="submit"
-                                class="btn btn-primary w-100 py-2 fw-semibold">
+                                class="btn btn-primary btn-lg w-100">
+
+                                <i class="bi bi-person-plus"></i>
 
                                 Create Account
 
                             </button>
 
+
                         </form>
+
 
 
                         <!-- LOGIN LINK -->
 
                         <div class="text-center mt-4">
 
-                            <p class="mb-0 text-muted">
+                            <p class="text-muted mb-0">
 
                                 Already have an account?
 
@@ -263,7 +420,7 @@
                                     href="login.html"
                                     class="text-primary fw-semibold text-decoration-none">
 
-                                    Login
+                                    Login Here
 
                                 </a>
 
@@ -271,9 +428,11 @@
 
                         </div>
 
+
                     </div>
 
                 </div>
+
 
             </div>
 
@@ -284,30 +443,183 @@
 </section>
 
 
+
 <!-- ================= FOOTER ================= -->
 
-<footer class="bg-dark text-white text-center py-4">
+<footer class="bg-dark text-white py-4">
 
     <div class="container">
 
-        <p class="mb-0">
-            © 2026 Smart Event Management & Ticket Booking System
-        </p>
+        <div class="text-center">
+
+            <p class="mb-1 fw-semibold">
+
+                <i class="bi bi-calendar-event"></i>
+
+                Smart Events
+
+            </p>
+
+
+            <p class="text-white-50 mb-0">
+
+                Smart Event Management & Ticket Booking System
+
+            </p>
+
+
+            <small class="text-white-50">
+
+                © 2026 Smart Events. All Rights Reserved.
+
+            </small>
+
+        </div>
 
     </div>
 
 </footer>
 
 
-<!-- Bootstrap JS -->
+
+<!-- ================= BOOTSTRAP JS ================= -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
-<!-- Main JavaScript -->
+
+
+<!-- ================= MAIN JS ================= -->
 
 <script src="script.js"></script>
+
+
+
+<!-- ================= PASSWORD TOGGLE ================= -->
+
+<script>
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+
+            const password =
+                document.getElementById(
+                    "registerPassword"
+                );
+
+
+            const passwordButton =
+                document.getElementById(
+                    "toggleRegisterPassword"
+                );
+
+
+            const passwordIcon =
+                document.getElementById(
+                    "registerPasswordIcon"
+                );
+
+
+            if (
+                password &&
+                passwordButton
+            ) {
+
+                passwordButton.addEventListener(
+                    "click",
+                    function () {
+
+
+                        if (
+                            password.type ===
+                            "password"
+                        ) {
+
+                            password.type =
+                                "text";
+
+                            passwordIcon.className =
+                                "bi bi-eye-slash";
+
+                        } else {
+
+                            password.type =
+                                "password";
+
+                            passwordIcon.className =
+                                "bi bi-eye";
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+
+            const confirmPassword =
+                document.getElementById(
+                    "confirmPassword"
+                );
+
+
+            const confirmButton =
+                document.getElementById(
+                    "toggleConfirmPassword"
+                );
+
+
+            const confirmIcon =
+                document.getElementById(
+                    "confirmPasswordIcon"
+                );
+
+
+            if (
+                confirmPassword &&
+                confirmButton
+            ) {
+
+                confirmButton.addEventListener(
+                    "click",
+                    function () {
+
+
+                        if (
+                            confirmPassword.type ===
+                            "password"
+                        ) {
+
+                            confirmPassword.type =
+                                "text";
+
+                            confirmIcon.className =
+                                "bi bi-eye-slash";
+
+                        } else {
+
+                            confirmPassword.type =
+                                "password";
+
+                            confirmIcon.className =
+                                "bi bi-eye";
+
+                        }
+
+                    }
+                );
+
+            }
+
+        }
+
+    );
+
+</script>
 ```
 
 </body>
