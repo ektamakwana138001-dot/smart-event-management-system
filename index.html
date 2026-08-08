@@ -7,12 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>Register | Smart Event Management</title>
+<title>Smart Events | Event Management & Ticket Booking</title>
 
 <!-- Bootstrap CSS -->
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <!-- Custom CSS -->
 <link rel="stylesheet" href="style.css">
@@ -25,11 +30,12 @@
 ```
 <!-- ================= NAVBAR ================= -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="index.html">
+        <a class="navbar-brand fw-bold fs-4" href="index.html">
+            <i class="bi bi-calendar-event"></i>
             Smart Events
         </a>
 
@@ -37,21 +43,25 @@
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarMenu">
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
 
             <span class="navbar-toggler-icon"></span>
 
         </button>
 
+
         <div
             class="collapse navbar-collapse"
-            id="navbarMenu">
+            id="mainNavbar">
 
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
 
                 <li class="nav-item">
                     <a
-                        class="nav-link"
+                        class="nav-link active"
                         href="index.html">
                         Home
                     </a>
@@ -67,6 +77,14 @@
 
                 <li class="nav-item">
                     <a
+                        class="nav-link"
+                        href="event-details.html?id=1">
+                        Event Details
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
                         class="nav-link login-link"
                         href="login.html">
                         Login
@@ -75,7 +93,7 @@
 
                 <li class="nav-item">
                     <a
-                        class="nav-link register-link active"
+                        class="nav-link register-link"
                         href="register.html">
                         Register
                     </a>
@@ -108,166 +126,135 @@
 </nav>
 
 
-<!-- ================= REGISTER SECTION ================= -->
+<!-- ================= HERO SECTION ================= -->
 
-<section class="py-5">
+<section class="hero-section">
 
     <div class="container">
 
-        <div class="row justify-content-center">
+        <div class="row align-items-center min-vh-75">
 
-            <div class="col-lg-5 col-md-7">
+            <div class="col-lg-6 text-white">
 
-                <div class="card border-0 shadow-lg">
+                <span class="badge bg-light text-primary mb-3 px-3 py-2">
+                    <i class="bi bi-stars"></i>
+                    Discover Amazing Events
+                </span>
 
-                    <div class="card-body p-4 p-md-5">
+                <h1 class="display-4 fw-bold mb-4">
+                    Experience Events
+                    <br>
+                    Like Never Before
+                </h1>
 
-                        <div class="text-center mb-4">
+                <p class="lead mb-4">
+                    Discover exciting events, reserve your tickets
+                    and create unforgettable memories with Smart Events.
+                </p>
 
-                            <h2 class="fw-bold">
-                                Create Account
-                            </h2>
+                <div class="d-flex flex-wrap gap-3">
 
-                            <p class="text-muted">
-                                Register to book exciting events
-                            </p>
+                    <a
+                        href="events.html"
+                        class="btn btn-light btn-lg px-4 fw-semibold">
+
+                        <i class="bi bi-calendar3"></i>
+                        Explore Events
+
+                    </a>
+
+                    <a
+                        href="register.html"
+                        class="btn btn-outline-light btn-lg px-4">
+
+                        <i class="bi bi-person-plus"></i>
+                        Get Started
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6 mt-5 mt-lg-0">
+
+                <div class="hero-card">
+
+                    <div class="row g-3">
+
+                        <div class="col-6">
+
+                            <div class="hero-feature-card">
+
+                                <i class="bi bi-calendar-check-fill"></i>
+
+                                <h5>
+                                    Upcoming Events
+                                </h5>
+
+                                <p>
+                                    Find your next experience
+                                </p>
+
+                            </div>
 
                         </div>
 
 
-                        <!-- REGISTER MESSAGE -->
+                        <div class="col-6">
 
-                        <div
-                            id="registerMessage"
-                            class="alert"
-                            style="display:none;">
+                            <div class="hero-feature-card">
+
+                                <i class="bi bi-ticket-perforated-fill"></i>
+
+                                <h5>
+                                    Easy Booking
+                                </h5>
+
+                                <p>
+                                    Book tickets in seconds
+                                </p>
+
+                            </div>
+
                         </div>
 
 
-                        <!-- REGISTER FORM -->
+                        <div class="col-6">
 
-                        <form id="registerForm">
+                            <div class="hero-feature-card">
 
-                            <!-- NAME -->
+                                <i class="bi bi-shield-check"></i>
 
-                            <div class="mb-3">
+                                <h5>
+                                    Secure
+                                </h5>
 
-                                <label
-                                    for="registerName"
-                                    class="form-label fw-semibold">
-
-                                    Full Name
-
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="registerName"
-                                    class="form-control"
-                                    placeholder="Enter your full name"
-                                    required>
+                                <p>
+                                    Simple & reliable system
+                                </p>
 
                             </div>
 
+                        </div>
 
-                            <!-- EMAIL -->
 
-                            <div class="mb-3">
+                        <div class="col-6">
 
-                                <label
-                                    for="registerEmail"
-                                    class="form-label fw-semibold">
+                            <div class="hero-feature-card">
 
-                                    Email Address
+                                <i class="bi bi-person-check-fill"></i>
 
-                                </label>
+                                <h5>
+                                    My Bookings
+                                </h5>
 
-                                <input
-                                    type="email"
-                                    id="registerEmail"
-                                    class="form-control"
-                                    placeholder="Enter your email"
-                                    required>
+                                <p>
+                                    Manage your tickets
+                                </p>
 
                             </div>
-
-
-                            <!-- PASSWORD -->
-
-                            <div class="mb-3">
-
-                                <label
-                                    for="registerPassword"
-                                    class="form-label fw-semibold">
-
-                                    Password
-
-                                </label>
-
-                                <input
-                                    type="password"
-                                    id="registerPassword"
-                                    class="form-control"
-                                    placeholder="Minimum 6 characters"
-                                    minlength="6"
-                                    required>
-
-                            </div>
-
-
-                            <!-- CONFIRM PASSWORD -->
-
-                            <div class="mb-4">
-
-                                <label
-                                    for="confirmPassword"
-                                    class="form-label fw-semibold">
-
-                                    Confirm Password
-
-                                </label>
-
-                                <input
-                                    type="password"
-                                    id="confirmPassword"
-                                    class="form-control"
-                                    placeholder="Confirm your password"
-                                    minlength="6"
-                                    required>
-
-                            </div>
-
-
-                            <!-- REGISTER BUTTON -->
-
-                            <button
-                                type="submit"
-                                class="btn btn-primary w-100 py-2 fw-semibold">
-
-                                Create Account
-
-                            </button>
-
-                        </form>
-
-
-                        <!-- LOGIN LINK -->
-
-                        <div class="text-center mt-4">
-
-                            <p class="mb-0 text-muted">
-
-                                Already have an account?
-
-                                <a
-                                    href="login.html"
-                                    class="text-primary fw-semibold text-decoration-none">
-
-                                    Login
-
-                                </a>
-
-                            </p>
 
                         </div>
 
@@ -284,15 +271,290 @@
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- ================= FEATURE SECTION ================= -->
 
-<footer class="bg-dark text-white text-center py-4">
+<section class="py-5 bg-light">
 
     <div class="container">
 
-        <p class="mb-0">
-            © 2026 Smart Event Management & Ticket Booking System
-        </p>
+        <div class="text-center mb-5">
+
+            <span class="text-primary fw-semibold">
+                WHY SMART EVENTS?
+            </span>
+
+            <h2 class="fw-bold mt-2">
+                Everything You Need
+            </h2>
+
+            <p class="text-muted">
+                A simple platform to discover and book events.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="feature-card text-center h-100">
+
+                    <div class="feature-icon">
+
+                        <i class="bi bi-search"></i>
+
+                    </div>
+
+                    <h4>
+                        Discover Events
+                    </h4>
+
+                    <p class="text-muted">
+                        Browse upcoming technology, music,
+                        business, college and sports events.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="feature-card text-center h-100">
+
+                    <div class="feature-icon">
+
+                        <i class="bi bi-ticket-detailed"></i>
+
+                    </div>
+
+                    <h4>
+                        Book Tickets
+                    </h4>
+
+                    <p class="text-muted">
+                        Select your event and reserve your
+                        tickets quickly and easily.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="feature-card text-center h-100">
+
+                    <div class="feature-icon">
+
+                        <i class="bi bi-clock-history"></i>
+
+                    </div>
+
+                    <h4>
+                        Manage Bookings
+                    </h4>
+
+                    <p class="text-muted">
+                        View your confirmed bookings and
+                        ticket information anytime.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= UPCOMING EVENTS ================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+
+                <span class="text-primary fw-semibold">
+                    DON'T MISS OUT
+                </span>
+
+                <h2 class="fw-bold mt-2 mb-0">
+                    Coming Soon Events
+                </h2>
+
+            </div>
+
+
+            <a
+                href="events.html"
+                class="btn btn-outline-primary">
+
+                View All
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+        <!-- Events will be inserted here by JavaScript -->
+
+        <div
+            id="homeEventsContainer"
+            class="row g-4">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CALL TO ACTION ================= -->
+
+<section class="cta-section py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-lg-8 text-white">
+
+                <h2 class="fw-bold mb-3">
+                    Ready to Discover Your Next Event?
+                </h2>
+
+                <p class="mb-4">
+                    Create your account and start booking
+                    exciting events today.
+                </p>
+
+                <a
+                    href="register.html"
+                    class="btn btn-light btn-lg px-5">
+
+                    Create Account
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-dark text-white pt-5 pb-3">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <h4 class="fw-bold">
+                    <i class="bi bi-calendar-event"></i>
+                    Smart Events
+                </h4>
+
+                <p class="text-white-50">
+                    Your simple platform for discovering,
+                    managing and booking exciting events.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <h5>
+                    Quick Links
+                </h5>
+
+                <ul class="list-unstyled">
+
+                    <li class="mb-2">
+                        <a
+                            href="index.html"
+                            class="text-white-50 text-decoration-none">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a
+                            href="events.html"
+                            class="text-white-50 text-decoration-none">
+                            Events
+                        </a>
+                    </li>
+
+                    <li class="mb-2">
+                        <a
+                            href="login.html"
+                            class="text-white-50 text-decoration-none">
+                            Login
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="register.html"
+                            class="text-white-50 text-decoration-none">
+                            Register
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <h5>
+                    Contact
+                </h5>
+
+                <p class="text-white-50 mb-2">
+                    <i class="bi bi-envelope"></i>
+                    info@smartevents.com
+                </p>
+
+                <p class="text-white-50">
+                    <i class="bi bi-telephone"></i>
+                    +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <hr class="border-secondary">
+
+
+        <div class="text-center">
+
+            <p class="text-white-50 mb-0">
+                © 2026 Smart Event Management & Ticket Booking System
+            </p>
+
+        </div>
 
     </div>
 
