@@ -1,212 +1,63 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-    const registerForm =
-        document.getElementById("registerForm");
-
-    if (!registerForm) {
-        return;
-    }
-
-
-    const nameInput =
-        document.getElementById("name");
-
-    const emailInput =
-        document.getElementById("email");
-
-    const phoneInput =
-        document.getElementById("phone");
-
-    const passwordInput =
-        document.getElementById("password");
-
-    const confirmPasswordInput =
-        document.getElementById("confirmPassword");
-
-    const termsInput =
-        document.getElementById("terms");
-
-
-    // ================= REGISTER =================
-
-    registerForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const name =
-                nameInput.value.trim();
-
-            const email =
-                emailInput.value.trim();
-
-            const phone =
-                phoneInput.value.trim();
-
-            const password =
-                passwordInput.value;
-
-            const confirmPassword =
-                confirmPasswordInput.value;
-
-
-            // ================= VALIDATION =================
-
-            if (name.length < 2) {
-
-                alert(
-                    "Please enter your full name."
-                );
-
-                return;
-            }
-
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-            if (!emailPattern.test(email)) {
-
-                alert(
-                    "Please enter a valid email address."
-                );
-
-                return;
-            }
-
-
-            const phonePattern =
-                /^[0-9]{10}$/;
-
-
-            if (!phonePattern.test(phone)) {
-
-                alert(
-                    "Please enter a valid 10-digit phone number."
-                );
-
-                return;
-            }
-
-
-            if (password.length < 6) {
-
-                alert(
-                    "Password must contain at least 6 characters."
-                );
-
-                return;
-            }
-
-
-            if (
-                password !== confirmPassword
-            ) {
-
-                alert(
-                    "Passwords do not match."
-                );
-
-                return;
-            }
-
-
-            if (!termsInput.checked) {
-
-                alert(
-                    "Please agree to the terms and conditions."
-                );
-
-                return;
-            }
-
-
-            // ================= GET USERS =================
-
-            let users =
-                JSON.parse(
-                    localStorage.getItem(
-                        "users"
-                    )
-                ) || [];
-
-
-            // ================= CHECK EXISTING USER =================
-
-            const existingUser =
-                users.find(function (user) {
-
-                    return user.email === email;
-
-                });
-
-
-            if (existingUser) {
-
-                alert(
-                    "An account with this email already exists."
-                );
-
-                return;
-            }
-
-
-            // ================= CREATE USER =================
-
-            const newUser = {
-
-                id:
-                    Date.now(),
-
-                name:
-                    name,
-
-                email:
-                    email,
-
-                phone:
-                    phone,
-
-                password:
-                    password,
-
-                role:
-                    "user",
-
-                registeredDate:
-                    new Date()
-                        .toLocaleDateString(
-                            "en-IN"
-                        )
-
-            };
-
-
-            users.push(newUser);
-
-
-            // ================= SAVE USER =================
-
-            localStorage.setItem(
-                "users",
-                JSON.stringify(users)
-            );
-
-
-            // ================= SUCCESS =================
-
-            alert(
-                "Registration successful!\nPlease login to continue."
-            );
-
-
-            window.location.href =
-                "login.html";
-
+    const registerForm = document.querySelector("form");
+
+    if (!registerForm) return;
+
+    registerForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Inputs se value lena
+        const nameInput = document.querySelector('input[type="text"]');
+        const emailInput = document.querySelector('input[type="email"]');
+        const phoneInput = document.querySelector('input[type="tel"]');
+        const passwordInputs = document.querySelectorAll('input[type="password"]');
+
+        const name = nameInput ? nameInput.value.trim() : "";
+        const email = emailInput ? emailInput.value.trim() : "";
+        const phone = phoneInput ? phoneInput.value.trim() : "";
+        const password = passwordInputs[0] ? passwordInputs[0].value : "";
+        const confirmPassword = passwordInputs[1] ? passwordInputs[1].value : "";
+
+        // Validations
+        if (!name || !email || !password) {
+            alert("Kripya saari details bharein!");
+            return;
         }
-    );
 
+        if (password !== confirmPassword) {
+            alert("Passwords match nahi ho rahe hain!");
+            return;
+        }
+
+        // LocalStorage se existing users nikalna
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Email check
+        const userExists = users.some((u) => u.email === email);
+        if (userExists) {
+            alert("An account with this email already exists.");
+            return;
+        }
+
+        // Create New User
+        const newUser = {
+            id: Date.now(),
+            name: name,
+            email: email,
+            phone: phone,
+            password: password,
+            role: "user",
+            registeredDate: new Date().toLocaleDateString("en-IN")
+        };
+
+        // Save User
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+
+        alert("Registration successful!\nPlease login to continue.");
+
+        // Redirect to Login Page
+        window.location.href = "login.html";
+    });
 });
+        
