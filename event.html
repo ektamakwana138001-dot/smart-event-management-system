@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Events | Smart Events</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<!-- Bootstrap CSS -->
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet">
+    <title>Events | Smart Events</title>
 
-<!-- Bootstrap Icons -->
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
-<!-- Custom CSS -->
-<link rel="stylesheet" href="style.css">
-```
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-```
+
 <!-- ================= NAVBAR ================= -->
 
 <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="index.html">
+        <a class="navbar-brand fw-bold"
+           href="index.html">
+
             <i class="bi bi-calendar-event"></i>
+
             Smart Events
+
         </a>
+
 
         <button
             class="navbar-toggler"
@@ -49,55 +55,101 @@
 
         </button>
 
+
         <div
             class="collapse navbar-collapse"
             id="mainNavbar">
 
             <ul class="navbar-nav ms-auto">
 
+
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+
+                    <a class="nav-link"
+                       href="index.html">
+
                         Home
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link active" href="event.html">
+
+                    <a class="nav-link active"
+                       href="event.html">
+
                         Events
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link" href="my-bookings.html">
+
+                    <a class="nav-link"
+                       href="my-bookings.html">
+
                         <i class="bi bi-ticket-perforated"></i>
+
                         My Bookings
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.html">
+
+                    <a class="nav-link"
+                       href="profile.html">
+
                         <i class="bi bi-person-circle"></i>
+
                         Profile
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link login-link" href="login.html">
+
+                    <a class="nav-link login-link"
+                       href="login.html">
+
                         Login
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link register-link" href="register.html">
+
+                    <a class="nav-link register-link"
+                       href="register.html">
+
                         Register
+
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link logout-link" href="#">
+
+                    <a class="nav-link logout-link"
+                       href="#">
+
                         Logout
+
                     </a>
+
                 </li>
+
 
             </ul>
 
@@ -108,6 +160,7 @@
 </nav>
 
 
+
 <!-- ================= PAGE HEADER ================= -->
 
 <section class="py-5 bg-light">
@@ -115,20 +168,29 @@
     <div class="container text-center">
 
         <span class="text-primary fw-semibold">
+
             DISCOVER EVENTS
+
         </span>
 
+
         <h1 class="fw-bold mt-2">
+
             Upcoming Events
+
         </h1>
 
+
         <p class="text-muted">
+
             Find your next exciting experience.
+
         </p>
 
     </div>
 
 </section>
+
 
 
 <!-- ================= SEARCH & FILTER ================= -->
@@ -139,13 +201,17 @@
 
         <div class="row g-3">
 
+
             <div class="col-md-8">
 
                 <div class="input-group">
 
                     <span class="input-group-text">
+
                         <i class="bi bi-search"></i>
+
                     </span>
+
 
                     <input
                         type="text"
@@ -157,49 +223,82 @@
 
             </div>
 
+
+
             <div class="col-md-4">
 
                 <select
                     id="categoryFilter"
                     class="form-select">
 
+
                     <option value="">
+
                         All Categories
+
                     </option>
+
 
                     <option value="Technology">
+
                         Technology
+
                     </option>
+
 
                     <option value="Music">
+
                         Music
+
                     </option>
+
 
                     <option value="Business">
+
                         Business
+
                     </option>
+
+
+                    <option value="Conference">
+
+                        Conference
+
+                    </option>
+
 
                     <option value="College">
+
                         College
+
                     </option>
+
 
                     <option value="Startup">
+
                         Startup
+
                     </option>
 
+
                     <option value="Sports">
+
                         Sports
+
                     </option>
+
 
                 </select>
 
             </div>
+
 
         </div>
 
     </div>
 
 </section>
+
 
 
 <!-- ================= EVENTS ================= -->
@@ -212,7 +311,7 @@
             id="eventsContainer"
             class="row g-4">
 
-            <!-- Events will be loaded using JavaScript -->
+            <!-- Events will be loaded using events.js -->
 
         </div>
 
@@ -221,11 +320,13 @@
 </section>
 
 
+
 <!-- ================= FOOTER ================= -->
 
 <footer class="bg-dark text-white py-4">
 
     <div class="container text-center">
+
 
         <h5 class="fw-bold">
 
@@ -235,11 +336,13 @@
 
         </h5>
 
+
         <p class="text-white-50 mb-1">
 
             Smart Event Management & Ticket Booking System
 
         </p>
+
 
         <small class="text-white-50">
 
@@ -247,26 +350,31 @@
 
         </small>
 
+
     </div>
 
 </footer>
 
 
-<!-- Bootstrap JS -->
+
+<!-- ================= BOOTSTRAP JS ================= -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
 
-<!-- Main JavaScript -->
+
+<!-- ================= MAIN JAVASCRIPT ================= -->
 
 <script src="script.js"></script>
 
-<!-- Event JavaScript -->
 
-<script src="event.js"></script>
-```
+
+<!-- ================= EVENT JAVASCRIPT ================= -->
+
+<script src="events.js"></script>
+
 
 </body>
 
