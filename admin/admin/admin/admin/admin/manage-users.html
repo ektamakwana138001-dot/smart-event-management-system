@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Users | Smart Events</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        body {
+            margin: 0;
+            background: #f5f7fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            background: #111827;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #d1d5db;
+            text-decoration: none;
+            padding: 12px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #0d6efd;
+            color: white;
+        }
+
+        .main {
+            margin-left: 250px;
+            padding: 25px;
+        }
+
+        .topbar {
+            background: white;
+            padding: 18px 22px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .content-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .search-box {
+            max-width: 320px;
+        }
+
+        @media(max-width: 768px) {
+
+            .sidebar {
+                width: 200px;
+            }
+
+            .main {
+                margin-left: 200px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <h3>
+        <i class="bi bi-calendar-event"></i>
+        Smart Events
+    </h3>
+
+    <a href="dashboard.html">
+        <i class="bi bi-speedometer2"></i>
+        Dashboard
+    </a>
+
+    <a href="manage-events.html">
+        <i class="bi bi-calendar-event"></i>
+        Manage Events
+    </a>
+
+    <a href="manage-bookings.html">
+        <i class="bi bi-ticket-perforated"></i>
+        Manage Bookings
+    </a>
+
+    <a href="manage-users.html" class="active">
+        <i class="bi bi-people"></i>
+        Manage Users
+    </a>
+
+    <a href="reports.html">
+        <i class="bi bi-bar-chart"></i>
+        Reports
+    </a>
+
+    <hr>
+
+    <a href="../index.html">
+        <i class="bi bi-globe"></i>
+        View Website
+    </a>
+
+    <a href="#" onclick="logout()">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+    </a>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <div class="topbar">
+
+        <h3>
+            Manage Users
+        </h3>
+
+        <small class="text-muted">
+            View and manage registered users
+        </small>
+
+    </div>
+
+
+    <div class="content-box">
+
+
+        <!-- HEADER -->
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h5>
+                Registered Users
+            </h5>
+
+            <span class="badge bg-primary fs-6">
+                Total Users: 5
+            </span>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="mb-4">
+
+            <input
+                type="text"
+                id="searchUser"
+                class="form-control search-box"
+                placeholder="Search user..."
+                onkeyup="searchUsers()"
+            >
+
+        </div>
+
+
+        <!-- USERS TABLE -->
+
+        <div class="table-responsive">
+
+            <table
+                class="table table-hover align-middle"
+                id="usersTable"
+            >
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>User Name</th>
+
+                        <th>Email</th>
+
+                        <th>Phone</th>
+
+                        <th>Role</th>
+
+                        <th>Registration Date</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <tr>
+
+                        <td>1</td>
+
+                        <td>
+                            <strong>
+                                Ekta Makwana
+                            </strong>
+                        </td>
+
+                        <td>
+                            ekta@example.com
+                        </td>
+
+                        <td>
+                            9876543210
+                        </td>
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                User
+                            </span>
+                        </td>
+
+                        <td>
+                            01 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="badge bg-success">
+                                Active
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="btn btn-sm btn-danger"
+                                onclick="deleteUser(this)"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>2</td>
+
+                        <td>
+                            <strong>
+                                Rahul Patel
+                            </strong>
+                        </td>
+
+                        <td>
+                            rahul@example.com
+                        </td>
+
+                        <td>
+                            9876501234
+                        </td>
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                User
+                            </span>
+                        </td>
+
+                        <td>
+                            03 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="badge bg-success">
+                                Active
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="btn btn-sm btn-danger"
+                                onclick="deleteUser(this)"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>3</td>
+
+                        <td>
+                            <strong>
+                                Priya Shah
+                            </strong>
+                        </td>
+
+                        <td>
+                            priya@example.com
+                        </td>
+
+                        <td>
+                            9876512345
+                        </td>
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                User
+                            </span>
+                        </td>
+
+                        <td>
+                            05 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="badge bg-success">
+                                Active
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="btn btn-sm btn-danger"
+                                onclick="deleteUser(this)"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>4</td>
+
+                        <td>
+                            <strong>
+                                Amit Shah
+                            </strong>
+                        </td>
+
+                        <td>
+                            amit@example.com
+                        </td>
+
+                        <td>
+                            9876523456
+                        </td>
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                User
+                            </span>
+                        </td>
+
+                        <td>
+                            07 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="badge bg-warning text-dark">
+                                Pending
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="btn btn-sm btn-danger"
+                                onclick="deleteUser(this)"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>5</td>
+
+                        <td>
+                            <strong>
+                                Neha Patel
+                            </strong>
+                        </td>
+
+                        <td>
+                            neha@example.com
+                        </td>
+
+                        <td>
+                            9876534567
+                        </td>
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                User
+                            </span>
+                        </td>
+
+                        <td>
+                            09 Aug 2026
+                        </td>
+
+                        <td>
+                            <span class="badge bg-success">
+                                Active
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="btn btn-sm btn-danger"
+                                onclick="deleteUser(this)"
+                            >
+                                <i class="bi bi-trash"></i>
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function searchUsers() {
+
+    let input =
+        document
+        .getElementById("searchUser")
+        .value
+        .toLowerCase();
+
+    let rows =
+        document
+        .getElementById("usersTable")
+        .getElementsByTagName("tbody")[0]
+        .getElementsByTagName("tr");
+
+    for (let i = 0; i < rows.length; i++) {
+
+        let text =
+            rows[i].innerText.toLowerCase();
+
+        rows[i].style.display =
+            text.includes(input) ? "" : "none";
+
+    }
+
+}
+
+
+function deleteUser(button) {
+
+    if (
+        confirm(
+            "Are you sure you want to delete this user?"
+        )
+    ) {
+
+        button
+            .closest("tr")
+            .remove();
+
+        alert(
+            "User deleted successfully!"
+        );
+
+    }
+
+}
+
+
+function logout() {
+
+    localStorage.removeItem(
+        "adminLoggedIn"
+    );
+
+    window.location.href =
+        "admin-login.html";
+
+}
+
+</script>
+
+
+</body>
+</html>
