@@ -1,166 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Contact SmartEvents"
-    >
-
-    <title>Contact Us - SmartEvents</title>
+    <title>Contact Us | Smart Events</title>
 
     <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
         rel="stylesheet"
-    >
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Main CSS -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-
 </head>
-
 
 <body>
 
-
 <!-- ================= NAVBAR ================= -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
 
-        <a
-            class="navbar-brand fw-bold"
-            href="index.html"
-        >
-            SmartEvents
+        <a class="navbar-brand fw-bold" href="index.html">
+            Smart Events
         </a>
 
-
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar"
-        >
-
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
-
         </button>
 
-
-        <div
-            class="collapse navbar-collapse"
-            id="mainNavbar"
-        >
+        <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="index.html"
-                    >
-                        Home
-                    </a>
-
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
 
-
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="events.html"
-                    >
-                        Events
-                    </a>
-
+                    <a class="nav-link" href="events.html">Events</a>
                 </li>
 
-
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="my-bookings.html"
-                    >
+                    <a class="nav-link" href="my-bookings.html">
                         My Bookings
                     </a>
-
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">
+                        Profile
+                    </a>
+                </li>
 
                 <li class="nav-item">
-
-                    <a
-                        class="nav-link active"
-                        href="contact.html"
-                    >
+                    <a class="nav-link active" href="contact.html">
                         Contact
                     </a>
-
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="login.html"
-                    >
-                        Login
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="register.html"
-                    >
-                        Register
-                    </a>
-
                 </li>
 
             </ul>
 
         </div>
-
     </div>
-
 </nav>
-
-
-
-<!-- ================= PAGE HEADER ================= -->
-
-<section class="py-5 bg-light">
-
-    <div class="container text-center">
-
-        <h1 class="fw-bold">
-            Contact Us
-        </h1>
-
-        <p class="text-muted">
-            Have a question? Send us a message.
-        </p>
-
-    </div>
-
-</section>
-
 
 
 <!-- ================= CONTACT SECTION ================= -->
@@ -169,214 +81,171 @@
 
     <div class="container">
 
-        <div class="row g-5">
+        <div class="text-center mb-5">
 
+            <h1 class="fw-bold">
+                Contact Us
+            </h1>
+
+            <p class="text-muted">
+                Have questions? We are here to help you.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
 
             <!-- Contact Information -->
 
-            <div class="col-lg-5">
+            <div class="col-md-5">
 
-                <h2 class="fw-bold mb-3">
-                    Get In Touch
-                </h2>
+                <div class="card shadow-sm h-100">
 
-                <p class="text-muted">
-                    If you have any questions about events,
-                    tickets or bookings, feel free to contact us.
-                </p>
+                    <div class="card-body p-4">
 
+                        <h3 class="mb-4">
+                            Get In Touch
+                        </h3>
 
-                <div class="mt-4">
+                        <div class="mb-4">
+                            <i class="bi bi-geo-alt-fill fs-4 text-primary"></i>
 
+                            <h6 class="mt-2">Address</h6>
 
-                    <!-- Email -->
-
-                    <div class="d-flex mb-4">
-
-                        <div class="fs-3 me-3">
-                            📧
-                        </div>
-
-                        <div>
-
-                            <h5 class="mb-1">
-                                Email
-                            </h5>
-
-                            <p class="text-muted mb-0">
-                                support@smartevents.com
+                            <p class="text-muted">
+                                Marwadi University,<br>
+                                Rajkot, Gujarat, India
                             </p>
-
                         </div>
 
-                    </div>
 
+                        <div class="mb-4">
+                            <i class="bi bi-telephone-fill fs-4 text-primary"></i>
 
-                    <!-- Phone -->
+                            <h6 class="mt-2">Phone</h6>
 
-                    <div class="d-flex mb-4">
-
-                        <div class="fs-3 me-3">
-                            📞
-                        </div>
-
-                        <div>
-
-                            <h5 class="mb-1">
-                                Phone
-                            </h5>
-
-                            <p class="text-muted mb-0">
+                            <p class="text-muted">
                                 +91 98765 43210
                             </p>
-
                         </div>
 
-                    </div>
 
+                        <div class="mb-4">
+                            <i class="bi bi-envelope-fill fs-4 text-primary"></i>
 
-                    <!-- Location -->
+                            <h6 class="mt-2">Email</h6>
 
-                    <div class="d-flex mb-4">
-
-                        <div class="fs-3 me-3">
-                            📍
+                            <p class="text-muted">
+                                smartevents@gmail.com
+                            </p>
                         </div>
+
 
                         <div>
+                            <i class="bi bi-clock-fill fs-4 text-primary"></i>
 
-                            <h5 class="mb-1">
-                                Location
-                            </h5>
+                            <h6 class="mt-2">Working Hours</h6>
 
-                            <p class="text-muted mb-0">
-                                Gujarat, India
+                            <p class="text-muted">
+                                Monday - Saturday<br>
+                                9:00 AM - 6:00 PM
                             </p>
-
                         </div>
 
                     </div>
-
 
                 </div>
 
             </div>
 
 
-
             <!-- Contact Form -->
 
-            <div class="col-lg-7">
+            <div class="col-md-7">
 
-                <div class="card shadow-sm border-0">
+                <div class="card shadow-sm">
 
-                    <div class="card-body p-4 p-md-5">
+                    <div class="card-body p-4">
 
-                        <h3 class="fw-bold mb-4">
+                        <h3 class="mb-4">
                             Send Us a Message
                         </h3>
 
-
                         <form id="contactForm">
-
-
-                            <!-- Name -->
 
                             <div class="mb-3">
 
-                                <label
-                                    for="contactName"
-                                    class="form-label"
-                                >
+                                <label class="form-label">
                                     Your Name
                                 </label>
 
                                 <input
                                     type="text"
-                                    id="contactName"
+                                    id="name"
                                     class="form-control"
                                     placeholder="Enter your name"
-                                    required
-                                >
+                                    required>
 
                             </div>
 
 
-                            <!-- Email -->
-
                             <div class="mb-3">
 
-                                <label
-                                    for="contactEmail"
-                                    class="form-label"
-                                >
+                                <label class="form-label">
                                     Email Address
                                 </label>
 
                                 <input
                                     type="email"
-                                    id="contactEmail"
+                                    id="email"
                                     class="form-control"
                                     placeholder="Enter your email"
-                                    required
-                                >
+                                    required>
 
                             </div>
 
 
-                            <!-- Subject -->
-
                             <div class="mb-3">
 
-                                <label
-                                    for="contactSubject"
-                                    class="form-label"
-                                >
+                                <label class="form-label">
                                     Subject
                                 </label>
 
                                 <input
                                     type="text"
-                                    id="contactSubject"
+                                    id="subject"
                                     class="form-control"
                                     placeholder="Enter subject"
-                                    required
-                                >
+                                    required>
 
                             </div>
 
 
-                            <!-- Message -->
+                            <div class="mb-3">
 
-                            <div class="mb-4">
-
-                                <label
-                                    for="contactMessage"
-                                    class="form-label"
-                                >
+                                <label class="form-label">
                                     Message
                                 </label>
 
                                 <textarea
-                                    id="contactMessage"
+                                    id="message"
                                     class="form-control"
                                     rows="5"
-                                    placeholder="Write your message..."
-                                    required
-                                ></textarea>
+                                    placeholder="Write your message"
+                                    required></textarea>
 
                             </div>
 
 
-                            <!-- Submit -->
-
                             <button
                                 type="submit"
-                                class="btn btn-primary w-100"
-                            >
-                                Send Message
-                            </button>
+                                class="btn btn-primary w-100">
 
+                                <i class="bi bi-send-fill"></i>
+                                Send Message
+
+                            </button>
 
                         </form>
 
@@ -393,70 +262,15 @@
 </section>
 
 
-
 <!-- ================= FOOTER ================= -->
 
-<footer class="bg-dark text-white py-4">
+<footer class="bg-dark text-white text-center py-3">
 
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-                <h5>
-                    SmartEvents
-                </h5>
-
-                <p class="text-light">
-                    Smart Event Management &
-                    Ticket Booking System.
-                </p>
-
-            </div>
-
-
-            <div class="col-md-6 text-md-end">
-
-                <p class="mb-1">
-                    Quick Links
-                </p>
-
-                <a
-                    href="index.html"
-                    class="text-white me-3"
-                >
-                    Home
-                </a>
-
-                <a
-                    href="events.html"
-                    class="text-white"
-                >
-                    Events
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <hr>
-
-
-        <p class="text-center mb-0">
-
-            ©
-            <span class="current-year"></span>
-            SmartEvents.
-            All Rights Reserved.
-
-        </p>
-
-    </div>
+    <p class="mb-0">
+        © 2026 Smart Event Management & Ticket Booking System
+    </p>
 
 </footer>
-
 
 
 <!-- Bootstrap JS -->
@@ -466,16 +280,21 @@
 </script>
 
 
-<!-- Main JavaScript -->
+<!-- Contact Form JS -->
 
-<script src="js/script.js"></script>
+<script>
 
+document.getElementById("contactForm").addEventListener("submit", function(event) {
 
-<!-- Contact JavaScript -->
+    event.preventDefault();
 
-<script src="js/contact.js"></script>
+    alert("Thank you! Your message has been submitted successfully.");
 
+    document.getElementById("contactForm").reset();
+
+});
+
+</script>
 
 </body>
-
 </html>
