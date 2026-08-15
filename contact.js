@@ -1,143 +1,355 @@
-document.addEventListener("DOMContentLoaded", function () {
+// =========================================================
+// SMART EVENT MANAGEMENT SYSTEM
+// CONTACT & FEEDBACK JAVASCRIPT
+// =========================================================
 
-    const form =
-        document.getElementById("contactForm");
+const contactForm =
+    document.getElementById("contactForm");
 
-    if (!form) {
-        return;
+
+// =========================================================
+// RATING STARS
+// =========================================================
+
+const ratingLabels =
+    document.querySelectorAll(".rating label");
+
+
+ratingLabels.forEach(
+    function(label, index) {
+
+        label.addEventListener(
+            "click",
+            function() {
+
+                ratingLabels.forEach(
+                    function(item, i) {
+
+                        const icon =
+                            item.querySelector("i");
+
+                        if (i <= index) {
+
+                            icon.className =
+                                "bi bi-star-fill";
+
+                        } else {
+
+                            icon.className =
+                                "bi bi-star";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
     }
+);
 
 
-    form.addEventListener("submit", function (event) {
+// =========================================================
+// HIDE ERRORS
+// =========================================================
+
+function hideContactErrors() {
+
+    document.querySelectorAll(
+        ".error-message"
+    ).forEach(
+        function(error) {
+
+            error.style.display =
+                "none";
+
+        }
+    );
+
+}
+
+
+// =========================================================
+// FORM SUBMIT
+// =========================================================
+
+contactForm.addEventListener(
+    "submit",
+    function(event) {
 
         event.preventDefault();
 
 
-        const name =
-            document.getElementById("contactName");
-
-        const email =
-            document.getElementById("contactEmail");
-
-        const subject =
-            document.getElementById("contactSubject");
-
-        const message =
-            document.getElementById("contactMessage");
-
-        const messageBox =
-            document.getElementById("contactMessageBox");
-
-
-        name.classList.remove("is-invalid");
-        email.classList.remove("is-invalid");
-        subject.classList.remove("is-invalid");
-        message.classList.remove("is-invalid");
+        hideContactErrors();
 
 
         let valid = true;
 
 
+        const name =
+            document.getElementById(
+                "contactName"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "contactEmail"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "contactPhone"
+            ).value.trim();
+
+
+        const subject =
+            document.getElementById(
+                "subject"
+            ).value;
+
+
+        const message =
+            document.getElementById(
+                "message"
+            ).value.trim();
+
+
+        // =================================================
+        // NAME
+        // =================================================
+
+        if (name.length < 2) {
+
+            document.getElementById(
+                "contactNameError"
+            ).style.display = "block";
+
+            valid = false;
+
+        }
+
+
+        // =================================================
+        // EMAIL
+        // =================================================
+
         const emailPattern =
             /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-        if (name.value.trim().length < 2) {
+        if (!emailPattern.test(email)) {
 
-            name.classList.add("is-invalid");
+            document.getElementById(
+                "contactEmailError"
+            ).style.display = "block";
 
             valid = false;
+
         }
 
 
-        if (!emailPattern.test(email.value.trim())) {
+        // =================================================
+        // PHONE
+        // =================================================
 
-            email.classList.add("is-invalid");
+        if (
+            phone !== "" &&
+            !/^[0-9]{10}$/.test(phone)
+        ) {
+
+            document.getElementById(
+                "contactPhoneError"
+            ).style.display = "block";
 
             valid = false;
+
         }
 
 
-        if (subject.value.trim().length < 3) {
+        // =================================================
+        // SUBJECT
+        // =================================================
 
-            subject.classList.add("is-invalid");
+        if (!subject) {
+
+            document.getElementById(
+                "subjectError"
+            ).style.display = "block";
 
             valid = false;
+
         }
 
 
-        if (message.value.trim().length < 10) {
+        // =================================================
+        // MESSAGE
+        // =================================================
 
-            message.classList.add("is-invalid");
+        if (message.length < 10) {
+
+            document.getElementById(
+                "messageError"
+            ).style.display = "block";
 
             valid = false;
+
         }
 
+
+        // =================================================
+        // STOP IF INVALID
+        // =================================================
 
         if (!valid) {
 
-            messageBox.innerHTML = `
-
-                <div class="alert alert-danger">
-
-                    <i class="bi bi-exclamation-circle"></i>
-
-                    Please correct the highlighted fields.
-
-                </div>
-
-            `;
-
             return;
+
         }
 
 
-        const messages =
+        // =================================================
+        // GET RATING
+        // =================================================
+
+        const selectedRating =
+            document.querySelector(
+                'input[name="rating"]:checked'
+            );
+
+
+        const rating =
+            selectedRating
+                ? selectedRating.value
+                : "Not Rated";
+
+
+        // =================================================
+        // CREATE FEEDBACK
+        // =================================================
+
+        const feedback = {
+
+            id:
+                "#FB" +
+                Date.now()
+                    .toString()
+                    .slice(-6),
+
+            name:
+                name,
+
+            email:
+                email,
+
+            phone:
+                phone,
+
+            subject:
+                subject,
+
+            rating:
+                rating,
+
+            message:
+                message,
+
+            date:
+                new Date()
+                    .toLocaleDateString(),
+
+            status:
+                "New"
+
+        };
+
+
+        // =================================================
+        // GET OLD FEEDBACK
+        // =================================================
+
+        let feedbackList =
             JSON.parse(
-                localStorage.getItem("contactMessages")
-            ) || [];
+                localStorage.getItem(
+                    "feedback"
+                ) || "[]"
+            );
 
 
-        messages.push({
+        // =================================================
+        // ADD NEW FEEDBACK
+        // =================================================
 
-            id: Date.now(),
+        feedbackList.push(feedback);
 
-            name: name.value.trim(),
 
-            email: email.value.trim(),
-
-            subject: subject.value.trim(),
-
-            message: message.value.trim(),
-
-            date: new Date().toLocaleString(),
-
-            status: "New"
-
-        });
-
+        // =================================================
+        // SAVE FEEDBACK
+        // =================================================
 
         localStorage.setItem(
-            "contactMessages",
-            JSON.stringify(messages)
+            "feedback",
+            JSON.stringify(
+                feedbackList
+            )
         );
 
 
-        messageBox.innerHTML = `
+        // =================================================
+        // SHOW SUCCESS
+        // =================================================
 
-            <div class="alert alert-success">
-
-                <i class="bi bi-check-circle-fill"></i>
-
-                Your message has been sent successfully.
-
-            </div>
-
-        `;
+        const successMessage =
+            document.getElementById(
+                "successMessage"
+            );
 
 
-        form.reset();
+        successMessage.style.display =
+            "block";
 
-    });
 
-});
+        successMessage.scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+        // =================================================
+        // RESET FORM
+        // =================================================
+
+        contactForm.reset();
+
+
+        // RESET STARS
+        ratingLabels.forEach(
+            function(label) {
+
+                const icon =
+                    label.querySelector("i");
+
+                icon.className =
+                    "bi bi-star";
+
+            }
+        );
+
+
+        // =================================================
+        // HIDE SUCCESS AFTER 5 SEC
+        // =================================================
+
+        setTimeout(
+            function() {
+
+                successMessage.style.display =
+                    "none";
+
+            },
+            5000
+        );
+
+    }
+);
