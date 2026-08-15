@@ -8,104 +8,41 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Dashboard - Smart Events</title>
+    <title>Dashboard - Smart Events</title>
 
-    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         rel="stylesheet">
 
     <style>
 
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
             background: #f5f7fb;
+            font-family: Arial, sans-serif;
         }
-
-        /* NAVBAR */
 
         .navbar {
             background: #0d6efd !important;
         }
 
-        .navbar-brand {
+        .navbar-brand,
+        .nav-link {
             color: white !important;
-            font-weight: bold;
-            font-size: 21px;
         }
 
-        .navbar-brand i {
-            margin-right: 7px;
+        .dashboard {
+            padding: 60px 0;
         }
-
-        .admin-name {
-            color: white;
-            font-weight: 500;
-        }
-
-        /* SIDEBAR */
-
-        .sidebar {
-            min-height: calc(100vh - 56px);
-            background: #212529;
-            padding: 20px 10px;
-        }
-
-        .sidebar-title {
-            color: #adb5bd;
-            font-size: 13px;
-            text-transform: uppercase;
-            margin: 10px 15px;
-        }
-
-        .sidebar a {
-            display: block;
-            color: #dee2e6;
-            text-decoration: none;
-            padding: 13px 15px;
-            border-radius: 8px;
-            margin-bottom: 5px;
-        }
-
-        .sidebar a:hover,
-        .sidebar a.active {
-            background: #0d6efd;
-            color: white;
-        }
-
-        .sidebar i {
-            width: 25px;
-        }
-
-        /* MAIN */
-
-        .main-content {
-            padding: 30px;
-        }
-
-        .page-title {
-            font-weight: bold;
-        }
-
-        /* STAT CARDS */
 
         .stat-card {
             background: white;
-            border-radius: 15px;
             padding: 25px;
-            box-shadow:
-                0 5px 20px
-                rgba(0,0,0,0.07);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
             height: 100%;
         }
 
@@ -118,68 +55,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 27px;
+            font-size: 25px;
+            margin-bottom: 15px;
         }
 
         .stat-number {
             font-size: 30px;
             font-weight: bold;
-            margin-top: 15px;
         }
-
-        .stat-label {
-            color: #777;
-        }
-
-        /* ACTION CARDS */
 
         .action-card {
             background: white;
+            padding: 30px;
             border-radius: 15px;
-            padding: 25px;
-            height: 100%;
-            box-shadow:
-                0 5px 20px
-                rgba(0,0,0,0.07);
+            box-shadow: 0 5px 20px rgba(0,0,0,.08);
         }
 
-        .action-icon {
-            font-size: 35px;
-            color: #0d6efd;
-        }
-
-        .action-card h5 {
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        .action-card p {
-            color: #666;
-        }
-
-        /* TABLE */
-
-        .table-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow:
-                0 5px 20px
-                rgba(0,0,0,0.07);
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 768px) {
-
-            .sidebar {
-                min-height: auto;
-            }
-
-            .main-content {
-                padding: 20px 15px;
-            }
-
+        footer {
+            background: #212529;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
         }
 
     </style>
@@ -190,150 +87,218 @@
 <body>
 
 
-    <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
 
-    <nav class="navbar navbar-expand-lg">
+    <div class="container">
 
-        <div class="container-fluid">
+        <a
+            class="navbar-brand"
+            href="./index.html">
+
+            <i class="bi bi-calendar-event"></i>
+
+            Smart Events
+
+        </a>
+
+
+        <div>
 
             <a
-                class="navbar-brand"
-                href="dashboard.html">
+                href="./index.html"
+                class="btn btn-light btn-sm">
 
-                <i class="bi bi-speedometer2"></i>
-
-                Smart Events Admin
+                Website
 
             </a>
 
+        </div>
 
-            <div class="d-flex align-items-center">
+    </div>
 
-                <span class="admin-name me-3">
-
-                    <i class="bi bi-person-circle"></i>
-
-                    Admin
-
-                </span>
+</nav>
 
 
-                <button
-                    class="btn btn-light btn-sm"
-                    onclick="logoutAdmin()">
+<section class="dashboard">
 
-                    <i class="bi bi-box-arrow-right"></i>
+    <div class="container">
 
-                    Logout
+        <h1 class="fw-bold mb-2">
+            Admin Dashboard
+        </h1>
 
-                </button>
+        <p class="text-muted mb-5">
+            Manage your Smart Event Management System.
+        </p>
+
+
+        <!-- STATISTICS -->
+
+        <div class="row g-4 mb-5">
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-calendar-event"></i>
+
+                    </div>
+
+                    <div class="stat-number">
+                        6
+                    </div>
+
+                    <div>
+                        Total Events
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-ticket-perforated"></i>
+
+                    </div>
+
+                    <div class="stat-number">
+                        0
+                    </div>
+
+                    <div>
+                        Total Bookings
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-people"></i>
+
+                    </div>
+
+                    <div class="stat-number">
+                        0
+                    </div>
+
+                    <div>
+                        Registered Users
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-    </nav>
+
+        <!-- ACTIONS -->
+
+        <div class="action-card">
+
+            <h3 class="fw-bold mb-4">
+                Event Management
+            </h3>
 
 
-    <!-- MAIN LAYOUT -->
-
-    <div class="container-fluid">
-
-        <div class="row">
+            <div class="row g-3">
 
 
-            <!-- SIDEBAR -->
-
-            <div class="col-lg-2 p-0">
-
-                <div class="sidebar">
-
-
-                    <div class="sidebar-title">
-
-                        Main Menu
-
-                    </div>
-
-
-                    <!-- DASHBOARD -->
+                <div class="col-md-4">
 
                     <a
-                        href="dashboard.html"
-                        class="active">
-
-                        <i class="bi bi-speedometer2"></i>
-
-                        Dashboard
-
-                    </a>
-
-
-                    <!-- EVENTS -->
-
-                    <a href="events.html">
+                        href="./events.html"
+                        class="btn btn-primary w-100 py-3">
 
                         <i class="bi bi-calendar-event"></i>
 
-                        Events
+                        View All Events
 
                     </a>
 
-
-                    <!-- BOOKINGS -->
-
-                    <a href="my-bookings.html">
-
-                        <i class="bi bi-ticket-perforated"></i>
-
-                        Bookings
-
-                    </a>
+                </div>
 
 
-                    <!-- USERS -->
+                <div class="col-md-4">
 
-                    <a href="register.html">
+                    <a
+                        href="./events.html"
+                        class="btn btn-success w-100 py-3">
 
-                        <i class="bi bi-people"></i>
+                        <i class="bi bi-plus-circle"></i>
 
-                        Users
+                        Manage Events
 
                     </a>
 
+                </div>
 
-                    <!-- FEEDBACK -->
 
-                    <a href="index.html#feedback">
+                <div class="col-md-4">
 
-                        <i class="bi bi-chat-left-text"></i>
+                    <a
+                        href="./my-bookings.html"
+                        class="btn btn-warning w-100 py-3">
 
-                        Feedback
+                        <i class="bi bi-ticket"></i>
+
+                        View Bookings
 
                     </a>
 
-
-                    <div class="sidebar-title mt-4">
-
-                        Website
-
-                    </div>
+                </div>
 
 
-                    <!-- HOME -->
+            </div>
 
-                    <a href="index.html">
+
+            <hr class="my-4">
+
+
+            <h3 class="fw-bold mb-4">
+                Website
+            </h3>
+
+
+            <div class="row g-3">
+
+
+                <div class="col-md-4">
+
+                    <a
+                        href="./index.html"
+                        class="btn btn-outline-primary w-100 py-3">
 
                         <i class="bi bi-house"></i>
 
-                        Visit Website
+                        Home
 
                     </a>
 
+                </div>
 
-                    <!-- CONTACT -->
 
-                    <a href="contact.html">
+                <div class="col-md-4">
+
+                    <a
+                        href="./contact.html"
+                        class="btn btn-outline-primary w-100 py-3">
 
                         <i class="bi bi-envelope"></i>
 
@@ -341,677 +306,22 @@
 
                     </a>
 
-
                 </div>
 
-            </div>
 
+                <div class="col-md-4">
 
-            <!-- CONTENT -->
+                    <a
+                        href="./login.html"
+                        class="btn btn-outline-primary w-100 py-3">
 
-            <div class="col-lg-10">
+                        <i class="bi bi-box-arrow-in-right"></i>
 
-                <main class="main-content">
+                        Login
 
+                    </a>
 
-                    <!-- TITLE -->
-
-                    <div
-                        class="d-flex
-                        justify-content-between
-                        align-items-center
-                        mb-4">
-
-
-                        <div>
-
-                            <h1 class="page-title">
-
-                                Admin Dashboard
-
-                            </h1>
-
-                            <p class="text-muted mb-0">
-
-                                Manage your Smart Event
-                                Management System.
-
-                            </p>
-
-                        </div>
-
-
-                        <!-- IMPORTANT -->
-
-                        <a
-                            href="events.html"
-                            class="btn btn-primary">
-
-                            <i class="bi bi-calendar-event"></i>
-
-                            View All Events
-
-                        </a>
-
-                    </div>
-
-
-                    <!-- STAT CARDS -->
-
-                    <div class="row g-4 mb-4">
-
-
-                        <!-- EVENTS -->
-
-                        <div class="col-md-6 col-xl-3">
-
-                            <div class="stat-card">
-
-                                <div class="stat-icon">
-
-                                    <i class="bi bi-calendar-event"></i>
-
-                                </div>
-
-
-                                <div
-                                    id="totalEvents"
-                                    class="stat-number">
-
-                                    6
-
-                                </div>
-
-
-                                <div class="stat-label">
-
-                                    Total Events
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- BOOKINGS -->
-
-                        <div class="col-md-6 col-xl-3">
-
-                            <div class="stat-card">
-
-                                <div class="stat-icon">
-
-                                    <i class="bi bi-ticket-perforated"></i>
-
-                                </div>
-
-
-                                <div
-                                    id="totalBookings"
-                                    class="stat-number">
-
-                                    0
-
-                                </div>
-
-
-                                <div class="stat-label">
-
-                                    Total Bookings
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- USERS -->
-
-                        <div class="col-md-6 col-xl-3">
-
-                            <div class="stat-card">
-
-                                <div class="stat-icon">
-
-                                    <i class="bi bi-people"></i>
-
-                                </div>
-
-
-                                <div
-                                    id="totalUsers"
-                                    class="stat-number">
-
-                                    0
-
-                                </div>
-
-
-                                <div class="stat-label">
-
-                                    Registered Users
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- FEEDBACK -->
-
-                        <div class="col-md-6 col-xl-3">
-
-                            <div class="stat-card">
-
-                                <div class="stat-icon">
-
-                                    <i class="bi bi-chat-left-text"></i>
-
-                                </div>
-
-
-                                <div
-                                    id="totalFeedback"
-                                    class="stat-number">
-
-                                    0
-
-                                </div>
-
-
-                                <div class="stat-label">
-
-                                    Feedback
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <!-- QUICK ACTIONS -->
-
-                    <h3 class="mb-3">
-
-                        Quick Actions
-
-                    </h3>
-
-
-                    <div class="row g-4 mb-5">
-
-
-                        <!-- EVENTS -->
-
-                        <div class="col-md-6 col-xl-3">
-
-                            <div class="action-card">
-
-
-                                <i
-                                    class="bi bi-calendar-event action-icon">
-                                </i>
-
-
-                                <h5>
-
-                                    Manage Events
-
-                                </h5>
-
-
-                                <p>
-
-                                    View all available events
-                                    and event details.
-
-                                </p>
-
-
-                                <!-- CORRECT LINK -->
-
-                                <a
-                                    href="events.html"
-                                    class="btn btn-primary">
-
-                                    View Events
-
-                                </a>
-
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- BOOKINGS -->
-
-                        <div class="col-md-6 col-xl-3">
-
-                            <div class="action-card">
-
-
-                                <i
-                                    class="bi bi-ticket-perforated action-icon">
-                                </i>
-
-
-                                <h5>
-
-                                    Manage Bookings
-
-                                </h5>
-
-
-                                <p>
-
-                                    Check all user bookings
-                                    and ticket information.
-
-                                </p>
-
-
-                                <a
-                                    href="my-bookings.html"
-                                    class="btn btn-primary">
-
-                                    View Bookings
-
-                                </a>
-
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- USERS -->
-
-                        <div class="col-md-6 col-xl-3">
-
-                            <div class="action-card">
-
-
-                                <i
-                                    class="bi bi-people action-icon">
-                                </i>
-
-
-                                <h5>
-
-                                    Manage Users
-
-                                </h5>
-
-
-                                <p>
-
-                                    View the registration
-                                    and user information.
-
-                                </p>
-
-
-                                <a
-                                    href="register.html"
-                                    class="btn btn-primary">
-
-                                    View Users
-
-                                </a>
-
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- FEEDBACK -->
-
-                        <div class="col-md-6 col-xl-3">
-
-                            <div class="action-card">
-
-
-                                <i
-                                    class="bi bi-chat-left-text action-icon">
-                                </i>
-
-
-                                <h5>
-
-                                    User Feedback
-
-                                </h5>
-
-
-                                <p>
-
-                                    Check feedback submitted
-                                    by website users.
-
-                                </p>
-
-
-                                <a
-                                    href="index.html#feedback"
-                                    class="btn btn-primary">
-
-                                    View Feedback
-
-                                </a>
-
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <!-- EVENT LIST -->
-
-                    <div class="table-card mb-4">
-
-
-                        <div
-                            class="d-flex
-                            justify-content-between
-                            align-items-center
-                            mb-3">
-
-
-                            <h4 class="mb-0">
-
-                                Upcoming Events
-
-                            </h4>
-
-
-                            <a
-                                href="events.html"
-                                class="btn btn-outline-primary btn-sm">
-
-                                View All
-
-                            </a>
-
-                        </div>
-
-
-                        <div class="table-responsive">
-
-                            <table
-                                class="table
-                                table-hover
-                                align-middle">
-
-
-                                <thead>
-
-                                    <tr>
-
-                                        <th>
-                                            Event
-                                        </th>
-
-                                        <th>
-                                            Category
-                                        </th>
-
-                                        <th>
-                                            Location
-                                        </th>
-
-                                        <th>
-                                            Price
-                                        </th>
-
-                                        <th>
-                                            Status
-                                        </th>
-
-                                        <th>
-                                            Action
-                                        </th>
-
-                                    </tr>
-
-                                </thead>
-
-
-                                <tbody>
-
-
-                                    <tr>
-
-                                        <td>
-                                            Music Festival
-                                        </td>
-
-                                        <td>
-                                            Entertainment
-                                        </td>
-
-                                        <td>
-                                            Ahmedabad
-                                        </td>
-
-                                        <td>
-                                            ₹499
-                                        </td>
-
-                                        <td>
-
-                                            <span
-                                                class="badge text-bg-warning">
-
-                                                Coming Soon
-
-                                            </span>
-
-                                        </td>
-
-                                        <td>
-
-                                            <a
-                                                href="event-details.html?event=music"
-                                                class="btn btn-sm btn-primary">
-
-                                                View
-
-                                            </a>
-
-                                        </td>
-
-                                    </tr>
-
-
-                                    <tr>
-
-                                        <td>
-                                            Technology Conference
-                                        </td>
-
-                                        <td>
-                                            Technology
-                                        </td>
-
-                                        <td>
-                                            Ahmedabad
-                                        </td>
-
-                                        <td>
-                                            ₹799
-                                        </td>
-
-                                        <td>
-
-                                            <span
-                                                class="badge text-bg-warning">
-
-                                                Coming Soon
-
-                                            </span>
-
-                                        </td>
-
-                                        <td>
-
-                                            <a
-                                                href="event-details.html?event=technology"
-                                                class="btn btn-sm btn-primary">
-
-                                                View
-
-                                            </a>
-
-                                        </td>
-
-                                    </tr>
-
-
-                                    <tr>
-
-                                        <td>
-                                            Business Summit
-                                        </td>
-
-                                        <td>
-                                            Business
-                                        </td>
-
-                                        <td>
-                                            Ahmedabad
-                                        </td>
-
-                                        <td>
-                                            ₹999
-                                        </td>
-
-                                        <td>
-
-                                            <span
-                                                class="badge text-bg-warning">
-
-                                                Coming Soon
-
-                                            </span>
-
-                                        </td>
-
-                                        <td>
-
-                                            <a
-                                                href="event-details.html?event=business"
-                                                class="btn btn-sm btn-primary">
-
-                                                View
-
-                                            </a>
-
-                                        </td>
-
-                                    </tr>
-
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SYSTEM INFORMATION -->
-
-                    <div class="table-card">
-
-
-                        <h4>
-
-                            System Information
-
-                        </h4>
-
-
-                        <div class="row mt-3">
-
-
-                            <div class="col-md-4 mb-3">
-
-                                <strong>
-
-                                    Platform
-
-                                </strong>
-
-                                <br>
-
-                                <span class="text-muted">
-
-                                    Smart Event Management
-
-                                </span>
-
-                            </div>
-
-
-                            <div class="col-md-4 mb-3">
-
-                                <strong>
-
-                                    Technology
-
-                                </strong>
-
-                                <br>
-
-                                <span class="text-muted">
-
-                                    HTML, CSS, JavaScript,
-                                    Bootstrap
-
-                                </span>
-
-                            </div>
-
-
-                            <div class="col-md-4 mb-3">
-
-                                <strong>
-
-                                    Status
-
-                                </strong>
-
-                                <br>
-
-                                <span
-                                    class="badge text-bg-success">
-
-                                    Active
-
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-
-                </main>
+                </div>
 
             </div>
 
@@ -1019,83 +329,20 @@
 
     </div>
 
-
-    <!-- BOOTSTRAP JS -->
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
+</section>
 
 
-    <!-- DASHBOARD JAVASCRIPT -->
+<footer>
 
-    <script>
+    © 2026 Smart Event Management
+    & Ticket Booking System.
 
-        /* GET BOOKINGS */
-
-        const bookings =
-            JSON.parse(
-                localStorage.getItem("bookings")
-            ) || [];
+</footer>
 
 
-        /* GET USERS */
-
-        const users =
-            JSON.parse(
-                localStorage.getItem("users")
-            ) || [];
-
-
-        /* GET FEEDBACK */
-
-        const feedbacks =
-            JSON.parse(
-                localStorage.getItem("feedbacks")
-            ) || [];
-
-
-        /* UPDATE NUMBERS */
-
-        document.getElementById(
-            "totalBookings"
-        ).textContent =
-            bookings.length;
-
-
-        document.getElementById(
-            "totalUsers"
-        ).textContent =
-            users.length;
-
-
-        document.getElementById(
-            "totalFeedback"
-        ).textContent =
-            feedbacks.length;
-
-
-        /* ADMIN LOGOUT */
-
-        function logoutAdmin() {
-
-            const confirmLogout =
-                confirm(
-                    "Are you sure you want to logout?"
-                );
-
-
-            if (confirmLogout) {
-
-                window.location.href =
-                    "index.html";
-
-            }
-
-        }
-
-    </script>
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
 
 </body>
-
 </html>
