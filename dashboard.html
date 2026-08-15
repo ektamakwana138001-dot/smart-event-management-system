@@ -2,14 +2,23 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Admin Dashboard - Smart Events</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet">
 
     <style>
 
@@ -20,42 +29,52 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f4f6f9;
+            background: #f5f7fb;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #0d6efd !important;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            font-size: 21px;
+        }
+
+        .navbar-brand i {
+            margin-right: 7px;
+        }
+
+        .admin-name {
+            color: white;
+            font-weight: 500;
         }
 
         /* SIDEBAR */
 
         .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100vh;
+            min-height: calc(100vh - 56px);
             background: #212529;
-            color: white;
-            padding-top: 20px;
-            z-index: 1000;
+            padding: 20px 10px;
         }
 
-        .sidebar-logo {
-            text-align: center;
-            padding: 15px;
-            font-size: 22px;
-            font-weight: bold;
-            border-bottom: 1px solid #444;
-            margin-bottom: 15px;
-        }
-
-        .sidebar-logo i {
-            color: #0d6efd;
+        .sidebar-title {
+            color: #adb5bd;
+            font-size: 13px;
+            text-transform: uppercase;
+            margin: 10px 15px;
         }
 
         .sidebar a {
             display: block;
-            color: #ddd;
+            color: #dee2e6;
             text-decoration: none;
-            padding: 14px 22px;
-            transition: 0.2s;
+            padding: 13px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
         }
 
         .sidebar a:hover,
@@ -64,73 +83,19 @@
             color: white;
         }
 
-        .sidebar a i {
+        .sidebar i {
             width: 25px;
         }
-
 
         /* MAIN */
 
         .main-content {
-            margin-left: 250px;
-            min-height: 100vh;
-        }
-
-
-        /* TOPBAR */
-
-        .topbar {
-            height: 70px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        .topbar h4 {
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .admin-user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .admin-avatar {
-            width: 42px;
-            height: 42px;
-            background: #0d6efd;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-
-        /* CONTENT */
-
-        .content {
             padding: 30px;
         }
 
-        .welcome-box {
-            background: linear-gradient(135deg, #0d6efd, #084298);
-            color: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .welcome-box h2 {
+        .page-title {
             font-weight: bold;
         }
-
 
         /* STAT CARDS */
 
@@ -138,134 +103,81 @@
             background: white;
             border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.07);
             height: 100%;
         }
 
         .stat-icon {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 12px;
             background: #e7f1ff;
             color: #0d6efd;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin-bottom: 15px;
+            font-size: 27px;
         }
 
         .stat-number {
             font-size: 30px;
             font-weight: bold;
+            margin-top: 15px;
         }
 
-        .stat-title {
+        .stat-label {
             color: #777;
         }
 
+        /* ACTION CARDS */
 
-        /* QUICK ACTIONS */
-
-        .section-card {
+        .action-card {
             background: white;
             border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-            margin-top: 30px;
-        }
-
-        .section-title {
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .action-card {
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 22px;
             height: 100%;
-            transition: 0.2s;
-        }
-
-        .action-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.07);
         }
 
         .action-icon {
-            font-size: 30px;
+            font-size: 35px;
             color: #0d6efd;
-            margin-bottom: 10px;
         }
 
-
-        /* EVENT TABLE */
-
-        .event-table img {
-            width: 60px;
-            height: 45px;
-            object-fit: cover;
-            border-radius: 7px;
-        }
-
-        .status {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 13px;
+        .action-card h5 {
             font-weight: bold;
+            margin-top: 15px;
         }
 
-        .status-coming {
-            background: #fff3cd;
-            color: #856404;
+        .action-card p {
+            color: #666;
         }
 
-        .status-active {
-            background: #d1e7dd;
-            color: #0f5132;
+        /* TABLE */
+
+        .table-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.07);
         }
 
-
-        /* MOBILE */
-
-        .mobile-menu {
-            display: none;
-        }
-
-        @media (max-width: 991px) {
-
-            .sidebar {
-                width: 220px;
-            }
-
-            .main-content {
-                margin-left: 220px;
-            }
-
-        }
-
+        /* RESPONSIVE */
 
         @media (max-width: 768px) {
 
             .sidebar {
-                display: none;
+                min-height: auto;
             }
 
             .main-content {
-                margin-left: 0;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .content {
-                padding: 20px;
-            }
-
-            .topbar {
-                padding: 0 15px;
+                padding: 20px 15px;
             }
 
         }
@@ -274,951 +186,898 @@
 
 </head>
 
+
 <body>
 
 
-    <!-- SIDEBAR -->
+    <!-- NAVBAR -->
 
-    <aside class="sidebar">
+    <nav class="navbar navbar-expand-lg">
 
-        <div class="sidebar-logo">
+        <div class="container-fluid">
 
-            <i class="bi bi-calendar-event"></i>
+            <a
+                class="navbar-brand"
+                href="dashboard.html">
 
-            Smart Events
+                <i class="bi bi-speedometer2"></i>
 
-        </div>
+                Smart Events Admin
 
-
-        <a href="dashboard.html"
-            class="active">
-
-            <i class="bi bi-speedometer2"></i>
-
-            Dashboard
-
-        </a>
+            </a>
 
 
-        <a href="events.html">
+            <div class="d-flex align-items-center">
 
-            <i class="bi bi-calendar-event"></i>
+                <span class="admin-name me-3">
 
-            Events
+                    <i class="bi bi-person-circle"></i>
 
-        </a>
+                    Admin
 
-
-        <a href="event-details.html">
-
-            <i class="bi bi-info-circle"></i>
-
-            Event Details
-
-        </a>
+                </span>
 
 
-        <a href="booking.html">
+                <button
+                    class="btn btn-light btn-sm"
+                    onclick="logoutAdmin()">
 
-            <i class="bi bi-ticket-perforated"></i>
+                    <i class="bi bi-box-arrow-right"></i>
 
-            Book Ticket
-
-        </a>
-
-
-        <a href="my-bookings.html">
-
-            <i class="bi bi-list-check"></i>
-
-            My Bookings
-
-        </a>
-
-
-        <a href="profile.html">
-
-            <i class="bi bi-person-circle"></i>
-
-            Profile
-
-        </a>
-
-
-        <a href="contact.html">
-
-            <i class="bi bi-envelope"></i>
-
-            Contact
-
-        </a>
-
-
-        <a href="index.html">
-
-            <i class="bi bi-house"></i>
-
-            View Website
-
-        </a>
-
-
-        <a href="#"
-            onclick="logoutUser()">
-
-            <i class="bi bi-box-arrow-right"></i>
-
-            Logout
-
-        </a>
-
-    </aside>
-
-
-    <!-- MAIN -->
-
-    <main class="main-content">
-
-
-        <!-- TOPBAR -->
-
-        <header class="topbar">
-
-            <div class="mobile-menu">
-
-                <button class="btn btn-primary"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#mobileSidebar">
-
-                    <i class="bi bi-list"></i>
+                    Logout
 
                 </button>
 
             </div>
 
+        </div>
 
-            <h4>
-                Admin Dashboard
-            </h4>
-
-
-            <div class="admin-user">
-
-                <div class="admin-avatar">
-
-                    <i class="bi bi-person"></i>
-
-                </div>
-
-                <div>
-
-                    <strong>
-                        Admin
-                    </strong>
-
-                    <small class="d-block text-muted">
-                        Administrator
-                    </small>
-
-                </div>
-
-            </div>
-
-        </header>
+    </nav>
 
 
-        <!-- CONTENT -->
+    <!-- MAIN LAYOUT -->
 
-        <div class="content">
+    <div class="container-fluid">
 
-
-            <!-- WELCOME -->
-
-            <div class="welcome-box">
-
-                <h2>
-                    Welcome to Smart Events Admin Dashboard 👋
-                </h2>
-
-                <p class="mb-0">
-
-                    Manage events, bookings and users
-                    from one place.
-
-                </p>
-
-            </div>
+        <div class="row">
 
 
-            <!-- STATISTICS -->
+            <!-- SIDEBAR -->
 
-            <div class="row g-4">
+            <div class="col-lg-2 p-0">
+
+                <div class="sidebar">
 
 
-                <div class="col-md-6 col-xl-3">
+                    <div class="sidebar-title">
 
-                    <div class="stat-card">
-
-                        <div class="stat-icon">
-
-                            <i class="bi bi-calendar-event"></i>
-
-                        </div>
-
-                        <div class="stat-number">
-                            3
-                        </div>
-
-                        <div class="stat-title">
-                            Total Events
-                        </div>
+                        Main Menu
 
                     </div>
 
-                </div>
 
+                    <!-- DASHBOARD -->
 
-                <div class="col-md-6 col-xl-3">
+                    <a
+                        href="dashboard.html"
+                        class="active">
 
-                    <div class="stat-card">
+                        <i class="bi bi-speedometer2"></i>
 
-                        <div class="stat-icon">
+                        Dashboard
 
-                            <i class="bi bi-ticket-perforated"></i>
-
-                        </div>
-
-                        <div class="stat-number"
-                            id="totalBookings">
-
-                            0
-
-                        </div>
-
-                        <div class="stat-title">
-                            Total Bookings
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-6 col-xl-3">
-
-                    <div class="stat-card">
-
-                        <div class="stat-icon">
-
-                            <i class="bi bi-people"></i>
-
-                        </div>
-
-                        <div class="stat-number"
-                            id="totalUsers">
-
-                            0
-
-                        </div>
-
-                        <div class="stat-title">
-                            Registered Users
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-6 col-xl-3">
-
-                    <div class="stat-card">
-
-                        <div class="stat-icon">
-
-                            <i class="bi bi-currency-rupee"></i>
-
-                        </div>
-
-                        <div class="stat-number"
-                            id="totalRevenue">
-
-                            ₹0
-
-                        </div>
-
-                        <div class="stat-title">
-                            Total Revenue
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- QUICK ACTIONS -->
-
-            <div class="section-card">
-
-                <h4 class="section-title">
-
-                    Quick Actions
-
-                </h4>
-
-
-                <div class="row g-3">
+                    </a>
 
 
                     <!-- EVENTS -->
 
-                    <div class="col-md-4">
+                    <a href="events.html">
 
-                        <div class="action-card">
+                        <i class="bi bi-calendar-event"></i>
 
-                            <div class="action-icon">
+                        Events
 
-                                <i class="bi bi-calendar-event"></i>
-
-                            </div>
-
-                            <h5>
-                                Manage Events
-                            </h5>
-
-                            <p class="text-muted">
-
-                                View all available events
-                                and event information.
-
-                            </p>
-
-                            <a href="events.html"
-                                class="btn btn-primary">
-
-                                View Events
-
-                            </a>
-
-                        </div>
-
-                    </div>
+                    </a>
 
 
                     <!-- BOOKINGS -->
 
-                    <div class="col-md-4">
+                    <a href="my-bookings.html">
 
-                        <div class="action-card">
+                        <i class="bi bi-ticket-perforated"></i>
 
-                            <div class="action-icon">
+                        Bookings
 
-                                <i class="bi bi-ticket-perforated"></i>
-
-                            </div>
-
-                            <h5>
-                                Manage Bookings
-                            </h5>
-
-                            <p class="text-muted">
-
-                                View all customer bookings
-                                and ticket information.
-
-                            </p>
-
-                            <a href="my-bookings.html"
-                                class="btn btn-primary">
-
-                                View Bookings
-
-                            </a>
-
-                        </div>
-
-                    </div>
+                    </a>
 
 
                     <!-- USERS -->
 
-                    <div class="col-md-4">
+                    <a href="register.html">
 
-                        <div class="action-card">
+                        <i class="bi bi-people"></i>
 
-                            <div class="action-icon">
+                        Users
 
-                                <i class="bi bi-person-circle"></i>
+                    </a>
 
-                            </div>
 
-                            <h5>
-                                User Profile
-                            </h5>
+                    <!-- FEEDBACK -->
 
-                            <p class="text-muted">
+                    <a href="index.html#feedback">
 
-                                View your profile and account
-                                information.
+                        <i class="bi bi-chat-left-text"></i>
+
+                        Feedback
+
+                    </a>
+
+
+                    <div class="sidebar-title mt-4">
+
+                        Website
+
+                    </div>
+
+
+                    <!-- HOME -->
+
+                    <a href="index.html">
+
+                        <i class="bi bi-house"></i>
+
+                        Visit Website
+
+                    </a>
+
+
+                    <!-- CONTACT -->
+
+                    <a href="contact.html">
+
+                        <i class="bi bi-envelope"></i>
+
+                        Contact
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="col-lg-10">
+
+                <main class="main-content">
+
+
+                    <!-- TITLE -->
+
+                    <div
+                        class="d-flex
+                        justify-content-between
+                        align-items-center
+                        mb-4">
+
+
+                        <div>
+
+                            <h1 class="page-title">
+
+                                Admin Dashboard
+
+                            </h1>
+
+                            <p class="text-muted mb-0">
+
+                                Manage your Smart Event
+                                Management System.
 
                             </p>
 
-                            <a href="profile.html"
-                                class="btn btn-primary">
+                        </div>
 
-                                View Profile
+
+                        <!-- IMPORTANT -->
+
+                        <a
+                            href="events.html"
+                            class="btn btn-primary">
+
+                            <i class="bi bi-calendar-event"></i>
+
+                            View All Events
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- STAT CARDS -->
+
+                    <div class="row g-4 mb-4">
+
+
+                        <!-- EVENTS -->
+
+                        <div class="col-md-6 col-xl-3">
+
+                            <div class="stat-card">
+
+                                <div class="stat-icon">
+
+                                    <i class="bi bi-calendar-event"></i>
+
+                                </div>
+
+
+                                <div
+                                    id="totalEvents"
+                                    class="stat-number">
+
+                                    6
+
+                                </div>
+
+
+                                <div class="stat-label">
+
+                                    Total Events
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BOOKINGS -->
+
+                        <div class="col-md-6 col-xl-3">
+
+                            <div class="stat-card">
+
+                                <div class="stat-icon">
+
+                                    <i class="bi bi-ticket-perforated"></i>
+
+                                </div>
+
+
+                                <div
+                                    id="totalBookings"
+                                    class="stat-number">
+
+                                    0
+
+                                </div>
+
+
+                                <div class="stat-label">
+
+                                    Total Bookings
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- USERS -->
+
+                        <div class="col-md-6 col-xl-3">
+
+                            <div class="stat-card">
+
+                                <div class="stat-icon">
+
+                                    <i class="bi bi-people"></i>
+
+                                </div>
+
+
+                                <div
+                                    id="totalUsers"
+                                    class="stat-number">
+
+                                    0
+
+                                </div>
+
+
+                                <div class="stat-label">
+
+                                    Registered Users
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEEDBACK -->
+
+                        <div class="col-md-6 col-xl-3">
+
+                            <div class="stat-card">
+
+                                <div class="stat-icon">
+
+                                    <i class="bi bi-chat-left-text"></i>
+
+                                </div>
+
+
+                                <div
+                                    id="totalFeedback"
+                                    class="stat-number">
+
+                                    0
+
+                                </div>
+
+
+                                <div class="stat-label">
+
+                                    Feedback
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- QUICK ACTIONS -->
+
+                    <h3 class="mb-3">
+
+                        Quick Actions
+
+                    </h3>
+
+
+                    <div class="row g-4 mb-5">
+
+
+                        <!-- EVENTS -->
+
+                        <div class="col-md-6 col-xl-3">
+
+                            <div class="action-card">
+
+
+                                <i
+                                    class="bi bi-calendar-event action-icon">
+                                </i>
+
+
+                                <h5>
+
+                                    Manage Events
+
+                                </h5>
+
+
+                                <p>
+
+                                    View all available events
+                                    and event details.
+
+                                </p>
+
+
+                                <!-- CORRECT LINK -->
+
+                                <a
+                                    href="events.html"
+                                    class="btn btn-primary">
+
+                                    View Events
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BOOKINGS -->
+
+                        <div class="col-md-6 col-xl-3">
+
+                            <div class="action-card">
+
+
+                                <i
+                                    class="bi bi-ticket-perforated action-icon">
+                                </i>
+
+
+                                <h5>
+
+                                    Manage Bookings
+
+                                </h5>
+
+
+                                <p>
+
+                                    Check all user bookings
+                                    and ticket information.
+
+                                </p>
+
+
+                                <a
+                                    href="my-bookings.html"
+                                    class="btn btn-primary">
+
+                                    View Bookings
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- USERS -->
+
+                        <div class="col-md-6 col-xl-3">
+
+                            <div class="action-card">
+
+
+                                <i
+                                    class="bi bi-people action-icon">
+                                </i>
+
+
+                                <h5>
+
+                                    Manage Users
+
+                                </h5>
+
+
+                                <p>
+
+                                    View the registration
+                                    and user information.
+
+                                </p>
+
+
+                                <a
+                                    href="register.html"
+                                    class="btn btn-primary">
+
+                                    View Users
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FEEDBACK -->
+
+                        <div class="col-md-6 col-xl-3">
+
+                            <div class="action-card">
+
+
+                                <i
+                                    class="bi bi-chat-left-text action-icon">
+                                </i>
+
+
+                                <h5>
+
+                                    User Feedback
+
+                                </h5>
+
+
+                                <p>
+
+                                    Check feedback submitted
+                                    by website users.
+
+                                </p>
+
+
+                                <a
+                                    href="index.html#feedback"
+                                    class="btn btn-primary">
+
+                                    View Feedback
+
+                                </a>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- EVENT LIST -->
+
+                    <div class="table-card mb-4">
+
+
+                        <div
+                            class="d-flex
+                            justify-content-between
+                            align-items-center
+                            mb-3">
+
+
+                            <h4 class="mb-0">
+
+                                Upcoming Events
+
+                            </h4>
+
+
+                            <a
+                                href="events.html"
+                                class="btn btn-outline-primary btn-sm">
+
+                                View All
 
                             </a>
+
+                        </div>
+
+
+                        <div class="table-responsive">
+
+                            <table
+                                class="table
+                                table-hover
+                                align-middle">
+
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Event
+                                        </th>
+
+                                        <th>
+                                            Category
+                                        </th>
+
+                                        <th>
+                                            Location
+                                        </th>
+
+                                        <th>
+                                            Price
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Action
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Music Festival
+                                        </td>
+
+                                        <td>
+                                            Entertainment
+                                        </td>
+
+                                        <td>
+                                            Ahmedabad
+                                        </td>
+
+                                        <td>
+                                            ₹499
+                                        </td>
+
+                                        <td>
+
+                                            <span
+                                                class="badge text-bg-warning">
+
+                                                Coming Soon
+
+                                            </span>
+
+                                        </td>
+
+                                        <td>
+
+                                            <a
+                                                href="event-details.html?event=music"
+                                                class="btn btn-sm btn-primary">
+
+                                                View
+
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Technology Conference
+                                        </td>
+
+                                        <td>
+                                            Technology
+                                        </td>
+
+                                        <td>
+                                            Ahmedabad
+                                        </td>
+
+                                        <td>
+                                            ₹799
+                                        </td>
+
+                                        <td>
+
+                                            <span
+                                                class="badge text-bg-warning">
+
+                                                Coming Soon
+
+                                            </span>
+
+                                        </td>
+
+                                        <td>
+
+                                            <a
+                                                href="event-details.html?event=technology"
+                                                class="btn btn-sm btn-primary">
+
+                                                View
+
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Business Summit
+                                        </td>
+
+                                        <td>
+                                            Business
+                                        </td>
+
+                                        <td>
+                                            Ahmedabad
+                                        </td>
+
+                                        <td>
+                                            ₹999
+                                        </td>
+
+                                        <td>
+
+                                            <span
+                                                class="badge text-bg-warning">
+
+                                                Coming Soon
+
+                                            </span>
+
+                                        </td>
+
+                                        <td>
+
+                                            <a
+                                                href="event-details.html?event=business"
+                                                class="btn btn-sm btn-primary">
+
+                                                View
+
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+
+                            </table>
 
                         </div>
 
                     </div>
 
 
-                </div>
+                    <!-- SYSTEM INFORMATION -->
 
-            </div>
-
-
-            <!-- EVENT LIST -->
-
-            <div class="section-card">
-
-                <div class="d-flex justify-content-between
-                    align-items-center mb-3">
-
-                    <h4 class="section-title mb-0">
-
-                        Available Events
-
-                    </h4>
+                    <div class="table-card">
 
 
-                    <a href="events.html"
-                        class="btn btn-outline-primary">
+                        <h4>
 
-                        View All Events
+                            System Information
 
-                    </a>
-
-                </div>
+                        </h4>
 
 
-                <div class="table-responsive">
-
-                    <table class="table align-middle event-table">
-
-                        <thead>
-
-                            <tr>
-
-                                <th>
-                                    Event
-                                </th>
-
-                                <th>
-                                    Category
-                                </th>
-
-                                <th>
-                                    Price
-                                </th>
-
-                                <th>
-                                    Status
-                                </th>
-
-                                <th>
-                                    Action
-                                </th>
-
-                            </tr>
-
-                        </thead>
+                        <div class="row mt-3">
 
 
-                        <tbody>
+                            <div class="col-md-4 mb-3">
+
+                                <strong>
+
+                                    Platform
+
+                                </strong>
+
+                                <br>
+
+                                <span class="text-muted">
+
+                                    Smart Event Management
+
+                                </span>
+
+                            </div>
 
 
-                            <!-- EVENT 1 -->
+                            <div class="col-md-4 mb-3">
 
-                            <tr>
+                                <strong>
 
-                                <td>
-
-                                    <strong>
-                                        Music Festival
-                                    </strong>
-
-                                </td>
-
-                                <td>
-                                    Entertainment
-                                </td>
-
-                                <td>
-                                    ₹499
-                                </td>
-
-                                <td>
-
-                                    <span class="status status-coming">
-
-                                        Coming Soon
-
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <a href="event-details.html"
-                                        class="btn btn-sm btn-primary">
-
-                                        View
-
-                                    </a>
-
-                                </td>
-
-                            </tr>
-
-
-                            <!-- EVENT 2 -->
-
-                            <tr>
-
-                                <td>
-
-                                    <strong>
-                                        Technology Conference
-                                    </strong>
-
-                                </td>
-
-                                <td>
                                     Technology
-                                </td>
 
-                                <td>
-                                    ₹799
-                                </td>
+                                </strong>
 
-                                <td>
+                                <br>
 
-                                    <span class="status status-coming">
+                                <span class="text-muted">
 
-                                        Coming Soon
+                                    HTML, CSS, JavaScript,
+                                    Bootstrap
 
-                                    </span>
+                                </span>
 
-                                </td>
-
-                                <td>
-
-                                    <a href="event-details.html"
-                                        class="btn btn-sm btn-primary">
-
-                                        View
-
-                                    </a>
-
-                                </td>
-
-                            </tr>
+                            </div>
 
 
-                            <!-- EVENT 3 -->
+                            <div class="col-md-4 mb-3">
 
-                            <tr>
+                                <strong>
 
-                                <td>
+                                    Status
 
-                                    <strong>
-                                        Business Summit
-                                    </strong>
+                                </strong>
 
-                                </td>
+                                <br>
 
-                                <td>
-                                    Business
-                                </td>
+                                <span
+                                    class="badge text-bg-success">
 
-                                <td>
-                                    ₹999
-                                </td>
+                                    Active
 
-                                <td>
+                                </span>
 
-                                    <span class="status status-coming">
-
-                                        Coming Soon
-
-                                    </span>
-
-                                </td>
-
-                                <td>
-
-                                    <a href="event-details.html"
-                                        class="btn btn-sm btn-primary">
-
-                                        View
-
-                                    </a>
-
-                                </td>
-
-                            </tr>
+                            </div>
 
 
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            </div>
-
-
-            <!-- RECENT BOOKINGS -->
-
-            <div class="section-card">
-
-                <div class="d-flex justify-content-between
-                    align-items-center mb-3">
-
-                    <h4 class="section-title mb-0">
-
-                        Recent Bookings
-
-                    </h4>
-
-
-                    <a href="my-bookings.html"
-                        class="btn btn-outline-primary">
-
-                        View All
-
-                    </a>
-
-                </div>
-
-
-                <div id="recentBookings">
-
-                    <div class="text-center text-muted py-4">
-
-                        No bookings available yet.
+                        </div>
 
                     </div>
 
-                </div>
+
+                </main>
 
             </div>
-
-
-        </div>
-
-    </main>
-
-
-    <!-- MOBILE SIDEBAR -->
-
-    <div class="offcanvas offcanvas-start"
-        tabindex="-1"
-        id="mobileSidebar">
-
-        <div class="offcanvas-header">
-
-            <h5 class="offcanvas-title">
-
-                <i class="bi bi-calendar-event"></i>
-
-                Smart Events
-
-            </h5>
-
-            <button type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas">
-            </button>
-
-        </div>
-
-
-        <div class="offcanvas-body p-0">
-
-            <a href="dashboard.html"
-                class="d-block p-3 text-decoration-none">
-
-                <i class="bi bi-speedometer2"></i>
-
-                Dashboard
-
-            </a>
-
-
-            <a href="events.html"
-                class="d-block p-3 text-decoration-none">
-
-                <i class="bi bi-calendar-event"></i>
-
-                Events
-
-            </a>
-
-
-            <a href="event-details.html"
-                class="d-block p-3 text-decoration-none">
-
-                <i class="bi bi-info-circle"></i>
-
-                Event Details
-
-            </a>
-
-
-            <a href="booking.html"
-                class="d-block p-3 text-decoration-none">
-
-                <i class="bi bi-ticket-perforated"></i>
-
-                Book Ticket
-
-            </a>
-
-
-            <a href="my-bookings.html"
-                class="d-block p-3 text-decoration-none">
-
-                <i class="bi bi-list-check"></i>
-
-                My Bookings
-
-            </a>
-
-
-            <a href="profile.html"
-                class="d-block p-3 text-decoration-none">
-
-                <i class="bi bi-person-circle"></i>
-
-                Profile
-
-            </a>
-
-
-            <a href="contact.html"
-                class="d-block p-3 text-decoration-none">
-
-                <i class="bi bi-envelope"></i>
-
-                Contact
-
-            </a>
-
-
-            <a href="index.html"
-                class="d-block p-3 text-decoration-none">
-
-                <i class="bi bi-house"></i>
-
-                View Website
-
-            </a>
 
         </div>
 
     </div>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- BOOTSTRAP JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- DASHBOARD JAVASCRIPT -->
 
     <script>
 
-        /* LOAD BOOKING DATA */
+        /* GET BOOKINGS */
 
-        function loadDashboardData() {
+        const bookings =
+            JSON.parse(
+                localStorage.getItem("bookings")
+            ) || [];
 
-            const bookings =
-                JSON.parse(
-                    localStorage.getItem("bookings")
-                ) || [];
 
+        /* GET USERS */
 
-            const users =
-                JSON.parse(
-                    localStorage.getItem("users")
-                ) || [];
+        const users =
+            JSON.parse(
+                localStorage.getItem("users")
+            ) || [];
 
 
-            document.getElementById(
-                "totalBookings"
-            ).textContent =
-                bookings.length;
+        /* GET FEEDBACK */
 
+        const feedbacks =
+            JSON.parse(
+                localStorage.getItem("feedbacks")
+            ) || [];
 
-            document.getElementById(
-                "totalUsers"
-            ).textContent =
-                users.length;
 
+        /* UPDATE NUMBERS */
 
-            const revenue =
-                bookings.reduce(
-                    function(total, booking) {
+        document.getElementById(
+            "totalBookings"
+        ).textContent =
+            bookings.length;
 
-                        return total +
-                            Number(booking.total || 0);
 
-                    },
-                    0
-                );
+        document.getElementById(
+            "totalUsers"
+        ).textContent =
+            users.length;
 
 
-            document.getElementById(
-                "totalRevenue"
-            ).textContent =
-                "₹" + revenue;
+        document.getElementById(
+            "totalFeedback"
+        ).textContent =
+            feedbacks.length;
 
 
-            loadRecentBookings(bookings);
+        /* ADMIN LOGOUT */
 
-        }
-
-
-        /* RECENT BOOKINGS */
-
-        function loadRecentBookings(bookings) {
-
-            const container =
-                document.getElementById(
-                    "recentBookings"
-                );
-
-
-            if (bookings.length === 0) {
-
-                container.innerHTML = `
-
-                    <div class="text-center text-muted py-4">
-
-                        <i class="bi bi-ticket-perforated fs-1"></i>
-
-                        <p class="mt-2 mb-0">
-
-                            No bookings available yet.
-
-                        </p>
-
-                    </div>
-
-                `;
-
-                return;
-
-            }
-
-
-            const recent =
-                bookings.slice(-5).reverse();
-
-
-            let html = `
-
-                <div class="table-responsive">
-
-                    <table class="table align-middle">
-
-                        <thead>
-
-                            <tr>
-
-                                <th>Booking ID</th>
-
-                                <th>Customer</th>
-
-                                <th>Event</th>
-
-                                <th>Tickets</th>
-
-                                <th>Total</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-
-            `;
-
-
-            recent.forEach(function(booking) {
-
-                html += `
-
-                    <tr>
-
-                        <td>
-
-                            ${booking.id || "N/A"}
-
-                        </td>
-
-                        <td>
-
-                            ${booking.name || "N/A"}
-
-                        </td>
-
-                        <td>
-
-                            ${booking.eventName || "Event"}
-
-                        </td>
-
-                        <td>
-
-                            ${booking.quantity || 1}
-
-                        </td>
-
-                        <td>
-
-                            ₹${booking.total || 0}
-
-                        </td>
-
-                    </tr>
-
-                `;
-
-            });
-
-
-            html += `
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            `;
-
-
-            container.innerHTML = html;
-
-        }
-
-
-        /* LOGOUT */
-
-        function logoutUser() {
+        function logoutAdmin() {
 
             const confirmLogout =
                 confirm(
@@ -1226,30 +1085,16 @@
                 );
 
 
-            if (!confirmLogout) {
-                return;
+            if (confirmLogout) {
+
+                window.location.href =
+                    "index.html";
+
             }
-
-
-            localStorage.removeItem(
-                "currentUser"
-            );
-
-
-            window.location.href =
-                "login.html";
 
         }
 
-
-        /* LOAD */
-
-        loadDashboardData();
-
     </script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
