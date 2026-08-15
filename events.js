@@ -1,517 +1,193 @@
-// ===============================
-// SMART EVENTS - EVENT DATA
-// ===============================
+/* =========================================================
+   event.js
+   Smart Event Management System
+   Event details, online images, date, price
+========================================================= */
 
-const defaultEvents = [
+const eventData = [
 
     {
-        id: 1,
-        title: "Tech Innovation Summit 2026",
+        id: "music",
+        name: "Music Festival",
+        category: "Entertainment",
+        date: "Coming Soon",
+        time: "Coming Soon",
+        location: "Ahmedabad",
+        price: 499,
+        status: "Coming Soon",
+        image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
+        description: "Experience live music, amazing performances and unforgettable entertainment."
+    },
+
+    {
+        id: "technology",
+        name: "Technology Conference",
         category: "Technology",
-        date: "15 September 2026",
-        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
-        description: "Join top industry leaders for the biggest technology conference.",
-        ticketsAvailable: 50,
-        price: 499
+        date: "Coming Soon",
+        time: "Coming Soon",
+        location: "Ahmedabad",
+        price: 799,
+        status: "Coming Soon",
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85",
+        description: "Explore artificial intelligence, innovation, software and future technology."
     },
 
     {
-        id: 2,
-        title: "Music & Cultural Festival",
-        category: "Music",
-        date: "20 September 2026",
-        image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80",
-        description: "Experience live music performances and cultural exhibitions.",
-        ticketsAvailable: 30,
-        price: 299
-    },
-
-    {
-        id: 3,
-        title: "Business Networking Meet",
+        id: "business",
+        name: "Business Summit",
         category: "Business",
-        date: "25 September 2026",
-        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80",
-        description: "Connect with entrepreneurs and expand your business network.",
-        ticketsAvailable: 20,
-        price: 199
+        date: "Coming Soon",
+        time: "Coming Soon",
+        location: "Ahmedabad",
+        price: 999,
+        status: "Coming Soon",
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+        description: "Connect with entrepreneurs, professionals and industry leaders."
     },
 
     {
-        id: 4,
-        title: "Global Leadership Conference",
-        category: "Conference",
-        date: "30 September 2026",
-        image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80",
-        description: "Insights and discussions from global leaders.",
-        ticketsAvailable: 40,
-        price: 599
+        id: "startup",
+        name: "Startup Meetup",
+        category: "Business",
+        date: "Coming Soon",
+        time: "Coming Soon",
+        location: "Rajkot",
+        price: 599,
+        status: "Coming Soon",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+        description: "Meet startup founders, entrepreneurs and investors and share new ideas."
     },
 
     {
-        id: 5,
-        title: "Annual Sports Tournament",
-        category: "Sports",
-        date: "05 October 2026",
-        image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80",
-        description: "Compete and watch thrilling sports matches.",
-        ticketsAvailable: 15,
-        price: 150
-    },
-
-    {
-        id: 6,
-        title: "College Fest 2026",
-        category: "College",
-        date: "10 October 2026",
-        image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
-        description: "Enjoy competitions, performances and exciting college activities.",
-        ticketsAvailable: 60,
-        price: 100
-    },
-
-    {
-        id: 7,
-        title: "Startup Meetup 2026",
-        category: "Startup",
-        date: "15 October 2026",
-        image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80",
-        description: "Meet startup founders, investors and young entrepreneurs.",
-        ticketsAvailable: 35,
-        price: 250
-    },
-
-    {
-        id: 8,
-        title: "Future Technology Expo",
+        id: "coding",
+        name: "Coding Workshop",
         category: "Technology",
-        date: "20 October 2026",
-        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
-        description: "Discover innovative technologies and future digital solutions.",
-        ticketsAvailable: 45,
-        price: 350
+        date: "Coming Soon",
+        time: "Coming Soon",
+        location: "Rajkot",
+        price: 399,
+        status: "Coming Soon",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+        description: "Improve your programming skills with practical coding sessions."
     },
 
     {
-        id: 9,
-        title: "Live Concert Night",
-        category: "Music",
-        date: "25 October 2026",
-        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
-        description: "Enjoy an unforgettable night of live music and entertainment.",
-        ticketsAvailable: 100,
-        price: 399
-    },
-
-    {
-        id: 10,
-        title: "Mega Sports Championship",
-        category: "Sports",
-        date: "30 October 2026",
-        image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80",
-        description: "Watch exciting matches and support your favorite teams.",
-        ticketsAvailable: 80,
-        price: 200
+        id: "food",
+        name: "Food Festival",
+        category: "Food",
+        date: "Coming Soon",
+        time: "Coming Soon",
+        location: "Ahmedabad",
+        price: 299,
+        status: "Coming Soon",
+        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=85",
+        description: "Taste delicious food from different cuisines and enjoy a great experience."
     }
 
 ];
 
 
-// ===============================
-// LOCAL STORAGE SETUP
-// ===============================
+/* ---------------------------------------------------------
+   Get event from URL
+--------------------------------------------------------- */
 
-if (!localStorage.getItem("events")) {
+function getSelectedEvent() {
+
+    const params = new URLSearchParams(window.location.search);
+
+    const eventId = params.get("event");
+
+    if (!eventId) {
+        return eventData[0];
+    }
+
+    return eventData.find(
+        event => event.id === eventId
+    ) || eventData[0];
+}
+
+
+/* ---------------------------------------------------------
+   Display event details
+--------------------------------------------------------- */
+
+function displayEventDetails() {
+
+    const event = getSelectedEvent();
+
+    const image = document.getElementById("eventImage");
+    const name = document.getElementById("eventName");
+    const category = document.getElementById("eventCategory");
+    const date = document.getElementById("eventDate");
+    const time = document.getElementById("eventTime");
+    const location = document.getElementById("eventLocation");
+    const price = document.getElementById("eventPrice");
+    const description = document.getElementById("eventDescription");
+    const status = document.getElementById("eventStatus");
+
+    if (image) {
+        image.src = event.image;
+        image.alt = event.name;
+    }
+
+    if (name) {
+        name.textContent = event.name;
+    }
+
+    if (category) {
+        category.textContent = event.category;
+    }
+
+    if (date) {
+        date.textContent = event.date;
+    }
+
+    if (time) {
+        time.textContent = event.time;
+    }
+
+    if (location) {
+        location.textContent = event.location;
+    }
+
+    if (price) {
+        price.textContent = "₹" + event.price;
+    }
+
+    if (description) {
+        description.textContent = event.description;
+    }
+
+    if (status) {
+        status.textContent = event.status;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   Book event
+--------------------------------------------------------- */
+
+function bookSelectedEvent() {
+
+    const event = getSelectedEvent();
 
     localStorage.setItem(
-        "events",
-        JSON.stringify(defaultEvents)
+        "selectedEvent",
+        JSON.stringify(event)
     );
-}
 
-
-// ===============================
-// LOAD EVENTS
-// ===============================
-
-function loadEvents(eventList = null) {
-
-    const events =
-        eventList ||
-        JSON.parse(localStorage.getItem("events")) ||
-        defaultEvents;
-
-    const container =
-        document.getElementById("eventsContainer");
-
-    if (!container) {
-        return;
-    }
-
-
-    // No events message
-
-    if (events.length === 0) {
-
-        container.innerHTML = `
-            <div class="col-12 text-center py-5">
-
-                <i class="bi bi-calendar-x"
-                   style="font-size: 50px;">
-                </i>
-
-                <h4 class="mt-3">
-                    No Events Found
-                </h4>
-
-                <p class="text-muted">
-                    Try another search or category.
-                </p>
-
-            </div>
-        `;
-
-        return;
-    }
-
-
-    // Event Cards
-
-    container.innerHTML = events.map(event => `
-
-        <div class="col-md-6 col-lg-4 mb-4">
-
-            <div class="card h-100 shadow-sm border-0 overflow-hidden">
-
-                <!-- EVENT IMAGE -->
-
-                <img
-                    src="${event.image}"
-                    alt="${event.title}"
-                    class="card-img-top"
-                    style="
-                        height: 220px;
-                        object-fit: cover;
-                    "
-                    onerror="this.src='event-images-reference.png.png';"
-                >
-
-
-                <div class="card-body d-flex flex-column">
-
-                    <!-- CATEGORY -->
-
-                    <span
-                        class="badge bg-primary align-self-start mb-2">
-
-                        ${event.category}
-
-                    </span>
-
-
-                    <!-- TITLE -->
-
-                    <h5 class="card-title fw-bold">
-
-                        ${event.title}
-
-                    </h5>
-
-
-                    <!-- DESCRIPTION -->
-
-                    <p class="card-text text-muted">
-
-                        ${event.description}
-
-                    </p>
-
-
-                    <!-- DATE -->
-
-                    <p class="mb-2">
-
-                        <i class="bi bi-calendar3 text-primary"></i>
-
-                        <strong>
-                            Date:
-                        </strong>
-
-                        ${event.date}
-
-                    </p>
-
-
-                    <!-- TICKETS -->
-
-                    <p class="mb-2">
-
-                        <i class="bi bi-ticket-perforated text-primary"></i>
-
-                        <strong>
-                            Tickets:
-                        </strong>
-
-                        ${event.ticketsAvailable}
-
-                    </p>
-
-
-                    <!-- PRICE -->
-
-                    <p class="mb-3">
-
-                        <i class="bi bi-currency-rupee text-primary"></i>
-
-                        <strong>
-                            Price:
-                        </strong>
-
-                        ₹${event.price}
-
-                    </p>
-
-
-                    <!-- BUTTONS -->
-
-                    <div class="mt-auto d-flex gap-2">
-
-                        <a
-                            href="event-details.html?id=${event.id}"
-                            class="btn btn-outline-primary flex-fill">
-
-                            <i class="bi bi-eye"></i>
-
-                            Details
-
-                        </a>
-
-
-                        <button
-                            onclick="bookTicket(${event.id})"
-                            class="btn btn-primary flex-fill"
-                            ${event.ticketsAvailable === 0 ? "disabled" : ""}>
-
-                            ${
-                                event.ticketsAvailable === 0
-                                ? "Sold Out"
-                                : "Book Ticket"
-                            }
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `).join("");
-}
-
-
-// ===============================
-// SEARCH EVENTS
-// ===============================
-
-function searchEvents() {
-
-    const searchInput =
-        document.getElementById("eventSearch");
-
-    const categoryFilter =
-        document.getElementById("categoryFilter");
-
-
-    const searchText =
-        searchInput
-        ? searchInput.value.toLowerCase().trim()
-        : "";
-
-
-    const selectedCategory =
-        categoryFilter
-        ? categoryFilter.value
-        : "";
-
-
-    const events =
-        JSON.parse(localStorage.getItem("events")) ||
-        defaultEvents;
-
-
-    const filteredEvents = events.filter(event => {
-
-        const matchesSearch =
-
-            event.title.toLowerCase().includes(searchText) ||
-
-            event.category.toLowerCase().includes(searchText) ||
-
-            event.date.toLowerCase().includes(searchText) ||
-
-            event.description.toLowerCase().includes(searchText);
-
-
-        const matchesCategory =
-
-            selectedCategory === "" ||
-
-            event.category === selectedCategory;
-
-
-        return matchesSearch && matchesCategory;
-
-    });
-
-
-    loadEvents(filteredEvents);
+    window.location.href = "booking.html";
 
 }
 
 
-// ===============================
-// BOOK TICKET
-// ===============================
-
-function bookTicket(eventId) {
-
-    let events =
-        JSON.parse(localStorage.getItem("events")) ||
-        defaultEvents;
-
-
-    let bookings =
-        JSON.parse(localStorage.getItem("myBookings")) ||
-        [];
-
-
-    const event =
-        events.find(e => e.id === eventId);
-
-
-    if (!event) {
-
-        alert("Event not found!");
-
-        return;
-    }
-
-
-    if (event.ticketsAvailable <= 0) {
-
-        alert(
-            "Sorry, tickets for this event are sold out!"
-        );
-
-        return;
-    }
-
-
-    // Reduce ticket count
-
-    event.ticketsAvailable -= 1;
-
-
-    // Create booking
-
-    const newBooking = {
-
-        bookingId:
-            "TKT-" +
-            Math.floor(
-                100000 +
-                Math.random() * 900000
-            ),
-
-        eventId: event.id,
-
-        eventName: event.title,
-
-        date: event.date,
-
-        bookingDate:
-            new Date().toLocaleDateString(),
-
-        price: event.price,
-
-        image: event.image
-
-    };
-
-
-    bookings.push(newBooking);
-
-
-    // Save data
-
-    localStorage.setItem(
-        "events",
-        JSON.stringify(events)
-    );
-
-
-    localStorage.setItem(
-        "myBookings",
-        JSON.stringify(bookings)
-    );
-
-
-    // Success message
-
-    alert(
-        `🎉 Ticket Booked Successfully!\n\n` +
-        `Event: ${event.title}\n` +
-        `Booking ID: ${newBooking.bookingId}`
-    );
-
-
-    // Reload events
-
-    searchEvents();
-
-}
-
-
-// ===============================
-// SEARCH EVENT LISTENER
-// ===============================
+/* ---------------------------------------------------------
+   Load on page
+--------------------------------------------------------- */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
-
-        loadEvents();
-
-
-        const searchInput =
-            document.getElementById("eventSearch");
-
-
-        const categoryFilter =
-            document.getElementById("categoryFilter");
-
-
-        if (searchInput) {
-
-            searchInput.addEventListener(
-                "input",
-                searchEvents
-            );
-
-        }
-
-
-        if (categoryFilter) {
-
-            categoryFilter.addEventListener(
-                "change",
-                searchEvents
-            );
-
-        }
-
-    }
+    displayEventDetails
 );
