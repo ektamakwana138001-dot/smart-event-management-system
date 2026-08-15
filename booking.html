@@ -22,21 +22,10 @@
 
     <style>
 
-        /* =========================================
-           BOOKING PAGE
-        ========================================= */
-
         .booking-header {
             padding: 70px 0;
-
             color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #07182e,
-                    #0d6efd
-                );
+            background: linear-gradient(135deg, #07182e, #0d6efd);
         }
 
         .booking-header h1 {
@@ -46,26 +35,20 @@
 
         .booking-section {
             padding: 70px 0;
-
             background: #f8f9fa;
         }
 
         .booking-form-card,
         .booking-summary-card {
             background: white;
-
             padding: 30px;
-
             border-radius: 18px;
-
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         }
 
         .booking-form-card h3,
         .booking-summary-card h3 {
             font-weight: 800;
-
             margin-bottom: 25px;
         }
 
@@ -78,31 +61,40 @@
             min-height: 48px;
         }
 
+        .required {
+            color: #dc3545;
+        }
+
+        .error-message {
+            display: none;
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .success-box {
+            display: none;
+            padding: 18px;
+            margin-bottom: 20px;
+            background: #d1e7dd;
+            color: #0f5132;
+            border-radius: 12px;
+        }
+
         .summary-image {
             width: 100%;
-            height: 210px;
-
+            height: 220px;
             object-fit: cover;
-
             border-radius: 12px;
-
             margin-bottom: 20px;
         }
 
         .summary-row {
             display: flex;
-
             justify-content: space-between;
-
             gap: 15px;
-
-            padding: 12px 0;
-
+            padding: 13px 0;
             border-bottom: 1px solid #eeeeee;
-        }
-
-        .summary-row:last-child {
-            border-bottom: none;
         }
 
         .summary-row span {
@@ -114,18 +106,13 @@
         }
 
         .total-box {
-            padding: 18px;
-
             margin-top: 20px;
-
+            padding: 20px;
             background: #eaf2ff;
-
             border-radius: 12px;
 
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
         }
 
@@ -135,36 +122,15 @@
 
         .total-box strong {
             color: #0d6efd;
-
-            font-size: 28px;
+            font-size: 30px;
         }
 
-        .required {
-            color: #dc3545;
-        }
-
-        .success-box {
-            display: none;
-
-            padding: 20px;
-
-            margin-bottom: 20px;
-
-            background: #d1e7dd;
-
-            color: #0f5132;
-
-            border-radius: 12px;
-        }
-
-        .error-message {
-            display: none;
-
-            color: #dc3545;
-
-            font-size: 13px;
-
-            margin-top: 5px;
+        .price-note {
+            padding: 12px;
+            background: #fff3cd;
+            color: #664d03;
+            border-radius: 10px;
+            font-size: 14px;
         }
 
         @media (max-width: 767px) {
@@ -198,8 +164,7 @@
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold"
-           href="index.html">
+        <a class="navbar-brand fw-bold" href="index.html">
 
             <i class="bi bi-calendar-event"></i>
 
@@ -219,100 +184,57 @@
         </button>
 
 
-        <div
-            class="collapse navbar-collapse"
-            id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="index.html">
-
+                    <a class="nav-link" href="index.html">
                         Home
-
                     </a>
-
                 </li>
 
                 <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="events.html">
-
+                    <a class="nav-link" href="events.html">
                         Events
-
                     </a>
-
                 </li>
 
                 <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="event-details.html">
-
+                    <a class="nav-link" href="event-details.html">
                         Event Details
-
                     </a>
-
                 </li>
 
                 <li class="nav-item">
-
-                    <a class="nav-link active"
-                       href="booking.html">
-
+                    <a class="nav-link active" href="booking.html">
                         Book Ticket
-
                     </a>
-
                 </li>
 
                 <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="my-bookings.html">
-
+                    <a class="nav-link" href="my-bookings.html">
                         My Bookings
-
                     </a>
-
                 </li>
 
                 <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="dashboard.html">
-
+                    <a class="nav-link" href="dashboard.html">
                         <i class="bi bi-person-circle"></i>
-
                         Profile
-
                     </a>
-
                 </li>
 
                 <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="contact.html">
-
+                    <a class="nav-link" href="contact.html">
                         Contact
-
                     </a>
-
                 </li>
 
                 <li class="nav-item">
-
-                    <a class="nav-link"
-                       href="login.html">
-
+                    <a class="nav-link" href="login.html">
                         Login
-
                     </a>
-
                 </li>
 
             </ul>
@@ -332,7 +254,7 @@
 
     <div class="container text-center">
 
-        <span class="header-badge">
+        <span class="badge bg-warning text-dark mb-3 p-2">
 
             <i class="bi bi-ticket-perforated"></i>
 
@@ -381,15 +303,11 @@
                     </h3>
 
 
-                    <!-- SUCCESS -->
-
-                    <div
-                        id="successBox"
-                        class="success-box">
+                    <div id="successBox" class="success-box">
 
                         <i class="bi bi-check-circle-fill"></i>
 
-                        Your booking has been confirmed successfully!
+                        Booking confirmed successfully!
 
                     </div>
 
@@ -397,13 +315,11 @@
                     <form id="bookingForm" novalidate>
 
 
-                        <!-- NAME -->
+                        <!-- FULL NAME -->
 
                         <div class="mb-3">
 
-                            <label
-                                for="fullName"
-                                class="form-label">
+                            <label for="fullName" class="form-label">
 
                                 Full Name
                                 <span class="required">*</span>
@@ -416,9 +332,7 @@
                                 class="form-control"
                                 placeholder="Enter your full name">
 
-                            <div
-                                id="nameError"
-                                class="error-message">
+                            <div id="nameError" class="error-message">
 
                                 Please enter your full name.
 
@@ -431,9 +345,7 @@
 
                         <div class="mb-3">
 
-                            <label
-                                for="email"
-                                class="form-label">
+                            <label for="email" class="form-label">
 
                                 Email Address
                                 <span class="required">*</span>
@@ -446,9 +358,7 @@
                                 class="form-control"
                                 placeholder="Enter your email">
 
-                            <div
-                                id="emailError"
-                                class="error-message">
+                            <div id="emailError" class="error-message">
 
                                 Please enter a valid email address.
 
@@ -461,9 +371,7 @@
 
                         <div class="mb-3">
 
-                            <label
-                                for="phone"
-                                class="form-label">
+                            <label for="phone" class="form-label">
 
                                 Phone Number
                                 <span class="required">*</span>
@@ -474,12 +382,10 @@
                                 type="tel"
                                 id="phone"
                                 class="form-control"
-                                placeholder="Enter 10 digit phone number"
-                                maxlength="10">
+                                maxlength="10"
+                                placeholder="Enter 10 digit phone number">
 
-                            <div
-                                id="phoneError"
-                                class="error-message">
+                            <div id="phoneError" class="error-message">
 
                                 Please enter a valid 10 digit phone number.
 
@@ -492,9 +398,7 @@
 
                         <div class="mb-3">
 
-                            <label
-                                for="eventName"
-                                class="form-label">
+                            <label for="eventName" class="form-label">
 
                                 Select Event
                                 <span class="required">*</span>
@@ -506,38 +410,36 @@
                                 class="form-select">
 
                                 <option value="">
-                                    Select an event
+                                    -- Select Event --
                                 </option>
 
                                 <option value="Music Festival">
-                                    Music Festival
+                                    Music Festival - ₹499
                                 </option>
 
                                 <option value="Technology Conference">
-                                    Technology Conference
+                                    Technology Conference - ₹799
                                 </option>
 
                                 <option value="Business Seminar">
-                                    Business Seminar
+                                    Business Seminar - ₹599
                                 </option>
 
                                 <option value="Sports Championship">
-                                    Sports Championship
+                                    Sports Championship - ₹399
                                 </option>
 
                                 <option value="Education Workshop">
-                                    Education Workshop
+                                    Education Workshop - ₹299
                                 </option>
 
                                 <option value="Live Concert">
-                                    Live Concert
+                                    Live Concert - ₹699
                                 </option>
 
                             </select>
 
-                            <div
-                                id="eventError"
-                                class="error-message">
+                            <div id="eventError" class="error-message">
 
                                 Please select an event.
 
@@ -546,13 +448,11 @@
                         </div>
 
 
-                        <!-- TICKETS -->
+                        <!-- TICKET QUANTITY -->
 
                         <div class="mb-3">
 
-                            <label
-                                for="ticketCount"
-                                class="form-label">
+                            <label for="ticketCount" class="form-label">
 
                                 Number of Tickets
                                 <span class="required">*</span>
@@ -567,9 +467,7 @@
                                 min="1"
                                 max="10">
 
-                            <div
-                                id="ticketError"
-                                class="error-message">
+                            <div id="ticketError" class="error-message">
 
                                 Please select between 1 and 10 tickets.
 
@@ -580,11 +478,9 @@
 
                         <!-- PAYMENT -->
 
-                        <div class="mb-4">
+                        <div class="mb-3">
 
-                            <label
-                                for="paymentMethod"
-                                class="form-label">
+                            <label for="paymentMethod" class="form-label">
 
                                 Payment Method
                                 <span class="required">*</span>
@@ -596,7 +492,7 @@
                                 class="form-select">
 
                                 <option value="">
-                                    Select payment method
+                                    -- Select Payment Method --
                                 </option>
 
                                 <option value="UPI">
@@ -613,9 +509,7 @@
 
                             </select>
 
-                            <div
-                                id="paymentError"
-                                class="error-message">
+                            <div id="paymentError" class="error-message">
 
                                 Please select a payment method.
 
@@ -643,9 +537,7 @@
 
                             </label>
 
-                            <div
-                                id="termsError"
-                                class="error-message">
+                            <div id="termsError" class="error-message">
 
                                 Please accept the terms and conditions.
 
@@ -701,7 +593,7 @@
                         id="summaryEvent"
                         class="fw-bold">
 
-                        Music Festival
+                        Select an Event
 
                     </h4>
 
@@ -713,7 +605,7 @@
                         </span>
 
                         <strong id="summaryDate">
-                            20 August 2026
+                            -
                         </strong>
 
                     </div>
@@ -726,7 +618,7 @@
                         </span>
 
                         <strong id="summaryTime">
-                            6:00 PM - 10:00 PM
+                            -
                         </strong>
 
                     </div>
@@ -739,7 +631,7 @@
                         </span>
 
                         <strong id="summaryLocation">
-                            Rajkot, Gujarat
+                            -
                         </strong>
 
                     </div>
@@ -748,11 +640,11 @@
                     <div class="summary-row">
 
                         <span>
-                            Ticket Price
+                            Price / Ticket
                         </span>
 
                         <strong id="summaryPrice">
-                            ₹499
+                            ₹0
                         </strong>
 
                     </div>
@@ -761,11 +653,37 @@
                     <div class="summary-row">
 
                         <span>
-                            Tickets
+                            Number of Tickets
                         </span>
 
                         <strong id="summaryTickets">
                             1
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong id="summarySubtotal">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Booking Fee
+                        </span>
+
+                        <strong id="bookingFee">
+                            ₹0
                         </strong>
 
                     </div>
@@ -778,8 +696,19 @@
                         </span>
 
                         <strong id="totalAmount">
-                            ₹499
+                            ₹0
                         </strong>
+
+                    </div>
+
+
+                    <div class="price-note mt-4">
+
+                        <i class="bi bi-info-circle"></i>
+
+                        Ticket price is calculated automatically
+                        according to the selected event and number
+                        of tickets.
 
                     </div>
 
@@ -790,7 +719,7 @@
 
                             <i class="bi bi-shield-check"></i>
 
-                            Your booking information is securely stored.
+                            Secure booking system
 
                         </small>
 
