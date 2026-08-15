@@ -2,32 +2,30 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>All Events - Smart Event Management</title>
 
-    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
-    <!-- Bootstrap Icons -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         rel="stylesheet">
 
-
     <style>
+
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
             background: #f5f7fb;
             font-family: Arial, sans-serif;
         }
-
 
         /* NAVBAR */
 
@@ -48,15 +46,13 @@
             margin-left: 8px;
         }
 
-
         /* HEADER */
 
         .page-header {
-
             background:
                 linear-gradient(
-                    rgba(0, 0, 0, 0.55),
-                    rgba(0, 0, 0, 0.55)
+                    rgba(0, 0, 0, 0.60),
+                    rgba(0, 0, 0, 0.60)
                 ),
                 url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1800&q=85");
 
@@ -64,87 +60,56 @@
             background-position: center;
 
             color: white;
-
             text-align: center;
 
             padding: 90px 20px;
         }
 
-
         .page-header h1 {
-
             font-size: 50px;
-
             font-weight: bold;
-
         }
-
 
         .page-header p {
-
             font-size: 18px;
-
         }
-
 
         /* EVENTS */
 
         .events-section {
-
             padding: 60px 0;
-
         }
 
-
         .event-card {
-
             background: white;
-
             border-radius: 15px;
-
             overflow: hidden;
-
             height: 100%;
 
             box-shadow:
-                0 5px 20px rgba(0,0,0,.08);
+                0 5px 20px rgba(0, 0, 0, 0.08);
 
-            transition: .3s;
-
+            transition: 0.3s;
         }
-
 
         .event-card:hover {
-
             transform: translateY(-6px);
-
         }
-
 
         .event-image {
-
             width: 100%;
-
             height: 230px;
-
             object-fit: cover;
-
         }
-
 
         .event-body {
-
             padding: 22px;
-
         }
 
-
         .category {
-
             display: inline-block;
 
             background: #e7f1ff;
-
             color: #0d6efd;
 
             padding: 6px 12px;
@@ -154,16 +119,12 @@
             font-size: 12px;
 
             margin-right: 5px;
-
         }
 
-
         .coming {
-
             display: inline-block;
 
             background: #fff3cd;
-
             color: #664d03;
 
             padding: 6px 12px;
@@ -171,43 +132,29 @@
             border-radius: 20px;
 
             font-size: 12px;
-
         }
 
-
         .event-title {
-
             font-size: 22px;
-
             font-weight: bold;
 
             margin-top: 18px;
-
         }
 
-
         .event-info {
-
             color: #666;
 
             margin-top: 9px;
 
             font-size: 14px;
-
         }
-
 
         .event-info i {
-
             color: #0d6efd;
-
             margin-right: 5px;
-
         }
 
-
         .event-price {
-
             color: #198754;
 
             font-size: 23px;
@@ -215,16 +162,12 @@
             font-weight: bold;
 
             margin-top: 15px;
-
         }
-
 
         /* FOOTER */
 
         footer {
-
             background: #212529;
-
             color: white;
 
             text-align: center;
@@ -232,16 +175,12 @@
             padding: 35px 0;
 
             margin-top: 40px;
-
         }
-
 
         @media(max-width:768px) {
 
             .page-header h1 {
-
                 font-size: 38px;
-
             }
 
         }
@@ -254,14 +193,11 @@
 <body>
 
 
-<!-- ==================================================
-                         NAVBAR
-================================================== -->
+<!-- ================= NAVBAR ================= -->
 
 <nav class="navbar navbar-expand-lg sticky-top">
 
     <div class="container">
-
 
         <a
             class="navbar-brand"
@@ -289,9 +225,7 @@
             class="collapse navbar-collapse"
             id="navbarMenu">
 
-
             <ul class="navbar-nav ms-auto">
-
 
                 <li class="nav-item">
 
@@ -309,7 +243,7 @@
                 <li class="nav-item">
 
                     <a
-                        class="nav-link"
+                        class="nav-link active"
                         href="./events.html">
 
                         Events
@@ -370,9 +304,7 @@
 
                 </li>
 
-
             </ul>
-
 
         </div>
 
@@ -382,9 +314,7 @@
 
 
 
-<!-- ==================================================
-                       PAGE HEADER
-================================================== -->
+<!-- ================= HEADER ================= -->
 
 <section class="page-header">
 
@@ -395,7 +325,6 @@
             All Events
 
         </h1>
-
 
         <p>
 
@@ -409,28 +338,21 @@
 
 
 
-<!-- ==================================================
-                         EVENTS
-================================================== -->
+<!-- ================= EVENTS ================= -->
 
 <section class="events-section">
 
-
     <div class="container">
-
 
         <div class="row g-4">
 
 
 
-            <!-- ==================================================
-                              EVENT 1
-            ================================================== -->
+            <!-- ================= EVENT 1 ================= -->
 
             <div class="col-md-6 col-lg-4">
 
                 <div class="event-card">
-
 
                     <img
                         src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85"
@@ -440,18 +362,12 @@
 
                     <div class="event-body">
 
-
                         <span class="category">
-
                             Entertainment
-
                         </span>
 
-
                         <span class="coming">
-
                             Coming Soon
-
                         </span>
 
 
@@ -466,7 +382,8 @@
 
                             <i class="bi bi-calendar3"></i>
 
-                            Date: 20 September 2026
+                            <strong>Date:</strong>
+                            20 September 2026
 
                         </div>
 
@@ -475,7 +392,8 @@
 
                             <i class="bi bi-clock"></i>
 
-                            Time: 6:00 PM - 10:00 PM
+                            <strong>Time:</strong>
+                            6:00 PM - 10:00 PM
 
                         </div>
 
@@ -484,6 +402,7 @@
 
                             <i class="bi bi-geo-alt"></i>
 
+                            <strong>Location:</strong>
                             Ahmedabad
 
                         </div>
@@ -506,7 +425,6 @@
 
                         </a>
 
-
                     </div>
 
                 </div>
@@ -515,14 +433,11 @@
 
 
 
-            <!-- ==================================================
-                              EVENT 2
-            ================================================== -->
+            <!-- ================= EVENT 2 ================= -->
 
             <div class="col-md-6 col-lg-4">
 
                 <div class="event-card">
-
 
                     <img
                         src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85"
@@ -532,18 +447,12 @@
 
                     <div class="event-body">
 
-
                         <span class="category">
-
                             Technology
-
                         </span>
 
-
                         <span class="coming">
-
                             Coming Soon
-
                         </span>
 
 
@@ -558,7 +467,8 @@
 
                             <i class="bi bi-calendar3"></i>
 
-                            Date: 5 October 2026
+                            <strong>Date:</strong>
+                            5 October 2026
 
                         </div>
 
@@ -567,7 +477,8 @@
 
                             <i class="bi bi-clock"></i>
 
-                            Time: 10:00 AM - 5:00 PM
+                            <strong>Time:</strong>
+                            10:00 AM - 5:00 PM
 
                         </div>
 
@@ -576,6 +487,7 @@
 
                             <i class="bi bi-geo-alt"></i>
 
+                            <strong>Location:</strong>
                             Ahmedabad
 
                         </div>
@@ -598,7 +510,6 @@
 
                         </a>
 
-
                     </div>
 
                 </div>
@@ -607,14 +518,11 @@
 
 
 
-            <!-- ==================================================
-                              EVENT 3
-            ================================================== -->
+            <!-- ================= EVENT 3 ================= -->
 
             <div class="col-md-6 col-lg-4">
 
                 <div class="event-card">
-
 
                     <img
                         src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
@@ -624,18 +532,12 @@
 
                     <div class="event-body">
 
-
                         <span class="category">
-
                             Business
-
                         </span>
 
-
                         <span class="coming">
-
                             Coming Soon
-
                         </span>
 
 
@@ -650,7 +552,8 @@
 
                             <i class="bi bi-calendar3"></i>
 
-                            Date: 18 October 2026
+                            <strong>Date:</strong>
+                            18 October 2026
 
                         </div>
 
@@ -659,7 +562,8 @@
 
                             <i class="bi bi-clock"></i>
 
-                            Time: 9:30 AM - 4:30 PM
+                            <strong>Time:</strong>
+                            9:30 AM - 4:30 PM
 
                         </div>
 
@@ -668,6 +572,7 @@
 
                             <i class="bi bi-geo-alt"></i>
 
+                            <strong>Location:</strong>
                             Ahmedabad
 
                         </div>
@@ -690,7 +595,6 @@
 
                         </a>
 
-
                     </div>
 
                 </div>
@@ -699,14 +603,11 @@
 
 
 
-            <!-- ==================================================
-                              EVENT 4
-            ================================================== -->
+            <!-- ================= EVENT 4 ================= -->
 
             <div class="col-md-6 col-lg-4">
 
                 <div class="event-card">
-
 
                     <img
                         src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85"
@@ -716,18 +617,12 @@
 
                     <div class="event-body">
 
-
                         <span class="category">
-
                             Business
-
                         </span>
 
-
                         <span class="coming">
-
                             Coming Soon
-
                         </span>
 
 
@@ -742,7 +637,8 @@
 
                             <i class="bi bi-calendar3"></i>
 
-                            Date: 25 October 2026
+                            <strong>Date:</strong>
+                            25 October 2026
 
                         </div>
 
@@ -751,7 +647,8 @@
 
                             <i class="bi bi-clock"></i>
 
-                            Time: 11:00 AM - 3:00 PM
+                            <strong>Time:</strong>
+                            11:00 AM - 3:00 PM
 
                         </div>
 
@@ -760,6 +657,7 @@
 
                             <i class="bi bi-geo-alt"></i>
 
+                            <strong>Location:</strong>
                             Rajkot
 
                         </div>
@@ -782,7 +680,6 @@
 
                         </a>
 
-
                     </div>
 
                 </div>
@@ -791,14 +688,11 @@
 
 
 
-            <!-- ==================================================
-                              EVENT 5
-            ================================================== -->
+            <!-- ================= EVENT 5 ================= -->
 
             <div class="col-md-6 col-lg-4">
 
                 <div class="event-card">
-
 
                     <img
                         src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85"
@@ -808,18 +702,12 @@
 
                     <div class="event-body">
 
-
                         <span class="category">
-
                             Technology
-
                         </span>
 
-
                         <span class="coming">
-
                             Coming Soon
-
                         </span>
 
 
@@ -834,7 +722,8 @@
 
                             <i class="bi bi-calendar3"></i>
 
-                            Date: 2 November 2026
+                            <strong>Date:</strong>
+                            2 November 2026
 
                         </div>
 
@@ -843,7 +732,8 @@
 
                             <i class="bi bi-clock"></i>
 
-                            Time: 10:00 AM - 2:00 PM
+                            <strong>Time:</strong>
+                            10:00 AM - 2:00 PM
 
                         </div>
 
@@ -852,6 +742,7 @@
 
                             <i class="bi bi-geo-alt"></i>
 
+                            <strong>Location:</strong>
                             Rajkot
 
                         </div>
@@ -874,7 +765,6 @@
 
                         </a>
 
-
                     </div>
 
                 </div>
@@ -883,14 +773,11 @@
 
 
 
-            <!-- ==================================================
-                              EVENT 6
-            ================================================== -->
+            <!-- ================= EVENT 6 ================= -->
 
             <div class="col-md-6 col-lg-4">
 
                 <div class="event-card">
-
 
                     <img
                         src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=85"
@@ -900,18 +787,12 @@
 
                     <div class="event-body">
 
-
                         <span class="category">
-
                             Food
-
                         </span>
 
-
                         <span class="coming">
-
                             Coming Soon
-
                         </span>
 
 
@@ -926,7 +807,8 @@
 
                             <i class="bi bi-calendar3"></i>
 
-                            Date: 15 November 2026
+                            <strong>Date:</strong>
+                            15 November 2026
 
                         </div>
 
@@ -935,7 +817,8 @@
 
                             <i class="bi bi-clock"></i>
 
-                            Time: 5:00 PM - 9:00 PM
+                            <strong>Time:</strong>
+                            5:00 PM - 9:00 PM
 
                         </div>
 
@@ -944,6 +827,7 @@
 
                             <i class="bi bi-geo-alt"></i>
 
+                            <strong>Location:</strong>
                             Ahmedabad
 
                         </div>
@@ -966,7 +850,6 @@
 
                         </a>
 
-
                     </div>
 
                 </div>
@@ -982,9 +865,7 @@
 
 
 
-<!-- ==================================================
-                         FOOTER
-================================================== -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -997,7 +878,6 @@
             Smart Event Management
 
         </h5>
-
 
         <p class="mb-0">
 
@@ -1012,12 +892,9 @@
 
 
 
-<!-- Bootstrap JS -->
-
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
-
 
 </body>
 
