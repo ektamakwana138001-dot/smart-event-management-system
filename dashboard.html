@@ -5,78 +5,346 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard - Smart Events</title>
+    <title>Dashboard - Smart Event Management</title>
 
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         rel="stylesheet">
 
+
     <style>
 
+        * {
+            box-sizing: border-box;
+        }
+
+
         body {
+            margin: 0;
             background: #f5f7fb;
             font-family: Arial, sans-serif;
         }
 
+
+        /* ================= NAVBAR ================= */
+
         .navbar {
             background: #0d6efd !important;
         }
+
 
         .navbar-brand,
         .nav-link {
             color: white !important;
         }
 
-        .dashboard {
-            padding: 60px 0;
-        }
 
-        .stat-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.08);
-            height: 100%;
-        }
-
-        .stat-icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 12px;
-            background: #e7f1ff;
-            color: #0d6efd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 25px;
-            margin-bottom: 15px;
-        }
-
-        .stat-number {
-            font-size: 30px;
+        .navbar-brand {
             font-weight: bold;
         }
 
-        .action-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.08);
+
+        .nav-link {
+            margin-left: 8px;
         }
 
-        footer {
-            background: #212529;
+
+        /* ================= HEADER ================= */
+
+        .dashboard-header {
+
+            background:
+                linear-gradient(
+                    rgba(13, 110, 253, 0.9),
+                    rgba(13, 110, 253, 0.9)
+                );
+
             color: white;
+
+            padding: 55px 0;
+
+        }
+
+
+        .dashboard-header h1 {
+
+            font-size: 42px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .dashboard-header p {
+
+            margin: 0;
+
+            font-size: 18px;
+
+        }
+
+
+        /* ================= STAT CARDS ================= */
+
+        .stats-section {
+
+            margin-top: -35px;
+
+            position: relative;
+
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            height: 100%;
+
+        }
+
+
+        .stat-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: #e7f1ff;
+
+            color: #0d6efd;
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .stat-card h2 {
+
+            font-weight: bold;
+
+            margin: 0;
+
+        }
+
+
+        .stat-card p {
+
+            color: #777;
+
+            margin: 5px 0 0;
+
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .main-section {
+
+            padding: 55px 0;
+
+        }
+
+
+        .section-title {
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* ================= QUICK ACTION ================= */
+
+        .action-card {
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            height: 100%;
+
+        }
+
+
+        .action-card h4 {
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .action-card p {
+
+            color: #666;
+
+        }
+
+
+        /* ================= EVENT CARD ================= */
+
+        .event-card {
+
+            background: white;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            height: 100%;
+
+            transition: 0.3s;
+
+        }
+
+
+        .event-card:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+
+        .event-image {
+
+            width: 100%;
+
+            height: 200px;
+
+            object-fit: cover;
+
+        }
+
+
+        .event-body {
+
+            padding: 20px;
+
+        }
+
+
+        .event-body h4 {
+
+            font-weight: bold;
+
+            margin-top: 12px;
+
+        }
+
+
+        .event-info {
+
+            color: #666;
+
+            font-size: 14px;
+
+            margin-top: 8px;
+
+        }
+
+
+        .event-info i {
+
+            color: #0d6efd;
+
+            margin-right: 5px;
+
+        }
+
+
+        .event-price {
+
+            color: #198754;
+
+            font-weight: bold;
+
+            font-size: 21px;
+
+            margin-top: 12px;
+
+        }
+
+
+        .badge-coming {
+
+            background: #fff3cd;
+
+            color: #664d03;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            background: #212529;
+
+            color: white;
+
             text-align: center;
-            padding: 30px;
-            margin-top: 60px;
+
+            padding: 35px 0;
+
+            margin-top: 20px;
+
+        }
+
+
+        @media(max-width:768px) {
+
+            .dashboard-header h1 {
+
+                font-size: 32px;
+
+            }
+
         }
 
     </style>
@@ -87,9 +355,14 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg">
+<!-- ==================================================
+                         NAVBAR
+================================================== -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
 
     <div class="container">
+
 
         <a
             class="navbar-brand"
@@ -102,15 +375,91 @@
         </a>
 
 
-        <div>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu">
 
-            <a
-                href="./index.html"
-                class="btn btn-light btn-sm">
+            <span class="navbar-toggler-icon"></span>
 
-                Website
+        </button>
 
-            </a>
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarMenu">
+
+
+            <ul class="navbar-nav ms-auto">
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="./index.html">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="./events.html">
+
+                        Events
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="./my-bookings.html">
+
+                        My Bookings
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="./contact.html">
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="./login.html">
+
+                        Logout
+
+                    </a>
+
+                </li>
+
+
+            </ul>
 
         </div>
 
@@ -119,23 +468,48 @@
 </nav>
 
 
-<section class="dashboard">
+
+<!-- ==================================================
+                       DASHBOARD HEADER
+================================================== -->
+
+<section class="dashboard-header">
 
     <div class="container">
 
-        <h1 class="fw-bold mb-2">
-            Admin Dashboard
+        <h1>
+
+            <i class="bi bi-speedometer2"></i>
+
+            Dashboard
+
         </h1>
 
-        <p class="text-muted mb-5">
-            Manage your Smart Event Management System.
+
+        <p>
+
+            Manage your events, bookings and activities.
+
         </p>
 
+    </div>
 
-        <!-- STATISTICS -->
+</section>
 
-        <div class="row g-4 mb-5">
 
+
+<!-- ==================================================
+                       STATISTICS
+================================================== -->
+
+<section class="stats-section">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+
+            <!-- TOTAL EVENTS -->
 
             <div class="col-md-4">
 
@@ -147,18 +521,49 @@
 
                     </div>
 
-                    <div class="stat-number">
-                        6
-                    </div>
 
-                    <div>
+                    <h2>
+                        6
+                    </h2>
+
+
+                    <p>
                         Total Events
-                    </div>
+                    </p>
 
                 </div>
 
             </div>
 
+
+            <!-- UPCOMING -->
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-clock-history"></i>
+
+                    </div>
+
+
+                    <h2>
+                        6
+                    </h2>
+
+
+                    <p>
+                        Upcoming Events
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOKINGS -->
 
             <div class="col-md-4">
 
@@ -170,160 +575,20 @@
 
                     </div>
 
-                    <div class="stat-number">
+
+                    <h2>
                         0
-                    </div>
-
-                    <div>
-                        Total Bookings
-                    </div>
-
-                </div>
-
-            </div>
+                    </h2>
 
 
-            <div class="col-md-4">
-
-                <div class="stat-card">
-
-                    <div class="stat-icon">
-
-                        <i class="bi bi-people"></i>
-
-                    </div>
-
-                    <div class="stat-number">
-                        0
-                    </div>
-
-                    <div>
-                        Registered Users
-                    </div>
+                    <p>
+                        My Bookings
+                    </p>
 
                 </div>
 
             </div>
 
-        </div>
-
-
-        <!-- ACTIONS -->
-
-        <div class="action-card">
-
-            <h3 class="fw-bold mb-4">
-                Event Management
-            </h3>
-
-
-            <div class="row g-3">
-
-
-                <div class="col-md-4">
-
-                    <a
-                        href="./events.html"
-                        class="btn btn-primary w-100 py-3">
-
-                        <i class="bi bi-calendar-event"></i>
-
-                        View All Events
-
-                    </a>
-
-                </div>
-
-
-                <div class="col-md-4">
-
-                    <a
-                        href="./events.html"
-                        class="btn btn-success w-100 py-3">
-
-                        <i class="bi bi-plus-circle"></i>
-
-                        Manage Events
-
-                    </a>
-
-                </div>
-
-
-                <div class="col-md-4">
-
-                    <a
-                        href="./my-bookings.html"
-                        class="btn btn-warning w-100 py-3">
-
-                        <i class="bi bi-ticket"></i>
-
-                        View Bookings
-
-                    </a>
-
-                </div>
-
-
-            </div>
-
-
-            <hr class="my-4">
-
-
-            <h3 class="fw-bold mb-4">
-                Website
-            </h3>
-
-
-            <div class="row g-3">
-
-
-                <div class="col-md-4">
-
-                    <a
-                        href="./index.html"
-                        class="btn btn-outline-primary w-100 py-3">
-
-                        <i class="bi bi-house"></i>
-
-                        Home
-
-                    </a>
-
-                </div>
-
-
-                <div class="col-md-4">
-
-                    <a
-                        href="./contact.html"
-                        class="btn btn-outline-primary w-100 py-3">
-
-                        <i class="bi bi-envelope"></i>
-
-                        Contact
-
-                    </a>
-
-                </div>
-
-
-                <div class="col-md-4">
-
-                    <a
-                        href="./login.html"
-                        class="btn btn-outline-primary w-100 py-3">
-
-                        <i class="bi bi-box-arrow-in-right"></i>
-
-                        Login
-
-                    </a>
-
-                </div>
-
-            </div>
 
         </div>
 
@@ -332,17 +597,710 @@
 </section>
 
 
+
+<!-- ==================================================
+                     QUICK ACTIONS
+================================================== -->
+
+<section class="main-section">
+
+    <div class="container">
+
+
+        <h2 class="section-title">
+
+            Quick Actions
+
+        </h2>
+
+
+        <div class="row g-4">
+
+
+            <!-- VIEW EVENTS -->
+
+            <div class="col-md-4">
+
+                <div class="action-card">
+
+
+                    <h4>
+
+                        <i class="bi bi-calendar3 text-primary"></i>
+
+                        Explore Events
+
+                    </h4>
+
+
+                    <p>
+
+                        Browse all upcoming events and
+                        find an event that interests you.
+
+                    </p>
+
+
+                    <a
+                        href="./events.html"
+                        class="btn btn-primary">
+
+                        View All Events
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MY BOOKINGS -->
+
+            <div class="col-md-4">
+
+                <div class="action-card">
+
+
+                    <h4>
+
+                        <i class="bi bi-ticket-perforated text-success"></i>
+
+                        My Bookings
+
+                    </h4>
+
+
+                    <p>
+
+                        View and manage your event
+                        ticket bookings.
+
+                    </p>
+
+
+                    <a
+                        href="./my-bookings.html"
+                        class="btn btn-success">
+
+                        View Bookings
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="col-md-4">
+
+                <div class="action-card">
+
+
+                    <h4>
+
+                        <i class="bi bi-headset text-warning"></i>
+
+                        Need Help?
+
+                    </h4>
+
+
+                    <p>
+
+                        Contact our support team if you
+                        have any questions.
+
+                    </p>
+
+
+                    <a
+                        href="./contact.html"
+                        class="btn btn-warning">
+
+                        Contact Us
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+                         UPCOMING EVENTS
+        ================================================== -->
+
+        <h2
+            class="section-title mt-5">
+
+            Upcoming Events
+
+        </h2>
+
+
+        <div class="row g-4">
+
+
+
+            <!-- EVENT 1 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="event-card">
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85"
+                        alt="Music Festival"
+                        class="event-image">
+
+
+                    <div class="event-body">
+
+
+                        <span class="badge-coming">
+
+                            Coming Soon
+
+                        </span>
+
+
+                        <h4>
+
+                            Music Festival
+
+                        </h4>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            20 September 2026
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-clock"></i>
+
+                            6:00 PM - 10:00 PM
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            Ahmedabad
+
+                        </div>
+
+
+                        <div class="event-price">
+
+                            ₹499
+
+                        </div>
+
+
+                        <a
+                            href="./event-details.html?event=music"
+                            class="btn btn-primary w-100 mt-3">
+
+                            View Details
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EVENT 2 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="event-card">
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85"
+                        alt="Technology Conference"
+                        class="event-image">
+
+
+                    <div class="event-body">
+
+
+                        <span class="badge-coming">
+
+                            Coming Soon
+
+                        </span>
+
+
+                        <h4>
+
+                            Technology Conference
+
+                        </h4>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            5 October 2026
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-clock"></i>
+
+                            10:00 AM - 5:00 PM
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            Ahmedabad
+
+                        </div>
+
+
+                        <div class="event-price">
+
+                            ₹799
+
+                        </div>
+
+
+                        <a
+                            href="./event-details.html?event=technology"
+                            class="btn btn-primary w-100 mt-3">
+
+                            View Details
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EVENT 3 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="event-card">
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+                        alt="Business Summit"
+                        class="event-image">
+
+
+                    <div class="event-body">
+
+
+                        <span class="badge-coming">
+
+                            Coming Soon
+
+                        </span>
+
+
+                        <h4>
+
+                            Business Summit
+
+                        </h4>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            18 October 2026
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-clock"></i>
+
+                            9:30 AM - 4:30 PM
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            Ahmedabad
+
+                        </div>
+
+
+                        <div class="event-price">
+
+                            ₹999
+
+                        </div>
+
+
+                        <a
+                            href="./event-details.html?event=business"
+                            class="btn btn-primary w-100 mt-3">
+
+                            View Details
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EVENT 4 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="event-card">
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85"
+                        alt="Startup Meetup"
+                        class="event-image">
+
+
+                    <div class="event-body">
+
+
+                        <span class="badge-coming">
+
+                            Coming Soon
+
+                        </span>
+
+
+                        <h4>
+
+                            Startup Meetup
+
+                        </h4>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            25 October 2026
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-clock"></i>
+
+                            11:00 AM - 3:00 PM
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            Rajkot
+
+                        </div>
+
+
+                        <div class="event-price">
+
+                            ₹599
+
+                        </div>
+
+
+                        <a
+                            href="./event-details.html?event=startup"
+                            class="btn btn-primary w-100 mt-3">
+
+                            View Details
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EVENT 5 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="event-card">
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85"
+                        alt="Coding Workshop"
+                        class="event-image">
+
+
+                    <div class="event-body">
+
+
+                        <span class="badge-coming">
+
+                            Coming Soon
+
+                        </span>
+
+
+                        <h4>
+
+                            Coding Workshop
+
+                        </h4>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            2 November 2026
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-clock"></i>
+
+                            10:00 AM - 2:00 PM
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            Rajkot
+
+                        </div>
+
+
+                        <div class="event-price">
+
+                            ₹399
+
+                        </div>
+
+
+                        <a
+                            href="./event-details.html?event=coding"
+                            class="btn btn-primary w-100 mt-3">
+
+                            View Details
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EVENT 6 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="event-card">
+
+
+                    <img
+                        src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=85"
+                        alt="Food Festival"
+                        class="event-image">
+
+
+                    <div class="event-body">
+
+
+                        <span class="badge-coming">
+
+                            Coming Soon
+
+                        </span>
+
+
+                        <h4>
+
+                            Food Festival
+
+                        </h4>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-calendar3"></i>
+
+                            15 November 2026
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-clock"></i>
+
+                            5:00 PM - 9:00 PM
+
+                        </div>
+
+
+                        <div class="event-info">
+
+                            <i class="bi bi-geo-alt"></i>
+
+                            Ahmedabad
+
+                        </div>
+
+
+                        <div class="event-price">
+
+                            ₹299
+
+                        </div>
+
+
+                        <a
+                            href="./event-details.html?event=food"
+                            class="btn btn-primary w-100 mt-3">
+
+                            View Details
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- FINAL VIEW ALL EVENTS BUTTON -->
+
+        <div class="text-center mt-5">
+
+            <a
+                href="./events.html"
+                class="btn btn-primary btn-lg px-5">
+
+                <i class="bi bi-calendar-event"></i>
+
+                Explore All Events
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+                         FOOTER
+================================================== -->
+
 <footer>
 
-    © 2026 Smart Event Management
-    & Ticket Booking System.
+    <div class="container">
+
+        <h5>
+
+            <i class="bi bi-calendar-event"></i>
+
+            Smart Event Management
+
+        </h5>
+
+
+        <p class="mb-0">
+
+            © 2026 Smart Event Management
+            & Ticket Booking System
+
+        </p>
+
+    </div>
 
 </footer>
 
+
+
+<!-- Bootstrap JS -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
+
 </body>
+
 </html>
