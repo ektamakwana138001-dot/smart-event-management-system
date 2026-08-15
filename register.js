@@ -1,3 +1,4 @@
+
 // =========================================================
 // SMART EVENT MANAGEMENT SYSTEM
 // REGISTER JAVASCRIPT
