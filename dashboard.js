@@ -1,352 +1,352 @@
-document.addEventListener("DOMContentLoaded", function () {
+// =========================================================
+// SMART EVENT MANAGEMENT SYSTEM
+// DASHBOARD JAVASCRIPT
+// =========================================================
 
-    // ================= ELEMENTS =================
 
-    const totalBookingsElement =
+// =========================================================
+// DASHBOARD DATA
+// =========================================================
+
+const dashboardData = {
+
+    totalEvents: 10,
+
+    totalBookings: 25,
+
+    availableTickets: 150,
+
+    upcomingEvents: 6
+
+};
+
+
+// =========================================================
+// UPDATE DASHBOARD STATISTICS
+// =========================================================
+
+function updateDashboardStats() {
+
+    const totalEvents =
+        document.getElementById("totalEvents");
+
+    const totalBookings =
         document.getElementById("totalBookings");
 
-    const totalUsersElement =
-        document.getElementById("totalUsers");
+    const availableTickets =
+        document.getElementById("availableTickets");
 
-    const totalTicketsElement =
-        document.getElementById("totalTickets");
-
-    const totalRevenueElement =
-        document.getElementById("totalRevenue");
-
-    const recentBookingsElement =
-        document.getElementById("recentBookings");
-
-    const clearBookingsButton =
-        document.getElementById("clearBookings");
-
-    const logoutButton =
-        document.getElementById("logoutButton");
+    const upcomingEvents =
+        document.getElementById("upcomingEvents");
 
 
-    // ================= ADMIN PROTECTION =================
+    if (totalEvents) {
 
-    const isLoggedIn =
-        localStorage.getItem("isLoggedIn") === "true";
+        totalEvents.textContent =
+            dashboardData.totalEvents;
 
-    const userRole =
-        localStorage.getItem("userRole");
+    }
 
 
-    if (
-        !isLoggedIn ||
-        userRole !== "admin"
-    ) {
+    if (totalBookings) {
 
-        alert(
-            "Admin access required."
-        );
+        totalBookings.textContent =
+            dashboardData.totalBookings;
 
-        window.location.href =
-            "login.html";
+    }
+
+
+    if (availableTickets) {
+
+        availableTickets.textContent =
+            dashboardData.availableTickets;
+
+    }
+
+
+    if (upcomingEvents) {
+
+        upcomingEvents.textContent =
+            dashboardData.upcomingEvents;
+
+    }
+
+}
+
+
+// =========================================================
+// LOAD USER PROFILE
+// =========================================================
+
+function loadUserProfile() {
+
+    const savedUser =
+        localStorage.getItem("registeredUser");
+
+
+    if (!savedUser) {
 
         return;
-    }
-
-
-    // ================= GET DATA =================
-
-    function getBookings() {
-
-        return JSON.parse(
-            localStorage.getItem("bookings")
-        ) || [];
 
     }
 
 
-    function getUsers() {
+    try {
 
-        return JSON.parse(
-            localStorage.getItem("users")
-        ) || [];
+        const user =
+            JSON.parse(savedUser);
+
+
+        const profileName =
+            document.getElementById("profileName");
+
+        const profileEmail =
+            document.getElementById("profileEmail");
+
+        const profilePhone =
+            document.getElementById("profilePhone");
+
+
+        if (profileName && user.name) {
+
+            profileName.textContent =
+                user.name;
+
+        }
+
+
+        if (profileEmail && user.email) {
+
+            profileEmail.textContent =
+                user.email;
+
+        }
+
+
+        if (profilePhone && user.phone) {
+
+            profilePhone.textContent =
+                user.phone;
+
+        }
+
+
+    } catch (error) {
+
+        console.log(
+            "Unable to load profile data."
+        );
+
+    }
+
+}
+
+
+// =========================================================
+// LOGOUT
+// =========================================================
+
+function logoutUser() {
+
+    const confirmLogout =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (!confirmLogout) {
+
+        return;
 
     }
 
 
-    // ================= UPDATE STATISTICS =================
+    localStorage.removeItem("loggedInUser");
 
-    function updateStatistics() {
-
-        const bookings =
-            getBookings();
-
-        const users =
-            getUsers();
+    localStorage.removeItem("currentUser");
 
 
-        let totalTickets = 0;
-
-        let totalRevenue = 0;
-
-
-        bookings.forEach(function (booking) {
-
-            totalTickets +=
-                Number(booking.tickets) || 0;
-
-            totalRevenue +=
-                Number(booking.totalAmount) || 0;
-
-        });
+    alert(
+        "You have been logged out successfully."
+    );
 
 
-        if (totalBookingsElement) {
+    window.location.href =
+        "login.html";
 
-            totalBookingsElement.textContent =
-                bookings.length;
-
-        }
+}
 
 
-        if (totalUsersElement) {
+// =========================================================
+// LOAD BOOKING DATA
+// =========================================================
 
-            totalUsersElement.textContent =
-                users.length;
+function loadBookings() {
 
-        }
-
-
-        if (totalTicketsElement) {
-
-            totalTicketsElement.textContent =
-                totalTickets;
-
-        }
+    const bookingTable =
+        document.getElementById("bookingTable");
 
 
-        if (totalRevenueElement) {
+    if (!bookingTable) {
 
-            totalRevenueElement.textContent =
-                "₹" +
-                totalRevenue.toFixed(2);
-
-        }
+        return;
 
     }
 
 
-    // ================= DISPLAY BOOKINGS =================
-
-    function displayRecentBookings() {
-
-        if (!recentBookingsElement) {
-            return;
-        }
+    const bookings =
+        JSON.parse(
+            localStorage.getItem("bookings") || "[]"
+        );
 
 
-        const bookings =
-            getBookings();
+    if (bookings.length === 0) {
+
+        return;
+
+    }
 
 
-        recentBookingsElement.innerHTML =
-            "";
+    bookingTable.innerHTML = "";
 
 
-        if (bookings.length === 0) {
+    bookings.slice(0, 5).forEach(
+        function(booking, index) {
 
-            recentBookingsElement.innerHTML = `
 
-                <div class="text-center py-5">
+            const row =
+                document.createElement("tr");
 
-                    <h5>
-                        No Bookings Yet
-                    </h5>
 
-                    <p class="text-muted mb-0">
-                        Bookings will appear here.
-                    </p>
+            const bookingId =
+                booking.id ||
+                "#SE" +
+                String(index + 1)
+                    .padStart(3, "0");
 
-                </div>
+
+            const eventName =
+                booking.event ||
+                booking.eventName ||
+                "Event";
+
+
+            const bookingDate =
+                booking.date ||
+                "Upcoming";
+
+
+            const tickets =
+                booking.tickets ||
+                booking.quantity ||
+                1;
+
+
+            const status =
+                booking.status ||
+                "Confirmed";
+
+
+            let statusClass =
+                "status-confirmed";
+
+
+            if (
+                status.toLowerCase() ===
+                "pending"
+            ) {
+
+                statusClass =
+                    "status-pending";
+
+            }
+
+
+            if (
+                status.toLowerCase() ===
+                "cancelled"
+            ) {
+
+                statusClass =
+                    "status-cancelled";
+
+            }
+
+
+            row.innerHTML = `
+
+                <td>
+                    ${bookingId}
+                </td>
+
+                <td>
+                    ${eventName}
+                </td>
+
+                <td>
+                    ${bookingDate}
+                </td>
+
+                <td>
+                    ${tickets}
+                </td>
+
+                <td>
+
+                    <span class="${statusClass}">
+                        ${status}
+                    </span>
+
+                </td>
 
             `;
 
-            return;
+
+            bookingTable.appendChild(row);
+
         }
+    );
+
+}
 
 
-        const recentBookings =
-            bookings
-                .slice()
-                .reverse()
-                .slice(0, 10);
+// =========================================================
+// CHECK LOGIN
+// =========================================================
+
+function checkLoginStatus() {
+
+    const loggedInUser =
+        localStorage.getItem("loggedInUser");
 
 
-        recentBookings.forEach(
-            function (booking) {
+    if (!loggedInUser) {
 
-                const row =
-                    document.createElement("div");
+        // Login checking disabled for demo/project.
+        // Dashboard can still be opened directly.
 
-                row.className =
-                    "dashboard-booking-row";
-
-
-                row.innerHTML = `
-
-                    <div>
-
-                        <strong>
-                            ${booking.bookingId}
-                        </strong>
-
-                        <p>
-                            ${booking.bookingDate}
-                        </p>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            ${booking.event}
-                        </strong>
-
-                        <p>
-                            ${booking.name}
-                        </p>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            ${booking.tickets}
-                        </strong>
-
-                        <p>
-                            Ticket(s)
-                        </p>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            ₹${Number(
-                                booking.totalAmount
-                            ).toFixed(2)}
-                        </strong>
-
-                        <p>
-                            ${booking.status}
-                        </p>
-
-                    </div>
-
-                `;
-
-
-                recentBookingsElement.appendChild(
-                    row
-                );
-
-            }
-        );
+        return;
 
     }
 
-
-    // ================= CLEAR BOOKINGS =================
-
-    if (clearBookingsButton) {
-
-        clearBookingsButton.addEventListener(
-            "click",
-            function () {
-
-                const bookings =
-                    getBookings();
+}
 
 
-                if (bookings.length === 0) {
+// =========================================================
+// PAGE LOAD
+// =========================================================
 
-                    alert(
-                        "There are no bookings to clear."
-                    );
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
 
-                    return;
-                }
+        updateDashboardStats();
 
+        loadUserProfile();
 
-                const confirmClear =
-                    confirm(
-                        "Are you sure you want to delete all bookings?"
-                    );
+        loadBookings();
 
-
-                if (!confirmClear) {
-                    return;
-                }
-
-
-                localStorage.removeItem(
-                    "bookings"
-                );
-
-
-                alert(
-                    "All bookings have been cleared."
-                );
-
-
-                updateStatistics();
-
-                displayRecentBookings();
-
-            }
-        );
+        checkLoginStatus();
 
     }
-
-
-    // ================= LOGOUT =================
-
-    if (logoutButton) {
-
-        logoutButton.addEventListener(
-            "click",
-            function () {
-
-                localStorage.removeItem(
-                    "isLoggedIn"
-                );
-
-                localStorage.removeItem(
-                    "userEmail"
-                );
-
-                localStorage.removeItem(
-                    "userRole"
-                );
-
-
-                alert(
-                    "Admin logged out successfully."
-                );
-
-
-                window.location.href =
-                    "login.html";
-
-            }
-        );
-
-    }
-
-
-    // ================= INITIAL LOAD =================
-
-    updateStatistics();
-
-    displayRecentBookings();
-
-});
+);
