@@ -11,16 +11,15 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
-
     <style>
         body {
-            background-color: #f8f9fa;
+            margin: 0;
+            background: #f5f7fb;
             font-family: Arial, sans-serif;
         }
 
         .navbar {
-            background-color: #0d6efd !important;
+            background: #0d6efd !important;
         }
 
         .navbar-brand,
@@ -30,66 +29,119 @@
 
         .navbar-brand {
             font-weight: bold;
+            font-size: 21px;
         }
 
         .nav-link {
             font-weight: 500;
         }
 
-        .event-header {
-            background: #0d6efd;
+        .page-header {
+            background: linear-gradient(135deg, #0d6efd, #084298);
             color: white;
-            padding: 60px 20px;
             text-align: center;
+            padding: 60px 20px;
         }
 
-        .event-header h1 {
-            font-weight: bold;
+        .page-header h1 {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .details-section {
+            padding: 50px 0;
         }
 
         .details-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 18px;
             padding: 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
-        .event-image {
+        /* INLINE EVENT IMAGE */
+
+        .event-visual {
+            width: 100%;
+            min-height: 420px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-visual svg {
             width: 100%;
             height: 420px;
-            object-fit: cover;
-            border-radius: 15px;
         }
 
-        .event-price {
-            color: #198754;
-            font-size: 28px;
-            font-weight: bold;
+        .badge-coming {
+            display: inline-block;
+            background: #fff3cd;
+            color: #856404;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .event-title {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .event-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
         }
 
         .info-box {
             background: #f8f9fa;
-            border-radius: 10px;
-            padding: 18px;
-            margin-bottom: 15px;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 12px;
         }
 
         .info-box i {
             color: #0d6efd;
-            font-size: 22px;
+            font-size: 20px;
             margin-right: 10px;
         }
 
-        .description {
+        .price-label {
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .price {
+            color: #198754;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .about-box {
+            margin-top: 30px;
+        }
+
+        .about-box h3 {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .about-box p {
+            color: #666;
             line-height: 1.8;
-            color: #555;
         }
 
         footer {
-            background-color: #212529;
+            background: #212529;
             color: white;
             padding: 40px 0 20px;
-            margin-top: 60px;
+            margin-top: 30px;
         }
 
         footer a {
@@ -109,14 +161,26 @@
         }
 
         @media (max-width: 768px) {
-            .event-image {
-                height: 280px;
+
+            .event-title {
+                font-size: 28px;
             }
+
+            .event-visual {
+                min-height: 300px;
+            }
+
+            .event-visual svg {
+                height: 300px;
+            }
+
         }
     </style>
+
 </head>
 
 <body>
+
 
     <!-- NAVBAR -->
 
@@ -132,13 +196,13 @@
             <button class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+                data-bs-target="#navbarMenu">
 
                 <span class="navbar-toggler-icon"></span>
 
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarMenu">
 
                 <ul class="navbar-nav ms-auto">
 
@@ -195,7 +259,7 @@
 
     <!-- HEADER -->
 
-    <section class="event-header">
+    <section class="page-header">
 
         <div class="container">
 
@@ -204,7 +268,7 @@
             </h1>
 
             <p class="mb-0">
-                View complete information about the event.
+                Complete information about your selected event
             </p>
 
         </div>
@@ -214,48 +278,137 @@
 
     <!-- EVENT DETAILS -->
 
-    <section class="py-5">
+    <section class="details-section">
 
         <div class="container">
 
             <div class="row g-4">
 
 
-                <!-- IMAGE -->
+                <!-- INLINE IMAGE -->
 
                 <div class="col-lg-6">
 
                     <div class="details-card">
 
-                        <img id="eventImage"
-                            src="event1.jpg"
-                            alt="Event"
-                            class="event-image"
-                            onerror="this.src='https://via.placeholder.com/800x450?text=Event+Image'">
+                        <div class="event-visual">
+
+                            <!-- INLINE SVG IMAGE -->
+
+                            <svg viewBox="0 0 800 500"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <defs>
+
+                                    <linearGradient id="bg"
+                                        x1="0"
+                                        y1="0"
+                                        x2="1"
+                                        y2="1">
+
+                                        <stop offset="0%"
+                                            stop-color="#4facfe" />
+
+                                        <stop offset="100%"
+                                            stop-color="#764ba2" />
+
+                                    </linearGradient>
+
+                                </defs>
+
+                                <rect width="800"
+                                    height="500"
+                                    fill="url(#bg)" />
+
+                                <circle cx="120"
+                                    cy="100"
+                                    r="70"
+                                    fill="white"
+                                    opacity="0.15" />
+
+                                <circle cx="680"
+                                    cy="400"
+                                    r="100"
+                                    fill="white"
+                                    opacity="0.12" />
+
+                                <rect x="150"
+                                    y="150"
+                                    width="500"
+                                    height="220"
+                                    rx="25"
+                                    fill="white"
+                                    opacity="0.95" />
+
+                                <circle cx="270"
+                                    cy="260"
+                                    r="55"
+                                    fill="#0d6efd" />
+
+                                <path d="M250 260 L265 275 L295 235"
+                                    stroke="white"
+                                    stroke-width="12"
+                                    fill="none"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+
+                                <text x="400"
+                                    y="245"
+                                    text-anchor="middle"
+                                    font-size="38"
+                                    font-weight="bold"
+                                    fill="#212529">
+                                    SMART EVENTS
+                                </text>
+
+                                <text x="400"
+                                    y="295"
+                                    text-anchor="middle"
+                                    font-size="24"
+                                    fill="#0d6efd">
+                                    Live Events &amp; Experiences
+                                </text>
+
+                                <text x="400"
+                                    y="335"
+                                    text-anchor="middle"
+                                    font-size="18"
+                                    fill="#666">
+                                    Book Your Ticket Today
+                                </text>
+
+                            </svg>
+
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <!-- DETAILS -->
+                <!-- EVENT INFORMATION -->
 
                 <div class="col-lg-6">
 
                     <div class="details-card">
 
-                        <span class="badge bg-warning text-dark mb-3">
+                        <span class="badge-coming">
                             Coming Soon
                         </span>
 
-                        <h2 id="eventName">
+                        <h2 class="event-title">
                             Music Festival
                         </h2>
 
-                        <p class="description">
-                            Join us for an exciting and memorable
-                            music festival featuring live performances,
-                            entertainment and an amazing atmosphere.
+                        <p class="event-description">
+
+                            Join us for an exciting music festival
+                            filled with live performances,
+                            entertainment and unforgettable moments.
+
+                            This event is designed for music lovers
+                            who want to enjoy an amazing experience.
+
                         </p>
 
 
@@ -267,9 +420,7 @@
 
                             <strong>Date:</strong>
 
-                            <span id="eventDate">
-                                Coming Soon
-                            </span>
+                            Coming Soon
 
                         </div>
 
@@ -282,9 +433,7 @@
 
                             <strong>Time:</strong>
 
-                            <span id="eventTime">
-                                6:00 PM onwards
-                            </span>
+                            6:00 PM onwards
 
                         </div>
 
@@ -297,9 +446,7 @@
 
                             <strong>Location:</strong>
 
-                            <span id="eventLocation">
-                                Event Venue
-                            </span>
+                            Event Venue
 
                         </div>
 
@@ -312,9 +459,7 @@
 
                             <strong>Category:</strong>
 
-                            <span id="eventCategory">
-                                Entertainment
-                            </span>
+                            Entertainment
 
                         </div>
 
@@ -323,15 +468,12 @@
 
                         <div class="mt-4">
 
-                            <p class="mb-1">
+                            <div class="price-label">
                                 Ticket Price
-                            </p>
+                            </div>
 
-                            <div class="event-price"
-                                id="eventPrice">
-
+                            <div class="price">
                                 ₹499
-
                             </div>
 
                         </div>
@@ -349,7 +491,6 @@
                                 Book Now
 
                             </a>
-
 
                             <a href="events.html"
                                 class="btn btn-outline-primary btn-lg">
@@ -371,40 +512,45 @@
 
             <!-- ABOUT EVENT -->
 
-            <div class="row mt-5">
+            <div class="details-card about-box">
 
-                <div class="col-12">
+                <h3>
+                    About This Event
+                </h3>
 
-                    <div class="details-card">
+                <p>
+                    Smart Event Management & Ticket Booking System
+                    allows users to discover different events,
+                    view event information and book tickets easily.
+                </p>
 
-                        <h3>
-                            About This Event
-                        </h3>
+                <p>
+                    The selected event is currently marked as
+                    <strong>Coming Soon</strong>. The final date,
+                    venue and other event information will be
+                    updated by the event organizer.
+                </p>
 
-                        <p class="description">
+                <p>
+                    Ticket price for this event is
+                    <strong>₹499</strong>.
+                </p>
 
-                            Smart Events provides an easy and convenient
-                            platform for users to discover and book
-                            tickets for different types of events.
+            </div>
 
-                            This event is currently marked as
-                            <strong>Coming Soon</strong>.
-                            More information about the event date and
-                            venue will be updated by the event organizer.
 
-                        </p>
+            <!-- BACK BUTTON -->
 
-                        <p class="description">
+            <div class="text-center mt-4">
 
-                            Users can view event information,
-                            ticket prices and proceed to the booking
-                            page when tickets are available.
+                <a href="events.html"
+                    class="btn btn-primary">
 
-                        </p>
+                    <i class="bi bi-grid"></i>
 
-                    </div>
+                    View All Events
 
-                </div>
+                </a>
 
             </div>
 
@@ -459,12 +605,6 @@
                         </a>
                     </p>
 
-                    <p>
-                        <a href="contact.html">
-                            Contact
-                        </a>
-                    </p>
-
                 </div>
 
 
@@ -487,8 +627,8 @@
                     </p>
 
                     <p>
-                        <a href="profile.html">
-                            Profile
+                        <a href="contact.html">
+                            Contact
                         </a>
                     </p>
 
@@ -509,85 +649,7 @@
     </footer>
 
 
-    <!-- BOOTSTRAP JS -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    <!-- EVENT DETAILS JAVASCRIPT -->
-
-    <script>
-
-        const events = {
-
-            "music": {
-                name: "Music Festival",
-                image: "event1.jpg",
-                date: "Coming Soon",
-                time: "6:00 PM onwards",
-                location: "Event Venue",
-                category: "Entertainment",
-                price: "₹499"
-            },
-
-            "technology": {
-                name: "Technology Conference",
-                image: "event2.jpg",
-                date: "Coming Soon",
-                time: "10:00 AM onwards",
-                location: "Conference Hall",
-                category: "Technology",
-                price: "₹799"
-            },
-
-            "business": {
-                name: "Business Summit",
-                image: "event3.jpg",
-                date: "Coming Soon",
-                time: "9:00 AM onwards",
-                location: "Business Center",
-                category: "Business",
-                price: "₹999"
-            }
-
-        };
-
-
-        const params =
-            new URLSearchParams(window.location.search);
-
-        const eventId =
-            params.get("event");
-
-
-        if (eventId && events[eventId]) {
-
-            const event = events[eventId];
-
-            document.getElementById("eventName").textContent =
-                event.name;
-
-            document.getElementById("eventImage").src =
-                event.image;
-
-            document.getElementById("eventDate").textContent =
-                event.date;
-
-            document.getElementById("eventTime").textContent =
-                event.time;
-
-            document.getElementById("eventLocation").textContent =
-                event.location;
-
-            document.getElementById("eventCategory").textContent =
-                event.category;
-
-            document.getElementById("eventPrice").textContent =
-                event.price;
-
-        }
-
-    </script>
 
 </body>
 
