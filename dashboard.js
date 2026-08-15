@@ -1,334 +1,181 @@
-// =========================================================
-// SMART EVENT MANAGEMENT SYSTEM
-// DASHBOARD JAVASCRIPT
-// =========================================================
+/* =========================================================
+   dashboard.js
+   Smart Event Management System
+========================================================= */
 
 
-// LOAD DASHBOARD
-function loadDashboard() {
+/* ---------------------------------------------------------
+   Dashboard statistics
+--------------------------------------------------------- */
 
-    const registeredUser =
+function loadDashboardStatistics() {
+
+    const events =
         JSON.parse(
-            localStorage.getItem("registeredUser") || "null"
+            localStorage.getItem(
+                "adminEvents"
+            ) || "[]"
         );
 
-    const currentUser =
-        JSON.parse(
-            localStorage.getItem("currentUser") || "null"
-        );
-
-    const user = currentUser || registeredUser;
-
-
-    // CHECK LOGIN
-    if (!user || localStorage.getItem("isLoggedIn") !== "true") {
-
-        alert("Please login first to access your profile.");
-
-        window.location.href = "login.html";
-
-        return;
-    }
-
-
-    // =====================================================
-    // USER DETAILS
-    // =====================================================
-
-    document.getElementById("userName").textContent =
-        user.name || "User";
-
-    document.getElementById("userEmail").textContent =
-        user.email || "-";
-
-    document.getElementById("profileName").textContent =
-        user.name || "-";
-
-    document.getElementById("profileEmail").textContent =
-        user.email || "-";
-
-    document.getElementById("profilePhone").textContent =
-        user.phone || "-";
-
-    document.getElementById("registeredDate").textContent =
-        user.registeredDate || "-";
-
-
-    // =====================================================
-    // GET BOOKINGS
-    // =====================================================
 
     const bookings =
         JSON.parse(
-            localStorage.getItem("bookings") || "[]"
+            localStorage.getItem(
+                "bookings"
+            ) || "[]"
         );
 
 
-    // =====================================================
-    // TOTAL BOOKINGS
-    // =====================================================
-
-    document.getElementById("totalBookings").textContent =
-        bookings.length;
-
-
-    // =====================================================
-    // CALCULATE TICKETS + AMOUNT
-    // =====================================================
-
-    let totalTickets = 0;
-    let totalAmount = 0;
+    const users =
+        JSON.parse(
+            localStorage.getItem(
+                "users"
+            ) || "[]"
+        );
 
 
-    bookings.forEach(function (booking) {
-
-        const tickets =
-            Number(booking.tickets || 1);
-
-        const ticketPrice =
-            Number(booking.ticketPrice || 0);
-
-        const bookingFee =
-            Number(booking.bookingFee || 0);
+    const totalEvents =
+        document.getElementById(
+            "totalEvents"
+        );
 
 
-        // If amount already exists, use it.
-        // Otherwise calculate it.
-
-        let amount =
-            Number(booking.amount || 0);
-
-
-        if (amount === 0 && ticketPrice > 0) {
-
-            amount =
-                (ticketPrice * tickets) +
-                bookingFee;
-
-        }
+    const totalBookings =
+        document.getElementById(
+            "totalBookings"
+        );
 
 
-        totalTickets += tickets;
-
-        totalAmount += amount;
-
-    });
-
-
-    // =====================================================
-    // SHOW TOTAL TICKETS
-    // =====================================================
-
-    document.getElementById("totalTickets").textContent =
-        totalTickets;
+    const totalUsers =
+        document.getElementById(
+            "totalUsers"
+        );
 
 
-    // =====================================================
-    // SHOW TOTAL AMOUNT
-    // =====================================================
-
-    document.getElementById("totalAmount").textContent =
-        "₹" + totalAmount.toLocaleString("en-IN");
+    const totalRevenue =
+        document.getElementById(
+            "totalRevenue"
+        );
 
 
-    // =====================================================
-    // RECENT BOOKINGS
-    // =====================================================
+    if (totalEvents) {
 
-    const recentBookings =
-        document.getElementById("recentBookings");
+        totalEvents.textContent =
+            events.length;
 
-    recentBookings.innerHTML = "";
-
-
-    if (bookings.length === 0) {
-
-        recentBookings.innerHTML = `
-
-            <div class="empty-message">
-
-                <i
-                    class="bi bi-ticket"
-                    style="font-size:40px;">
-                </i>
-
-                <p class="mt-3 mb-3">
-                    You have no bookings yet.
-                </p>
-
-                <a
-                    href="events.html"
-                    class="btn btn-primary">
-
-                    Explore Events
-
-                </a>
-
-            </div>
-
-        `;
-
-        return;
     }
 
 
-    // LAST 5 BOOKINGS
+    if (totalBookings) {
 
-    const recentBookingsList =
-        bookings.slice(-5).reverse();
+        totalBookings.textContent =
+            bookings.length;
 
-
-    recentBookingsList.forEach(function (booking) {
-
-        const tickets =
-            Number(booking.tickets || 1);
-
-        const ticketPrice =
-            Number(booking.ticketPrice || 0);
-
-        const bookingFee =
-            Number(booking.bookingFee || 0);
-
-        let amount =
-            Number(booking.amount || 0);
+    }
 
 
-        if (amount === 0 && ticketPrice > 0) {
+    if (totalUsers) {
 
-            amount =
-                (ticketPrice * tickets) +
-                bookingFee;
+        totalUsers.textContent =
+            users.length;
 
-        }
-
-
-        const row =
-            document.createElement("div");
+    }
 
 
-        row.className =
-            "booking-row";
+    if (totalRevenue) {
 
+        let revenue = 0;
 
-        row.innerHTML = `
+        bookings.forEach(
+            booking => {
 
-            <div
-                class="d-flex justify-content-between
-                align-items-center gap-3">
+                revenue +=
+                    Number(
+                        booking.total ||
+                        booking.price ||
+                        0
+                    );
 
-                <div>
+            }
+        );
 
-                    <div class="booking-title">
+        totalRevenue.textContent =
+            "₹" + revenue;
 
-                        <i
-                            class="bi bi-calendar-event
-                            text-primary">
-                        </i>
-
-                        ${booking.event || "Event"}
-
-                    </div>
-
-
-                    <div class="booking-details">
-
-                        ${booking.date || "-"}
-
-                        &nbsp; | &nbsp;
-
-                        ${tickets} Ticket(s)
-
-                        &nbsp; | &nbsp;
-
-                        ₹${amount.toLocaleString("en-IN")}
-
-                    </div>
-
-                </div>
-
-
-                <span class="status-badge">
-
-                    ${booking.status || "Confirmed"}
-
-                </span>
-
-            </div>
-
-        `;
-
-
-        recentBookings.appendChild(row);
-
-    });
+    }
 
 }
 
 
-// =========================================================
-// LOGOUT
-// =========================================================
+/* ---------------------------------------------------------
+   Dashboard navigation
+--------------------------------------------------------- */
 
-function logoutUser() {
-
-    const confirmLogout =
-        confirm(
-            "Are you sure you want to logout?"
-        );
-
-
-    if (!confirmLogout) {
-
-        return;
-    }
-
-
-    localStorage.removeItem("isLoggedIn");
-
-    localStorage.removeItem("currentUser");
-
+function openAllEvents() {
 
     window.location.href =
-        "login.html";
+        "events.html";
 
 }
 
 
-// =========================================================
-// LOGOUT BUTTON
-// =========================================================
+function openAdminEvents() {
 
-document
-    .getElementById("logoutButton")
-    .addEventListener(
-        "click",
-        logoutUser
+    window.location.href =
+        "admin-events.html";
+
+}
+
+
+function openBookings() {
+
+    window.location.href =
+        "my-bookings.html";
+
+}
+
+
+function openWebsite() {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+function openFeedback() {
+
+    window.location.href =
+        "contact.html";
+
+}
+
+
+/* ---------------------------------------------------------
+   Admin logout
+--------------------------------------------------------- */
+
+function dashboardLogout() {
+
+    localStorage.removeItem(
+        "adminLoggedIn"
     );
 
-
-// =========================================================
-// NAVBAR LOGOUT
-// =========================================================
-
-document
-    .getElementById("logoutNav")
-    .addEventListener(
-        "click",
-        function (event) {
-
-            event.preventDefault();
-
-            logoutUser();
-
-        }
+    localStorage.removeItem(
+        "adminData"
     );
 
+    window.location.href =
+        "admin-login.html";
 
-// =========================================================
-// PAGE LOAD
-// =========================================================
+}
+
+
+/* ---------------------------------------------------------
+   Load dashboard
+--------------------------------------------------------- */
 
 document.addEventListener(
     "DOMContentLoaded",
-    loadDashboard
+    loadDashboardStatistics
 );
