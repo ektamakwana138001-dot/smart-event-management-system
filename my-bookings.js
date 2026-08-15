@@ -4,49 +4,114 @@
 // =========================================================
 
 
-// GET ELEMENTS
-
-const bookingsContainer =
-    document.getElementById("bookingsContainer");
-
-const emptyBookings =
-    document.getElementById("emptyBookings");
-
-const customerBox =
-    document.getElementById("customerBox");
-
-const customerName =
-    document.getElementById("customerName");
-
-const customerEmail =
-    document.getElementById("customerEmail");
-
-const bookingCount =
-    document.getElementById("bookingCount");
-
-const clearBox =
-    document.getElementById("clearBox");
-
-const clearBookingsBtn =
-    document.getElementById("clearBookingsBtn");
-
-
 // =========================================================
 // LOAD BOOKINGS
 // =========================================================
 
 function loadBookings() {
 
-    let bookings =
-        JSON.parse(
-            localStorage.getItem("bookings")
-            || "[]"
+
+    const bookingList =
+        document.getElementById(
+            "bookingList"
         );
 
 
-    // Clear previous content
+    // GET BOOKINGS
 
-    bookingsContainer.innerHTML = "";
+    const bookings =
+        JSON.parse(
+            localStorage.getItem(
+                "bookings"
+            ) || "[]"
+        );
+
+
+    // =====================================================
+    // SUMMARY VARIABLES
+    // =====================================================
+
+    let totalTickets = 0;
+
+    let totalAmount = 0;
+
+
+    // =====================================================
+    // CALCULATE SUMMARY
+    // =====================================================
+
+    bookings.forEach(
+        function(booking) {
+
+            const tickets =
+                Number(
+                    booking.tickets || 1
+                );
+
+
+            const ticketPrice =
+                Number(
+                    booking.ticketPrice || 0
+                );
+
+
+            const bookingFee =
+                Number(
+                    booking.bookingFee || 0
+                );
+
+
+            let amount =
+                Number(
+                    booking.amount || 0
+                );
+
+
+            // Calculate if amount missing
+
+            if (
+                amount === 0 &&
+                ticketPrice > 0
+            ) {
+
+                amount =
+                    (ticketPrice * tickets)
+                    + bookingFee;
+
+            }
+
+
+            totalTickets += tickets;
+
+            totalAmount += amount;
+
+        }
+    );
+
+
+    // =====================================================
+    // SHOW SUMMARY
+    // =====================================================
+
+    document.getElementById(
+        "summaryBookings"
+    ).textContent =
+        bookings.length;
+
+
+    document.getElementById(
+        "summaryTickets"
+    ).textContent =
+        totalTickets;
+
+
+    document.getElementById(
+        "summaryAmount"
+    ).textContent =
+        "₹" +
+        totalAmount.toLocaleString(
+            "en-IN"
+        );
 
 
     // =====================================================
@@ -55,14 +120,35 @@ function loadBookings() {
 
     if (bookings.length === 0) {
 
-        emptyBookings.style.display =
-            "block";
+        bookingList.innerHTML = `
 
-        customerBox.style.display =
-            "none";
+            <div class="empty-bookings">
 
-        clearBox.style.display =
-            "none";
+                <i class="bi bi-ticket-perforated"></i>
+
+                <h3>
+                    No Bookings Yet
+                </h3>
+
+                <p class="text-muted">
+
+                    You haven't booked any events yet.
+
+                </p>
+
+                <a
+                    href="events.html"
+                    class="btn btn-primary">
+
+                    <i class="bi bi-calendar-event"></i>
+
+                    Explore Events
+
+                </a>
+
+            </div>
+
+        `;
 
         return;
 
@@ -70,340 +156,368 @@ function loadBookings() {
 
 
     // =====================================================
-    // SHOW CUSTOMER
+    // CLEAR LIST
     // =====================================================
 
-    customerBox.style.display =
-        "block";
-
-
-    clearBox.style.display =
-        "block";
-
-
-    bookingCount.textContent =
-        bookings.length;
-
-
-    if (bookings[0].name) {
-
-        customerName.textContent =
-            bookings[0].name;
-
-    }
-
-
-    if (bookings[0].email) {
-
-        customerEmail.textContent =
-            bookings[0].email;
-
-    }
+    bookingList.innerHTML = "";
 
 
     // =====================================================
     // DISPLAY BOOKINGS
     // =====================================================
 
-    bookings.forEach(
-        function(booking, index) {
-
-            const ticketPrice =
-                Number(
-                    booking.ticketPrice
-                    || 0
-                );
+    bookings
+        .slice()
+        .reverse()
+        .forEach(
+            function(booking) {
 
 
-            const tickets =
-                Number(
-                    booking.tickets
-                    || 1
-                );
+                const tickets =
+                    Number(
+                        booking.tickets || 1
+                    );
 
 
-            const subtotal =
-                Number(
-                    booking.subtotal
-                    || ticketPrice * tickets
-                );
+                const ticketPrice =
+                    Number(
+                        booking.ticketPrice || 0
+                    );
 
 
-            const fee =
-                Number(
-                    booking.bookingFee
-                    || 0
-                );
+                const bookingFee =
+                    Number(
+                        booking.bookingFee || 0
+                    );
 
 
-            const total =
-                Number(
-                    booking.amount
-                    || subtotal + fee
-                );
+                const subtotal =
+                    Number(
+                        booking.subtotal ||
+                        ticketPrice * tickets
+                    );
 
 
-            const card =
-                document.createElement("div");
+                let amount =
+                    Number(
+                        booking.amount || 0
+                    );
 
 
-            card.className =
-                "booking-card";
+                if (
+                    amount === 0 &&
+                    ticketPrice > 0
+                ) {
+
+                    amount =
+                        subtotal +
+                        bookingFee;
+
+                }
 
 
-            card.innerHTML = `
+                // =================================================
+                // CARD
+                // =================================================
 
-                <div class="booking-card-header">
+                const card =
+                    document.createElement(
+                        "div"
+                    );
 
-                    <div>
 
-                        <h4>
+                card.className =
+                    "booking-card";
 
-                            <i class="bi bi-calendar-event text-primary"></i>
 
-                            ${booking.event || "Event"}
+                card.innerHTML = `
 
-                        </h4>
+                    <div class="row g-4">
 
-                        <div class="booking-id">
 
-                            Booking ID:
-                            ${booking.id || "#SE000000"}
+                        <!-- EVENT DETAILS -->
+
+                        <div class="col-lg-7">
+
+                            <div
+                                class="d-flex gap-3">
+
+                                <div
+                                    class="event-icon">
+
+                                    <i
+                                        class="bi bi-calendar-event">
+                                    </i>
+
+                                </div>
+
+
+                                <div>
+
+                                    <div
+                                        class="d-flex
+                                        align-items-center
+                                        gap-2
+                                        flex-wrap">
+
+                                        <h4
+                                            class="mb-0">
+
+                                            ${booking.event || "Event"}
+
+                                        </h4>
+
+
+                                        <span
+                                            class="status-badge">
+
+                                            ${booking.status || "Confirmed"}
+
+                                        </span>
+
+                                    </div>
+
+
+                                    <div
+                                        class="booking-id mt-2">
+
+                                        Booking ID:
+                                        ${booking.id || "-"}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="row mt-4 g-3">
+
+
+                                <div class="col-sm-6">
+
+                                    <div
+                                        class="booking-info">
+
+                                        <i
+                                            class="bi bi-calendar3">
+                                        </i>
+
+                                        <strong>
+                                            Event Date
+                                        </strong>
+
+                                        <br>
+
+                                        ${booking.date || "-"}
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-sm-6">
+
+                                    <div
+                                        class="booking-info">
+
+                                        <i
+                                            class="bi bi-geo-alt">
+                                        </i>
+
+                                        <strong>
+                                            Location
+                                        </strong>
+
+                                        <br>
+
+                                        ${booking.location || "-"}
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-sm-6">
+
+                                    <div
+                                        class="booking-info">
+
+                                        <i
+                                            class="bi bi-person">
+                                        </i>
+
+                                        <strong>
+                                            Name
+                                        </strong>
+
+                                        <br>
+
+                                        ${booking.customerName || "-"}
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-sm-6">
+
+                                    <div
+                                        class="booking-info">
+
+                                        <i
+                                            class="bi bi-people">
+                                        </i>
+
+                                        <strong>
+                                            Tickets
+                                        </strong>
+
+                                        <br>
+
+                                        ${tickets}
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-sm-6">
+
+                                    <div
+                                        class="booking-info">
+
+                                        <i
+                                            class="bi bi-calendar-check">
+                                        </i>
+
+                                        <strong>
+                                            Booking Date
+                                        </strong>
+
+                                        <br>
+
+                                        ${booking.bookingDate || "-"}
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
-                    </div>
 
-                    <span class="status-badge">
+                        <!-- PRICE DETAILS -->
 
-                        <i class="bi bi-check-circle"></i>
+                        <div class="col-lg-5">
 
-                        ${booking.status || "Confirmed"}
+                            <div class="price-summary">
 
-                    </span>
+                                <h5
+                                    class="fw-bold mb-3">
 
-                </div>
+                                    <i
+                                        class="bi bi-receipt">
+                                    </i>
 
+                                    Payment Details
 
-                <div class="booking-info">
-
-                    <div class="info-box">
-
-                        <span>
-                            Attendee Name
-                        </span>
-
-                        <strong>
-                            ${booking.name || "-"}
-                        </strong>
-
-                    </div>
+                                </h5>
 
 
-                    <div class="info-box">
+                                <div
+                                    class="price-row">
 
-                        <span>
-                            Email
-                        </span>
+                                    <span>
+                                        Event Fee
+                                    </span>
 
-                        <strong>
-                            ${booking.email || "-"}
-                        </strong>
+                                    <strong>
+                                        ₹${ticketPrice.toLocaleString("en-IN")}
+                                    </strong>
 
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <span>
-                            Phone
-                        </span>
-
-                        <strong>
-                            ${booking.phone || "-"}
-                        </strong>
-
-                    </div>
+                                </div>
 
 
-                    <div class="info-box">
+                                <div
+                                    class="price-row">
 
-                        <span>
-                            Event Date
-                        </span>
+                                    <span>
+                                        Number of Tickets
+                                    </span>
 
-                        <strong>
-                            ${booking.date || "-"}
-                        </strong>
+                                    <strong>
+                                        ${tickets}
+                                    </strong>
 
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <span>
-                            Event Time
-                        </span>
-
-                        <strong>
-                            ${booking.time || "-"}
-                        </strong>
-
-                    </div>
+                                </div>
 
 
-                    <div class="info-box">
+                                <div
+                                    class="price-row">
 
-                        <span>
-                            Location
-                        </span>
+                                    <span>
+                                        Subtotal
+                                    </span>
 
-                        <strong>
-                            ${booking.location || "-"}
-                        </strong>
+                                    <strong>
+                                        ₹${subtotal.toLocaleString("en-IN")}
+                                    </strong>
 
-                    </div>
+                                </div>
 
 
-                    <div class="info-box">
+                                <div
+                                    class="price-row">
 
-                        <span>
-                            Ticket Price
-                        </span>
+                                    <span>
+                                        Booking Fee
+                                    </span>
 
-                        <strong>
-                            ₹${ticketPrice}
-                        </strong>
+                                    <strong>
+                                        ₹${bookingFee.toLocaleString("en-IN")}
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="price-row total-row">
+
+                                    <span>
+                                        Total Amount
+                                    </span>
+
+                                    <strong>
+                                        ₹${amount.toLocaleString("en-IN")}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
 
                     </div>
 
-
-                    <div class="info-box">
-
-                        <span>
-                            Number of Tickets
-                        </span>
-
-                        <strong>
-                            ${tickets}
-                        </strong>
-
-                    </div>
+                `;
 
 
-                    <div class="info-box">
+                bookingList.appendChild(
+                    card
+                );
 
-                        <span>
-                            Payment Method
-                        </span>
-
-                        <strong>
-                            ${booking.payment || "-"}
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <span>
-                            Booking Date
-                        </span>
-
-                        <strong>
-                            ${booking.bookingDate || "-"}
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <div class="amount-box">
-
-                    <div>
-
-                        <span>
-                            Subtotal:
-                            ₹${subtotal}
-                        </span>
-
-                        <br>
-
-                        <small class="text-muted">
-
-                            Booking Fee:
-                            ₹${fee}
-
-                        </small>
-
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            Total Amount
-                        </span>
-
-                        <strong>
-                            ₹${total}
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            `;
-
-
-            bookingsContainer.appendChild(card);
-
-        }
-    );
+            }
+        );
 
 }
 
 
 // =========================================================
-// CLEAR ALL BOOKINGS
-// =========================================================
-
-clearBookingsBtn.addEventListener(
-    "click",
-    function() {
-
-        const confirmDelete =
-            confirm(
-                "Are you sure you want to delete all booking history?"
-            );
-
-
-        if (!confirmDelete) {
-
-            return;
-
-        }
-
-
-        localStorage.removeItem(
-            "bookings"
-        );
-
-
-        localStorage.removeItem(
-            "currentBooking"
-        );
-
-
-        loadBookings();
-
-    }
-);
-
-
-// =========================================================
-// LOAD WHEN PAGE OPENS
+// PAGE LOAD
 // =========================================================
 
 document.addEventListener(
