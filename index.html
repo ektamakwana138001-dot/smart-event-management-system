@@ -1,906 +1,732 @@
-
-
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>Smart Event Management & Ticket Booking System</title>
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<title>Smart Events | Event Management & Ticket Booking</title>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-<meta
-    name="description"
-    content="Discover upcoming events and book your tickets with Smart Events.">
-
-<!-- Bootstrap CSS -->
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet">
-
-<!-- Bootstrap Icons -->
-<link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-<!-- Custom CSS -->
-<link rel="stylesheet" href="style.css">
-
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
-
-<div class="container">
-
-    <a
-        class="navbar-brand fw-bold fs-4"
-        href="index.html">
-
-        <i class="bi bi-calendar-event"></i>
-
-        Smart Events
-
-    </a>
-
-
-    <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#mainNavbar">
-
-        <span class="navbar-toggler-icon"></span>
-
-    </button>
-
-
-    <div
-        class="collapse navbar-collapse"
-        id="mainNavbar">
-
-        <ul class="navbar-nav ms-auto">
-
-
-            <li class="nav-item">
-
-                <a
-                    class="nav-link active"
-                    href="index.html">
-
-                    Home
-
-                </a>
-
-            </li>
-
-
-            <li class="nav-item">
-
-                <a
-                    class="nav-link"
-                    href="event.html">
-
-                    Events
-
-                </a>
-
-            </li>
-
-
-            <li class="nav-item">
-
-                <a
-                    class="nav-link"
-                    href="my-bookings.html">
-
-                    <i class="bi bi-ticket-perforated"></i>
-
-                    My Bookings
-
-                </a>
-
-            </li>
-
-
-            <li class="nav-item">
-
-                <a
-                    class="nav-link"
-                    href="profile.html">
-
-                    <i class="bi bi-person-circle"></i>
-
-                    Profile
-
-                </a>
-
-            </li>
-
-
-            <li class="nav-item">
-
-                <a
-                    class="nav-link login-link"
-                    href="login.html">
-
-                    <i class="bi bi-box-arrow-in-right"></i>
-
-                    Login
-
-                </a>
-
-            </li>
-
-
-            <li class="nav-item">
-
-                <a
-                    class="nav-link register-link"
-                    href="register.html">
-
-                    <i class="bi bi-person-plus"></i>
-
-                    Register
-
-                </a>
-
-            </li>
-
-
-            <li class="nav-item">
-
-                <a
-                    class="nav-link logout-link"
-                    href="#">
-
-                    <i class="bi bi-box-arrow-right"></i>
-
-                    Logout
-
-                </a>
-
-            </li>
-
-
-        </ul>
-
-    </div>
-
-</div>
-
-</nav>
-
-
-
-<!-- ================= HERO ================= -->
-
-<section class="py-5">
-
-<div class="container">
-
-    <div class="row align-items-center g-5">
-
-
-        <div class="col-lg-6">
-
-            <span class="badge bg-primary mb-3">
-
-                SMART EVENT MANAGEMENT
-
-            </span>
-
-
-            <h1 class="display-4 fw-bold">
-
-                Discover Amazing
-
-                <span class="text-primary">
-
-                    Events
-
-                </span>
-
-            </h1>
-
-
-            <p class="lead text-muted mt-3">
-
-                Find exciting events, explore new experiences
-                and book your tickets easily with Smart Events.
-
-            </p>
-
-
-            <div class="mt-4">
-
-                <a
-                    href="event.html"
-                    class="btn btn-primary btn-lg me-2">
-
-                    <i class="bi bi-calendar-event"></i>
-
-                    Explore Events
-
-                </a>
-
-
-                <a
-                    href="register.html"
-                    class="btn btn-outline-primary btn-lg">
-
-                    <i class="bi bi-person-plus"></i>
-
-                    Create Account
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-lg-6">
-
-            <!-- ONLINE HERO IMAGE -->
-
-            <img
-                src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1000&q=80"
-                class="img-fluid rounded-4 shadow"
-                alt="Smart Events"
-                style="width:100%;height:350px;object-fit:cover;">
-
-        </div>
-
-
-    </div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= FEATURES ================= -->
-
-<section class="py-5 bg-light">
-
-<div class="container">
-
-    <div class="text-center mb-5">
-
-        <span class="text-primary fw-semibold">
-
-            WHY CHOOSE US
-
-        </span>
-
-        <h2 class="fw-bold mt-2">
-
-            Everything You Need
-
-        </h2>
-
-        <p class="text-muted">
-
-            A simple and smart way to manage your event bookings.
-
-        </p>
-
-    </div>
-
-
-    <div class="row g-4">
-
-
-        <div class="col-md-4">
-
-            <div class="card border-0 shadow-sm h-100 text-center p-4">
-
-                <i
-                    class="bi bi-search display-5 text-primary">
-                </i>
-
-                <h5 class="fw-bold mt-3">
-
-                    Discover Events
-
-                </h5>
-
-                <p class="text-muted mb-0">
-
-                    Explore technology, music, business,
-                    sports and college events.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-md-4">
-
-            <div class="card border-0 shadow-sm h-100 text-center p-4">
-
-                <i
-                    class="bi bi-ticket-perforated display-5 text-primary">
-                </i>
-
-                <h5 class="fw-bold mt-3">
-
-                    Easy Booking
-
-                </h5>
-
-                <p class="text-muted mb-0">
-
-                    Select your event and book your tickets
-                    quickly and easily.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="col-md-4">
-
-            <div class="card border-0 shadow-sm h-100 text-center p-4">
-
-                <i
-                    class="bi bi-check-circle display-5 text-primary">
-                </i>
-
-                <h5 class="fw-bold mt-3">
-
-                    Instant Confirmation
-
-                </h5>
-
-                <p class="text-muted mb-0">
-
-                    Get your booking confirmation and
-                    manage your tickets from My Bookings.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= UPCOMING EVENTS ================= -->
-
-<section class="py-5">
-
-<div class="container">
-
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-
-        <div>
-
-            <span class="text-primary fw-semibold">
-
-                DON'T MISS OUT
-
-            </span>
-
-            <h2 class="fw-bold mt-1">
-
-                Coming Soon Events
-
-            </h2>
-
-        </div>
-
-
-        <a
-            href="event.html"
-            class="btn btn-outline-primary">
-
-            View All Events
-
-            <i class="bi bi-arrow-right"></i>
-
-        </a>
-
-    </div>
-
-
-    <div class="row g-4">
-
-
-        <!-- ================= EVENT 1 ================= -->
-
-        <div class="col-lg-4 col-md-6">
-
-            <div class="card border-0 shadow-sm h-100">
-
-                <div class="position-relative">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top"
-                        alt="Future Tech Summit"
-                        style="height:220px;object-fit:cover;">
-
-                    <span
-                        class="badge bg-warning text-dark position-absolute top-0 end-0 m-3">
-
-                        Coming Soon
-
-                    </span>
-
-                </div>
-
-
-                <div class="card-body">
-
-                    <span class="badge bg-primary mb-2">
-
-                        Technology
-
-                    </span>
-
-                    <h5 class="fw-bold">
-
-                        Future Tech Summit 2026
-
-                    </h5>
-
-                    <p class="text-muted small">
-
-                        Explore innovation, AI and future technology.
-
-                    </p>
-
-                    <a
-                        href="event-details.html?id=1"
-                        class="btn btn-primary w-100">
-
-                        View Details
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================= EVENT 2 ================= -->
-
-        <div class="col-lg-4 col-md-6">
-
-            <div class="card border-0 shadow-sm h-100">
-
-                <div class="position-relative">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top"
-                        alt="Live Music Festival"
-                        style="height:220px;object-fit:cover;">
-
-                    <span
-                        class="badge bg-warning text-dark position-absolute top-0 end-0 m-3">
-
-                        Coming Soon
-
-                    </span>
-
-                </div>
-
-
-                <div class="card-body">
-
-                    <span class="badge bg-primary mb-2">
-
-                        Music
-
-                    </span>
-
-                    <h5 class="fw-bold">
-
-                        Live Music Festival
-
-                    </h5>
-
-                    <p class="text-muted small">
-
-                        Enjoy an amazing evening of live music.
-
-                    </p>
-
-                    <a
-                        href="event-details.html?id=2"
-                        class="btn btn-primary w-100">
-
-                        View Details
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================= EVENT 3 ================= -->
-
-        <div class="col-lg-4 col-md-6">
-
-            <div class="card border-0 shadow-sm h-100">
-
-                <div class="position-relative">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top"
-                        alt="Business Conference"
-                        style="height:220px;object-fit:cover;">
-
-                    <span
-                        class="badge bg-warning text-dark position-absolute top-0 end-0 m-3">
-
-                        Coming Soon
-
-                    </span>
-
-                </div>
-
-
-                <div class="card-body">
-
-                    <span class="badge bg-primary mb-2">
-
-                        Business
-
-                    </span>
-
-                    <h5 class="fw-bold">
-
-                        Business Leadership Conference
-
-                    </h5>
-
-                    <p class="text-muted small">
-
-                        Learn modern leadership and business strategies.
-
-                    </p>
-
-                    <a
-                        href="event-details.html?id=3"
-                        class="btn btn-primary w-100">
-
-                        View Details
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================= EVENT 4 ================= -->
-
-        <div class="col-lg-4 col-md-6">
-
-            <div class="card border-0 shadow-sm h-100">
-
-                <img
-                    src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=800&q=80"
-                    class="card-img-top"
-                    alt="College Cultural Fest"
-                    style="height:220px;object-fit:cover;">
-
-                <div class="card-body">
-
-                    <span class="badge bg-primary mb-2">
-
-                        College
-
-                    </span>
-
-                    <h5 class="fw-bold">
-
-                        College Cultural Fest
-
-                    </h5>
-
-                    <p class="text-muted small">
-
-                        Experience culture, performances and fun.
-
-                    </p>
-
-                    <a
-                        href="event-details.html?id=4"
-                        class="btn btn-primary w-100">
-
-                        View Details
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================= EVENT 5 ================= -->
-
-        <div class="col-lg-4 col-md-6">
-
-            <div class="card border-0 shadow-sm h-100">
-
-                <img
-                    src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80"
-                    class="card-img-top"
-                    alt="Startup Expo"
-                    style="height:220px;object-fit:cover;">
-
-                <div class="card-body">
-
-                    <span class="badge bg-primary mb-2">
-
-                        Startup
-
-                    </span>
-
-                    <h5 class="fw-bold">
-
-                        Startup & Innovation Expo
-
-                    </h5>
-
-                    <p class="text-muted small">
-
-                        Discover innovative startups and new ideas.
-
-                    </p>
-
-                    <a
-                        href="event-details.html?id=5"
-                        class="btn btn-primary w-100">
-
-                        View Details
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================= EVENT 6 ================= -->
-
-        <div class="col-lg-4 col-md-6">
-
-            <div class="card border-0 shadow-sm h-100">
-
-                <img
-                    src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80"
-                    class="card-img-top"
-                    alt="Sports Championship"
-                    style="height:220px;object-fit:cover;">
-
-                <div class="card-body">
-
-                    <span class="badge bg-primary mb-2">
-
-                        Sports
-
-                    </span>
-
-                    <h5 class="fw-bold">
-
-                        Sports Championship
-
-                    </h5>
-
-                    <p class="text-muted small">
-
-                        Experience exciting sports competitions.
-
-                    </p>
-
-                    <a
-                        href="event-details.html?id=6"
-                        class="btn btn-primary w-100">
-
-                        View Details
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= CTA ================= -->
-
-<section class="py-5 bg-primary text-white">
-
-<div class="container text-center">
-
-    <h2 class="fw-bold">
-
-        Ready to Discover Your Next Event?
-
-    </h2>
-
-    <p class="mb-4">
-
-        Create your account and start booking today.
-
-    </p>
-
-
-    <a
-        href="event.html"
-        class="btn btn-light btn-lg me-2">
-
-        Explore Events
-
-    </a>
-
-
-    <a
-        href="register.html"
-        class="btn btn-outline-light btn-lg">
-
-        Create Account
-
-    </a>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="bg-dark text-white py-4">
-
-<div class="container">
-
-    <div class="row g-4">
-
-
-        <div class="col-md-6">
-
-            <h5 class="fw-bold">
-
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="index.html">
                 <i class="bi bi-calendar-event"></i>
-
                 Smart Events
+            </a>
 
-            </h5>
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <p class="text-white-50 mb-0">
+            <div class="collapse navbar-collapse" id="navbarNav">
 
-                Smart Event Management & Ticket Booking System.
+                <ul class="navbar-nav ms-auto">
 
-            </p>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="event-details.html">Event Details</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Book Ticket</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-bookings.html">My Bookings</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="bi bi-person-circle"></i> Profile
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+    <section class="hero-section">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-7 hero-content">
+
+                    <span class="hero-badge">
+                        <i class="bi bi-stars"></i>
+                        Smart Event Management System
+                    </span>
+
+                    <h1>
+                        Discover & Book
+                        <span>Amazing Events</span>
+                    </h1>
+
+                    <p>
+                        Find exciting events, explore event details and
+                        book your tickets quickly and easily with our
+                        smart event management system.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="events.html" class="btn btn-warning btn-lg">
+                            <i class="bi bi-calendar2-event"></i>
+                            Explore Events
+                        </a>
+
+                        <a href="booking.html" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-ticket-perforated"></i>
+                            Book Ticket
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-5">
+
+                    <div class="hero-image-box">
+
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80"
+                             alt="Event">
+
+                        <div class="floating-card">
+                            <i class="bi bi-ticket-perforated-fill"></i>
+                            <div>
+                                <strong>Easy Booking</strong>
+                                <small>Book your event ticket</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
-
-        <div class="col-md-6 text-md-end">
-
-            <a
-                href="index.html"
-                class="text-white-50 text-decoration-none me-3">
-
-                Home
-
-            </a>
+    </section>
 
 
-            <a
-                href="event.html"
-                class="text-white-50 text-decoration-none me-3">
+    <!-- ================= STATS ================= -->
+    <section class="stats-section">
 
-                Events
+        <div class="container">
 
-            </a>
+            <div class="row g-4">
 
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <i class="bi bi-calendar-event"></i>
+                        <h3>10+</h3>
+                        <p>Events</p>
+                    </div>
+                </div>
 
-            <a
-                href="my-bookings.html"
-                class="text-white-50 text-decoration-none me-3">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <i class="bi bi-people"></i>
+                        <h3>500+</h3>
+                        <p>Participants</p>
+                    </div>
+                </div>
 
-                My Bookings
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <i class="bi bi-ticket-perforated"></i>
+                        <h3>1000+</h3>
+                        <p>Tickets Booked</p>
+                    </div>
+                </div>
 
-            </a>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <i class="bi bi-shield-check"></i>
+                        <h3>100%</h3>
+                        <p>Secure Booking</p>
+                    </div>
+                </div>
 
-
-            <a
-                href="profile.html"
-                class="text-white-50 text-decoration-none">
-
-                Profile
-
-            </a>
+            </div>
 
         </div>
 
-
-    </div>
-
-
-    <hr class="border-secondary">
+    </section>
 
 
-    <div class="text-center">
+    <!-- ================= ABOUT ================= -->
+    <section class="section-padding">
 
-        <small class="text-white-50">
+        <div class="container">
 
-            © 2026 Smart Events. All Rights Reserved.
+            <div class="section-heading">
 
-        </small>
+                <span>ABOUT OUR SYSTEM</span>
 
-    </div>
+                <h2>Smart Event Management Made Easy</h2>
 
-</div>
+                <p>
+                    Everything you need to discover and manage events
+                    in one place.
+                </p>
 
-</footer>
+            </div>
 
 
+            <div class="row align-items-center g-5">
 
-<!-- Bootstrap JS -->
+                <div class="col-lg-6">
 
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
+                    <div class="about-image">
 
-<!-- Main JavaScript -->
+                        <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=900&q=80"
+                             alt="Event Management">
 
-<script src="script.js"></script>
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <h3 class="fw-bold">
+                        Plan. Discover. Book. Enjoy.
+                    </h3>
+
+                    <p class="text-muted">
+                        Smart Event Management & Ticket Booking System
+                        is a web-based platform designed to make event
+                        discovery and ticket booking simple and convenient.
+                    </p>
+
+                    <p class="text-muted">
+                        Users can browse upcoming events, view complete
+                        event information, book tickets and check their
+                        bookings.
+                    </p>
+
+                    <a href="events.html" class="btn btn-primary">
+                        View All Events
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EVENTS ================= -->
+    <section class="section-padding events-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>UPCOMING EVENTS</span>
+
+                <h2>Don't Miss These Events</h2>
+
+                <p>
+                    Explore our latest and upcoming events.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- EVENT 1 -->
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="event-card">
+
+                        <div class="event-image">
+
+                            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80"
+                                 alt="Music Festival">
+
+                            <span>Coming Soon</span>
+
+                        </div>
+
+                        <div class="event-body">
+
+                            <h4>Music Festival</h4>
+
+                            <p>
+                                Enjoy an amazing live music experience
+                                with exciting performances.
+                            </p>
+
+                            <div class="event-info">
+                                <i class="bi bi-calendar3"></i>
+                                Upcoming Event
+                            </div>
+
+                            <a href="event-details.html"
+                               class="btn btn-outline-primary w-100 mt-3">
+                                View Details
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 2 -->
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="event-card">
+
+                        <div class="event-image">
+
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80"
+                                 alt="Technology Conference">
+
+                            <span>Coming Soon</span>
+
+                        </div>
+
+                        <div class="event-body">
+
+                            <h4>Technology Conference</h4>
+
+                            <p>
+                                Learn about new technologies and
+                                innovative ideas.
+                            </p>
+
+                            <div class="event-info">
+                                <i class="bi bi-calendar3"></i>
+                                Upcoming Event
+                            </div>
+
+                            <a href="event-details.html"
+                               class="btn btn-outline-primary w-100 mt-3">
+                                View Details
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 3 -->
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="event-card">
+
+                        <div class="event-image">
+
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
+                                 alt="Business Seminar">
+
+                            <span>Coming Soon</span>
+
+                        </div>
+
+                        <div class="event-body">
+
+                            <h4>Business Seminar</h4>
+
+                            <p>
+                                Gain valuable knowledge from experienced
+                                business professionals.
+                            </p>
+
+                            <div class="event-info">
+                                <i class="bi bi-calendar3"></i>
+                                Upcoming Event
+                            </div>
+
+                            <a href="event-details.html"
+                               class="btn btn-outline-primary w-100 mt-3">
+                                View Details
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="text-center mt-5">
+
+                <a href="events.html" class="btn btn-primary btn-lg">
+                    View All Events
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+    <section class="section-padding">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>WHY CHOOSE US</span>
+
+                <h2>Everything You Need for Event Booking</h2>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+
+                        <h4>Easy & Fast</h4>
+
+                        <p>
+                            Find your favourite events and book tickets
+                            with a simple and user-friendly interface.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-lock-fill"></i>
+                        </div>
+
+                        <h4>Secure System</h4>
+
+                        <p>
+                            Your booking information is handled through
+                            a secure and reliable system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-phone-fill"></i>
+                        </div>
+
+                        <h4>Responsive Design</h4>
+
+                        <p>
+                            Access the website easily on desktop,
+                            tablet and mobile devices.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="section-padding how-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span>HOW IT WORKS</span>
+
+                <h2>Book Your Event in 4 Simple Steps</h2>
+
+            </div>
+
+
+            <div class="row g-4 text-center">
+
+                <div class="col-lg-3 col-6">
+
+                    <div class="step-card">
+
+                        <div class="step-number">1</div>
+
+                        <i class="bi bi-search"></i>
+
+                        <h5>Find Event</h5>
+
+                        <p>
+                            Browse available events.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-6">
+
+                    <div class="step-card">
+
+                        <div class="step-number">2</div>
+
+                        <i class="bi bi-info-circle"></i>
+
+                        <h5>View Details</h5>
+
+                        <p>
+                            Check date, time and venue.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-6">
+
+                    <div class="step-card">
+
+                        <div class="step-number">3</div>
+
+                        <i class="bi bi-ticket-perforated"></i>
+
+                        <h5>Book Ticket</h5>
+
+                        <p>
+                            Complete the booking form.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-6">
+
+                    <div class="step-card">
+
+                        <div class="step-number">4</div>
+
+                        <i class="bi bi-check-circle"></i>
+
+                        <h5>Enjoy Event</h5>
+
+                        <p>
+                            Check your booking and enjoy.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEEDBACK ================= -->
+    <section class="feedback-section">
+
+        <div class="container">
+
+            <div class="feedback-box">
+
+                <i class="bi bi-chat-square-heart"></i>
+
+                <h2>We Value Your Feedback</h2>
+
+                <p>
+                    Have suggestions or feedback about our website?
+                    We would love to hear from you.
+                </p>
+
+                <a href="contact.html" class="btn btn-warning btn-lg">
+                    <i class="bi bi-chat-dots"></i>
+                    Give Feedback
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-lg-4">
+
+                    <h4>
+                        <i class="bi bi-calendar-event"></i>
+                        Smart Events
+                    </h4>
+
+                    <p>
+                        Smart Event Management & Ticket Booking System
+                        for discovering and booking exciting events.
+                    </p>
+
+                </div>
+
+
+                <div class="col-lg-2">
+
+                    <h5>Quick Links</h5>
+
+                    <a href="index.html">Home</a>
+                    <a href="events.html">Events</a>
+                    <a href="booking.html">Booking</a>
+                    <a href="contact.html">Contact</a>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <h5>Account</h5>
+
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Register</a>
+                    <a href="my-bookings.html">My Bookings</a>
+                    <a href="dashboard.html">Profile</a>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <h5>Contact</h5>
+
+                    <p>
+                        <i class="bi bi-envelope"></i>
+                        support@smartevents.com
+                    </p>
+
+                    <p>
+                        <i class="bi bi-telephone"></i>
+                        +91 98765 43210
+                    </p>
+
+                    <p>
+                        <i class="bi bi-geo-alt"></i>
+                        Gujarat, India
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 Smart Event Management System.
+                    All Rights Reserved.
+                </p>
+
+                <div class="social-icons">
+
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
 </html>
+
+      
