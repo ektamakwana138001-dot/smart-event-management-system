@@ -21,6 +21,10 @@
 
     <style>
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -39,54 +43,74 @@
         }
 
         .navbar-brand {
-            font-weight: bold;
             font-size: 21px;
+            font-weight: bold;
         }
 
         .nav-link:hover {
             color: #dbeafe !important;
         }
 
-        /* HEADER */
+        /* HERO */
 
-        .page-header {
+        .events-hero {
+
+            min-height: 390px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
             background:
                 linear-gradient(
-                    rgba(13, 110, 253, 0.80),
-                    rgba(8, 66, 152, 0.80)
+                    rgba(0,0,0,0.60),
+                    rgba(0,0,0,0.60)
                 ),
                 url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1800&q=85");
 
             background-size: cover;
+
             background-position: center;
-
-            padding: 80px 20px;
-
-            color: white;
-
-            text-align: center;
         }
 
-        .page-header h1 {
-            font-size: 45px;
+        .events-hero h1 {
+
+            font-size: 48px;
+
             font-weight: bold;
+
+            margin-bottom: 15px;
+
         }
 
-        .page-header p {
-            font-size: 18px;
+        .events-hero p {
+
+            font-size: 19px;
+
         }
 
         /* EVENTS SECTION */
 
         .events-section {
+
             padding: 55px 0;
+
         }
 
         /* FILTER */
 
         .filter-box {
+
             background: white;
+
             padding: 20px;
+
             border-radius: 15px;
 
             box-shadow:
@@ -94,13 +118,15 @@
                 rgba(0,0,0,0.07);
 
             margin-bottom: 35px;
+
         }
 
         /* EVENT CARD */
 
         .event-card {
+
             background: white;
-            border: none;
+
             border-radius: 18px;
 
             overflow: hidden;
@@ -108,114 +134,171 @@
             height: 100%;
 
             box-shadow:
-                0 5px 20px
+                0 6px 22px
                 rgba(0,0,0,0.08);
 
             transition: 0.3s;
+
         }
 
         .event-card:hover {
-            transform: translateY(-7px);
+
+            transform: translateY(-6px);
 
             box-shadow:
                 0 12px 30px
-                rgba(0,0,0,0.15);
+                rgba(0,0,0,0.14);
+
         }
 
         .event-image {
+
             width: 100%;
+
             height: 220px;
 
             object-fit: cover;
+
         }
 
         .event-body {
+
             padding: 22px;
+
         }
 
         .event-title {
-            font-size: 22px;
+
+            font-size: 23px;
+
             font-weight: bold;
+
+            margin-bottom: 10px;
+
         }
 
         .category-badge {
+
             background: #e7f1ff;
+
             color: #0d6efd;
 
-            padding: 6px 12px;
+            padding: 6px 11px;
 
             border-radius: 20px;
 
-            font-size: 13px;
+            font-size: 12px;
+
             font-weight: bold;
+
         }
 
         .coming-badge {
-            background: #fff3cd;
-            color: #856404;
 
-            padding: 6px 12px;
+            background: #fff3cd;
+
+            color: #664d03;
+
+            padding: 6px 11px;
 
             border-radius: 20px;
 
-            font-size: 13px;
+            font-size: 12px;
+
             font-weight: bold;
+
         }
 
         .event-info {
+
             color: #666;
+
             margin-top: 10px;
+
+            font-size: 15px;
+
         }
 
         .event-info i {
+
             color: #0d6efd;
+
             width: 22px;
+
         }
 
         .price {
+
             color: #198754;
-            font-size: 24px;
+
+            font-size: 23px;
+
             font-weight: bold;
+
+            margin-top: 12px;
+
         }
 
-        .btn-details {
+        .details-btn {
+
             width: 100%;
-            margin-top: 15px;
+
+            border-radius: 9px;
+
+            padding: 11px;
+
+            font-weight: bold;
+
+            margin-top: 12px;
+
         }
 
-        /* NO RESULT */
+        /* EMPTY */
 
-        #noResult {
+        .no-events {
+
             display: none;
 
-            text-align: center;
+            background: white;
 
             padding: 50px;
 
-            color: #777;
+            text-align: center;
+
+            border-radius: 15px;
+
         }
 
         /* FOOTER */
 
         footer {
+
             background: #212529;
+
             color: white;
 
-            padding: 45px 0 20px;
+            padding: 40px 0 20px;
 
             margin-top: 30px;
+
         }
 
         footer a {
+
             color: #ddd;
+
             text-decoration: none;
+
         }
 
         footer a:hover {
+
             color: white;
+
         }
 
         .footer-bottom {
+
             border-top: 1px solid #555;
 
             margin-top: 25px;
@@ -223,18 +306,23 @@
             padding-top: 20px;
 
             text-align: center;
+
         }
 
         /* MOBILE */
 
         @media (max-width: 768px) {
 
-            .page-header h1 {
-                font-size: 34px;
+            .events-hero h1 {
+
+                font-size: 35px;
+
             }
 
-            .event-image {
-                height: 200px;
+            .events-hero {
+
+                min-height: 320px;
+
             }
 
         }
@@ -247,11 +335,12 @@
 <body>
 
 
-    <!-- NAVBAR -->
+    <!-- ================= NAVBAR ================= -->
 
     <nav class="navbar navbar-expand-lg sticky-top">
 
         <div class="container">
+
 
             <a
                 class="navbar-brand"
@@ -338,19 +427,6 @@
 
                         <a
                             class="nav-link"
-                            href="register.html">
-
-                            Register
-
-                        </a>
-
-                    </li>
-
-
-                    <li class="nav-item">
-
-                        <a
-                            class="nav-link"
                             href="contact.html">
 
                             Contact
@@ -368,22 +444,22 @@
     </nav>
 
 
-    <!-- PAGE HEADER -->
+    <!-- ================= HERO ================= -->
 
-    <section class="page-header">
+    <section class="events-hero">
 
         <div class="container">
 
             <h1>
 
-                Explore Events
+                Explore All Events
 
             </h1>
 
             <p>
 
                 Discover exciting upcoming events
-                and book your tickets.
+                and reserve your tickets.
 
             </p>
 
@@ -392,7 +468,7 @@
     </section>
 
 
-    <!-- EVENTS -->
+    <!-- ================= EVENTS ================= -->
 
     <section class="events-section">
 
@@ -403,35 +479,21 @@
 
             <div class="filter-box">
 
-                <div class="row g-3">
+                <div class="row g-3 align-items-center">
 
 
-                    <div class="col-md-5">
-
-                        <label class="form-label">
-
-                            Search Event
-
-                        </label>
-
+                    <div class="col-md-6">
 
                         <input
                             type="text"
                             id="searchInput"
                             class="form-control"
-                            placeholder="Search event name...">
+                            placeholder="Search events...">
 
                     </div>
 
 
                     <div class="col-md-4">
-
-                        <label class="form-label">
-
-                            Category
-
-                        </label>
-
 
                         <select
                             id="categoryFilter"
@@ -461,9 +523,21 @@
 
                             </option>
 
+                            <option value="Education">
+
+                                Education
+
+                            </option>
+
                             <option value="Food">
 
                                 Food
+
+                            </option>
+
+                            <option value="Sports">
+
+                                Sports
 
                             </option>
 
@@ -472,19 +546,18 @@
                     </div>
 
 
-                    <div class="col-md-3 d-flex align-items-end">
+                    <div class="col-md-2">
 
                         <button
-                            onclick="resetFilters()"
-                            class="btn btn-outline-primary w-100">
-
-                            <i class="bi bi-arrow-clockwise"></i>
+                            class="btn btn-outline-primary w-100"
+                            onclick="resetFilters()">
 
                             Reset
 
                         </button>
 
                     </div>
+
 
                 </div>
 
@@ -497,625 +570,27 @@
                 id="eventsContainer"
                 class="row g-4">
 
-
-                <!-- MUSIC -->
-
-                <div
-                    class="col-md-6 col-lg-4 event-item"
-                    data-name="music festival"
-                    data-category="Entertainment">
-
-
-                    <div class="event-card">
-
-
-                        <img
-                            class="event-image"
-                            src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1000&q=85"
-                            alt="Music Festival">
-
-
-                        <div class="event-body">
-
-
-                            <div class="mb-3">
-
-                                <span class="category-badge">
-
-                                    Entertainment
-
-                                </span>
-
-
-                                <span class="coming-badge ms-1">
-
-                                    Coming Soon
-
-                                </span>
-
-                            </div>
-
-
-                            <h3 class="event-title">
-
-                                Music Festival
-
-                            </h3>
-
-
-                            <p class="text-muted">
-
-                                Enjoy live music,
-                                amazing performances
-                                and entertainment.
-
-                            </p>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-geo-alt"></i>
-
-                                Ahmedabad
-
-                            </div>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-calendar3"></i>
-
-                                Date Coming Soon
-
-                            </div>
-
-
-                            <div class="mt-3">
-
-                                <span class="price">
-
-                                    ₹499
-
-                                </span>
-
-                            </div>
-
-
-                            <a
-                                href="event-details.html?event=music"
-                                class="btn btn-primary btn-details">
-
-                                <i class="bi bi-eye"></i>
-
-                                View Details
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TECHNOLOGY -->
-
-                <div
-                    class="col-md-6 col-lg-4 event-item"
-                    data-name="technology conference"
-                    data-category="Technology">
-
-
-                    <div class="event-card">
-
-
-                        <img
-                            class="event-image"
-                            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85"
-                            alt="Technology Conference">
-
-
-                        <div class="event-body">
-
-
-                            <div class="mb-3">
-
-                                <span class="category-badge">
-
-                                    Technology
-
-                                </span>
-
-
-                                <span class="coming-badge ms-1">
-
-                                    Coming Soon
-
-                                </span>
-
-                            </div>
-
-
-                            <h3 class="event-title">
-
-                                Technology Conference
-
-                            </h3>
-
-
-                            <p class="text-muted">
-
-                                Explore innovation,
-                                AI and future
-                                technology trends.
-
-                            </p>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-geo-alt"></i>
-
-                                Ahmedabad
-
-                            </div>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-calendar3"></i>
-
-                                Date Coming Soon
-
-                            </div>
-
-
-                            <div class="mt-3">
-
-                                <span class="price">
-
-                                    ₹799
-
-                                </span>
-
-                            </div>
-
-
-                            <a
-                                href="event-details.html?event=technology"
-                                class="btn btn-primary btn-details">
-
-                                <i class="bi bi-eye"></i>
-
-                                View Details
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- BUSINESS -->
-
-                <div
-                    class="col-md-6 col-lg-4 event-item"
-                    data-name="business summit"
-                    data-category="Business">
-
-
-                    <div class="event-card">
-
-
-                        <img
-                            class="event-image"
-                            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85"
-                            alt="Business Summit">
-
-
-                        <div class="event-body">
-
-
-                            <div class="mb-3">
-
-                                <span class="category-badge">
-
-                                    Business
-
-                                </span>
-
-
-                                <span class="coming-badge ms-1">
-
-                                    Coming Soon
-
-                                </span>
-
-                            </div>
-
-
-                            <h3 class="event-title">
-
-                                Business Summit
-
-                            </h3>
-
-
-                            <p class="text-muted">
-
-                                Meet entrepreneurs,
-                                professionals and
-                                industry leaders.
-
-                            </p>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-geo-alt"></i>
-
-                                Ahmedabad
-
-                            </div>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-calendar3"></i>
-
-                                Date Coming Soon
-
-                            </div>
-
-
-                            <div class="mt-3">
-
-                                <span class="price">
-
-                                    ₹999
-
-                                </span>
-
-                            </div>
-
-
-                            <a
-                                href="event-details.html?event=business"
-                                class="btn btn-primary btn-details">
-
-                                <i class="bi bi-eye"></i>
-
-                                View Details
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- STARTUP -->
-
-                <div
-                    class="col-md-6 col-lg-4 event-item"
-                    data-name="startup meetup"
-                    data-category="Business">
-
-
-                    <div class="event-card">
-
-
-                        <img
-                            class="event-image"
-                            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=85"
-                            alt="Startup Meetup">
-
-
-                        <div class="event-body">
-
-
-                            <div class="mb-3">
-
-                                <span class="category-badge">
-
-                                    Business
-
-                                </span>
-
-
-                                <span class="coming-badge ms-1">
-
-                                    Coming Soon
-
-                                </span>
-
-                            </div>
-
-
-                            <h3 class="event-title">
-
-                                Startup Meetup
-
-                            </h3>
-
-
-                            <p class="text-muted">
-
-                                Connect with startup
-                                founders, entrepreneurs
-                                and investors.
-
-                            </p>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-geo-alt"></i>
-
-                                Rajkot
-
-                            </div>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-calendar3"></i>
-
-                                Date Coming Soon
-
-                            </div>
-
-
-                            <div class="mt-3">
-
-                                <span class="price">
-
-                                    ₹599
-
-                                </span>
-
-                            </div>
-
-
-                            <a
-                                href="event-details.html?event=startup"
-                                class="btn btn-primary btn-details">
-
-                                <i class="bi bi-eye"></i>
-
-                                View Details
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CODING -->
-
-                <div
-                    class="col-md-6 col-lg-4 event-item"
-                    data-name="coding workshop"
-                    data-category="Technology">
-
-
-                    <div class="event-card">
-
-
-                        <img
-                            class="event-image"
-                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85"
-                            alt="Coding Workshop">
-
-
-                        <div class="event-body">
-
-
-                            <div class="mb-3">
-
-                                <span class="category-badge">
-
-                                    Technology
-
-                                </span>
-
-
-                                <span class="coming-badge ms-1">
-
-                                    Coming Soon
-
-                                </span>
-
-                            </div>
-
-
-                            <h3 class="event-title">
-
-                                Coding Workshop
-
-                            </h3>
-
-
-                            <p class="text-muted">
-
-                                Improve your programming
-                                skills through practical
-                                coding sessions.
-
-                            </p>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-geo-alt"></i>
-
-                                Rajkot
-
-                            </div>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-calendar3"></i>
-
-                                Date Coming Soon
-
-                            </div>
-
-
-                            <div class="mt-3">
-
-                                <span class="price">
-
-                                    ₹399
-
-                                </span>
-
-                            </div>
-
-
-                            <a
-                                href="event-details.html?event=coding"
-                                class="btn btn-primary btn-details">
-
-                                <i class="bi bi-eye"></i>
-
-                                View Details
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- FOOD -->
-
-                <div
-                    class="col-md-6 col-lg-4 event-item"
-                    data-name="food festival"
-                    data-category="Food">
-
-
-                    <div class="event-card">
-
-
-                        <img
-                            class="event-image"
-                            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=85"
-                            alt="Food Festival">
-
-
-                        <div class="event-body">
-
-
-                            <div class="mb-3">
-
-                                <span class="category-badge">
-
-                                    Food
-
-                                </span>
-
-
-                                <span class="coming-badge ms-1">
-
-                                    Coming Soon
-
-                                </span>
-
-                            </div>
-
-
-                            <h3 class="event-title">
-
-                                Food Festival
-
-                            </h3>
-
-
-                            <p class="text-muted">
-
-                                Taste delicious food
-                                from different cuisines.
-
-                            </p>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-geo-alt"></i>
-
-                                Ahmedabad
-
-                            </div>
-
-
-                            <div class="event-info">
-
-                                <i class="bi bi-calendar3"></i>
-
-                                Date Coming Soon
-
-                            </div>
-
-
-                            <div class="mt-3">
-
-                                <span class="price">
-
-                                    ₹299
-
-                                </span>
-
-                            </div>
-
-
-                            <a
-                                href="event-details.html?event=food"
-                                class="btn btn-primary btn-details">
-
-                                <i class="bi bi-eye"></i>
-
-                                View Details
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
             </div>
 
 
-            <!-- NO RESULT -->
+            <!-- NO EVENTS -->
 
-            <div id="noResult">
+            <div
+                id="noEvents"
+                class="no-events">
 
                 <i
-                    class="bi bi-search"
-                    style="font-size:50px;">
+                    class="bi bi-calendar-x"
+                    style="font-size:60px;color:#0d6efd;">
                 </i>
 
-                <h4 class="mt-3">
+                <h3 class="mt-3">
 
                     No Events Found
 
-                </h4>
+                </h3>
 
-                <p>
+                <p class="text-muted">
 
                     Try another search or category.
 
@@ -1129,11 +604,12 @@
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
         <div class="container">
+
 
             <div class="row g-4">
 
@@ -1180,7 +656,7 @@
 
                         <a href="events.html">
 
-                            Events
+                            All Events
 
                         </a>
 
@@ -1239,6 +715,7 @@
 
                 </div>
 
+
             </div>
 
 
@@ -1248,6 +725,7 @@
                 All Rights Reserved.
 
             </div>
+
 
         </div>
 
@@ -1261,125 +739,470 @@
     </script>
 
 
-    <!-- SEARCH & FILTER -->
+    <!-- ================= JAVASCRIPT ================= -->
 
     <script>
 
-        const searchInput =
-            document.getElementById(
-                "searchInput"
-            );
 
-        const categoryFilter =
-            document.getElementById(
-                "categoryFilter"
-            );
-
-        const eventItems =
-            document.querySelectorAll(
-                ".event-item"
-            );
-
-        const noResult =
-            document.getElementById(
-                "noResult"
-            );
+        /* =========================================
+           EVENT DATA
+        ========================================= */
 
 
-        function filterEvents() {
+        const events = [
+
+            {
+
+                id: "music",
+
+                name: "Music Festival",
+
+                category: "Entertainment",
+
+                date: "Coming Soon",
+
+                time: "Coming Soon",
+
+                location: "Ahmedabad",
+
+                price: 499,
+
+                image:
+                    "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
+
+                description:
+                    "Experience live music, amazing performances and unforgettable entertainment."
+
+            },
+
+
+            {
+
+                id: "technology",
+
+                name: "Technology Conference",
+
+                category: "Technology",
+
+                date: "Coming Soon",
+
+                time: "Coming Soon",
+
+                location: "Ahmedabad",
+
+                price: 799,
+
+                image:
+                    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85",
+
+                description:
+                    "Explore artificial intelligence, innovation, software and future technology."
+
+            },
+
+
+            {
+
+                id: "business",
+
+                name: "Business Summit",
+
+                category: "Business",
+
+                date: "Coming Soon",
+
+                time: "Coming Soon",
+
+                location: "Ahmedabad",
+
+                price: 999,
+
+                image:
+                    "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+
+                description:
+                    "Connect with entrepreneurs, professionals and industry leaders."
+
+            },
+
+
+            {
+
+                id: "startup",
+
+                name: "Startup Meetup",
+
+                category: "Business",
+
+                date: "Coming Soon",
+
+                time: "Coming Soon",
+
+                location: "Rajkot",
+
+                price: 599,
+
+                image:
+                    "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+
+                description:
+                    "Meet startup founders, entrepreneurs and investors and share new ideas."
+
+            },
+
+
+            {
+
+                id: "coding",
+
+                name: "Coding Workshop",
+
+                category: "Technology",
+
+                date: "Coming Soon",
+
+                time: "Coming Soon",
+
+                location: "Rajkot",
+
+                price: 399,
+
+                image:
+                    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+
+                description:
+                    "Improve your programming skills with practical coding sessions."
+
+            },
+
+
+            {
+
+                id: "food",
+
+                name: "Food Festival",
+
+                category: "Food",
+
+                date: "Coming Soon",
+
+                time: "Coming Soon",
+
+                location: "Ahmedabad",
+
+                price: 299,
+
+                image:
+                    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=85",
+
+                description:
+                    "Taste delicious food from different cuisines and enjoy a great experience."
+
+            }
+
+        ];
+
+
+        /* =========================================
+           DISPLAY EVENTS
+        ========================================= */
+
+
+        function displayEvents() {
+
+
+            const container =
+                document.getElementById(
+                    "eventsContainer"
+                );
+
+
+            const noEvents =
+                document.getElementById(
+                    "noEvents"
+                );
+
 
             const search =
-                searchInput.value
-                    .toLowerCase()
-                    .trim();
+                document.getElementById(
+                    "searchInput"
+                ).value
+                .toLowerCase()
+                .trim();
 
 
             const category =
-                categoryFilter.value;
+                document.getElementById(
+                    "categoryFilter"
+                ).value;
 
 
-            let visibleCount = 0;
+            const filteredEvents =
+                events.filter(
+                    function(event) {
 
 
-            eventItems.forEach(
-                function(item) {
+                        const matchesSearch =
+                            event.name
+                                .toLowerCase()
+                                .includes(search);
 
 
-                    const name =
-                        item.dataset.name
-                            .toLowerCase();
+                        const matchesCategory =
+                            category === "all"
+                            ||
+                            event.category === category;
 
 
-                    const itemCategory =
-                        item.dataset.category;
-
-
-                    const matchesSearch =
-                        name.includes(search);
-
-
-                    const matchesCategory =
-                        category === "all" ||
-                        itemCategory === category;
-
-
-                    if (
-                        matchesSearch &&
-                        matchesCategory
-                    ) {
-
-                        item.style.display =
-                            "block";
-
-                        visibleCount++;
-
-                    } else {
-
-                        item.style.display =
-                            "none";
+                        return (
+                            matchesSearch
+                            &&
+                            matchesCategory
+                        );
 
                     }
+                );
+
+
+            container.innerHTML = "";
+
+
+            if (
+                filteredEvents.length === 0
+            ) {
+
+                noEvents.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            noEvents.style.display =
+                "none";
+
+
+            filteredEvents.forEach(
+                function(event) {
+
+
+                    container.innerHTML += `
+
+                        <div
+                            class="col-md-6 col-lg-4">
+
+                            <div
+                                class="event-card">
+
+
+                                <img
+                                    src="${event.image}"
+                                    class="event-image"
+                                    alt="${event.name}">
+
+
+                                <div
+                                    class="event-body">
+
+
+                                    <div
+                                        class="d-flex
+                                        justify-content-between
+                                        align-items-center
+                                        flex-wrap
+                                        gap-2
+                                        mb-3">
+
+
+                                        <span
+                                            class="category-badge">
+
+                                            ${event.category}
+
+                                        </span>
+
+
+                                        <span
+                                            class="coming-badge">
+
+                                            <i
+                                                class="bi bi-clock">
+                                            </i>
+
+                                            Coming Soon
+
+                                        </span>
+
+
+                                    </div>
+
+
+                                    <div
+                                        class="event-title">
+
+                                        ${event.name}
+
+                                    </div>
+
+
+                                    <p
+                                        class="text-muted">
+
+                                        ${event.description}
+
+                                    </p>
+
+
+                                    <div
+                                        class="event-info">
+
+                                        <i
+                                            class="bi bi-calendar3">
+                                        </i>
+
+                                        <strong>
+                                            Event Date:
+                                        </strong>
+
+                                        ${event.date}
+
+                                    </div>
+
+
+                                    <div
+                                        class="event-info">
+
+                                        <i
+                                            class="bi bi-clock">
+                                        </i>
+
+                                        <strong>
+                                            Time:
+                                        </strong>
+
+                                        ${event.time}
+
+                                    </div>
+
+
+                                    <div
+                                        class="event-info">
+
+                                        <i
+                                            class="bi bi-geo-alt">
+                                        </i>
+
+                                        <strong>
+                                            Location:
+                                        </strong>
+
+                                        ${event.location}
+
+                                    </div>
+
+
+                                    <div
+                                        class="price">
+
+                                        ₹${event.price}
+
+                                        <small
+                                            class="text-muted"
+                                            style="
+                                            font-size:13px;
+                                            font-weight:normal;
+                                            ">
+
+                                            / ticket
+
+                                        </small>
+
+                                    </div>
+
+
+                                    <a
+                                        href="event-details.html?event=${event.id}"
+                                        class="btn btn-primary details-btn">
+
+                                        <i
+                                            class="bi bi-eye">
+                                        </i>
+
+                                        View Details
+
+                                    </a>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
 
                 }
             );
 
-
-            if (visibleCount === 0) {
-
-                noResult.style.display =
-                    "block";
-
-            } else {
-
-                noResult.style.display =
-                    "none";
-
-            }
-
         }
 
 
-        searchInput.addEventListener(
-            "input",
-            filterEvents
-        );
+        /* =========================================
+           SEARCH
+        ========================================= */
 
 
-        categoryFilter.addEventListener(
-            "change",
-            filterEvents
-        );
+        document
+            .getElementById("searchInput")
+            .addEventListener(
+                "input",
+                displayEvents
+            );
+
+
+        /* =========================================
+           CATEGORY FILTER
+        ========================================= */
+
+
+        document
+            .getElementById("categoryFilter")
+            .addEventListener(
+                "change",
+                displayEvents
+            );
+
+
+        /* =========================================
+           RESET
+        ========================================= */
 
 
         function resetFilters() {
 
-            searchInput.value = "";
+            document.getElementById(
+                "searchInput"
+            ).value = "";
 
-            categoryFilter.value = "all";
 
-            filterEvents();
+            document.getElementById(
+                "categoryFilter"
+            ).value = "all";
+
+
+            displayEvents();
 
         }
+
+
+        /* =========================================
+           PAGE LOAD
+        ========================================= */
+
+
+        displayEvents();
+
 
     </script>
 
