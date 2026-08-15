@@ -15,61 +15,280 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #0d6efd !important;
+            padding: 12px 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            font-size: 21px;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #dbeafe !important;
+        }
+
+        .navbar-toggler {
+            border-color: white;
+        }
+
+        .navbar-toggler-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)),
+                url("projpg phtos bhi add kartw janafile.html") center/cover no-repeat;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin-top: 15px;
+        }
+
+        .hero-buttons {
+            margin-top: 25px;
+        }
+
+        .hero-buttons .btn {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 12px 25px;
+            font-weight: 600;
+        }
+
+        /* SECTION */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* FEATURE CARDS */
+        .feature-card {
+            border: none;
+            border-radius: 15px;
+            padding: 30px 20px;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            background: white;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+
+        /* EVENTS */
+        .event-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .event-card .card-body {
+            padding: 20px;
+        }
+
+        .event-date {
+            color: #0d6efd;
+            font-weight: 600;
+        }
+
+        .event-fee {
+            font-size: 18px;
+            font-weight: bold;
+            color: #198754;
+        }
+
+        /* CTA */
+        .cta {
+            background: #0d6efd;
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #212529;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        footer a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            margin-top: 25px;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 500px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .navbar-nav {
+                padding-top: 10px;
+            }
+
+            .navbar-nav .nav-link {
+                margin-left: 0;
+                padding: 8px 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- ================= NAVBAR ================= -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
 
-            <a class="navbar-brand fw-bold" href="index.html">
+            <a class="navbar-brand" href="index.html">
                 <i class="bi bi-calendar-event"></i>
                 Smart Events
             </a>
 
             <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="mainNavbar">
 
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="events.html">Events</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="event-details.html">Event Details</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="booking.html">Book Ticket</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="my-bookings.html">My Bookings</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
-                            <i class="bi bi-person-circle"></i> Profile
+                        <a class="nav-link" href="index.html">
+                            Home
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="events.html">
+                            Events
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
+                        <a class="nav-link" href="my-bookings.html">
+                            My Bookings
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">
+                            Profile
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            Login
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">
+                            Register
+                        </a>
                     </li>
 
                 </ul>
@@ -79,174 +298,35 @@
     </nav>
 
 
-    <!-- ================= HERO ================= -->
-    <section class="hero-section">
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero">
 
         <div class="container">
 
-            <div class="row align-items-center">
+            <div class="hero-content">
 
-                <div class="col-lg-7 hero-content">
-
-                    <span class="hero-badge">
-                        <i class="bi bi-stars"></i>
-                        Smart Event Management System
-                    </span>
-
-                    <h1>
-                        Discover & Book
-                        <span>Amazing Events</span>
-                    </h1>
-
-                    <p>
-                        Find exciting events, explore event details and
-                        book your tickets quickly and easily with our
-                        smart event management system.
-                    </p>
-
-                    <div class="hero-buttons">
-
-                        <a href="events.html" class="btn btn-warning btn-lg">
-                            <i class="bi bi-calendar2-event"></i>
-                            Explore Events
-                        </a>
-
-                        <a href="booking.html" class="btn btn-outline-light btn-lg">
-                            <i class="bi bi-ticket-perforated"></i>
-                            Book Ticket
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-lg-5">
-
-                    <div class="hero-image-box">
-
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80"
-                             alt="Event">
-
-                        <div class="floating-card">
-                            <i class="bi bi-ticket-perforated-fill"></i>
-                            <div>
-                                <strong>Easy Booking</strong>
-                                <small>Book your event ticket</small>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= STATS ================= -->
-    <section class="stats-section">
-
-        <div class="container">
-
-            <div class="row g-4">
-
-                <div class="col-md-3 col-6">
-                    <div class="stat-card">
-                        <i class="bi bi-calendar-event"></i>
-                        <h3>10+</h3>
-                        <p>Events</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-6">
-                    <div class="stat-card">
-                        <i class="bi bi-people"></i>
-                        <h3>500+</h3>
-                        <p>Participants</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-6">
-                    <div class="stat-card">
-                        <i class="bi bi-ticket-perforated"></i>
-                        <h3>1000+</h3>
-                        <p>Tickets Booked</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-6">
-                    <div class="stat-card">
-                        <i class="bi bi-shield-check"></i>
-                        <h3>100%</h3>
-                        <p>Secure Booking</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= ABOUT ================= -->
-    <section class="section-padding">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span>ABOUT OUR SYSTEM</span>
-
-                <h2>Smart Event Management Made Easy</h2>
+                <h1>
+                    Smart Event Management
+                    & Ticket Booking System
+                </h1>
 
                 <p>
-                    Everything you need to discover and manage events
-                    in one place.
+                    Discover exciting events, book your tickets easily,
+                    and manage all your event bookings in one place.
                 </p>
 
-            </div>
+                <div class="hero-buttons">
 
-
-            <div class="row align-items-center g-5">
-
-                <div class="col-lg-6">
-
-                    <div class="about-image">
-
-                        <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=900&q=80"
-                             alt="Event Management">
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-lg-6">
-
-                    <h3 class="fw-bold">
-                        Plan. Discover. Book. Enjoy.
-                    </h3>
-
-                    <p class="text-muted">
-                        Smart Event Management & Ticket Booking System
-                        is a web-based platform designed to make event
-                        discovery and ticket booking simple and convenient.
-                    </p>
-
-                    <p class="text-muted">
-                        Users can browse upcoming events, view complete
-                        event information, book tickets and check their
-                        bookings.
-                    </p>
-
-                    <a href="events.html" class="btn btn-primary">
+                    <!-- IMPORTANT: Correct events.html link -->
+                    <a href="events.html" class="btn btn-primary btn-lg">
+                        <i class="bi bi-calendar-event"></i>
                         View All Events
-                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                    <a href="register.html" class="btn btn-light btn-lg">
+                        <i class="bi bi-person-plus"></i>
+                        Create Account
                     </a>
 
                 </div>
@@ -258,19 +338,102 @@
     </section>
 
 
-    <!-- ================= EVENTS ================= -->
-    <section class="section-padding events-section">
+    <!-- ================= FEATURES ================= -->
+
+    <section class="py-5">
 
         <div class="container">
 
-            <div class="section-heading">
+            <div class="section-title">
 
-                <span>UPCOMING EVENTS</span>
-
-                <h2>Don't Miss These Events</h2>
+                <h2>Why Choose Smart Events?</h2>
 
                 <p>
-                    Explore our latest and upcoming events.
+                    Everything you need to discover and manage events easily.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+
+                        <h4>Find Events</h4>
+
+                        <p>
+                            Browse upcoming events and find the perfect
+                            event according to your interests.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-ticket-perforated"></i>
+                        </div>
+
+                        <h4>Easy Ticket Booking</h4>
+
+                        <p>
+                            Book tickets quickly using our simple
+                            and user-friendly booking system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+
+                        <h4>Manage Bookings</h4>
+
+                        <p>
+                            View and manage your booked events
+                            from your My Bookings section.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= UPCOMING EVENTS ================= -->
+
+    <section class="py-5 bg-light">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Upcoming Events</h2>
+
+                <p>
+                    Explore some of our upcoming events.
                 </p>
 
             </div>
@@ -280,36 +443,38 @@
 
 
                 <!-- EVENT 1 -->
-                <div class="col-lg-4 col-md-6">
+
+                <div class="col-md-4">
 
                     <div class="event-card">
 
-                        <div class="event-image">
+                        <img src="event1.jpg"
+                            alt="Music Festival"
+                            onerror="this.style.display='none'">
 
-                            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80"
-                                 alt="Music Festival">
-
-                            <span>Coming Soon</span>
-
-                        </div>
-
-                        <div class="event-body">
+                        <div class="card-body">
 
                             <h4>Music Festival</h4>
 
-                            <p>
-                                Enjoy an amazing live music experience
-                                with exciting performances.
+                            <p class="event-date">
+                                <i class="bi bi-calendar"></i>
+                                Coming Soon
                             </p>
 
-                            <div class="event-info">
-                                <i class="bi bi-calendar3"></i>
-                                Upcoming Event
+                            <p>
+                                Enjoy live music and an amazing
+                                entertainment experience.
+                            </p>
+
+                            <div class="event-fee">
+                                ₹499
                             </div>
 
-                            <a href="event-details.html"
-                               class="btn btn-outline-primary w-100 mt-3">
-                                View Details
+                            <br>
+
+                            <a href="events.html"
+                                class="btn btn-primary">
+                                View Event
                             </a>
 
                         </div>
@@ -320,36 +485,38 @@
 
 
                 <!-- EVENT 2 -->
-                <div class="col-lg-4 col-md-6">
+
+                <div class="col-md-4">
 
                     <div class="event-card">
 
-                        <div class="event-image">
+                        <img src="event2.jpg"
+                            alt="Technology Conference"
+                            onerror="this.style.display='none'">
 
-                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80"
-                                 alt="Technology Conference">
-
-                            <span>Coming Soon</span>
-
-                        </div>
-
-                        <div class="event-body">
+                        <div class="card-body">
 
                             <h4>Technology Conference</h4>
 
-                            <p>
-                                Learn about new technologies and
-                                innovative ideas.
+                            <p class="event-date">
+                                <i class="bi bi-calendar"></i>
+                                Coming Soon
                             </p>
 
-                            <div class="event-info">
-                                <i class="bi bi-calendar3"></i>
-                                Upcoming Event
+                            <p>
+                                Learn about new technologies,
+                                innovation and digital trends.
+                            </p>
+
+                            <div class="event-fee">
+                                ₹799
                             </div>
 
-                            <a href="event-details.html"
-                               class="btn btn-outline-primary w-100 mt-3">
-                                View Details
+                            <br>
+
+                            <a href="events.html"
+                                class="btn btn-primary">
+                                View Event
                             </a>
 
                         </div>
@@ -360,36 +527,38 @@
 
 
                 <!-- EVENT 3 -->
-                <div class="col-lg-4 col-md-6">
+
+                <div class="col-md-4">
 
                     <div class="event-card">
 
-                        <div class="event-image">
+                        <img src="event3.jpg"
+                            alt="Business Summit"
+                            onerror="this.style.display='none'">
 
-                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
-                                 alt="Business Seminar">
+                        <div class="card-body">
 
-                            <span>Coming Soon</span>
+                            <h4>Business Summit</h4>
 
-                        </div>
-
-                        <div class="event-body">
-
-                            <h4>Business Seminar</h4>
-
-                            <p>
-                                Gain valuable knowledge from experienced
-                                business professionals.
+                            <p class="event-date">
+                                <i class="bi bi-calendar"></i>
+                                Coming Soon
                             </p>
 
-                            <div class="event-info">
-                                <i class="bi bi-calendar3"></i>
-                                Upcoming Event
+                            <p>
+                                Connect with professionals and
+                                explore new business opportunities.
+                            </p>
+
+                            <div class="event-fee">
+                                ₹999
                             </div>
 
-                            <a href="event-details.html"
-                               class="btn btn-outline-primary w-100 mt-3">
-                                View Details
+                            <br>
+
+                            <a href="events.html"
+                                class="btn btn-primary">
+                                View Event
                             </a>
 
                         </div>
@@ -401,94 +570,17 @@
             </div>
 
 
+            <!-- VIEW ALL EVENTS BUTTON -->
+
             <div class="text-center mt-5">
 
-                <a href="events.html" class="btn btn-primary btn-lg">
+                <a href="events.html"
+                    class="btn btn-primary btn-lg">
+
+                    <i class="bi bi-grid"></i>
                     View All Events
-                    <i class="bi bi-arrow-right"></i>
+
                 </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= FEATURES ================= -->
-    <section class="section-padding">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span>WHY CHOOSE US</span>
-
-                <h2>Everything You Need for Event Booking</h2>
-
-            </div>
-
-
-            <div class="row g-4">
-
-                <div class="col-md-4">
-
-                    <div class="feature-card">
-
-                        <div class="feature-icon">
-                            <i class="bi bi-lightning-charge-fill"></i>
-                        </div>
-
-                        <h4>Easy & Fast</h4>
-
-                        <p>
-                            Find your favourite events and book tickets
-                            with a simple and user-friendly interface.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-4">
-
-                    <div class="feature-card">
-
-                        <div class="feature-icon">
-                            <i class="bi bi-shield-lock-fill"></i>
-                        </div>
-
-                        <h4>Secure System</h4>
-
-                        <p>
-                            Your booking information is handled through
-                            a secure and reliable system.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-md-4">
-
-                    <div class="feature-card">
-
-                        <div class="feature-icon">
-                            <i class="bi bi-phone-fill"></i>
-                        </div>
-
-                        <h4>Responsive Design</h4>
-
-                        <p>
-                            Access the website easily on desktop,
-                            tablet and mobile devices.
-                        </p>
-
-                    </div>
-
-                </div>
 
             </div>
 
@@ -498,33 +590,37 @@
 
 
     <!-- ================= HOW IT WORKS ================= -->
-    <section class="section-padding how-section">
+
+    <section class="py-5">
 
         <div class="container">
 
-            <div class="section-heading">
+            <div class="section-title">
 
-                <span>HOW IT WORKS</span>
+                <h2>How It Works</h2>
 
-                <h2>Book Your Event in 4 Simple Steps</h2>
+                <p>
+                    Book your event ticket in just a few simple steps.
+                </p>
 
             </div>
 
 
-            <div class="row g-4 text-center">
+            <div class="row g-4">
 
-                <div class="col-lg-3 col-6">
 
-                    <div class="step-card">
+                <div class="col-md-3">
 
-                        <div class="step-number">1</div>
+                    <div class="feature-card">
 
-                        <i class="bi bi-search"></i>
+                        <div class="feature-icon">
+                            <i class="bi bi-person-plus"></i>
+                        </div>
 
-                        <h5>Find Event</h5>
+                        <h5>1. Register</h5>
 
                         <p>
-                            Browse available events.
+                            Create your account.
                         </p>
 
                     </div>
@@ -532,18 +628,18 @@
                 </div>
 
 
-                <div class="col-lg-3 col-6">
+                <div class="col-md-3">
 
-                    <div class="step-card">
+                    <div class="feature-card">
 
-                        <div class="step-number">2</div>
+                        <div class="feature-icon">
+                            <i class="bi bi-calendar2-check"></i>
+                        </div>
 
-                        <i class="bi bi-info-circle"></i>
-
-                        <h5>View Details</h5>
+                        <h5>2. Choose Event</h5>
 
                         <p>
-                            Check date, time and venue.
+                            Select your favourite event.
                         </p>
 
                     </div>
@@ -551,18 +647,18 @@
                 </div>
 
 
-                <div class="col-lg-3 col-6">
+                <div class="col-md-3">
 
-                    <div class="step-card">
+                    <div class="feature-card">
 
-                        <div class="step-number">3</div>
+                        <div class="feature-icon">
+                            <i class="bi bi-ticket"></i>
+                        </div>
 
-                        <i class="bi bi-ticket-perforated"></i>
-
-                        <h5>Book Ticket</h5>
+                        <h5>3. Book Ticket</h5>
 
                         <p>
-                            Complete the booking form.
+                            Complete your booking.
                         </p>
 
                     </div>
@@ -570,18 +666,18 @@
                 </div>
 
 
-                <div class="col-lg-3 col-6">
+                <div class="col-md-3">
 
-                    <div class="step-card">
+                    <div class="feature-card">
 
-                        <div class="step-number">4</div>
+                        <div class="feature-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
 
-                        <i class="bi bi-check-circle"></i>
-
-                        <h5>Enjoy Event</h5>
+                        <h5>4. Enjoy Event</h5>
 
                         <p>
-                            Check your booking and enjoy.
+                            Attend your event.
                         </p>
 
                     </div>
@@ -595,28 +691,27 @@
     </section>
 
 
-    <!-- ================= FEEDBACK ================= -->
-    <section class="feedback-section">
+    <!-- ================= CALL TO ACTION ================= -->
+
+    <section class="cta">
 
         <div class="container">
 
-            <div class="feedback-box">
+            <h2>
+                Ready to Discover Your Next Event?
+            </h2>
 
-                <i class="bi bi-chat-square-heart"></i>
+            <p class="mt-3">
+                Browse our events and book your tickets today.
+            </p>
 
-                <h2>We Value Your Feedback</h2>
+            <a href="events.html"
+                class="btn btn-light btn-lg mt-3">
 
-                <p>
-                    Have suggestions or feedback about our website?
-                    We would love to hear from you.
-                </p>
+                <i class="bi bi-calendar-event"></i>
+                Explore Events
 
-                <a href="contact.html" class="btn btn-warning btn-lg">
-                    <i class="bi bi-chat-dots"></i>
-                    Give Feedback
-                </a>
-
-            </div>
+            </a>
 
         </div>
 
@@ -624,13 +719,15 @@
 
 
     <!-- ================= FOOTER ================= -->
+
     <footer>
 
         <div class="container">
 
             <div class="row g-4">
 
-                <div class="col-lg-4">
+
+                <div class="col-md-4">
 
                     <h4>
                         <i class="bi bi-calendar-event"></i>
@@ -639,53 +736,54 @@
 
                     <p>
                         Smart Event Management & Ticket Booking System
-                        for discovering and booking exciting events.
+                        helps users discover events and book tickets
+                        easily.
                     </p>
 
                 </div>
 
 
-                <div class="col-lg-2">
+                <div class="col-md-4">
 
                     <h5>Quick Links</h5>
 
-                    <a href="index.html">Home</a>
-                    <a href="events.html">Events</a>
-                    <a href="booking.html">Booking</a>
-                    <a href="contact.html">Contact</a>
+                    <p>
+                        <a href="index.html">Home</a>
+                    </p>
+
+                    <p>
+                        <a href="events.html">Events</a>
+                    </p>
+
+                    <p>
+                        <a href="my-bookings.html">My Bookings</a>
+                    </p>
+
+                    <p>
+                        <a href="contact.html">Contact</a>
+                    </p>
 
                 </div>
 
 
-                <div class="col-lg-3">
+                <div class="col-md-4">
 
                     <h5>Account</h5>
 
-                    <a href="login.html">Login</a>
-                    <a href="register.html">Register</a>
-                    <a href="my-bookings.html">My Bookings</a>
-                    <a href="dashboard.html">Profile</a>
-
-                </div>
-
-
-                <div class="col-lg-3">
-
-                    <h5>Contact</h5>
-
                     <p>
-                        <i class="bi bi-envelope"></i>
-                        support@smartevents.com
+                        <a href="login.html">Login</a>
                     </p>
 
                     <p>
-                        <i class="bi bi-telephone"></i>
-                        +91 98765 43210
+                        <a href="register.html">Register</a>
                     </p>
 
                     <p>
-                        <i class="bi bi-geo-alt"></i>
-                        Gujarat, India
+                        <a href="profile.html">Profile</a>
+                    </p>
+
+                    <p>
+                        <a href="my-bookings.html">My Bookings</a>
                     </p>
 
                 </div>
@@ -693,27 +791,12 @@
             </div>
 
 
-            <hr>
-
-
             <div class="footer-bottom">
 
-                <p>
-                    © 2026 Smart Event Management System.
+                <p class="mb-0">
+                    © 2026 Smart Event Management & Ticket Booking System.
                     All Rights Reserved.
                 </p>
-
-                <div class="social-icons">
-
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-
-                    <a href="#"><i class="bi bi-twitter-x"></i></a>
-
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-
-                </div>
 
             </div>
 
@@ -723,10 +806,25 @@
 
 
     <!-- Bootstrap JS -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // Smooth page loading
+        document.addEventListener("DOMContentLoaded", function () {
+
+            console.log(
+                "Smart Event Management System loaded successfully."
+            );
+
+        });
+
+    </script>
 
 </body>
 
 </html>
-
-      
