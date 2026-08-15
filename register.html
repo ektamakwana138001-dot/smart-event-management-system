@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,115 +9,178 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Register | Smart Events</title>
+    <title>Register - Smart Events</title>
 
+    <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
-
     <style>
 
-        .register-section {
+        * {
+            box-sizing: border-box;
+        }
 
-            min-height: 85vh;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
 
-            display: flex;
-
-            align-items: center;
-
-            padding: 50px 15px;
+            min-height: 100vh;
 
             background:
                 linear-gradient(
-                    135deg,
-                    #eef5ff,
-                    #f8f9fa
-                );
+                    rgba(13, 110, 253, 0.75),
+                    rgba(8, 66, 152, 0.75)
+                ),
+                url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1800&q=85");
 
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #0d6efd !important;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 21px;
+        }
+
+        /* REGISTER AREA */
+
+        .register-area {
+            flex: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 50px 15px;
         }
 
         .register-card {
-
-            max-width: 520px;
-
             width: 100%;
-
-            margin: auto;
+            max-width: 520px;
 
             background: white;
 
-            padding: 35px;
-
             border-radius: 20px;
 
-            box-shadow:
-                0 12px 35px
-                rgba(0,0,0,0.10);
+            padding: 35px;
 
+            box-shadow:
+                0 15px 50px
+                rgba(0,0,0,0.25);
         }
 
         .register-icon {
-
             width: 75px;
-
             height: 75px;
 
-            margin: auto;
+            margin: 0 auto 20px;
+
+            background: #e7f1ff;
+            color: #0d6efd;
 
             border-radius: 50%;
 
-            background: #eaf2ff;
-
-            color: #0d6efd;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             font-size: 35px;
-
         }
 
         .register-card h2 {
-
-            font-weight: 800;
-
+            text-align: center;
+            font-weight: bold;
         }
 
-        .form-label {
-
-            font-weight: 600;
-
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
         }
+
+        .form-control {
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .input-group-text {
+            background: #f8f9fa;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 13px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* PASSWORD STRENGTH */
+
+        .password-strength {
+            height: 5px;
+            border-radius: 5px;
+            background: #e9ecef;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: 0.3s;
+        }
+
+        .strength-text {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* ERROR */
 
         .error-message {
-
             color: #dc3545;
-
             font-size: 13px;
-
             margin-top: 5px;
-
         }
 
-        .success-message {
+        /* FOOTER */
 
-            display: none;
-
-            padding: 15px;
-
-            border-radius: 10px;
-
-            margin-bottom: 20px;
-
+        footer {
+            background: #212529;
+            color: white;
+            text-align: center;
+            padding: 18px;
         }
 
     </style>
@@ -129,143 +191,96 @@
 <body>
 
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+    <!-- NAVBAR -->
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg">
 
-    <div class="container">
+        <div class="container">
 
-        <a
-            class="navbar-brand fw-bold"
-            href="index.html">
+            <a
+                class="navbar-brand"
+                href="index.html">
 
-            <i class="bi bi-calendar-event"></i>
+                <i class="bi bi-calendar-event"></i>
 
-            Smart Events
+                Smart Events
 
-        </a>
+            </a>
 
 
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav">
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu">
 
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
 
-        </button>
-
-
-        <div
-            class="collapse navbar-collapse"
-            id="navbarNav">
-
-            <ul class="navbar-nav ms-auto">
+            </button>
 
 
-                <li class="nav-item">
+            <div
+                class="collapse navbar-collapse"
+                id="navbarMenu">
 
-                    <a
-                        class="nav-link"
-                        href="index.html">
-
-                        Home
-
-                    </a>
-
-                </li>
+                <ul class="navbar-nav ms-auto">
 
 
-                <li class="nav-item">
+                    <li class="nav-item">
 
-                    <a
-                        class="nav-link"
-                        href="events.html">
+                        <a
+                            class="nav-link"
+                            href="index.html">
 
-                        Events
+                            Home
 
-                    </a>
+                        </a>
 
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link"
-                        href="booking.html">
-
-                        Book Ticket
-
-                    </a>
-
-                </li>
+                    </li>
 
 
-                <li class="nav-item">
+                    <li class="nav-item">
 
-                    <a
-                        class="nav-link"
-                        href="my-bookings.html">
+                        <a
+                            class="nav-link"
+                            href="events.html">
 
-                        My Bookings
+                            Events
 
-                    </a>
+                        </a>
 
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link active"
-                        href="register.html">
-
-                        Register
-
-                    </a>
-
-                </li>
+                    </li>
 
 
-                <li class="nav-item">
+                    <li class="nav-item">
 
-                    <a
-                        class="nav-link"
-                        href="login.html">
+                        <a
+                            class="nav-link"
+                            href="login.html">
 
-                        Login
+                            Login
 
-                    </a>
+                        </a>
 
-                </li>
+                    </li>
 
-            </ul>
+                </ul>
+
+            </div>
 
         </div>
 
-    </div>
-
-</nav>
+    </nav>
 
 
-<!-- =====================================================
-     REGISTER SECTION
-===================================================== -->
+    <!-- REGISTER -->
 
-<section class="register-section">
+    <section class="register-area">
 
-    <div class="register-card">
+        <div class="register-card">
 
 
-        <!-- TITLE -->
-
-        <div class="text-center mb-4">
-
-            <div class="register-icon mb-3">
+            <div class="register-icon">
 
                 <i class="bi bi-person-plus"></i>
 
@@ -279,669 +294,868 @@
             </h2>
 
 
-            <p class="text-muted">
+            <p class="subtitle">
 
-                Register to book and manage your events.
+                Register to book amazing events
 
             </p>
 
-        </div>
+
+            <!-- REGISTER FORM -->
+
+            <form
+                id="registerForm"
+                novalidate>
 
 
-        <!-- SUCCESS MESSAGE -->
+                <!-- NAME -->
 
-        <div
-            id="successMessage"
-            class="success-message alert alert-success">
+                <div class="mb-3">
 
-        </div>
+                    <label
+                        for="name"
+                        class="form-label">
 
+                        Full Name
 
-        <!-- REGISTER FORM -->
-
-        <form
-            id="registerForm"
-            novalidate>
+                    </label>
 
 
-            <!-- FULL NAME -->
+                    <div class="input-group">
 
-            <div class="mb-3">
+                        <span class="input-group-text">
 
-                <label
-                    for="name"
-                    class="form-label">
+                            <i class="bi bi-person"></i>
 
-                    Full Name
-
-                </label>
+                        </span>
 
 
-                <input
-                    type="text"
-                    id="name"
-                    class="form-control"
-                    placeholder="Enter your full name"
-                    required>
+                        <input
+                            type="text"
+                            id="name"
+                            class="form-control"
+                            placeholder="Enter your full name">
+
+                    </div>
 
 
-                <div
-                    id="nameError"
-                    class="error-message">
-
-                </div>
-
-            </div>
-
-
-            <!-- EMAIL -->
-
-            <div class="mb-3">
-
-                <label
-                    for="email"
-                    class="form-label">
-
-                    Email Address
-
-                </label>
-
-
-                <input
-                    type="email"
-                    id="email"
-                    class="form-control"
-                    placeholder="Enter your email"
-                    required>
-
-
-                <div
-                    id="emailError"
-                    class="error-message">
+                    <div
+                        id="nameError"
+                        class="error-message">
+                    </div>
 
                 </div>
 
-            </div>
+
+                <!-- EMAIL -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="email"
+                        class="form-label">
+
+                        Email Address
+
+                    </label>
 
 
-            <!-- PHONE -->
+                    <div class="input-group">
 
-            <div class="mb-3">
+                        <span class="input-group-text">
 
-                <label
-                    for="phone"
-                    class="form-label">
+                            <i class="bi bi-envelope"></i>
 
-                    Mobile Number
-
-                </label>
+                        </span>
 
 
-                <input
-                    type="tel"
-                    id="phone"
-                    class="form-control"
-                    placeholder="Enter 10 digit mobile number"
-                    maxlength="10"
-                    required>
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="Enter your email">
+
+                    </div>
 
 
-                <div
-                    id="phoneError"
-                    class="error-message">
-
-                </div>
-
-            </div>
-
-
-            <!-- PASSWORD -->
-
-            <div class="mb-3">
-
-                <label
-                    for="password"
-                    class="form-label">
-
-                    Password
-
-                </label>
-
-
-                <input
-                    type="password"
-                    id="password"
-                    class="form-control"
-                    placeholder="Create password"
-                    required>
-
-
-                <div
-                    id="passwordError"
-                    class="error-message">
+                    <div
+                        id="emailError"
+                        class="error-message">
+                    </div>
 
                 </div>
 
-            </div>
+
+                <!-- PHONE -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="phone"
+                        class="form-label">
+
+                        Mobile Number
+
+                    </label>
 
 
-            <!-- CONFIRM PASSWORD -->
+                    <div class="input-group">
 
-            <div class="mb-4">
+                        <span class="input-group-text">
 
-                <label
-                    for="confirmPassword"
-                    class="form-label">
+                            <i class="bi bi-phone"></i>
 
-                    Confirm Password
-
-                </label>
+                        </span>
 
 
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    class="form-control"
-                    placeholder="Confirm your password"
-                    required>
+                        <input
+                            type="tel"
+                            id="phone"
+                            class="form-control"
+                            placeholder="Enter 10 digit mobile number"
+                            maxlength="10">
+
+                    </div>
 
 
-                <div
-                    id="confirmPasswordError"
-                    class="error-message">
+                    <div
+                        id="phoneError"
+                        class="error-message">
+                    </div>
 
                 </div>
 
-            </div>
+
+                <!-- PASSWORD -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="password"
+                        class="form-label">
+
+                        Password
+
+                    </label>
 
 
-            <!-- TERMS -->
+                    <div class="input-group">
 
-            <div class="form-check mb-4">
+                        <span class="input-group-text">
 
-                <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="terms"
-                    required>
+                            <i class="bi bi-lock"></i>
+
+                        </span>
 
 
-                <label
-                    class="form-check-label"
-                    for="terms">
-
-                    I agree to the Terms &
-                    Conditions.
-
-                </label>
-
-            </div>
+                        <input
+                            type="password"
+                            id="password"
+                            class="form-control"
+                            placeholder="Create a password">
 
 
-            <!-- SUBMIT -->
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            onclick="togglePassword(
+                                'password',
+                                'passwordIcon'
+                            )">
 
-            <button
-                type="submit"
-                class="btn btn-primary btn-lg w-100">
+                            <i
+                                id="passwordIcon"
+                                class="bi bi-eye">
+                            </i>
 
-                <i class="bi bi-person-check"></i>
+                        </button>
 
-                Create Account
-
-            </button>
-
-
-        </form>
+                    </div>
 
 
-        <!-- LOGIN LINK -->
+                    <div
+                        class="password-strength">
 
-        <div class="text-center mt-4">
+                        <div
+                            id="strengthBar"
+                            class="strength-bar">
+                        </div>
 
-            <p class="mb-0">
+                    </div>
+
+
+                    <div
+                        id="strengthText"
+                        class="strength-text">
+                    </div>
+
+
+                    <div
+                        id="passwordError"
+                        class="error-message">
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="mb-3">
+
+                    <label
+                        for="confirmPassword"
+                        class="form-label">
+
+                        Confirm Password
+
+                    </label>
+
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+
+                            <i class="bi bi-shield-lock"></i>
+
+                        </span>
+
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            class="form-control"
+                            placeholder="Confirm your password">
+
+
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            onclick="togglePassword(
+                                'confirmPassword',
+                                'confirmIcon'
+                            )">
+
+                            <i
+                                id="confirmIcon"
+                                class="bi bi-eye">
+                            </i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="confirmPasswordError"
+                        class="error-message">
+                    </div>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="form-check mb-4">
+
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="terms">
+
+
+                    <label
+                        class="form-check-label"
+                        for="terms">
+
+                        I agree to the Terms &
+                        Conditions.
+
+                    </label>
+
+
+                    <div
+                        id="termsError"
+                        class="error-message">
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary register-btn">
+
+                    <i class="bi bi-person-plus"></i>
+
+                    Create Account
+
+                </button>
+
+
+            </form>
+
+
+            <!-- LOGIN -->
+
+            <div class="login-link">
 
                 Already have an account?
 
-                <a
-                    href="login.html"
-                    class="fw-bold">
+                <a href="login.html">
 
-                    Login
+                    Login Now
 
                 </a>
 
-            </p>
+            </div>
+
 
         </div>
 
+    </section>
 
-    </div>
 
-</section>
+    <!-- FOOTER -->
 
+    <footer>
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+        © 2026 Smart Event Management System.
+        All Rights Reserved.
 
-<footer>
+    </footer>
 
-    <div class="container text-center">
 
-        <p class="mb-0">
+    <!-- BOOTSTRAP JS -->
 
-            © 2026 Smart Event Management System.
-            All Rights Reserved.
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 
-        </p>
 
-    </div>
+    <!-- REGISTER JAVASCRIPT -->
 
-</footer>
+    <script>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+        /* PASSWORD SHOW/HIDE */
 
-<script>
-
-const registerForm =
-    document.getElementById(
-        "registerForm"
-    );
-
-
-const successMessage =
-    document.getElementById(
-        "successMessage"
-    );
-
-
-// =====================================================
-// FORM SUBMIT
-// =====================================================
-
-registerForm.addEventListener(
-    "submit",
-    function(event) {
-
-        event.preventDefault();
-
-
-        // Clear errors
-
-        document.getElementById(
-            "nameError"
-        ).textContent = "";
-
-
-        document.getElementById(
-            "emailError"
-        ).textContent = "";
-
-
-        document.getElementById(
-            "phoneError"
-        ).textContent = "";
-
-
-        document.getElementById(
-            "passwordError"
-        ).textContent = "";
-
-
-        document.getElementById(
-            "confirmPasswordError"
-        ).textContent = "";
-
-
-        successMessage.style.display =
-            "none";
-
-
-        let valid = true;
-
-
-        // =================================================
-        // GET VALUES
-        // =================================================
-
-        const name =
-            document.getElementById(
-                "name"
-            ).value.trim();
-
-
-        const email =
-            document.getElementById(
-                "email"
-            ).value.trim();
-
-
-        const phone =
-            document.getElementById(
-                "phone"
-            ).value.trim();
-
-
-        const password =
-            document.getElementById(
-                "password"
-            ).value;
-
-
-        const confirmPassword =
-            document.getElementById(
-                "confirmPassword"
-            ).value;
-
-
-        const terms =
-            document.getElementById(
-                "terms"
-            ).checked;
-
-
-        // =================================================
-        // NAME VALIDATION
-        // =================================================
-
-        if (name === "") {
-
-            document.getElementById(
-                "nameError"
-            ).textContent =
-                "Please enter your name.";
-
-            valid = false;
-
-        }
-        else if (name.length < 3) {
-
-            document.getElementById(
-                "nameError"
-            ).textContent =
-                "Name must contain at least 3 characters.";
-
-            valid = false;
-
-        }
-
-
-        // =================================================
-        // EMAIL VALIDATION
-        // =================================================
-
-        const emailPattern =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-        if (email === "") {
-
-            document.getElementById(
-                "emailError"
-            ).textContent =
-                "Please enter your email.";
-
-            valid = false;
-
-        }
-        else if (
-            !emailPattern.test(email)
+        function togglePassword(
+            fieldId,
+            iconId
         ) {
 
-            document.getElementById(
-                "emailError"
-            ).textContent =
-                "Please enter a valid email.";
+            const field =
+                document.getElementById(
+                    fieldId
+                );
 
-            valid = false;
-
-        }
-
-
-        // =================================================
-        // PHONE VALIDATION
-        // =================================================
-
-        const phonePattern =
-            /^[6-9][0-9]{9}$/;
+            const icon =
+                document.getElementById(
+                    iconId
+                );
 
 
-        if (phone === "") {
+            if (
+                field.type === "password"
+            ) {
 
-            document.getElementById(
-                "phoneError"
-            ).textContent =
-                "Please enter your mobile number.";
+                field.type = "text";
 
-            valid = false;
+                icon.className =
+                    "bi bi-eye-slash";
 
-        }
-        else if (
-            !phonePattern.test(phone)
-        ) {
+            } else {
 
-            document.getElementById(
-                "phoneError"
-            ).textContent =
-                "Please enter a valid 10 digit mobile number.";
+                field.type = "password";
 
-            valid = false;
+                icon.className =
+                    "bi bi-eye";
+
+            }
 
         }
 
 
-        // =================================================
-        // PASSWORD VALIDATION
-        // =================================================
+        /* PASSWORD STRENGTH */
 
-        if (password === "") {
-
-            document.getElementById(
-                "passwordError"
-            ).textContent =
-                "Please create a password.";
-
-            valid = false;
-
-        }
-        else if (password.length < 6) {
-
-            document.getElementById(
-                "passwordError"
-            ).textContent =
-                "Password must contain at least 6 characters.";
-
-            valid = false;
-
-        }
+        document.getElementById(
+            "password"
+        ).addEventListener(
+            "input",
+            function() {
 
 
-        // =================================================
-        // CONFIRM PASSWORD
-        // =================================================
-
-        if (
-            confirmPassword === ""
-        ) {
-
-            document.getElementById(
-                "confirmPasswordError"
-            ).textContent =
-                "Please confirm your password.";
-
-            valid = false;
-
-        }
-        else if (
-            password !== confirmPassword
-        ) {
-
-            document.getElementById(
-                "confirmPasswordError"
-            ).textContent =
-                "Passwords do not match.";
-
-            valid = false;
-
-        }
+                const password =
+                    this.value;
 
 
-        // =================================================
-        // TERMS
-        // =================================================
-
-        if (!terms) {
-
-            alert(
-                "Please agree to the Terms & Conditions."
-            );
-
-            valid = false;
-
-        }
+                const bar =
+                    document.getElementById(
+                        "strengthBar"
+                    );
 
 
-        // Stop if invalid
-
-        if (!valid) {
-
-            return;
-
-        }
+                const text =
+                    document.getElementById(
+                        "strengthText"
+                    );
 
 
-        // =================================================
-        // GET EXISTING USERS
-        // =================================================
+                if (!password) {
 
-        let users =
-            JSON.parse(
-                localStorage.getItem(
-                    "users"
-                ) || "[]"
-            );
+                    bar.style.width = "0%";
 
+                    text.textContent = "";
 
-        // =================================================
-        // CHECK EXISTING EMAIL
-        // =================================================
-
-        const existingUser =
-            users.find(
-                function(user) {
-
-                    return user.email === email;
+                    return;
 
                 }
-            );
 
 
-        if (existingUser) {
-
-            document.getElementById(
-                "emailError"
-            ).textContent =
-                "This email is already registered.";
-
-            return;
-
-        }
+                let strength = 0;
 
 
-        // =================================================
-        // CREATE USER
-        // =================================================
+                if (
+                    password.length >= 6
+                ) {
 
-        const newUser = {
+                    strength++;
 
-            id:
-                Date.now(),
-
-            name:
-                name,
-
-            email:
-                email,
-
-            phone:
-                phone,
-
-            password:
-                password,
-
-            role:
-                "user"
-
-        };
+                }
 
 
-        // =================================================
-        // SAVE USER
-        // =================================================
+                if (
+                    /[A-Z]/.test(password)
+                ) {
 
-        users.push(
-            newUser
+                    strength++;
+
+                }
+
+
+                if (
+                    /[0-9]/.test(password)
+                ) {
+
+                    strength++;
+
+                }
+
+
+                if (
+                    /[^A-Za-z0-9]/.test(password)
+                ) {
+
+                    strength++;
+
+                }
+
+
+                if (strength <= 1) {
+
+                    bar.style.width = "25%";
+
+                    bar.style.background =
+                        "#dc3545";
+
+                    text.textContent =
+                        "Weak password";
+
+                    text.style.color =
+                        "#dc3545";
+
+                }
+
+                else if (strength === 2) {
+
+                    bar.style.width = "50%";
+
+                    bar.style.background =
+                        "#ffc107";
+
+                    text.textContent =
+                        "Medium password";
+
+                    text.style.color =
+                        "#856404";
+
+                }
+
+                else if (strength === 3) {
+
+                    bar.style.width = "75%";
+
+                    bar.style.background =
+                        "#0dcaf0";
+
+                    text.textContent =
+                        "Good password";
+
+                    text.style.color =
+                        "#0dcaf0";
+
+                }
+
+                else {
+
+                    bar.style.width = "100%";
+
+                    bar.style.background =
+                        "#198754";
+
+                    text.textContent =
+                        "Strong password";
+
+                    text.style.color =
+                        "#198754";
+
+                }
+
+            }
         );
 
 
-        localStorage.setItem(
-            "users",
-            JSON.stringify(
-                users
-            )
-        );
+        /* REGISTER FORM */
+
+        document.getElementById(
+            "registerForm"
+        ).addEventListener(
+            "submit",
+            function(event) {
 
 
-        // =================================================
-        // SUCCESS
-        // =================================================
-
-        successMessage.innerHTML = `
-
-            <i class="bi bi-check-circle-fill"></i>
-
-            Account created successfully!
-
-            <br>
-
-            Redirecting to login...
-
-        `;
+                event.preventDefault();
 
 
-        successMessage.style.display =
-            "block";
+                /* CLEAR ERRORS */
+
+                document.getElementById(
+                    "nameError"
+                ).textContent = "";
 
 
-        // =================================================
-        // RESET
-        // =================================================
-
-        registerForm.reset();
+                document.getElementById(
+                    "emailError"
+                ).textContent = "";
 
 
-        // =================================================
-        // REDIRECT
-        // =================================================
+                document.getElementById(
+                    "phoneError"
+                ).textContent = "";
 
-        setTimeout(
-            function() {
+
+                document.getElementById(
+                    "passwordError"
+                ).textContent = "";
+
+
+                document.getElementById(
+                    "confirmPasswordError"
+                ).textContent = "";
+
+
+                document.getElementById(
+                    "termsError"
+                ).textContent = "";
+
+
+                /* VALUES */
+
+                const name =
+                    document.getElementById(
+                        "name"
+                    ).value.trim();
+
+
+                const email =
+                    document.getElementById(
+                        "email"
+                    ).value.trim()
+                    .toLowerCase();
+
+
+                const phone =
+                    document.getElementById(
+                        "phone"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "password"
+                    ).value;
+
+
+                const confirmPassword =
+                    document.getElementById(
+                        "confirmPassword"
+                    ).value;
+
+
+                const terms =
+                    document.getElementById(
+                        "terms"
+                    ).checked;
+
+
+                let valid = true;
+
+
+                /* NAME VALIDATION */
+
+                if (!name) {
+
+                    document.getElementById(
+                        "nameError"
+                    ).textContent =
+                        "Please enter your full name.";
+
+                    valid = false;
+
+                }
+
+                else if (
+                    name.length < 3
+                ) {
+
+                    document.getElementById(
+                        "nameError"
+                    ).textContent =
+                        "Name must contain at least 3 characters.";
+
+                    valid = false;
+
+                }
+
+
+                /* EMAIL VALIDATION */
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (!email) {
+
+                    document.getElementById(
+                        "emailError"
+                    ).textContent =
+                        "Please enter your email.";
+
+                    valid = false;
+
+                }
+
+                else if (
+                    !emailPattern.test(email)
+                ) {
+
+                    document.getElementById(
+                        "emailError"
+                    ).textContent =
+                        "Please enter a valid email address.";
+
+                    valid = false;
+
+                }
+
+
+                /* PHONE VALIDATION */
+
+                if (!phone) {
+
+                    document.getElementById(
+                        "phoneError"
+                    ).textContent =
+                        "Please enter your mobile number.";
+
+                    valid = false;
+
+                }
+
+                else if (
+                    !/^[0-9]{10}$/.test(phone)
+                ) {
+
+                    document.getElementById(
+                        "phoneError"
+                    ).textContent =
+                        "Mobile number must contain exactly 10 digits.";
+
+                    valid = false;
+
+                }
+
+
+                /* PASSWORD VALIDATION */
+
+                if (!password) {
+
+                    document.getElementById(
+                        "passwordError"
+                    ).textContent =
+                        "Please create a password.";
+
+                    valid = false;
+
+                }
+
+                else if (
+                    password.length < 6
+                ) {
+
+                    document.getElementById(
+                        "passwordError"
+                    ).textContent =
+                        "Password must contain at least 6 characters.";
+
+                    valid = false;
+
+                }
+
+
+                /* CONFIRM PASSWORD */
+
+                if (!confirmPassword) {
+
+                    document.getElementById(
+                        "confirmPasswordError"
+                    ).textContent =
+                        "Please confirm your password.";
+
+                    valid = false;
+
+                }
+
+                else if (
+                    password !== confirmPassword
+                ) {
+
+                    document.getElementById(
+                        "confirmPasswordError"
+                    ).textContent =
+                        "Passwords do not match.";
+
+                    valid = false;
+
+                }
+
+
+                /* TERMS */
+
+                if (!terms) {
+
+                    document.getElementById(
+                        "termsError"
+                    ).textContent =
+                        "Please accept the Terms & Conditions.";
+
+                    valid = false;
+
+                }
+
+
+                /* STOP IF INVALID */
+
+                if (!valid) {
+
+                    return;
+
+                }
+
+
+                /* GET EXISTING USERS */
+
+                const users =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "users"
+                        )
+                    ) || [];
+
+
+                /* CHECK EMAIL */
+
+                const existingUser =
+                    users.find(
+                        function(user) {
+
+                            return (
+                                user.email === email
+                            );
+
+                        }
+                    );
+
+
+                if (existingUser) {
+
+                    document.getElementById(
+                        "emailError"
+                    ).textContent =
+                        "This email is already registered.";
+
+                    return;
+
+                }
+
+
+                /* CREATE USER */
+
+                const newUser = {
+
+                    id:
+                        "USR" +
+                        Date.now(),
+
+                    name:
+                        name,
+
+                    email:
+                        email,
+
+                    phone:
+                        phone,
+
+                    password:
+                        password,
+
+                    registeredAt:
+                        new Date()
+                        .toLocaleString()
+
+                };
+
+
+                /* SAVE USER */
+
+                users.push(newUser);
+
+
+                localStorage.setItem(
+                    "users",
+                    JSON.stringify(users)
+                );
+
+
+                /* SUCCESS */
+
+                alert(
+                    "Registration successful! You can now login."
+                );
+
+
+                /* GO TO LOGIN */
 
                 window.location.href =
                     "login.html";
 
-            },
-            1500
+
+            }
         );
 
-    }
-);
-
-</script>
-
+    </script>
 
 </body>
 
