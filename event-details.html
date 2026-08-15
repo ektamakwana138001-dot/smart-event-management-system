@@ -9,10 +9,12 @@
 
     <title>Event Details - Smart Events</title>
 
+    <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         rel="stylesheet">
@@ -24,6 +26,8 @@
             font-family: Arial, sans-serif;
             background: #f5f7fb;
         }
+
+        /* NAVBAR */
 
         .navbar {
             background: #0d6efd !important;
@@ -39,85 +43,174 @@
             font-size: 21px;
         }
 
-        .event-section {
-            padding: 60px 0;
+        .nav-link:hover {
+            color: #dbeafe !important;
         }
 
-        .event-details-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+        /* HERO */
+
+        .details-hero {
+            position: relative;
+
+            min-height: 430px;
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: end;
+
+            color: white;
         }
 
-        .event-main-image {
+        .hero-overlay {
             width: 100%;
-            height: 480px;
-            object-fit: cover;
+
+            padding: 60px 0 45px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,0.85)
+                );
         }
 
-        .event-content {
-            padding: 35px;
+        .coming-badge {
+            display: inline-block;
+
+            background: #ffc107;
+            color: #212529;
+
+            padding: 8px 15px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
         }
 
-        .event-title {
-            font-size: 38px;
+        .details-hero h1 {
+            font-size: 45px;
             font-weight: bold;
         }
 
-        .category {
-            display: inline-block;
+        /* DETAILS */
+
+        .details-section {
+            padding: 50px 0;
+        }
+
+        .details-card {
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 7px 25px
+                rgba(0,0,0,0.08);
+
+            margin-bottom: 25px;
+        }
+
+        .info-box {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px;
+
+            background: #f8f9fa;
+
+            border-radius: 12px;
+
+            margin-bottom: 15px;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
             background: #e7f1ff;
+
             color: #0d6efd;
-            padding: 7px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 14px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-size: 20px;
         }
 
-        .coming-soon {
-            display: inline-block;
-            background: #fff3cd;
-            color: #856404;
-            padding: 7px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 14px;
+        .info-text strong {
+            display: block;
         }
 
-        .event-info {
-            margin-top: 18px;
-            font-size: 17px;
-            color: #555;
+        .info-text span {
+            color: #666;
         }
 
-        .event-info i {
-            color: #0d6efd;
-            width: 25px;
+        .price-box {
+            background: #e8f5e9;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            text-align: center;
+        }
+
+        .price-label {
+            color: #666;
         }
 
         .price {
-            font-size: 32px;
             color: #198754;
+
+            font-size: 38px;
+
             font-weight: bold;
         }
 
-        .booking-box {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 25px;
+        .book-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            border-radius: 10px;
         }
+
+        .back-btn {
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
 
         footer {
             background: #212529;
+
             color: white;
+
             padding: 40px 0 20px;
-            margin-top: 30px;
+
+            margin-top: 20px;
         }
 
         footer a {
             color: #ddd;
+
             text-decoration: none;
         }
 
@@ -127,23 +220,24 @@
 
         .footer-bottom {
             border-top: 1px solid #555;
+
             margin-top: 25px;
+
             padding-top: 20px;
+
             text-align: center;
         }
 
+        /* MOBILE */
+
         @media (max-width: 768px) {
 
-            .event-main-image {
-                height: 280px;
+            .details-hero {
+                min-height: 350px;
             }
 
-            .event-title {
-                font-size: 30px;
-            }
-
-            .event-content {
-                padding: 25px;
+            .details-hero h1 {
+                font-size: 32px;
             }
 
         }
@@ -190,6 +284,7 @@
 
                 <ul class="navbar-nav ms-auto">
 
+
                     <li class="nav-item">
 
                         <a
@@ -233,9 +328,9 @@
 
                         <a
                             class="nav-link"
-                            href="profile.html">
+                            href="login.html">
 
-                            Profile
+                            Login
 
                         </a>
 
@@ -254,32 +349,6 @@
 
                     </li>
 
-
-                    <li class="nav-item">
-
-                        <a
-                            class="nav-link"
-                            href="login.html">
-
-                            Login
-
-                        </a>
-
-                    </li>
-
-
-                    <li class="nav-item">
-
-                        <a
-                            class="nav-link"
-                            href="register.html">
-
-                            Register
-
-                        </a>
-
-                    </li>
-
                 </ul>
 
             </div>
@@ -289,184 +358,241 @@
     </nav>
 
 
-    <!-- EVENT DETAILS -->
+    <!-- HERO -->
 
-    <section class="event-section">
+    <section
+        id="detailsHero"
+        class="details-hero">
+
+        <div class="hero-overlay">
+
+            <div class="container">
+
+                <span class="coming-badge">
+
+                    <i class="bi bi-clock"></i>
+
+                    Coming Soon
+
+                </span>
+
+
+                <h1 id="eventTitle">
+
+                    Music Festival
+
+                </h1>
+
+
+                <p
+                    id="eventShortDescription"
+                    class="lead mb-0">
+
+                    Experience an amazing
+                    live event.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DETAILS -->
+
+    <section class="details-section">
 
         <div class="container">
 
-            <div
-                class="event-details-card">
 
-                <div class="row g-0">
+            <!-- BACK -->
 
+            <a
+                href="events.html"
+                class="btn btn-outline-primary back-btn">
 
-                    <!-- IMAGE -->
+                <i class="bi bi-arrow-left"></i>
 
-                    <div class="col-lg-6">
+                Back to All Events
 
-                        <img
-                            id="eventImage"
-                            class="event-main-image"
-                            src=""
-                            alt="Event Image">
-
-                    </div>
+            </a>
 
 
-                    <!-- DETAILS -->
-
-                    <div class="col-lg-6">
-
-                        <div class="event-content">
+            <div class="row g-4">
 
 
-                            <span
-                                id="eventCategory"
-                                class="category">
+                <!-- LEFT -->
 
-                            </span>
+                <div class="col-lg-8">
 
-
-                            <span
-                                class="coming-soon ms-2">
-
-                                Coming Soon
-
-                            </span>
+                    <div class="details-card">
 
 
-                            <h1
-                                id="eventTitle"
-                                class="event-title mt-3">
+                        <h2 class="fw-bold mb-4">
 
-                            </h1>
+                            About This Event
 
-
-                            <p
-                                id="eventDescription"
-                                class="text-muted">
-
-                            </p>
+                        </h2>
 
 
-                            <div class="event-info">
+                        <p
+                            id="eventDescription"
+                            class="text-muted"
+                            style="line-height:1.8;">
 
-                                <i class="bi bi-calendar3"></i>
+                            Join us for an exciting
+                            upcoming event.
 
-                                <strong>
-                                    Date:
-                                </strong>
-
-                                Coming Soon
-
-                            </div>
+                        </p>
 
 
-                            <div class="event-info">
-
-                                <i class="bi bi-clock"></i>
-
-                                <strong>
-                                    Time:
-                                </strong>
-
-                                To Be Announced
-
-                            </div>
+                        <hr class="my-4">
 
 
-                            <div class="event-info">
+                        <h3 class="fw-bold mb-4">
 
-                                <i class="bi bi-geo-alt"></i>
+                            Event Information
 
-                                <strong>
-                                    Location:
-                                </strong>
-
-                                <span
-                                    id="eventLocation">
-
-                                </span>
-
-                            </div>
+                        </h3>
 
 
-                            <hr class="my-4">
+                        <div class="row">
 
 
-                            <div>
+                            <div class="col-md-6">
 
-                                <small class="text-muted">
+                                <div class="info-box">
 
-                                    Ticket Price
+                                    <div class="info-icon">
 
-                                </small>
+                                        <i
+                                            class="bi bi-geo-alt">
+                                        </i>
+
+                                    </div>
 
 
-                                <div
-                                    id="eventPrice"
-                                    class="price">
+                                    <div class="info-text">
+
+                                        <strong>
+
+                                            Location
+
+                                        </strong>
+
+                                        <span id="eventLocation">
+
+                                            Ahmedabad
+
+                                        </span>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
 
-                            <!-- BOOKING BOX -->
+                            <div class="col-md-6">
 
-                            <div class="booking-box">
+                                <div class="info-box">
 
-                                <h5>
+                                    <div class="info-icon">
 
-                                    <i
-                                        class="bi bi-ticket-perforated">
-                                    </i>
+                                        <i
+                                            class="bi bi-calendar3">
+                                        </i>
 
-                                    Ticket Booking
-
-                                </h5>
+                                    </div>
 
 
-                                <p class="text-muted">
+                                    <div class="info-text">
 
-                                    This event is currently
-                                    coming soon. Booking will
-                                    be available once the event
-                                    is announced.
+                                        <strong>
 
-                                </p>
+                                            Date
 
+                                        </strong>
 
-                                <button
-                                    class="btn btn-primary"
-                                    onclick="showComingSoon()">
+                                        <span>
 
-                                    <i
-                                        class="bi bi-ticket">
-                                    </i>
+                                            Coming Soon
 
-                                    Book Ticket
+                                        </span>
 
-                                </button>
+                                    </div>
 
+                                </div>
 
                             </div>
 
 
-                            <div class="mt-4">
+                            <div class="col-md-6">
+
+                                <div class="info-box">
+
+                                    <div class="info-icon">
+
+                                        <i
+                                            class="bi bi-clock">
+                                        </i>
+
+                                    </div>
 
 
-                                <a
-                                    href="events.html"
-                                    class="btn btn-outline-primary">
+                                    <div class="info-text">
 
-                                    <i class="bi bi-arrow-left"></i>
+                                        <strong>
 
-                                    Back to All Events
+                                            Time
 
-                                </a>
+                                        </strong>
 
+                                        <span>
+
+                                            Coming Soon
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <div class="info-box">
+
+                                    <div class="info-icon">
+
+                                        <i
+                                            class="bi bi-tag">
+                                        </i>
+
+                                    </div>
+
+
+                                    <div class="info-text">
+
+                                        <strong>
+
+                                            Category
+
+                                        </strong>
+
+                                        <span id="eventCategory">
+
+                                            Entertainment
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -476,6 +602,93 @@
                     </div>
 
                 </div>
+
+
+                <!-- RIGHT -->
+
+                <div class="col-lg-4">
+
+                    <div class="details-card">
+
+
+                        <div class="price-box mb-4">
+
+                            <div class="price-label">
+
+                                Ticket Price
+
+                            </div>
+
+
+                            <div
+                                id="eventPrice"
+                                class="price">
+
+                                ₹499
+
+                            </div>
+
+
+                            <small class="text-muted">
+
+                                Per Ticket
+
+                            </small>
+
+                        </div>
+
+
+                        <button
+                            id="bookButton"
+                            class="btn btn-primary book-btn">
+
+                            <i
+                                class="bi bi-ticket-perforated">
+                            </i>
+
+                            Book Ticket
+
+                        </button>
+
+
+                        <a
+                            href="events.html"
+                            class="btn btn-outline-secondary w-100 mt-3">
+
+                            View Other Events
+
+                        </a>
+
+
+                    </div>
+
+
+                    <div class="details-card">
+
+                        <h5 class="fw-bold">
+
+                            <i
+                                class="bi bi-info-circle text-primary">
+                            </i>
+
+                            Important
+
+                        </h5>
+
+
+                        <p class="text-muted mb-0">
+
+                            Event date and time will
+                            be announced soon.
+                            Stay connected with
+                            Smart Events for updates.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
 
             </div>
 
@@ -489,6 +702,7 @@
     <footer>
 
         <div class="container">
+
 
             <div class="row g-4">
 
@@ -516,31 +730,39 @@
                 <div class="col-md-4">
 
                     <h5>
+
                         Quick Links
+
                     </h5>
 
                     <p>
+
                         <a href="index.html">
+
                             Home
+
                         </a>
+
                     </p>
 
                     <p>
+
                         <a href="events.html">
+
                             All Events
+
                         </a>
+
                     </p>
 
                     <p>
+
                         <a href="my-bookings.html">
-                            My Bookings
-                        </a>
-                    </p>
 
-                    <p>
-                        <a href="contact.html">
-                            Contact
+                            My Bookings
+
                         </a>
+
                     </p>
 
                 </div>
@@ -549,25 +771,39 @@
                 <div class="col-md-4">
 
                     <h5>
+
                         Account
+
                     </h5>
 
                     <p>
+
                         <a href="login.html">
+
                             Login
+
                         </a>
+
                     </p>
 
                     <p>
+
                         <a href="register.html">
+
                             Register
+
                         </a>
+
                     </p>
 
                     <p>
-                        <a href="profile.html">
-                            Profile
+
+                        <a href="contact.html">
+
+                            Contact
+
                         </a>
+
                     </p>
 
                 </div>
@@ -582,6 +818,7 @@
 
             </div>
 
+
         </div>
 
     </footer>
@@ -594,122 +831,168 @@
     </script>
 
 
-    <!-- EVENT JAVASCRIPT -->
+    <!-- EVENT DETAILS JAVASCRIPT -->
 
     <script>
 
+
+        /* ALL EVENT DATA */
+
         const events = {
+
 
             music: {
 
-                title: "Music Festival",
+                title:
+                    "Music Festival",
 
-                category: "Entertainment",
+                category:
+                    "Entertainment",
 
-                location: "Ahmedabad",
+                location:
+                    "Ahmedabad",
 
-                price: "₹499",
+                price:
+                    499,
 
                 image:
-                    "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
+                    "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1800&q=85",
+
+                short:
+                    "Experience live music, amazing performances and unforgettable entertainment.",
 
                 description:
-                    "Enjoy live music, amazing performances and an unforgettable entertainment experience at our upcoming Music Festival."
+                    "Music Festival is an exciting upcoming entertainment event where music lovers can enjoy live performances, energetic shows and a memorable experience with friends and family."
 
             },
 
 
             technology: {
 
-                title: "Technology Conference",
+                title:
+                    "Technology Conference",
 
-                category: "Technology",
+                category:
+                    "Technology",
 
-                location: "Ahmedabad",
+                location:
+                    "Ahmedabad",
 
-                price: "₹799",
+                price:
+                    799,
 
                 image:
-                    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85",
+                    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1800&q=85",
+
+                short:
+                    "Explore innovation, artificial intelligence and future technology.",
 
                 description:
-                    "Explore modern technologies, innovation, artificial intelligence and future trends with technology enthusiasts."
+                    "Technology Conference brings together technology enthusiasts, students and professionals to explore innovation, artificial intelligence, software development and future technology trends."
 
             },
 
 
             business: {
 
-                title: "Business Summit",
+                title:
+                    "Business Summit",
 
-                category: "Business",
+                category:
+                    "Business",
 
-                location: "Ahmedabad",
+                location:
+                    "Ahmedabad",
 
-                price: "₹999",
+                price:
+                    999,
 
                 image:
-                    "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+                    "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=85",
+
+                short:
+                    "Connect with entrepreneurs and industry leaders.",
 
                 description:
-                    "Meet entrepreneurs, business professionals and industry leaders at our upcoming Business Summit."
+                    "Business Summit is designed for entrepreneurs, professionals and aspiring business leaders. Learn new ideas, build connections and explore opportunities."
 
             },
 
 
             startup: {
 
-                title: "Startup Meetup",
+                title:
+                    "Startup Meetup",
 
-                category: "Business",
+                category:
+                    "Business",
 
-                location: "Rajkot",
+                location:
+                    "Rajkot",
 
-                price: "₹599",
+                price:
+                    599,
 
                 image:
-                    "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+                    "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=85",
+
+                short:
+                    "Meet startup founders, entrepreneurs and investors.",
 
                 description:
-                    "Connect with startup founders, developers, entrepreneurs and investors in this exciting startup meetup."
+                    "Startup Meetup provides an opportunity to connect with startup founders, entrepreneurs and professionals. Share ideas, learn from experiences and build valuable connections."
 
             },
 
 
             coding: {
 
-                title: "Coding Workshop",
+                title:
+                    "Coding Workshop",
 
-                category: "Technology",
+                category:
+                    "Technology",
 
-                location: "Rajkot",
+                location:
+                    "Rajkot",
 
-                price: "₹399",
+                price:
+                    399,
 
                 image:
-                    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+                    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=85",
+
+                short:
+                    "Improve your programming skills with practical sessions.",
 
                 description:
-                    "Improve your programming skills through practical coding sessions and hands-on learning."
+                    "Coding Workshop is an upcoming practical learning event for students and technology enthusiasts. Improve your programming knowledge and learn useful development concepts."
 
             },
 
 
             food: {
 
-                title: "Food Festival",
+                title:
+                    "Food Festival",
 
-                category: "Food",
+                category:
+                    "Food",
 
-                location: "Ahmedabad",
+                location:
+                    "Ahmedabad",
 
-                price: "₹299",
+                price:
+                    299,
 
                 image:
-                    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=85",
+                    "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1800&q=85",
+
+                short:
+                    "Taste delicious food from different cuisines.",
 
                 description:
-                    "Taste delicious food from different cuisines and enjoy an exciting food festival experience."
+                    "Food Festival brings together delicious food, different cuisines and an enjoyable atmosphere. Discover new flavours and enjoy a great food experience."
 
             }
 
@@ -724,55 +1007,84 @@
             );
 
 
-        const eventName =
-            urlParams.get("event") || "music";
+        const eventKey =
+            urlParams.get("event");
 
+
+        /* DEFAULT EVENT */
 
         const event =
-            events[eventName] || events.music;
+            events[eventKey] || events.music;
 
 
-        /* SHOW EVENT */
+        /* SET HERO */
 
         document.getElementById(
-            "eventImage"
-        ).src = event.image;
+            "detailsHero"
+        ).style.backgroundImage =
+            `url("${event.image}")`;
 
+
+        /* SET DATA */
 
         document.getElementById(
             "eventTitle"
-        ).textContent = event.title;
+        ).textContent =
+            event.title;
 
 
         document.getElementById(
-            "eventCategory"
-        ).textContent = event.category;
-
-
-        document.getElementById(
-            "eventLocation"
-        ).textContent = event.location;
-
-
-        document.getElementById(
-            "eventPrice"
-        ).textContent = event.price;
+            "eventShortDescription"
+        ).textContent =
+            event.short;
 
 
         document.getElementById(
             "eventDescription"
-        ).textContent = event.description;
+        ).textContent =
+            event.description;
 
 
-        /* COMING SOON BUTTON */
+        document.getElementById(
+            "eventLocation"
+        ).textContent =
+            event.location;
 
-        function showComingSoon() {
 
-            alert(
-                "This event is coming soon. Ticket booking will be available soon!"
-            );
+        document.getElementById(
+            "eventCategory"
+        ).textContent =
+            event.category;
 
-        }
+
+        document.getElementById(
+            "eventPrice"
+        ).textContent =
+            "₹" + event.price;
+
+
+        /* PAGE TITLE */
+
+        document.title =
+            event.title +
+            " - Smart Events";
+
+
+        /* BOOK BUTTON */
+
+        document.getElementById(
+            "bookButton"
+        ).addEventListener(
+            "click",
+            function() {
+
+                window.location.href =
+                    "booking.html?event=" +
+                    eventKey;
+
+            }
+        );
+
 
     </script>
 
