@@ -2,42 +2,204 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>Book Ticket | Smart Event Management System</title>
 
-    <title>Book Ticket | Smart Events</title>
-
+    <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
     <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet">
 
-    <link
-        rel="stylesheet"
-        href="style.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================================
+           BOOKING PAGE
+        ========================================= */
+
+        .booking-header {
+            padding: 70px 0;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #07182e,
+                    #0d6efd
+                );
+        }
+
+        .booking-header h1 {
+            font-size: 45px;
+            font-weight: 800;
+        }
+
+        .booking-section {
+            padding: 70px 0;
+
+            background: #f8f9fa;
+        }
+
+        .booking-form-card,
+        .booking-summary-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .booking-form-card h3,
+        .booking-summary-card h3 {
+            font-weight: 800;
+
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .form-control,
+        .form-select {
+            min-height: 48px;
+        }
+
+        .summary-image {
+            width: 100%;
+            height: 210px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-row span {
+            color: #666;
+        }
+
+        .summary-row strong {
+            text-align: right;
+        }
+
+        .total-box {
+            padding: 18px;
+
+            margin-top: 20px;
+
+            background: #eaf2ff;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .total-box span {
+            font-weight: 700;
+        }
+
+        .total-box strong {
+            color: #0d6efd;
+
+            font-size: 28px;
+        }
+
+        .required {
+            color: #dc3545;
+        }
+
+        .success-box {
+            display: none;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            background: #d1e7dd;
+
+            color: #0f5132;
+
+            border-radius: 12px;
+        }
+
+        .error-message {
+            display: none;
+
+            color: #dc3545;
+
+            font-size: 13px;
+
+            margin-top: 5px;
+        }
+
+        @media (max-width: 767px) {
+
+            .booking-header {
+                padding: 50px 15px;
+            }
+
+            .booking-header h1 {
+                font-size: 32px;
+            }
+
+            .booking-section {
+                padding: 45px 0;
+            }
+
+        }
+
+    </style>
 
 </head>
-
 
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
 
     <div class="container">
 
-        <a
-            class="navbar-brand fw-bold"
-            href="index.html">
+        <a class="navbar-brand fw-bold"
+           href="index.html">
 
             <i class="bi bi-calendar-event"></i>
 
@@ -50,7 +212,7 @@
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar">
+            data-bs-target="#navbarNav">
 
             <span class="navbar-toggler-icon"></span>
 
@@ -59,15 +221,14 @@
 
         <div
             class="collapse navbar-collapse"
-            id="mainNavbar">
+            id="navbarNav">
 
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
 
-                    <a
-                        class="nav-link"
-                        href="index.html">
+                    <a class="nav-link"
+                       href="index.html">
 
                         Home
 
@@ -75,12 +236,10 @@
 
                 </li>
 
-
                 <li class="nav-item">
 
-                    <a
-                        class="nav-link"
-                        href="event.html">
+                    <a class="nav-link"
+                       href="events.html">
 
                         Events
 
@@ -88,14 +247,32 @@
 
                 </li>
 
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="event-details.html">
+
+                        Event Details
+
+                    </a>
+
+                </li>
 
                 <li class="nav-item">
 
-                    <a
-                        class="nav-link"
-                        href="my-bookings.html">
+                    <a class="nav-link active"
+                       href="booking.html">
 
-                        <i class="bi bi-ticket-perforated"></i>
+                        Book Ticket
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="my-bookings.html">
 
                         My Bookings
 
@@ -103,12 +280,10 @@
 
                 </li>
 
-
                 <li class="nav-item">
 
-                    <a
-                        class="nav-link"
-                        href="profile.html">
+                    <a class="nav-link"
+                       href="dashboard.html">
 
                         <i class="bi bi-person-circle"></i>
 
@@ -118,40 +293,23 @@
 
                 </li>
 
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="contact.html">
+
+                        Contact
+
+                    </a>
+
+                </li>
 
                 <li class="nav-item">
 
-                    <a
-                        class="nav-link login-link"
-                        href="login.html">
+                    <a class="nav-link"
+                       href="login.html">
 
                         Login
-
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link register-link"
-                        href="register.html">
-
-                        Register
-
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item">
-
-                    <a
-                        class="nav-link logout-link"
-                        href="#">
-
-                        Logout
 
                     </a>
 
@@ -166,31 +324,28 @@
 </nav>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<!-- ================= PAGE HEADER ================= -->
-
-<section class="py-5 bg-light">
+<section class="booking-header">
 
     <div class="container text-center">
 
-        <span class="text-primary fw-semibold">
+        <span class="header-badge">
 
-            TICKET BOOKING
+            <i class="bi bi-ticket-perforated"></i>
+
+            Ticket Booking
 
         </span>
 
-
-        <h1 class="fw-bold mt-2">
-
+        <h1>
             Book Your Ticket
-
         </h1>
 
-
-        <p class="text-muted mb-0">
-
-            Complete the form below to confirm your booking.
-
+        <p class="mb-0">
+            Fill in your details and reserve your event ticket.
         </p>
 
     </div>
@@ -198,236 +353,446 @@
 </section>
 
 
+<!-- =====================================================
+     BOOKING SECTION
+===================================================== -->
 
-<!-- ================= BOOKING SECTION ================= -->
-
-<section class="py-5">
+<section class="booking-section">
 
     <div class="container">
 
         <div class="row g-4">
 
 
-            <!-- EVENT DETAILS -->
+            <!-- =================================================
+                 BOOKING FORM
+            ================================================== -->
 
-            <div class="col-lg-6">
+            <div class="col-lg-7">
 
-                <div id="bookingDetails">
+                <div class="booking-form-card">
 
-                    <div class="text-center py-5">
+                    <h3>
 
-                        <div
-                            class="spinner-border text-primary"
-                            role="status">
-                        </div>
+                        <i class="bi bi-person-vcard text-primary"></i>
 
-                        <p class="text-muted mt-3">
+                        Attendee Information
 
-                            Loading event...
+                    </h3>
 
-                        </p>
+
+                    <!-- SUCCESS -->
+
+                    <div
+                        id="successBox"
+                        class="success-box">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Your booking has been confirmed successfully!
 
                     </div>
+
+
+                    <form id="bookingForm" novalidate>
+
+
+                        <!-- NAME -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="fullName"
+                                class="form-label">
+
+                                Full Name
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                class="form-control"
+                                placeholder="Enter your full name">
+
+                            <div
+                                id="nameError"
+                                class="error-message">
+
+                                Please enter your full name.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="email"
+                                class="form-label">
+
+                                Email Address
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                placeholder="Enter your email">
+
+                            <div
+                                id="emailError"
+                                class="error-message">
+
+                                Please enter a valid email address.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PHONE -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="phone"
+                                class="form-label">
+
+                                Phone Number
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                class="form-control"
+                                placeholder="Enter 10 digit phone number"
+                                maxlength="10">
+
+                            <div
+                                id="phoneError"
+                                class="error-message">
+
+                                Please enter a valid 10 digit phone number.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EVENT -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="eventName"
+                                class="form-label">
+
+                                Select Event
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <select
+                                id="eventName"
+                                class="form-select">
+
+                                <option value="">
+                                    Select an event
+                                </option>
+
+                                <option value="Music Festival">
+                                    Music Festival
+                                </option>
+
+                                <option value="Technology Conference">
+                                    Technology Conference
+                                </option>
+
+                                <option value="Business Seminar">
+                                    Business Seminar
+                                </option>
+
+                                <option value="Sports Championship">
+                                    Sports Championship
+                                </option>
+
+                                <option value="Education Workshop">
+                                    Education Workshop
+                                </option>
+
+                                <option value="Live Concert">
+                                    Live Concert
+                                </option>
+
+                            </select>
+
+                            <div
+                                id="eventError"
+                                class="error-message">
+
+                                Please select an event.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TICKETS -->
+
+                        <div class="mb-3">
+
+                            <label
+                                for="ticketCount"
+                                class="form-label">
+
+                                Number of Tickets
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="ticketCount"
+                                class="form-control"
+                                value="1"
+                                min="1"
+                                max="10">
+
+                            <div
+                                id="ticketError"
+                                class="error-message">
+
+                                Please select between 1 and 10 tickets.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PAYMENT -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="paymentMethod"
+                                class="form-label">
+
+                                Payment Method
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <select
+                                id="paymentMethod"
+                                class="form-select">
+
+                                <option value="">
+                                    Select payment method
+                                </option>
+
+                                <option value="UPI">
+                                    UPI
+                                </option>
+
+                                <option value="Card">
+                                    Credit / Debit Card
+                                </option>
+
+                                <option value="Cash">
+                                    Cash at Venue
+                                </option>
+
+                            </select>
+
+                            <div
+                                id="paymentError"
+                                class="error-message">
+
+                                Please select a payment method.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TERMS -->
+
+                        <div class="form-check mb-4">
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                class="form-check-input">
+
+                            <label
+                                for="terms"
+                                class="form-check-label">
+
+                                I agree to the terms and conditions.
+
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <div
+                                id="termsError"
+                                class="error-message">
+
+                                Please accept the terms and conditions.
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SUBMIT -->
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary btn-lg w-100">
+
+                            <i class="bi bi-check-circle"></i>
+
+                            Confirm Booking
+
+                        </button>
+
+                    </form>
 
                 </div>
 
             </div>
 
 
+            <!-- =================================================
+                 BOOKING SUMMARY
+            ================================================== -->
 
-            <!-- BOOKING FORM -->
+            <div class="col-lg-5">
 
-            <div class="col-lg-6">
+                <div class="booking-summary-card">
 
-                <div class="card border-0 shadow-sm">
+                    <h3>
 
-                    <div class="card-body p-4 p-md-5">
+                        <i class="bi bi-receipt text-primary"></i>
 
-                        <h4 class="fw-bold mb-4">
+                        Booking Summary
 
-                            <i class="bi bi-person-fill text-primary"></i>
+                    </h3>
 
-                            Your Details
 
-                        </h4>
+                    <img
+                        id="summaryImage"
+                        class="summary-image"
+                        src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80"
+                        alt="Event">
 
 
-                        <form id="bookingForm">
+                    <h4
+                        id="summaryEvent"
+                        class="fw-bold">
 
+                        Music Festival
 
-                            <!-- NAME -->
+                    </h4>
 
-                            <div class="mb-3">
 
-                                <label
-                                    for="bookingName"
-                                    class="form-label fw-semibold">
+                    <div class="summary-row">
 
-                                    Full Name
+                        <span>
+                            Date
+                        </span>
 
-                                </label>
+                        <strong id="summaryDate">
+                            20 August 2026
+                        </strong>
 
+                    </div>
 
-                                <input
-                                    type="text"
-                                    id="bookingName"
-                                    class="form-control"
-                                    placeholder="Enter your name"
-                                    required>
 
-                            </div>
+                    <div class="summary-row">
 
+                        <span>
+                            Time
+                        </span>
 
+                        <strong id="summaryTime">
+                            6:00 PM - 10:00 PM
+                        </strong>
 
-                            <!-- EMAIL -->
+                    </div>
 
-                            <div class="mb-3">
 
-                                <label
-                                    for="bookingEmail"
-                                    class="form-label fw-semibold">
+                    <div class="summary-row">
 
-                                    Email Address
+                        <span>
+                            Location
+                        </span>
 
-                                </label>
+                        <strong id="summaryLocation">
+                            Rajkot, Gujarat
+                        </strong>
 
+                    </div>
 
-                                <input
-                                    type="email"
-                                    id="bookingEmail"
-                                    class="form-control"
-                                    placeholder="Enter your email"
-                                    required>
 
-                            </div>
+                    <div class="summary-row">
 
+                        <span>
+                            Ticket Price
+                        </span>
 
+                        <strong id="summaryPrice">
+                            ₹499
+                        </strong>
 
-                            <!-- PHONE -->
+                    </div>
 
-                            <div class="mb-3">
 
-                                <label
-                                    for="bookingPhone"
-                                    class="form-label fw-semibold">
+                    <div class="summary-row">
 
-                                    Mobile Number
+                        <span>
+                            Tickets
+                        </span>
 
-                                </label>
+                        <strong id="summaryTickets">
+                            1
+                        </strong>
 
+                    </div>
 
-                                <input
-                                    type="tel"
-                                    id="bookingPhone"
-                                    class="form-control"
-                                    placeholder="10 digit mobile number"
-                                    maxlength="10"
-                                    inputmode="numeric"
-                                    required>
 
-                            </div>
+                    <div class="total-box">
 
+                        <span>
+                            Total Amount
+                        </span>
 
+                        <strong id="totalAmount">
+                            ₹499
+                        </strong>
 
-                            <!-- TICKETS -->
+                    </div>
 
-                            <div class="mb-4">
 
-                                <label
-                                    for="ticketQuantity"
-                                    class="form-label fw-semibold">
+                    <div class="text-center mt-4">
 
-                                    Number of Tickets
+                        <small class="text-muted">
 
-                                </label>
+                            <i class="bi bi-shield-check"></i>
 
+                            Your booking information is securely stored.
 
-                                <select
-                                    id="ticketQuantity"
-                                    class="form-select">
-
-                                    <option value="1">
-                                        1 Ticket
-                                    </option>
-
-                                    <option value="2">
-                                        2 Tickets
-                                    </option>
-
-                                    <option value="3">
-                                        3 Tickets
-                                    </option>
-
-                                    <option value="4">
-                                        4 Tickets
-                                    </option>
-
-                                    <option value="5">
-                                        5 Tickets
-                                    </option>
-
-                                    <option value="6">
-                                        6 Tickets
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-
-                            <!-- TOTAL -->
-
-                            <div
-                                class="bg-light rounded p-3 mb-4">
-
-                                <div
-                                    class="d-flex justify-content-between">
-
-                                    <span class="fw-semibold">
-
-                                        Total Amount
-
-                                    </span>
-
-
-                                    <span
-                                        id="totalPrice"
-                                        class="text-primary fw-bold fs-4">
-
-                                        ₹0
-
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-
-                            <!-- CONFIRM -->
-
-                            <button
-                                type="submit"
-                                class="btn btn-primary btn-lg w-100">
-
-                                <i class="bi bi-check-circle"></i>
-
-                                Confirm Booking
-
-                            </button>
-
-
-                            <a
-                                href="event.html"
-                                class="btn btn-outline-secondary w-100 mt-2">
-
-                                Back to Events
-
-                            </a>
-
-
-                        </form>
+                        </small>
 
                     </div>
 
@@ -442,52 +807,158 @@
 </section>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-<!-- ================= FOOTER ================= -->
+<footer>
 
-<footer class="bg-dark text-white py-4">
+    <div class="container">
 
-    <div class="container text-center">
+        <div class="row g-4">
 
-        <h5 class="fw-bold">
+            <div class="col-lg-4">
 
-            <i class="bi bi-calendar-event"></i>
+                <h4>
 
-            Smart Events
+                    <i class="bi bi-calendar-event"></i>
 
-        </h5>
+                    Smart Events
+
+                </h4>
+
+                <p>
+                    Smart Event Management & Ticket Booking System
+                    for discovering and booking exciting events.
+                </p>
+
+            </div>
 
 
-        <p class="text-white-50 mb-1">
+            <div class="col-lg-2">
 
-            Smart Event Management & Ticket Booking System
+                <h5>
+                    Quick Links
+                </h5>
 
-        </p>
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="events.html">
+                    Events
+                </a>
+
+                <a href="booking.html">
+                    Booking
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
 
 
-        <small class="text-white-50">
+            <div class="col-lg-3">
 
-            © 2026 Smart Events
+                <h5>
+                    Account
+                </h5>
 
-        </small>
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+                <a href="my-bookings.html">
+                    My Bookings
+                </a>
+
+                <a href="dashboard.html">
+                    Profile
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h5>
+                    Contact
+                </h5>
+
+                <p>
+                    <i class="bi bi-envelope"></i>
+                    support@smartevents.com
+                </p>
+
+                <p>
+                    <i class="bi bi-telephone"></i>
+                    +91 98765 43210
+                </p>
+
+                <p>
+                    <i class="bi bi-geo-alt"></i>
+                    Gujarat, India
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <hr>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Smart Event Management System.
+                All Rights Reserved.
+            </p>
+
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="#">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+
+                <a href="#">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
 </footer>
 
 
-
-<!-- BOOTSTRAP JS -->
+<!-- Bootstrap JS -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
 
-<!-- MAIN JS -->
+<!-- Booking JS -->
 
-<script src="script.js"></script>
-
+<script src="js/booking.js"></script>
 
 </body>
 
