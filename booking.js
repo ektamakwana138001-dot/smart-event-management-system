@@ -1,141 +1,37 @@
-// =========================================================
+// =====================================================
 // SMART EVENT MANAGEMENT SYSTEM
 // BOOKING JAVASCRIPT
-// =========================================================
+// =====================================================
 
 
-// =========================================================
-// EVENT DATA WITH PRICE
-// =========================================================
+// =====================================================
+// GET ELEMENTS
+// =====================================================
 
-const bookingEvents = {
+const bookingForm = document.getElementById("bookingForm");
 
-    "Music Festival": {
+const customerName = document.getElementById("customerName");
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
 
-        date: "20 August 2026",
+const eventSelect = document.getElementById("event");
+const ticketsInput = document.getElementById("tickets");
 
-        time: "6:00 PM - 10:00 PM",
+const paymentMethod =
+    document.getElementById("paymentMethod");
 
-        location: "Rajkot, Gujarat",
-
-        price: 499,
-
-        image:
-            "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80"
-
-    },
+const terms = document.getElementById("terms");
 
 
-    "Technology Conference": {
-
-        date: "25 August 2026",
-
-        time: "10:00 AM - 5:00 PM",
-
-        location: "Rajkot, Gujarat",
-
-        price: 799,
-
-        image:
-            "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80"
-
-    },
-
-
-    "Business Seminar": {
-
-        date: "30 August 2026",
-
-        time: "11:00 AM - 4:00 PM",
-
-        location: "Ahmedabad, Gujarat",
-
-        price: 599,
-
-        image:
-            "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
-
-    },
-
-
-    "Sports Championship": {
-
-        date: "5 September 2026",
-
-        time: "4:00 PM - 9:00 PM",
-
-        location: "Gujarat",
-
-        price: 399,
-
-        image:
-            "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80"
-
-    },
-
-
-    "Education Workshop": {
-
-        date: "10 September 2026",
-
-        time: "10:00 AM - 3:00 PM",
-
-        location: "Rajkot, Gujarat",
-
-        price: 299,
-
-        image:
-            "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
-
-    },
-
-
-    "Live Concert": {
-
-        date: "15 September 2026",
-
-        time: "6:30 PM - 10:30 PM",
-
-        location: "Ahmedabad, Gujarat",
-
-        price: 699,
-
-        image:
-            "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=900&q=80"
-
-    }
-
-};
-
-
-// =========================================================
-// BOOKING FEE
-// =========================================================
-
-const BOOKING_FEE = 20;
-
-
-// =========================================================
-// GET HTML ELEMENTS
-// =========================================================
-
-const bookingForm =
-    document.getElementById("bookingForm");
-
-const eventName =
-    document.getElementById("eventName");
-
-const ticketCount =
-    document.getElementById("ticketCount");
+// =====================================================
+// SUMMARY ELEMENTS
+// =====================================================
 
 const summaryEvent =
     document.getElementById("summaryEvent");
 
 const summaryDate =
     document.getElementById("summaryDate");
-
-const summaryTime =
-    document.getElementById("summaryTime");
 
 const summaryLocation =
     document.getElementById("summaryLocation");
@@ -146,692 +42,734 @@ const summaryPrice =
 const summaryTickets =
     document.getElementById("summaryTickets");
 
-const summarySubtotal =
-    document.getElementById("summarySubtotal");
+const subtotalElement =
+    document.getElementById("subtotal");
 
-const bookingFee =
+const bookingFeeElement =
     document.getElementById("bookingFee");
 
-const totalAmount =
+const totalAmountElement =
     document.getElementById("totalAmount");
 
-const summaryImage =
-    document.getElementById("summaryImage");
+
+// =====================================================
+// SUCCESS BOX
+// =====================================================
+
+const successBox =
+    document.getElementById("successBox");
+
+const successMessage =
+    document.getElementById("successMessage");
 
 
-// =========================================================
-// UPDATE EVENT INFORMATION
-// =========================================================
+// =====================================================
+// BOOKING FEE
+// =====================================================
 
-function updateEventSummary() {
-
-    const selectedEvent =
-        eventName.value;
+const BOOKING_FEE = 20;
 
 
-    if (!selectedEvent) {
+// =====================================================
+// EVENT SELECTED FROM URL
+// =====================================================
+
+const urlParams =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const urlEvent =
+    urlParams.get("event");
+
+
+// =====================================================
+// AUTO SELECT EVENT
+// =====================================================
+
+if (urlEvent) {
+
+    const options =
+        Array.from(
+            eventSelect.options
+        );
+
+    const matchingOption =
+        options.find(
+            function(option) {
+
+                return option.value === urlEvent;
+
+            }
+        );
+
+
+    if (matchingOption) {
+
+        eventSelect.value =
+            urlEvent;
+
+        updateBookingSummary();
+
+    }
+
+}
+
+
+// =====================================================
+// UPDATE BOOKING SUMMARY
+// =====================================================
+
+function updateBookingSummary() {
+
+
+    const selectedOption =
+        eventSelect.options[
+            eventSelect.selectedIndex
+        ];
+
+
+    if (
+        !selectedOption ||
+        !selectedOption.value
+    ) {
 
         summaryEvent.textContent =
-            "Select an Event";
+            "Select an event";
 
         summaryDate.textContent =
-            "-";
-
-        summaryTime.textContent =
             "-";
 
         summaryLocation.textContent =
             "-";
 
         summaryPrice.textContent =
-            "₹0";
+            "0";
 
         summaryTickets.textContent =
-            ticketCount.value || "1";
+            ticketsInput.value || "1";
 
-        summarySubtotal.textContent =
-            "₹0";
+        subtotalElement.textContent =
+            "0";
 
-        bookingFee.textContent =
-            "₹0";
+        bookingFeeElement.textContent =
+            BOOKING_FEE;
 
-        totalAmount.textContent =
-            "₹0";
-
-        return;
-
-    }
-
-
-    const event =
-        bookingEvents[selectedEvent];
-
-
-    if (!event) {
+        totalAmountElement.textContent =
+            BOOKING_FEE;
 
         return;
 
     }
 
 
-    summaryEvent.textContent =
-        selectedEvent;
+    // =================================================
+    // EVENT DETAILS
+    // =================================================
+
+    const eventName =
+        selectedOption.value;
+
+    const price =
+        Number(
+            selectedOption.dataset.price
+        );
+
+    const date =
+        selectedOption.dataset.date;
+
+    const location =
+        selectedOption.dataset.location;
 
 
-    summaryDate.textContent =
-        event.date;
+    // =================================================
+    // TICKETS
+    // =================================================
 
-
-    summaryTime.textContent =
-        event.time;
-
-
-    summaryLocation.textContent =
-        event.location;
-
-
-    summaryPrice.textContent =
-        "₹" + event.price;
-
-
-    summaryImage.src =
-        event.image;
-
-
-    updateTotal();
-
-}
-
-
-// =========================================================
-// UPDATE PRICE / TOTAL
-// =========================================================
-
-function updateTotal() {
-
-    const selectedEvent =
-        eventName.value;
-
-
-    if (!selectedEvent) {
-
-        return;
-
-    }
-
-
-    const event =
-        bookingEvents[selectedEvent];
-
-
-    let quantity =
-        parseInt(ticketCount.value);
+    let tickets =
+        Number(
+            ticketsInput.value
+        );
 
 
     if (
-        isNaN(quantity) ||
-        quantity < 1
+        !tickets ||
+        tickets < 1
     ) {
 
-        quantity = 1;
+        tickets = 1;
 
-        ticketCount.value = 1;
-
-    }
-
-
-    if (quantity > 10) {
-
-        quantity = 10;
-
-        ticketCount.value = 10;
+        ticketsInput.value = 1;
 
     }
 
 
-    // Ticket price
+    if (tickets > 10) {
 
-    const ticketPrice =
-        event.price;
+        tickets = 10;
+
+        ticketsInput.value = 10;
+
+    }
 
 
-    // Subtotal
+    // =================================================
+    // CALCULATION
+    // =================================================
 
     const subtotal =
-        ticketPrice * quantity;
-
-
-    // Total
+        price * tickets;
 
     const total =
         subtotal + BOOKING_FEE;
 
 
-    // Display values
+    // =================================================
+    // DISPLAY
+    // =================================================
+
+    summaryEvent.textContent =
+        eventName;
+
+    summaryDate.textContent =
+        date;
+
+    summaryLocation.textContent =
+        location;
 
     summaryPrice.textContent =
-        "₹" + ticketPrice;
-
+        price.toLocaleString("en-IN");
 
     summaryTickets.textContent =
-        quantity;
+        tickets;
 
+    subtotalElement.textContent =
+        subtotal.toLocaleString("en-IN");
 
-    summarySubtotal.textContent =
-        "₹" + subtotal;
+    bookingFeeElement.textContent =
+        BOOKING_FEE.toLocaleString("en-IN");
 
-
-    bookingFee.textContent =
-        "₹" + BOOKING_FEE;
-
-
-    totalAmount.textContent =
-        "₹" + total;
+    totalAmountElement.textContent =
+        total.toLocaleString("en-IN");
 
 }
 
 
-// =========================================================
+// =====================================================
 // EVENT CHANGE
-// =========================================================
+// =====================================================
 
-if (eventName) {
-
-    eventName.addEventListener(
-        "change",
-        updateEventSummary
-    );
-
-}
+eventSelect.addEventListener(
+    "change",
+    updateBookingSummary
+);
 
 
-// =========================================================
-// TICKET QUANTITY CHANGE
-// =========================================================
+// =====================================================
+// TICKET CHANGE
+// =====================================================
 
-if (ticketCount) {
-
-    ticketCount.addEventListener(
-        "input",
-        updateTotal
-    );
-
-}
+ticketsInput.addEventListener(
+    "input",
+    updateBookingSummary
+);
 
 
-// =========================================================
-// HIDE ALL ERRORS
-// =========================================================
+// =====================================================
+// REMOVE ERROR MESSAGES
+// =====================================================
 
-function hideErrors() {
+function clearErrors() {
 
-    document.querySelectorAll(
-        ".error-message"
-    ).forEach(
-        function(error) {
+    document.getElementById(
+        "nameError"
+    ).textContent = "";
 
-            error.style.display =
-                "none";
+    document.getElementById(
+        "emailError"
+    ).textContent = "";
 
-        }
-    );
+    document.getElementById(
+        "phoneError"
+    ).textContent = "";
 
-}
+    document.getElementById(
+        "eventError"
+    ).textContent = "";
 
-
-// =========================================================
-// SHOW ERROR
-// =========================================================
-
-function showError(id) {
-
-    const error =
-        document.getElementById(id);
-
-
-    if (error) {
-
-        error.style.display =
-            "block";
-
-    }
+    document.getElementById(
+        "paymentError"
+    ).textContent = "";
 
 }
 
 
-// =========================================================
+// =====================================================
 // VALIDATE FORM
-// =========================================================
+// =====================================================
 
 function validateForm() {
 
-    hideErrors();
+
+    clearErrors();
 
 
-    let valid = true;
+    let isValid = true;
 
+
+    // =================================================
+    // NAME
+    // =================================================
 
     const name =
-        document.getElementById("fullName")
-            .value.trim();
+        customerName.value.trim();
 
 
-    const email =
-        document.getElementById("email")
-            .value.trim();
+    if (name === "") {
 
+        document.getElementById(
+            "nameError"
+        ).textContent =
+            "Please enter your full name.";
 
-    const phone =
-        document.getElementById("phone")
-            .value.trim();
+        isValid = false;
 
+    }
+    else if (name.length < 3) {
 
-    const selectedEvent =
-        eventName.value;
+        document.getElementById(
+            "nameError"
+        ).textContent =
+            "Name must contain at least 3 characters.";
 
-
-    const tickets =
-        parseInt(ticketCount.value);
-
-
-    const payment =
-        document.getElementById("paymentMethod")
-            .value;
-
-
-    const terms =
-        document.getElementById("terms")
-            .checked;
-
-
-    // =====================================================
-    // NAME VALIDATION
-    // =====================================================
-
-    if (name.length < 2) {
-
-        showError("nameError");
-
-        valid = false;
+        isValid = false;
 
     }
 
 
-    // =====================================================
-    // EMAIL VALIDATION
-    // =====================================================
+    // =================================================
+    // EMAIL
+    // =================================================
+
+    const emailValue =
+        email.value.trim();
+
 
     const emailPattern =
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-    if (!emailPattern.test(email)) {
+    if (emailValue === "") {
 
-        showError("emailError");
+        document.getElementById(
+            "emailError"
+        ).textContent =
+            "Please enter your email.";
 
-        valid = false;
-
-    }
-
-
-    // =====================================================
-    // PHONE VALIDATION
-    // =====================================================
-
-    const phonePattern =
-        /^[0-9]{10}$/;
-
-
-    if (!phonePattern.test(phone)) {
-
-        showError("phoneError");
-
-        valid = false;
+        isValid = false;
 
     }
-
-
-    // =====================================================
-    // EVENT VALIDATION
-    // =====================================================
-
-    if (!selectedEvent) {
-
-        showError("eventError");
-
-        valid = false;
-
-    }
-
-
-    // =====================================================
-    // TICKET VALIDATION
-    // =====================================================
-
-    if (
-        isNaN(tickets) ||
-        tickets < 1 ||
-        tickets > 10
+    else if (
+        !emailPattern.test(emailValue)
     ) {
 
-        showError("ticketError");
+        document.getElementById(
+            "emailError"
+        ).textContent =
+            "Please enter a valid email address.";
 
-        valid = false;
-
-    }
-
-
-    // =====================================================
-    // PAYMENT VALIDATION
-    // =====================================================
-
-    if (!payment) {
-
-        showError("paymentError");
-
-        valid = false;
+        isValid = false;
 
     }
 
 
-    // =====================================================
-    // TERMS VALIDATION
-    // =====================================================
+    // =================================================
+    // PHONE
+    // =================================================
 
-    if (!terms) {
+    const phoneValue =
+        phone.value.trim();
 
-        showError("termsError");
 
-        valid = false;
+    const phonePattern =
+        /^[6-9][0-9]{9}$/;
+
+
+    if (phoneValue === "") {
+
+        document.getElementById(
+            "phoneError"
+        ).textContent =
+            "Please enter your mobile number.";
+
+        isValid = false;
+
+    }
+    else if (
+        !phonePattern.test(phoneValue)
+    ) {
+
+        document.getElementById(
+            "phoneError"
+        ).textContent =
+            "Please enter a valid 10 digit mobile number.";
+
+        isValid = false;
 
     }
 
 
-    return valid;
+    // =================================================
+    // EVENT
+    // =================================================
+
+    if (
+        eventSelect.value === ""
+    ) {
+
+        document.getElementById(
+            "eventError"
+        ).textContent =
+            "Please select an event.";
+
+        isValid = false;
+
+    }
+
+
+    // =================================================
+    // TICKETS
+    // =================================================
+
+    const ticketCount =
+        Number(
+            ticketsInput.value
+        );
+
+
+    if (
+        !ticketCount ||
+        ticketCount < 1
+    ) {
+
+        alert(
+            "Please select at least 1 ticket."
+        );
+
+        isValid = false;
+
+    }
+
+
+    if (ticketCount > 10) {
+
+        alert(
+            "Maximum 10 tickets are allowed."
+        );
+
+        isValid = false;
+
+    }
+
+
+    // =================================================
+    // PAYMENT
+    // =================================================
+
+    if (
+        paymentMethod.value === ""
+    ) {
+
+        document.getElementById(
+            "paymentError"
+        ).textContent =
+            "Please select a payment method.";
+
+        isValid = false;
+
+    }
+
+
+    // =================================================
+    // TERMS
+    // =================================================
+
+    if (!terms.checked) {
+
+        alert(
+            "Please agree to the terms and conditions."
+        );
+
+        isValid = false;
+
+    }
+
+
+    return isValid;
 
 }
 
 
-// =========================================================
+// =====================================================
 // FORM SUBMIT
-// =========================================================
+// =====================================================
 
-if (bookingForm) {
+bookingForm.addEventListener(
+    "submit",
+    function(event) {
 
-    bookingForm.addEventListener(
-        "submit",
-        function(event) {
 
-            event.preventDefault();
+        event.preventDefault();
 
 
-            const isValid =
-                validateForm();
+        // Hide old success message
 
+        successBox.style.display =
+            "none";
 
-            if (!isValid) {
 
-                return;
+        // Validate
 
-            }
+        if (!validateForm()) {
 
-
-            // =================================================
-            // GET FORM DATA
-            // =================================================
-
-            const name =
-                document.getElementById("fullName")
-                    .value.trim();
-
-
-            const email =
-                document.getElementById("email")
-                    .value.trim();
-
-
-            const phone =
-                document.getElementById("phone")
-                    .value.trim();
-
-
-            const selectedEvent =
-                eventName.value;
-
-
-            const tickets =
-                parseInt(ticketCount.value);
-
-
-            const payment =
-                document.getElementById("paymentMethod")
-                    .value;
-
-
-            const eventData =
-                bookingEvents[selectedEvent];
-
-
-            // =================================================
-            // CALCULATE PRICE
-            // =================================================
-
-            const ticketPrice =
-                eventData.price;
-
-
-            const subtotal =
-                ticketPrice * tickets;
-
-
-            const total =
-                subtotal + BOOKING_FEE;
-
-
-            // =================================================
-            // CREATE BOOKING OBJECT
-            // =================================================
-
-            const booking = {
-
-                id:
-                    "#SE" +
-                    Date.now()
-                        .toString()
-                        .slice(-6),
-
-
-                name:
-                    name,
-
-
-                email:
-                    email,
-
-
-                phone:
-                    phone,
-
-
-                event:
-                    selectedEvent,
-
-
-                date:
-                    eventData.date,
-
-
-                time:
-                    eventData.time,
-
-
-                location:
-                    eventData.location,
-
-
-                ticketPrice:
-                    ticketPrice,
-
-
-                tickets:
-                    tickets,
-
-
-                subtotal:
-                    subtotal,
-
-
-                bookingFee:
-                    BOOKING_FEE,
-
-
-                amount:
-                    total,
-
-
-                payment:
-                    payment,
-
-
-                status:
-                    "Confirmed",
-
-
-                bookingDate:
-                    new Date()
-                        .toLocaleDateString()
-
-            };
-
-
-            // =================================================
-            // GET OLD BOOKINGS
-            // =================================================
-
-            let bookings =
-                JSON.parse(
-                    localStorage.getItem("bookings")
-                    || "[]"
-                );
-
-
-            // =================================================
-            // ADD NEW BOOKING
-            // =================================================
-
-            bookings.push(booking);
-
-
-            // =================================================
-            // SAVE BOOKINGS
-            // =================================================
-
-            localStorage.setItem(
-                "bookings",
-                JSON.stringify(bookings)
-            );
-
-
-            // =================================================
-            // SAVE CURRENT BOOKING
-            // =================================================
-
-            localStorage.setItem(
-                "currentBooking",
-                JSON.stringify(booking)
-            );
-
-
-            // =================================================
-            // SUCCESS MESSAGE
-            // =================================================
-
-            const successBox =
-                document.getElementById(
-                    "successBox"
-                );
-
-
-            successBox.innerHTML = `
-
-                <i class="bi bi-check-circle-fill"></i>
-
-                <strong>
-                    Booking Confirmed!
-                </strong>
-
-                <br>
-
-                Booking ID:
-                <strong>${booking.id}</strong>
-
-                <br>
-
-                Total Amount:
-                <strong>₹${booking.amount}</strong>
-
-            `;
-
-
-            successBox.style.display =
-                "block";
-
-
-            // =================================================
-            // SCROLL TO SUCCESS MESSAGE
-            // =================================================
-
-            successBox.scrollIntoView({
-                behavior: "smooth"
-            });
-
-
-            // =================================================
-            // REDIRECT TO MY BOOKINGS
-            // =================================================
-
-            setTimeout(
-                function() {
-
-                    window.location.href =
-                        "my-bookings.html";
-
-                },
-                2000
-            );
+            return;
 
         }
-    );
-
-}
 
 
-// =========================================================
-// LOAD SELECTED EVENT
-// =========================================================
+        // =================================================
+        // GET SELECTED EVENT
+        // =================================================
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
+        const selectedOption =
+            eventSelect.options[
+                eventSelect.selectedIndex
+            ];
 
-        const selectedEvent =
-            localStorage.getItem(
-                "selectedEvent"
+
+        const eventName =
+            selectedOption.value;
+
+
+        const ticketPrice =
+            Number(
+                selectedOption.dataset.price
             );
 
 
-        if (
-            selectedEvent &&
-            bookingEvents[selectedEvent]
-        ) {
-
-            eventName.value =
-                selectedEvent;
+        const eventDate =
+            selectedOption.dataset.date;
 
 
-            updateEventSummary();
+        const eventLocation =
+            selectedOption.dataset.location;
 
-        }
+
+        // =================================================
+        // TICKETS
+        // =================================================
+
+        const ticketCount =
+            Number(
+                ticketsInput.value
+            );
+
+
+        // =================================================
+        // AMOUNT
+        // =================================================
+
+        const subtotal =
+            ticketPrice *
+            ticketCount;
+
+
+        const totalAmount =
+            subtotal +
+            BOOKING_FEE;
+
+
+        // =================================================
+        // BOOKING ID
+        // =================================================
+
+        const bookingId =
+            "SE" +
+            Date.now();
+
+
+        // =================================================
+        // BOOKING DATE
+        // =================================================
+
+        const currentDate =
+            new Date();
+
+
+        const bookingDate =
+            currentDate.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+
+        // =================================================
+        // BOOKING OBJECT
+        // =================================================
+
+        const booking = {
+
+            id: bookingId,
+
+            customerName:
+                customerName.value.trim(),
+
+            email:
+                email.value.trim(),
+
+            phone:
+                phone.value.trim(),
+
+            event:
+                eventName,
+
+            date:
+                eventDate,
+
+            location:
+                eventLocation,
+
+            tickets:
+                ticketCount,
+
+            ticketPrice:
+                ticketPrice,
+
+            subtotal:
+                subtotal,
+
+            bookingFee:
+                BOOKING_FEE,
+
+            amount:
+                totalAmount,
+
+            paymentMethod:
+                paymentMethod.value,
+
+            status:
+                "Confirmed",
+
+            bookingDate:
+                bookingDate
+
+        };
+
+
+        // =================================================
+        // GET OLD BOOKINGS
+        // =================================================
+
+        let bookings =
+            JSON.parse(
+                localStorage.getItem(
+                    "bookings"
+                ) || "[]"
+            );
+
+
+        // =================================================
+        // ADD NEW BOOKING
+        // =================================================
+
+        bookings.push(
+            booking
+        );
+
+
+        // =================================================
+        // SAVE BOOKINGS
+        // =================================================
+
+        localStorage.setItem(
+            "bookings",
+            JSON.stringify(
+                bookings
+            )
+        );
+
+
+        // =================================================
+        // SUCCESS MESSAGE
+        // =================================================
+
+        successBox.style.display =
+            "block";
+
+
+        successMessage.innerHTML = `
+
+            Your booking for
+            <strong>${eventName}</strong>
+            has been confirmed.
+
+            <br><br>
+
+            Booking ID:
+            <strong>${bookingId}</strong>
+
+            <br>
+
+            Tickets:
+            <strong>${ticketCount}</strong>
+
+            <br>
+
+            Total Amount:
+            <strong>
+                ₹${totalAmount.toLocaleString("en-IN")}
+            </strong>
+
+        `;
+
+
+        // =================================================
+        // RESET FORM
+        // =================================================
+
+        bookingForm.reset();
+
+
+        ticketsInput.value =
+            1;
+
+
+        // =================================================
+        // RESET SUMMARY
+        // =================================================
+
+        updateBookingSummary();
+
+
+        // =================================================
+        // SCROLL TO SUCCESS
+        // =================================================
+
+        successBox.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
 
     }
 );
+
+
+// =====================================================
+// INITIAL SUMMARY
+// =====================================================
+
+updateBookingSummary();
