@@ -1,172 +1,209 @@
-document.addEventListener("DOMContentLoaded", function () {
+// =========================================================
+// SMART EVENT MANAGEMENT SYSTEM
+// LOGIN JAVASCRIPT
+// =========================================================
 
-    const loginForm =
-        document.getElementById("loginForm");
 
-    if (!loginForm) {
-        return;
+// GET ELEMENTS
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const emailInput =
+    document.getElementById("email");
+
+const passwordInput =
+    document.getElementById("password");
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+
+// =========================================================
+// SHOW / HIDE PASSWORD
+// =========================================================
+
+togglePassword.addEventListener(
+    "click",
+    function() {
+
+        if (passwordInput.type === "password") {
+
+            passwordInput.type = "text";
+
+            togglePassword.innerHTML =
+                '<i class="bi bi-eye-slash"></i>';
+
+        } else {
+
+            passwordInput.type = "password";
+
+            togglePassword.innerHTML =
+                '<i class="bi bi-eye"></i>';
+
+        }
+
     }
+);
 
 
-    const emailInput =
-        document.getElementById("loginEmail");
+// =========================================================
+// HIDE ERRORS
+// =========================================================
 
-    const passwordInput =
-        document.getElementById("loginPassword");
+function hideErrors() {
 
+    document.querySelectorAll(
+        ".error-message"
+    ).forEach(
+        function(error) {
 
-    loginForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const email =
-                emailInput.value.trim();
-
-            const password =
-                passwordInput.value.trim();
-
-
-            // ================= VALIDATION =================
-
-            if (!email || !password) {
-
-                alert(
-                    "Please enter email and password."
-                );
-
-                return;
-            }
-
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-            if (!emailPattern.test(email)) {
-
-                alert(
-                    "Please enter a valid email address."
-                );
-
-                return;
-            }
-
-
-            if (password.length < 6) {
-
-                alert(
-                    "Password must contain at least 6 characters."
-                );
-
-                return;
-            }
-
-
-            // ================= REGISTERED USERS =================
-
-            const users =
-                JSON.parse(
-                    localStorage.getItem(
-                        "users"
-                    )
-                ) || [];
-
-
-            const registeredUser =
-                users.find(function (user) {
-
-                    return (
-                        user.email === email &&
-                        user.password === password
-                    );
-
-                });
-
-
-            // ================= ADMIN LOGIN =================
-
-            const adminEmail =
-                "admin@smartevents.com";
-
-            const adminPassword =
-                "admin123";
-
-
-            if (
-                email === adminEmail &&
-                password === adminPassword
-            ) {
-
-                localStorage.setItem(
-                    "isLoggedIn",
-                    "true"
-                );
-
-                localStorage.setItem(
-                    "userEmail",
-                    email
-                );
-
-                localStorage.setItem(
-                    "userRole",
-                    "admin"
-                );
-
-
-                alert(
-                    "Admin login successful!"
-                );
-
-
-                window.location.href =
-                    "dashboard.html";
-
-                return;
-            }
-
-
-            // ================= USER LOGIN =================
-
-            if (registeredUser) {
-
-                localStorage.setItem(
-                    "isLoggedIn",
-                    "true"
-                );
-
-                localStorage.setItem(
-                    "userEmail",
-                    registeredUser.email
-                );
-
-                localStorage.setItem(
-                    "userRole",
-                    "user"
-                );
-
-
-                alert(
-                    "Login successful!"
-                );
-
-
-                window.location.href =
-                    "index.html";
-
-                return;
-            }
-
-
-            // ================= LOGIN FAILED =================
-
-            alert(
-                "Invalid email or password.\nPlease register first."
-            );
+            error.style.display = "none";
 
         }
     );
 
-});
+}
+
+
+// =========================================================
+// LOGIN FORM
+// =========================================================
+
+loginForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        hideErrors();
+
+
+        const email =
+            emailInput.value.trim();
+
+        const password =
+            passwordInput.value;
+
+
+        let valid = true;
+
+
+        // EMAIL VALIDATION
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        if (!emailPattern.test(email)) {
+
+            document.getElementById(
+                "emailError"
+            ).style.display = "block";
+
+            valid = false;
+
+        }
+
+
+        // PASSWORD VALIDATION
+
+        if (password.length < 6) {
+
+            document.getElementById(
+                "passwordError"
+            ).style.display = "block";
+
+            valid = false;
+
+        }
+
+
+        if (!valid) {
+
+            return;
+
+        }
+
+
+        // =================================================
+        // GET REGISTERED USER
+        // =================================================
+
+        const registeredUser =
+            JSON.parse(
+                localStorage.getItem(
+                    "registeredUser"
+                )
+            );
+
+
+        // =================================================
+        // CHECK USER
+        // =================================================
+
+        if (
+            registeredUser &&
+            registeredUser.email === email &&
+            registeredUser.password === password
+        ) {
+
+            // SAVE LOGIN STATUS
+
+            localStorage.setItem(
+                "isLoggedIn",
+                "true"
+            );
+
+
+            localStorage.setItem(
+                "currentUser",
+                JSON.stringify(
+                    registeredUser
+                )
+            );
+
+
+            // SUCCESS
+
+            const successMessage =
+                document.getElementById(
+                    "successMessage"
+                );
+
+            successMessage.style.display =
+                "block";
+
+
+            // REDIRECT
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                },
+                1200
+            );
+
+
+        } else {
+
+            // INVALID LOGIN
+
+            const passwordError =
+                document.getElementById(
+                    "passwordError"
+                );
+
+            passwordError.textContent =
+                "Invalid email or password.";
+
+            passwordError.style.display =
+                "block";
+
+        }
+
+    }
+);
