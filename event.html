@@ -2,930 +2,1231 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Events | Smart Event Management System</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Events | Smart Events</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
+    <style>
 
-    <!-- ================= NAVBAR ================= -->
+        .events-header {
 
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+            padding: 70px 0;
 
-        <div class="container">
+            color: white;
 
-            <a class="navbar-brand fw-bold" href="index.html">
-                <i class="bi bi-calendar-event"></i>
-                Smart Events
-            </a>
+            background:
+                linear-gradient(
+                    135deg,
+                    #07182e,
+                    #0d6efd
+                );
 
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav">
+        }
 
-                <span class="navbar-toggler-icon"></span>
+        .events-header h1 {
 
-            </button>
+            font-size: 45px;
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            font-weight: 800;
 
-                <ul class="navbar-nav ms-auto">
+        }
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            Home
-                        </a>
-                    </li>
+        .events-section {
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="events.html">
-                            Events
-                        </a>
-                    </li>
+            padding: 60px 0;
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="event-details.html">
-                            Event Details
-                        </a>
-                    </li>
+            background: #f8f9fa;
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="booking.html">
-                            Book Ticket
-                        </a>
-                    </li>
+            min-height: 700px;
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="my-bookings.html">
-                            My Bookings
-                        </a>
-                    </li>
+        }
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
-                            <i class="bi bi-person-circle"></i>
-                            Profile
-                        </a>
-                    </li>
+        .event-card {
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
-                            Contact
-                        </a>
-                    </li>
+            height: 100%;
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">
-                            Login
-                        </a>
-                    </li>
+            background: white;
 
-                </ul>
+            border: none;
 
-            </div>
+            border-radius: 18px;
 
-        </div>
+            overflow: hidden;
 
-    </nav>
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.08);
 
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
 
-    <!-- ================= PAGE HEADER ================= -->
+        }
 
-    <section class="events-page-header">
+        .event-card:hover {
 
-        <div class="container text-center">
+            transform: translateY(-8px);
 
-            <span class="header-badge">
-                <i class="bi bi-calendar2-event"></i>
-                Discover Events
-            </span>
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,0.14);
 
-            <h1>
-                Explore Our Events
-            </h1>
+        }
 
-            <p>
-                Find exciting events and book your tickets
-                for unforgettable experiences.
-            </p>
+        .event-image {
 
-        </div>
+            height: 220px;
 
-    </section>
+            width: 100%;
 
+            object-fit: cover;
 
-    <!-- ================= SEARCH + FILTER ================= -->
+        }
 
-    <section class="event-filter-section">
+        .event-content {
 
-        <div class="container">
+            padding: 22px;
 
-            <div class="filter-box">
+        }
 
-                <div class="row g-3 align-items-center">
+        .event-content h4 {
 
-                    <!-- Search -->
+            font-weight: 800;
 
-                    <div class="col-lg-6">
+        }
 
-                        <div class="input-group">
+        .event-info {
 
-                            <span class="input-group-text">
-                                <i class="bi bi-search"></i>
-                            </span>
+            color: #666;
 
-                            <input type="text"
-                                   id="eventSearch"
-                                   class="form-control"
-                                   placeholder="Search events...">
+            font-size: 14px;
 
-                        </div>
+            margin-bottom: 7px;
 
-                    </div>
+        }
 
+        .event-info i {
 
-                    <!-- Category -->
+            color: #0d6efd;
 
-                    <div class="col-lg-3">
+            width: 20px;
 
-                        <select id="categoryFilter"
-                                class="form-select">
+        }
 
-                            <option value="all">
-                                All Categories
-                            </option>
+        .event-price {
 
-                            <option value="music">
-                                Music
-                            </option>
+            font-size: 23px;
 
-                            <option value="technology">
-                                Technology
-                            </option>
+            font-weight: 800;
 
-                            <option value="business">
-                                Business
-                            </option>
+            color: #0d6efd;
 
-                            <option value="sports">
-                                Sports
-                            </option>
+        }
 
-                            <option value="education">
-                                Education
-                            </option>
+        .event-price small {
 
-                        </select>
+            font-size: 13px;
 
-                    </div>
+            color: #777;
 
+            font-weight: 500;
 
-                    <!-- Status -->
+        }
 
-                    <div class="col-lg-3">
+        .coming-badge {
 
-                        <select id="statusFilter"
-                                class="form-select">
+            position: absolute;
 
-                            <option value="all">
-                                All Events
-                            </option>
+            top: 15px;
 
-                            <option value="coming">
-                                Coming Soon
-                            </option>
+            left: 15px;
 
-                            <option value="available">
-                                Booking Available
-                            </option>
+            background: #ffc107;
 
-                        </select>
+            color: #212529;
 
-                    </div>
+            padding: 7px 12px;
 
-                </div>
+            border-radius: 50px;
 
-            </div>
+            font-size: 12px;
 
-        </div>
+            font-weight: 700;
 
-    </section>
+        }
 
+        .image-wrapper {
 
-    <!-- ================= EVENTS ================= -->
+            position: relative;
 
-    <section class="section-padding events-section">
+        }
 
-        <div class="container">
+        .filter-box {
 
-            <div class="row g-4" id="eventsContainer">
+            background: white;
 
+            padding: 20px;
 
-                <!-- EVENT 1 -->
+            border-radius: 15px;
 
-                <div class="col-lg-4 col-md-6 event-item"
-                     data-category="music"
-                     data-status="coming">
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.06);
 
-                    <div class="event-card">
+            margin-bottom: 35px;
 
-                        <div class="event-image">
+        }
 
-                            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80"
-                                 alt="Music Festival">
+        @media (max-width: 767px) {
 
-                            <span>
-                                Coming Soon
-                            </span>
+            .events-header {
 
-                        </div>
+                padding: 50px 15px;
 
-                        <div class="event-body">
+            }
 
-                            <div class="event-category">
-                                <i class="bi bi-music-note-beamed"></i>
-                                Music
-                            </div>
+            .events-header h1 {
 
-                            <h4>
-                                Music Festival
-                            </h4>
+                font-size: 34px;
 
-                            <p>
-                                Enjoy an amazing live music experience
-                                with exciting performances and entertainment.
-                            </p>
+            }
 
-                            <div class="event-details">
+            .events-section {
 
-                                <div>
-                                    <i class="bi bi-calendar3"></i>
-                                    Upcoming
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-geo-alt"></i>
-                                    Gujarat
-                                </div>
-
-                            </div>
-
-                            <a href="event-details.html"
-                               class="btn btn-primary w-100 mt-3">
-
-                                View Details
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EVENT 2 -->
-
-                <div class="col-lg-4 col-md-6 event-item"
-                     data-category="technology"
-                     data-status="coming">
-
-                    <div class="event-card">
-
-                        <div class="event-image">
-
-                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80"
-                                 alt="Technology Conference">
-
-                            <span>
-                                Coming Soon
-                            </span>
-
-                        </div>
-
-                        <div class="event-body">
-
-                            <div class="event-category">
-                                <i class="bi bi-cpu"></i>
-                                Technology
-                            </div>
-
-                            <h4>
-                                Technology Conference
-                            </h4>
-
-                            <p>
-                                Learn about modern technologies,
-                                innovation and the future of IT.
-                            </p>
-
-                            <div class="event-details">
-
-                                <div>
-                                    <i class="bi bi-calendar3"></i>
-                                    Upcoming
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-geo-alt"></i>
-                                    Rajkot
-                                </div>
-
-                            </div>
-
-                            <a href="event-details.html"
-                               class="btn btn-primary w-100 mt-3">
-
-                                View Details
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EVENT 3 -->
-
-                <div class="col-lg-4 col-md-6 event-item"
-                     data-category="business"
-                     data-status="coming">
-
-                    <div class="event-card">
-
-                        <div class="event-image">
-
-                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
-                                 alt="Business Seminar">
-
-                            <span>
-                                Coming Soon
-                            </span>
-
-                        </div>
-
-                        <div class="event-body">
-
-                            <div class="event-category">
-                                <i class="bi bi-briefcase"></i>
-                                Business
-                            </div>
-
-                            <h4>
-                                Business Seminar
-                            </h4>
-
-                            <p>
-                                Gain valuable knowledge from experienced
-                                business professionals.
-                            </p>
-
-                            <div class="event-details">
-
-                                <div>
-                                    <i class="bi bi-calendar3"></i>
-                                    Upcoming
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-geo-alt"></i>
-                                    Ahmedabad
-                                </div>
-
-                            </div>
-
-                            <a href="event-details.html"
-                               class="btn btn-primary w-100 mt-3">
-
-                                View Details
-                                <i class="bi bi-arrow-right"></i>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EVENT 4 -->
-
-                <div class="col-lg-4 col-md-6 event-item"
-                     data-category="sports"
-                     data-status="available">
-
-                    <div class="event-card">
-
-                        <div class="event-image">
-
-                            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80"
-                                 alt="Sports Event">
-
-                            <span class="available-badge">
-                                Booking Available
-                            </span>
-
-                        </div>
-
-                        <div class="event-body">
-
-                            <div class="event-category">
-                                <i class="bi bi-trophy"></i>
-                                Sports
-                            </div>
-
-                            <h4>
-                                Sports Championship
-                            </h4>
-
-                            <p>
-                                Experience an exciting sports championship
-                                with competitive matches.
-                            </p>
-
-                            <div class="event-details">
-
-                                <div>
-                                    <i class="bi bi-calendar3"></i>
-                                    Upcoming
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-geo-alt"></i>
-                                    Gujarat
-                                </div>
-
-                            </div>
-
-                            <a href="booking.html"
-                               class="btn btn-success w-100 mt-3">
-
-                                Book Ticket
-                                <i class="bi bi-ticket-perforated"></i>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EVENT 5 -->
-
-                <div class="col-lg-4 col-md-6 event-item"
-                     data-category="education"
-                     data-status="available">
-
-                    <div class="event-card">
-
-                        <div class="event-image">
-
-                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
-                                 alt="Education Workshop">
-
-                            <span class="available-badge">
-                                Booking Available
-                            </span>
-
-                        </div>
-
-                        <div class="event-body">
-
-                            <div class="event-category">
-                                <i class="bi bi-mortarboard"></i>
-                                Education
-                            </div>
-
-                            <h4>
-                                Education Workshop
-                            </h4>
-
-                            <p>
-                                Improve your skills through an interactive
-                                learning and education workshop.
-                            </p>
-
-                            <div class="event-details">
-
-                                <div>
-                                    <i class="bi bi-calendar3"></i>
-                                    Upcoming
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-geo-alt"></i>
-                                    Rajkot
-                                </div>
-
-                            </div>
-
-                            <a href="booking.html"
-                               class="btn btn-success w-100 mt-3">
-
-                                Book Ticket
-                                <i class="bi bi-ticket-perforated"></i>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EVENT 6 -->
-
-                <div class="col-lg-4 col-md-6 event-item"
-                     data-category="music"
-                     data-status="available">
-
-                    <div class="event-card">
-
-                        <div class="event-image">
-
-                            <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=900&q=80"
-                                 alt="Live Concert">
-
-                            <span class="available-badge">
-                                Booking Available
-                            </span>
-
-                        </div>
-
-                        <div class="event-body">
-
-                            <div class="event-category">
-                                <i class="bi bi-music-note"></i>
-                                Music
-                            </div>
-
-                            <h4>
-                                Live Concert
-                            </h4>
-
-                            <p>
-                                Enjoy an unforgettable live concert
-                                featuring talented performers.
-                            </p>
-
-                            <div class="event-details">
-
-                                <div>
-                                    <i class="bi bi-calendar3"></i>
-                                    Upcoming
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-geo-alt"></i>
-                                    Ahmedabad
-                                </div>
-
-                            </div>
-
-                            <a href="booking.html"
-                               class="btn btn-success w-100 mt-3">
-
-                                Book Ticket
-                                <i class="bi bi-ticket-perforated"></i>
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- NO RESULTS -->
-
-            <div id="noEvents"
-                 class="text-center py-5"
-                 style="display:none;">
-
-                <i class="bi bi-search fs-1 text-muted"></i>
-
-                <h4 class="mt-3">
-                    No Events Found
-                </h4>
-
-                <p class="text-muted">
-                    Try changing your search or filter.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CTA ================= -->
-
-    <section class="feedback-section">
-
-        <div class="container">
-
-            <div class="feedback-box">
-
-                <i class="bi bi-ticket-perforated"></i>
-
-                <h2>
-                    Ready to Book Your Event?
-                </h2>
-
-                <p>
-                    Choose your favourite event and reserve
-                    your ticket today.
-                </p>
-
-                <a href="booking.html"
-                   class="btn btn-warning btn-lg">
-
-                    Book Your Ticket
-                    <i class="bi bi-arrow-right"></i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <div class="container">
-
-            <div class="row g-4">
-
-                <div class="col-lg-4">
-
-                    <h4>
-                        <i class="bi bi-calendar-event"></i>
-                        Smart Events
-                    </h4>
-
-                    <p>
-                        Smart Event Management & Ticket Booking System
-                        for discovering and booking exciting events.
-                    </p>
-
-                </div>
-
-
-                <div class="col-lg-2">
-
-                    <h5>
-                        Quick Links
-                    </h5>
-
-                    <a href="index.html">
-                        Home
-                    </a>
-
-                    <a href="events.html">
-                        Events
-                    </a>
-
-                    <a href="booking.html">
-                        Booking
-                    </a>
-
-                    <a href="contact.html">
-                        Contact
-                    </a>
-
-                </div>
-
-
-                <div class="col-lg-3">
-
-                    <h5>
-                        Account
-                    </h5>
-
-                    <a href="login.html">
-                        Login
-                    </a>
-
-                    <a href="register.html">
-                        Register
-                    </a>
-
-                    <a href="my-bookings.html">
-                        My Bookings
-                    </a>
-
-                    <a href="dashboard.html">
-                        Profile
-                    </a>
-
-                </div>
-
-
-                <div class="col-lg-3">
-
-                    <h5>
-                        Contact
-                    </h5>
-
-                    <p>
-                        <i class="bi bi-envelope"></i>
-                        support@smartevents.com
-                    </p>
-
-                    <p>
-                        <i class="bi bi-telephone"></i>
-                        +91 98765 43210
-                    </p>
-
-                    <p>
-                        <i class="bi bi-geo-alt"></i>
-                        Gujarat, India
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <hr>
-
-
-            <div class="footer-bottom">
-
-                <p>
-                    © 2026 Smart Event Management System.
-                    All Rights Reserved.
-                </p>
-
-                <div class="social-icons">
-
-                    <a href="#">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="bi bi-twitter-x"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-    <!-- ================= JAVASCRIPT ================= -->
-
-    <script>
-
-        const searchInput = document.getElementById("eventSearch");
-        const categoryFilter = document.getElementById("categoryFilter");
-        const statusFilter = document.getElementById("statusFilter");
-
-        const eventItems = document.querySelectorAll(".event-item");
-        const noEvents = document.getElementById("noEvents");
-
-
-        function filterEvents() {
-
-            const searchText =
-                searchInput.value.toLowerCase().trim();
-
-            const category =
-                categoryFilter.value;
-
-            const status =
-                statusFilter.value;
-
-            let visibleEvents = 0;
-
-
-            eventItems.forEach(function(event) {
-
-                const title =
-                    event.querySelector("h4")
-                    .textContent
-                    .toLowerCase();
-
-                const description =
-                    event.querySelector("p")
-                    .textContent
-                    .toLowerCase();
-
-                const eventCategory =
-                    event.dataset.category;
-
-                const eventStatus =
-                    event.dataset.status;
-
-
-                const matchesSearch =
-                    title.includes(searchText) ||
-                    description.includes(searchText);
-
-
-                const matchesCategory =
-                    category === "all" ||
-                    eventCategory === category;
-
-
-                const matchesStatus =
-                    status === "all" ||
-                    eventStatus === status;
-
-
-                if (
-                    matchesSearch &&
-                    matchesCategory &&
-                    matchesStatus
-                ) {
-
-                    event.style.display = "";
-
-                    visibleEvents++;
-
-                } else {
-
-                    event.style.display = "none";
-
-                }
-
-            });
-
-
-            if (visibleEvents === 0) {
-
-                noEvents.style.display = "block";
-
-            } else {
-
-                noEvents.style.display = "none";
+                padding: 40px 15px;
 
             }
 
         }
 
+    </style>
 
-        searchInput.addEventListener(
-            "input",
-            filterEvents
-        );
-
-        categoryFilter.addEventListener(
-            "change",
-            filterEvents
-        );
-
-        statusFilter.addEventListener(
-            "change",
-            filterEvents
-        );
-
-    </script>
+</head>
 
 
-    <!-- Bootstrap JS -->
+<body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+
+    <div class="container">
+
+        <a
+            class="navbar-brand fw-bold"
+            href="index.html">
+
+            <i class="bi bi-calendar-event"></i>
+
+            Smart Events
+
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="index.html">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link active"
+                        href="events.html">
+
+                        Events
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="booking.html">
+
+                        Book Ticket
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="my-bookings.html">
+
+                        My Bookings
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="dashboard.html">
+
+                        Profile
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="contact.html">
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="login.html">
+
+                        Login
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<section class="events-header">
+
+    <div class="container text-center">
+
+        <span
+            class="badge bg-warning text-dark p-2 mb-3">
+
+            <i class="bi bi-calendar-event"></i>
+
+            Discover Events
+
+        </span>
+
+
+        <h1>
+
+            Upcoming Events
+
+        </h1>
+
+
+        <p class="mb-0">
+
+            Find exciting events and book your
+            tickets easily.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EVENTS SECTION
+===================================================== -->
+
+<section class="events-section">
+
+    <div class="container">
+
+
+        <!-- FILTER -->
+
+        <div class="filter-box">
+
+            <div class="row g-3 align-items-center">
+
+
+                <div class="col-md-6">
+
+                    <h5 class="fw-bold mb-0">
+
+                        <i
+                            class="bi bi-search text-primary">
+                        </i>
+
+                        Find Your Event
+
+                    </h5>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <input
+                        type="text"
+                        id="eventSearch"
+                        class="form-control"
+                        placeholder="Search event...">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EVENTS -->
+
+        <div
+            class="row g-4"
+            id="eventsContainer">
+
+
+            <!-- =================================================
+                 EVENT 1
+            ================================================== -->
+
+            <div
+                class="col-md-6 col-lg-4 event-item"
+                data-name="Tech Conference 2026">
+
+                <div class="event-card">
+
+
+                    <div class="image-wrapper">
+
+                        <img
+                            class="event-image"
+                            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80"
+                            alt="Tech Conference">
+
+                        <span class="coming-badge">
+
+                            Coming Soon
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-content">
+
+
+                        <h4>
+
+                            Tech Conference 2026
+
+                        </h4>
+
+
+                        <p
+                            class="event-info">
+
+                            <i
+                                class="bi bi-calendar3">
+                            </i>
+
+                            25 August 2026
+
+                        </p>
+
+
+                        <p
+                            class="event-info">
+
+                            <i
+                                class="bi bi-geo-alt">
+                            </i>
+
+                            Rajkot, Gujarat
+
+                        </p>
+
+
+                        <p
+                            class="event-info">
+
+                            <i
+                                class="bi bi-clock">
+                            </i>
+
+                            10:00 AM - 5:00 PM
+
+                        </p>
+
+
+                        <hr>
+
+
+                        <div
+                            class="d-flex
+                            justify-content-between
+                            align-items-center">
+
+
+                            <div class="event-price">
+
+                                ₹500
+
+                                <small>
+                                    / ticket
+                                </small>
+
+                            </div>
+
+
+                            <a
+                                href="booking.html"
+                                class="btn btn-primary">
+
+                                Book Now
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EVENT 2
+            ================================================== -->
+
+            <div
+                class="col-md-6 col-lg-4 event-item"
+                data-name="Music Festival 2026">
+
+                <div class="event-card">
+
+
+                    <div class="image-wrapper">
+
+                        <img
+                            class="event-image"
+                            src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=80"
+                            alt="Music Festival">
+
+                        <span class="coming-badge">
+
+                            Coming Soon
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-content">
+
+
+                        <h4>
+
+                            Music Festival 2026
+
+                        </h4>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-calendar3">
+                            </i>
+
+                            30 August 2026
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-geo-alt">
+                            </i>
+
+                            Ahmedabad, Gujarat
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-clock">
+                            </i>
+
+                            6:00 PM - 11:00 PM
+
+                        </p>
+
+
+                        <hr>
+
+
+                        <div
+                            class="d-flex
+                            justify-content-between
+                            align-items-center">
+
+
+                            <div class="event-price">
+
+                                ₹400
+
+                                <small>
+                                    / ticket
+                                </small>
+
+                            </div>
+
+
+                            <a
+                                href="booking.html"
+                                class="btn btn-primary">
+
+                                Book Now
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EVENT 3
+            ================================================== -->
+
+            <div
+                class="col-md-6 col-lg-4 event-item"
+                data-name="Startup Summit 2026">
+
+                <div class="event-card">
+
+
+                    <div class="image-wrapper">
+
+                        <img
+                            class="event-image"
+                            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
+                            alt="Startup Summit">
+
+                        <span class="coming-badge">
+
+                            Coming Soon
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-content">
+
+
+                        <h4>
+
+                            Startup Summit 2026
+
+                        </h4>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-calendar3">
+                            </i>
+
+                            5 September 2026
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-geo-alt">
+                            </i>
+
+                            Gujarat
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-clock">
+                            </i>
+
+                            9:30 AM - 4:30 PM
+
+                        </p>
+
+
+                        <hr>
+
+
+                        <div
+                            class="d-flex
+                            justify-content-between
+                            align-items-center">
+
+
+                            <div class="event-price">
+
+                                ₹500
+
+                                <small>
+                                    / ticket
+                                </small>
+
+                            </div>
+
+
+                            <a
+                                href="booking.html"
+                                class="btn btn-primary">
+
+                                Book Now
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EVENT 4
+            ================================================== -->
+
+            <div
+                class="col-md-6 col-lg-4 event-item"
+                data-name="Cultural Night 2026">
+
+                <div class="event-card">
+
+
+                    <div class="image-wrapper">
+
+                        <img
+                            class="event-image"
+                            src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=900&q=80"
+                            alt="Cultural Night">
+
+                        <span class="coming-badge">
+
+                            Coming Soon
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-content">
+
+
+                        <h4>
+
+                            Cultural Night 2026
+
+                        </h4>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-calendar3">
+                            </i>
+
+                            10 September 2026
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-geo-alt">
+                            </i>
+
+                            Rajkot, Gujarat
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-clock">
+                            </i>
+
+                            7:00 PM - 10:30 PM
+
+                        </p>
+
+
+                        <hr>
+
+
+                        <div
+                            class="d-flex
+                            justify-content-between
+                            align-items-center">
+
+
+                            <div class="event-price">
+
+                                ₹400
+
+                                <small>
+                                    / ticket
+                                </small>
+
+                            </div>
+
+
+                            <a
+                                href="booking.html"
+                                class="btn btn-primary">
+
+                                Book Now
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EVENT 5
+            ================================================== -->
+
+            <div
+                class="col-md-6 col-lg-4 event-item"
+                data-name="Sports Event 2026">
+
+                <div class="event-card">
+
+
+                    <div class="image-wrapper">
+
+                        <img
+                            class="event-image"
+                            src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=80"
+                            alt="Sports Event">
+
+                        <span class="coming-badge">
+
+                            Coming Soon
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-content">
+
+
+                        <h4>
+
+                            Sports Event 2026
+
+                        </h4>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-calendar3">
+                            </i>
+
+                            15 September 2026
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-geo-alt">
+                            </i>
+
+                            Rajkot, Gujarat
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-clock">
+                            </i>
+
+                            8:00 AM - 3:00 PM
+
+                        </p>
+
+
+                        <hr>
+
+
+                        <div
+                            class="d-flex
+                            justify-content-between
+                            align-items-center">
+
+
+                            <div class="event-price">
+
+                                ₹500
+
+                                <small>
+                                    / ticket
+                                </small>
+
+                            </div>
+
+
+                            <a
+                                href="booking.html"
+                                class="btn btn-primary">
+
+                                Book Now
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EVENT 6
+            ================================================== -->
+
+            <div
+                class="col-md-6 col-lg-4 event-item"
+                data-name="Business Workshop 2026">
+
+                <div class="event-card">
+
+
+                    <div class="image-wrapper">
+
+                        <img
+                            class="event-image"
+                            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+                            alt="Business Workshop">
+
+                        <span class="coming-badge">
+
+                            Coming Soon
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-content">
+
+
+                        <h4>
+
+                            Business Workshop 2026
+
+                        </h4>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-calendar3">
+                            </i>
+
+                            20 September 2026
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-geo-alt">
+                            </i>
+
+                            Ahmedabad, Gujarat
+
+                        </p>
+
+
+                        <p class="event-info">
+
+                            <i
+                                class="bi bi-clock">
+                            </i>
+
+                            10:00 AM - 3:00 PM
+
+                        </p>
+
+
+                        <hr>
+
+
+                        <div
+                            class="d-flex
+                            justify-content-between
+                            align-items-center">
+
+
+                            <div class="event-price">
+
+                                ₹400
+
+                                <small>
+                                    / ticket
+                                </small>
+
+                            </div>
+
+
+                            <a
+                                href="booking.html"
+                                class="btn btn-primary">
+
+                                Book Now
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NO RESULT -->
+
+        <div
+            id="noResults"
+            class="text-center mt-5"
+            style="display:none;">
+
+            <i
+                class="bi bi-search"
+                style="font-size:45px;">
+            </i>
+
+            <h4 class="mt-3">
+
+                No events found
+
+            </h4>
+
+            <p class="text-muted">
+
+                Try searching with another event name.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <p class="mb-0">
+
+            © 2026 Smart Event Management System.
+            All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- Event Search -->
+
+<script>
+
+    const searchInput =
+        document.getElementById("eventSearch");
+
+    const eventItems =
+        document.querySelectorAll(".event-item");
+
+    const noResults =
+        document.getElementById("noResults");
+
+
+    searchInput.addEventListener(
+        "input",
+        function() {
+
+            const searchText =
+                this.value
+                    .toLowerCase()
+                    .trim();
+
+
+            let found = 0;
+
+
+            eventItems.forEach(
+                function(item) {
+
+                    const eventName =
+                        item.dataset.name
+                            .toLowerCase();
+
+
+                    if (
+                        eventName.includes(searchText)
+                    ) {
+
+                        item.style.display =
+                            "";
+
+                        found++;
+
+                    } else {
+
+                        item.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+
+            if (found === 0) {
+
+                noResults.style.display =
+                    "block";
+
+            } else {
+
+                noResults.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+</script>
+
 
 </body>
 
