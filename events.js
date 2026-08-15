@@ -1,10 +1,14 @@
 /* =========================================================
-   event.js
+   events.js
    Smart Event Management System
-   Event details, online images, date, price
 ========================================================= */
 
-const eventData = [
+
+/* ---------------------------------------------------------
+   Event list
+--------------------------------------------------------- */
+
+const allEvents = [
 
     {
         id: "music",
@@ -55,7 +59,7 @@ const eventData = [
         price: 599,
         status: "Coming Soon",
         image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
-        description: "Meet startup founders, entrepreneurs and investors and share new ideas."
+        description: "Meet startup founders, entrepreneurs and investors."
     },
 
     {
@@ -68,7 +72,7 @@ const eventData = [
         price: 399,
         status: "Coming Soon",
         image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
-        description: "Improve your programming skills with practical coding sessions."
+        description: "Improve your programming skills with practical sessions."
     },
 
     {
@@ -81,113 +85,250 @@ const eventData = [
         price: 299,
         status: "Coming Soon",
         image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=85",
-        description: "Taste delicious food from different cuisines and enjoy a great experience."
+        description: "Taste delicious food from different cuisines."
     }
 
 ];
 
 
 /* ---------------------------------------------------------
-   Get event from URL
+   Display all events
 --------------------------------------------------------- */
 
-function getSelectedEvent() {
+function renderEvents() {
 
-    const params = new URLSearchParams(window.location.search);
+    const container =
+        document.getElementById(
+            "eventsContainer"
+        );
 
-    const eventId = params.get("event");
-
-    if (!eventId) {
-        return eventData[0];
+    if (!container) {
+        return;
     }
 
-    return eventData.find(
-        event => event.id === eventId
-    ) || eventData[0];
-}
+    container.innerHTML = "";
 
 
-/* ---------------------------------------------------------
-   Display event details
---------------------------------------------------------- */
+    allEvents.forEach(
+        event => {
 
-function displayEventDetails() {
+            container.innerHTML += `
 
-    const event = getSelectedEvent();
+                <div class="col-md-6 col-lg-4">
 
-    const image = document.getElementById("eventImage");
-    const name = document.getElementById("eventName");
-    const category = document.getElementById("eventCategory");
-    const date = document.getElementById("eventDate");
-    const time = document.getElementById("eventTime");
-    const location = document.getElementById("eventLocation");
-    const price = document.getElementById("eventPrice");
-    const description = document.getElementById("eventDescription");
-    const status = document.getElementById("eventStatus");
+                    <div class="event-card">
 
-    if (image) {
-        image.src = event.image;
-        image.alt = event.name;
-    }
+                        <img
+                            src="${event.image}"
+                            class="event-image"
+                            alt="${event.name}">
 
-    if (name) {
-        name.textContent = event.name;
-    }
+                        <div class="event-body">
 
-    if (category) {
-        category.textContent = event.category;
-    }
+                            <span class="category-badge">
+                                ${event.category}
+                            </span>
 
-    if (date) {
-        date.textContent = event.date;
-    }
+                            <span class="coming-badge">
+                                Coming Soon
+                            </span>
 
-    if (time) {
-        time.textContent = event.time;
-    }
+                            <h3 class="event-title mt-3">
+                                ${event.name}
+                            </h3>
 
-    if (location) {
-        location.textContent = event.location;
-    }
+                            <p>
+                                ${event.description}
+                            </p>
 
-    if (price) {
-        price.textContent = "₹" + event.price;
-    }
+                            <p>
+                                <i class="bi bi-calendar3"></i>
+                                <strong>Date:</strong>
+                                ${event.date}
+                            </p>
 
-    if (description) {
-        description.textContent = event.description;
-    }
+                            <p>
+                                <i class="bi bi-clock"></i>
+                                <strong>Time:</strong>
+                                ${event.time}
+                            </p>
 
-    if (status) {
-        status.textContent = event.status;
-    }
+                            <p>
+                                <i class="bi bi-geo-alt"></i>
+                                <strong>Location:</strong>
+                                ${event.location}
+                            </p>
 
-}
+                            <h4 class="text-success">
+                                ₹${event.price}
+                            </h4>
 
+                            <a
+                                href="event-details.html?event=${event.id}"
+                                class="btn btn-primary w-100">
 
-/* ---------------------------------------------------------
-   Book event
---------------------------------------------------------- */
+                                View Details
 
-function bookSelectedEvent() {
+                            </a>
 
-    const event = getSelectedEvent();
+                        </div>
 
-    localStorage.setItem(
-        "selectedEvent",
-        JSON.stringify(event)
+                    </div>
+
+                </div>
+
+            `;
+
+        }
     );
 
-    window.location.href = "booking.html";
+}
+
+
+/* ---------------------------------------------------------
+   Search events
+--------------------------------------------------------- */
+
+function searchEvents() {
+
+    const input =
+        document.getElementById(
+            "searchInput"
+        );
+
+    if (!input) {
+        return;
+    }
+
+    const search =
+        input.value
+            .toLowerCase()
+            .trim();
+
+
+    const cards =
+        document.querySelectorAll(
+            "#eventsContainer .col-md-6"
+        );
+
+
+    cards.forEach(
+        card => {
+
+            const text =
+                card.textContent
+                    .toLowerCase();
+
+            if (
+                text.includes(search)
+            ) {
+
+                card.style.display =
+                    "";
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
 
 }
 
 
 /* ---------------------------------------------------------
-   Load on page
+   Category filter
+--------------------------------------------------------- */
+
+function filterEvents() {
+
+    const select =
+        document.getElementById(
+            "categoryFilter"
+        );
+
+    if (!select) {
+        return;
+    }
+
+    const category =
+        select.value;
+
+
+    const cards =
+        document.querySelectorAll(
+            "#eventsContainer .col-md-6"
+        );
+
+
+    cards.forEach(
+        card => {
+
+            if (
+                category === "all"
+                ||
+                card.textContent
+                    .includes(category)
+            ) {
+
+                card.style.display =
+                    "";
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   Page load
 --------------------------------------------------------- */
 
 document.addEventListener(
     "DOMContentLoaded",
-    displayEventDetails
+    function() {
+
+        renderEvents();
+
+        const search =
+            document.getElementById(
+                "searchInput"
+            );
+
+        const filter =
+            document.getElementById(
+                "categoryFilter"
+            );
+
+
+        if (search) {
+
+            search.addEventListener(
+                "input",
+                searchEvents
+            );
+
+        }
+
+
+        if (filter) {
+
+            filter.addEventListener(
+                "change",
+                filterEvents
+            );
+
+        }
+
+    }
 );
