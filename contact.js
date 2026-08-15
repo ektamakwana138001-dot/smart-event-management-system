@@ -1,153 +1,143 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const contactForm =
+    const form =
         document.getElementById("contactForm");
 
-    if (!contactForm) {
+    if (!form) {
         return;
     }
 
 
-    // ================= CONTACT FORM =================
+    form.addEventListener("submit", function (event) {
 
-    contactForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
+        event.preventDefault();
 
 
-            const name =
-                document
-                    .getElementById("contactName")
-                    .value
-                    .trim();
+        const name =
+            document.getElementById("contactName");
+
+        const email =
+            document.getElementById("contactEmail");
+
+        const subject =
+            document.getElementById("contactSubject");
+
+        const message =
+            document.getElementById("contactMessage");
+
+        const messageBox =
+            document.getElementById("contactMessageBox");
 
 
-            const email =
-                document
-                    .getElementById("contactEmail")
-                    .value
-                    .trim();
+        name.classList.remove("is-invalid");
+        email.classList.remove("is-invalid");
+        subject.classList.remove("is-invalid");
+        message.classList.remove("is-invalid");
 
 
-            const subject =
-                document
-                    .getElementById("contactSubject")
-                    .value
-                    .trim();
+        let valid = true;
 
 
-            const message =
-                document
-                    .getElementById("contactMessage")
-                    .value
-                    .trim();
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-            // ================= VALIDATION =================
+        if (name.value.trim().length < 2) {
 
-            if (name.length < 2) {
+            name.classList.add("is-invalid");
 
-                alert(
-                    "Please enter your name."
-                );
-
-                return;
-            }
-
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-            if (!emailPattern.test(email)) {
-
-                alert(
-                    "Please enter a valid email address."
-                );
-
-                return;
-            }
-
-
-            if (subject.length < 3) {
-
-                alert(
-                    "Please enter a subject."
-                );
-
-                return;
-            }
-
-
-            if (message.length < 10) {
-
-                alert(
-                    "Please enter a message of at least 10 characters."
-                );
-
-                return;
-            }
-
-
-            // ================= SAVE MESSAGE =================
-
-            const contactMessage = {
-
-                id:
-                    Date.now(),
-
-                name:
-                    name,
-
-                email:
-                    email,
-
-                subject:
-                    subject,
-
-                message:
-                    message,
-
-                date:
-                    new Date()
-                        .toLocaleString(
-                            "en-IN"
-                        )
-
-            };
-
-
-            let messages =
-                JSON.parse(
-                    localStorage.getItem(
-                        "contactMessages"
-                    )
-                ) || [];
-
-
-            messages.push(
-                contactMessage
-            );
-
-
-            localStorage.setItem(
-                "contactMessages",
-                JSON.stringify(messages)
-            );
-
-
-            // ================= SUCCESS =================
-
-            alert(
-                "Your message has been sent successfully!"
-            );
-
-
-            contactForm.reset();
-
+            valid = false;
         }
-    );
+
+
+        if (!emailPattern.test(email.value.trim())) {
+
+            email.classList.add("is-invalid");
+
+            valid = false;
+        }
+
+
+        if (subject.value.trim().length < 3) {
+
+            subject.classList.add("is-invalid");
+
+            valid = false;
+        }
+
+
+        if (message.value.trim().length < 10) {
+
+            message.classList.add("is-invalid");
+
+            valid = false;
+        }
+
+
+        if (!valid) {
+
+            messageBox.innerHTML = `
+
+                <div class="alert alert-danger">
+
+                    <i class="bi bi-exclamation-circle"></i>
+
+                    Please correct the highlighted fields.
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        const messages =
+            JSON.parse(
+                localStorage.getItem("contactMessages")
+            ) || [];
+
+
+        messages.push({
+
+            id: Date.now(),
+
+            name: name.value.trim(),
+
+            email: email.value.trim(),
+
+            subject: subject.value.trim(),
+
+            message: message.value.trim(),
+
+            date: new Date().toLocaleString(),
+
+            status: "New"
+
+        });
+
+
+        localStorage.setItem(
+            "contactMessages",
+            JSON.stringify(messages)
+        );
+
+
+        messageBox.innerHTML = `
+
+            <div class="alert alert-success">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                Your message has been sent successfully.
+
+            </div>
+
+        `;
+
+
+        form.reset();
+
+    });
 
 });
